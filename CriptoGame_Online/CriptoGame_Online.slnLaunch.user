@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "Nuovo profilo",
+    "Projects": [
+      {
+        "Path": "CriptoGame_Online.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "..\\Server Strategico\\Server Strategico.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]
