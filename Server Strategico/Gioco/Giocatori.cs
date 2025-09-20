@@ -1,4 +1,5 @@
-﻿using static Server_Strategico.Server.Server;
+﻿using static Server_Strategico.BuildingManager;
+using static Server_Strategico.Server.Server;
 
 namespace Server_Strategico.Gioco
 {
@@ -30,6 +31,7 @@ namespace Server_Strategico.Gioco
         }
         public class Player
         {
+            #region Variabili giocatore
             // Identità
             public string Username { get; set; }
             public string Password { get; set; }
@@ -258,13 +260,16 @@ namespace Server_Strategico.Gioco
             public int[] Lanceri_Citta { get; set; } = new int[5];
             public int[] Arceri_Citta { get; set; } = new int[5];
             public int[] Catapulte_Citta { get; set; } = new int[5];
+            #endregion
 
+            public List<BuildingManager.ConstructionTask> currentTasks_Building = new(); // Lista dei task attualmente in costruzione (slot globali, max = Code_Costruzione)
+            public Queue<BuildingManager.ConstructionTask> building_Queue = new(); // Coda globale di attesa (quando tutti gli slot sono occupati)
 
-            public Dictionary<string, Queue<ConstructionTask>> constructionQueues; // Dizionario per memorizzare le code di costruzione per ogni tipo di edificio
-            public Dictionary<string, ConstructionTask> currentTasks; // Dizionario per memorizzare il task di costruzione attuale per ogni tipo di edificio
+            public List<BuildingManager.ConstructionTask> currentTasks_Recruit = new(); // Lista dei task attualmente in costruzione (slot globali, max = Code_Reclutamento)
+            public Queue<BuildingManager.ConstructionTask> recruit_Queue = new(); // Coda globale di attesa (quando tutti gli slot sono occupati)
 
-            public Dictionary<string, Queue<RecruitTask>> recruitQueues;  // Dizionario per memorizzare le code di reclutamento per ogni tipo di unità
-            public Dictionary<string, RecruitTask> currentRecruitTasks;  // Dizionario per memorizzare il task di reclutamento attuale per ogni tipo di unità
+            public Dictionary<string, Queue<UnitManager.RecruitTask>> researchQueues;  // Dizionario per memorizzare le code di reclutamento per ogni tipo di unità
+            public Dictionary<string, UnitManager.RecruitTask> currentresearchTasks;  // Dizionario per memorizzare il task di reclutamento attuale per ogni tipo di unità
 
             public Player(string username, string password, Guid guid_Client)
             {
@@ -474,12 +479,6 @@ namespace Server_Strategico.Gioco
                 Catapulta_Salute = 0;
                 Catapulta_Difesa = 0;
                 Catapulta_Attacco = 0;
-
-                constructionQueues = new Dictionary<string, Queue<ConstructionTask>>();
-                currentTasks = new Dictionary<string, ConstructionTask>();
-
-                recruitQueues = new Dictionary<string, Queue<RecruitTask>>();
-                currentRecruitTasks = new Dictionary<string, RecruitTask>();
             }
 
             public bool ValidatePassword(string password)
@@ -510,215 +509,8 @@ namespace Server_Strategico.Gioco
                 if (Cibo <= 0) Cibo = 0;
                 if (Oro <= 0) Oro = 0;
             }
-            public Strutture.Edifici GetBuildingCost(string buildingType)
-            {
-                // Restituisci i costi dell'edificio in base al tipo
-                return buildingType switch
-                {
-                    "Fattoria" => Strutture.Edifici.Fattoria,
-                    "Segheria" => Strutture.Edifici.Segheria,
-                    "CavaPietra" => Strutture.Edifici.CavaPietra,
-                    "MinieraFerro" => Strutture.Edifici.MinieraFerro,
-                    "MinieraOro" => Strutture.Edifici.MinieraOro,
-                    "Case" => Strutture.Edifici.Case,
 
-                    "ProduzioneSpade" => Strutture.Edifici.ProduzioneSpade,
-                    "ProduzioneLancie" => Strutture.Edifici.ProduzioneLance,
-                    "ProduzioneArchi" => Strutture.Edifici.ProduzioneArchi,
-                    "ProduzioneScudi" => Strutture.Edifici.ProduzioneScudi,
-                    "ProduzioneArmature" => Strutture.Edifici.ProduzioneArmature,
-                    "ProduzioneFrecce" => Strutture.Edifici.ProduzioneFrecce,
-
-                    "CasermaGuerrieri" => Strutture.Edifici.CasermaGuerrieri,
-                    "CasermaLancieri" => Strutture.Edifici.CasermaLanceri,
-                    "CasermaArcieri" => Strutture.Edifici.CasermaArceri,
-                    "CasermaCatapulte" => Strutture.Edifici.CasermaCatapulte,
-                    // Aggiungi altri edifici se necessario
-                    _ => null,
-                };
-            }
-            public void StartNextConstruction(string buildingType) // Metodo per avviare la prossima costruzione per un tipo specifico di edificio
-            {
-                if (constructionQueues[buildingType].Count > 0)
-                {
-                    currentTasks[buildingType] = constructionQueues[buildingType].Dequeue();
-                    currentTasks[buildingType].Start();
-                    Console.WriteLine($"Costruzione di una {buildingType} iniziata, completamento previsto in {currentTasks[buildingType].DurationInSeconds} secondi.");
-                }
-                else
-                    currentTasks[buildingType] = null; // Nessuna costruzione in corso
-
-            }
-            public void CompleteBuilds(Guid clientGuid) // Metodo per completare le costruzioni in corso
-            {
-                foreach (var buildingType in currentTasks.Keys)
-                {
-                    var currentTask = currentTasks[buildingType];
-                    if (currentTask != null && currentTask.IsComplete())
-                    {
-                        switch (buildingType)
-                        {
-                            case "Fattoria":
-                                Fattoria++;
-                                Console.WriteLine($"Costruzione completata {buildingType} costruita!");
-                                break;
-                            case "Segheria":
-                                Segheria++;
-                                Console.WriteLine($"Costruzione completata {buildingType} costruita!");
-                                break;
-                            case "CavaPietra":
-                                CavaPietra++;
-                                Console.WriteLine($"Costruzione completata {buildingType} costruita!");
-                                break;
-                            case "MinieraFerro":
-                                MinieraFerro++;
-                                Console.WriteLine($"Costruzione completata {buildingType} costruita!");
-                                break;
-                            case "MinieraOro":
-                                MinieraOro++;
-                                Console.WriteLine($"Costruzione completata {buildingType} costruita!");
-                                break;
-                            case "Case":
-                                Abitazioni++;
-                                Console.WriteLine($"Costruzione completata {buildingType} costruita!");
-                                break;
-                            case "ProduzioneSpade":
-                                Workshop_Spade++;
-                                Console.WriteLine($"Costruzione completata {buildingType} costruita!");
-                                break;
-                            case "ProduzioneLancie":
-                                Workshop_Lance++;
-                                Console.WriteLine($"Costruzione completata {buildingType} costruita!");
-                                break;
-                            case "ProduzioneArchi":
-                                Workshop_Archi++;
-                                Console.WriteLine($"Costruzione completata {buildingType} costruita!");
-                                break;
-                            case "ProduzioneScudi":
-                                Workshop_Scudi++;
-                                Console.WriteLine($"Costruzione completata {buildingType} costruita!");
-                                break;
-                            case "ProduzioneArmature":
-                                Workshop_Armature++;
-                                Console.WriteLine($"Costruzione completata {buildingType} costruita!");
-                                break;
-                            case "ProduzioneFrecce":
-                                Workshop_Frecce++;
-                                Console.WriteLine($"Costruzione completata {buildingType} costruita!");
-                                break;
-                            case "CasermaGuerrieri":
-                                Caserma_Guerrieri++;
-                                Console.WriteLine($"Costruzione completata {buildingType} costruita!");
-                                break;
-                            case "CasermaLancieri":
-                                Caserma_Lancieri++;
-                                Console.WriteLine($"Costruzione completata {buildingType} costruita!");
-                                break;
-                            case "CasermaArcieri":
-                                Caserma_Arceri++;
-                                Console.WriteLine($"Costruzione completata {buildingType} costruita!");
-                                break;
-                            case "CasermaCatapulte":
-                                Caserma_Catapulte++;
-                                Console.WriteLine($"Costruzione completata {buildingType} costruita!");
-                                break;
-                            // Aggiungi case per altri tipi di costruzioni
-                            default:
-                                Console.WriteLine($"Costruzione {buildingType} non valida!");
-                                break;
-                        }
-                        // Avvia la prossima costruzione per questo tipo di edificio
-                        Send(clientGuid, $"Log_Server|Costruzione completata {buildingType} costruita!\n\r");
-                        StartNextConstruction(buildingType);
-                    }
-                }
-            }
-            public Dictionary<string, string> GetRemainingConstructions()
-            {
-                var remaining = new Dictionary<string, string>();
-
-                foreach (var task in currentTasks)
-                {
-                    if (task.Value != null)
-                    {
-                        double timeLeft = task.Value.GetRemainingTime();
-                        remaining[task.Key] = FormatTime(timeLeft);
-                    }
-                }
-
-                return remaining;
-            }
-
-            public class ConstructionTask // Classe privata per rappresentare un task di costruzione
-            {
-                public string Type { get; }
-                public int DurationInSeconds { get; }
-                public  DateTime startTime;
-
-                public ConstructionTask(string type, int durationInSeconds)
-                {
-                    Type = type;
-                    DurationInSeconds = durationInSeconds;
-                }
-                public void Start()
-                {
-                    startTime = DateTime.Now;
-                }
-                public bool IsComplete()
-                {
-                    return DateTime.Now >= startTime.AddSeconds(DurationInSeconds);
-                }
-                public double GetRemainingTime()
-                {
-                    if (startTime == default) return DurationInSeconds; // se non è ancora partito
-                    double elapsed = (DateTime.Now - startTime).TotalSeconds;
-                    return Math.Max(0, DurationInSeconds - elapsed);
-                }
-            }
-            public class RecruitTask // Classe privata per rappresentare un task di reclutamento
-            {
-                public string Type { get; }
-                public int DurationInSeconds { get; }
-                private DateTime startTime;
-
-                public RecruitTask(string type, int durationInSeconds)
-                {
-                    Type = type;
-                    DurationInSeconds = durationInSeconds;
-                }
-
-                public void Start()
-                {
-                    startTime = DateTime.Now;
-                }
-                public bool IsComplete()
-                {
-                    return DateTime.Now >= startTime.AddSeconds(DurationInSeconds);
-                }
-                public double GetRemainingTime()
-                {
-                    if (startTime == default) return DurationInSeconds; // se non è ancora partito
-                    double elapsed = (DateTime.Now - startTime).TotalSeconds;
-                    return Math.Max(0, DurationInSeconds - elapsed);
-                }
-            }
-            public Dictionary<string, string> GetRemainingTrainings()
-            {
-                var remaining = new Dictionary<string, string>();
-
-                foreach (var task in currentRecruitTasks)
-                {
-                    if (task.Value != null)
-                    {
-                        double timeLeft = task.Value.GetRemainingTime();
-                        remaining[task.Key] = FormatTime(timeLeft);
-                    }
-                }
-
-                return remaining;
-            }
-
-            private string FormatTime(double seconds)
+            public string FormatTime(double seconds)
             {
                 var ts = TimeSpan.FromSeconds(seconds);
 
@@ -735,214 +527,8 @@ namespace Server_Strategico.Gioco
 
                 return result.Trim();
             }
-            public async void QueueTrainUnits(string unitType, int count, Guid clientGuid, Player player)
-            {
-                var unitCost = GetUnitCost(unitType);
-                int ridurre_Addestramento = 0;
 
-                if (unitType == "Guerrieri_1") ridurre_Addestramento = 1;
-                if (unitType == "Lanceri_1") ridurre_Addestramento = 1;
-                if (unitType == "Arceri_1") ridurre_Addestramento = 2;
-                if (unitType == "Catapulta") ridurre_Addestramento = 3;
-
-                if (unitType == "Guerriero" && count + player.Guerrieri[0] > player.GuerrieriMax * player.Caserma_Guerrieri)
-                {
-                    Send(clientGuid, $"Log_Server|Limite raggiunto per addestrare {count} {unitType}. [Limite: {player.GuerrieriMax * player.Caserma_Guerrieri}]");
-                    Console.WriteLine($"Limite raggiunto per addestrare {count} {unitType}. [Limite: {player.GuerrieriMax * player.Caserma_Guerrieri}]");
-                    return;
-                }
-                else if (unitType == "Lanceri_1" && count + player.Lanceri[0] > player.LancieriMax * player.Caserma_Lancieri)
-                {
-                    Send(clientGuid, $"Log_Server|Limite raggiunto per addestrare {count} {unitType}. [Limite: {player.LancieriMax * player.Caserma_Lancieri}]");
-                    Console.WriteLine($"Limite raggiunto per addestrare {count} {unitType}.[Limite: {player.LancieriMax * player.Caserma_Lancieri}]");
-                    return;
-                }
-                else if (unitType == "Arceri_1" && count + player.Arceri[0] > player.ArceriMax * player.Caserma_Arceri)
-                {
-                    Send(clientGuid, $"Log_Server|Limite raggiunto per addestrare {count} {unitType}. [Limite: {player.ArceriMax * player.Caserma_Arceri}]");
-                    Console.WriteLine($"Limite raggiunto per addestrare {count} {unitType}. [Limite: {player.ArceriMax * player.Caserma_Arceri}]");
-                    return;
-                }
-                else if (unitType == "Catapulta" && count + player.Catapulte[0] > player.CatapulteMax * player.Caserma_Catapulte)
-                {
-                    Send(clientGuid, $"Log_Server|Limite raggiunto per addestrare {count} {unitType}. [Limite: {player.CatapulteMax * player.Caserma_Catapulte}]");
-                    Console.WriteLine($"Limite raggiunto per addestrare {count} {unitType}. [Limite: {player.CatapulteMax * player.Caserma_Catapulte}]");
-                    return;
-                }
-
-                if (Cibo >= unitCost.Cibo * count &&
-                    Legno >= unitCost.Legno * count &&
-                    Pietra >= unitCost.Pietra * count &&
-                    Ferro >= unitCost.Ferro * count &&
-                    Oro >= unitCost.Oro * count &&
-                    Popolazione >= unitCost.Popolazione * count &&
-                    Spade >= unitCost.Spade * count &&
-                    Lance >= unitCost.Lance * count &&
-                    Archi >= unitCost.Archi * count &&
-                    Scudi >= unitCost.Scudi * count &&
-                    Armature >= unitCost.Armature * count)
-                {
-                    Cibo -= unitCost.Cibo * count;
-                    Legno -= unitCost.Legno * count;
-                    Pietra -= unitCost.Pietra * count;
-                    Ferro -= unitCost.Ferro * count;
-                    Oro -= unitCost.Oro * count;
-                    Popolazione -= unitCost.Popolazione * count;
-                    Spade -= unitCost.Spade * count;
-                    Lance -= unitCost.Lance * count;
-                    Archi -= unitCost.Archi * count;
-                    Scudi -= unitCost.Scudi * count;
-                    Armature -= unitCost.Armature * count;
-
-                    Send(clientGuid, $"Log_Server|Risorse utilizzate per l'addestramento di {count} {unitType}:\r\n " +
-                        $"Cibo: {unitCost.Cibo * count}, " +
-                        $"Legno: {unitCost.Legno * count}, " +
-                        $"Pietra: {unitCost.Pietra * count}, " +
-                        $"Ferro: {unitCost.Ferro * count}, " +
-                        $"Oro: {unitCost.Oro * count}, " +
-                        $"Spade: {unitCost.Spade * count}, " +
-                        $"Lance: {unitCost.Lance * count}, " +
-                        $"Archi: {unitCost.Archi * count}, " +
-                        $"Scudi: {unitCost.Scudi * count}, " +
-                        $"Armature: {unitCost.Armature * count}\r\n");
-                    Console.WriteLine($"Risorse utilizzate per l'addestramento di {count} {unitType}:\r\n " +
-                        $"Cibo: {unitCost.Cibo * count}, " +
-                        $"Legno: {unitCost.Legno * count}, " +
-                        $"Pietra: {unitCost.Pietra * count}, " +
-                        $"Ferro: {unitCost.Ferro * count}, " +
-                        $"Oro: {unitCost.Oro * count}, " +
-                        $"Spade: {unitCost.Spade * count}, " +
-                        $"Lance: {unitCost.Lance * count}, " +
-                        $"Archi: {unitCost.Archi * count}, " +
-                        $"Scudi: {unitCost.Scudi * count}, " +
-                        $"Armature: {unitCost.Armature * count}\r\n");
-
-                    if (!recruitQueues.ContainsKey(unitType))
-                        recruitQueues[unitType] = new Queue<RecruitTask>();
-
-                    int tempoAddestramentoInSecondi = Convert.ToInt32(unitCost.TempoReclutamento - (player.Ricerca_Addestramento * ridurre_Addestramento));
-                    Console.WriteLine($"[Server] Tempo addestramento - Base {unitCost.TempoReclutamento}s/{unitCost.TempoReclutamento - (player.Ricerca_Addestramento * ridurre_Addestramento)}s | Livello: {player.Ricerca_Addestramento}");
-                    
-                    for (int i = 0; i < count; i++)
-                        recruitQueues[unitType].Enqueue(new RecruitTask(unitType, tempoAddestramentoInSecondi));
-
-                    if (!currentRecruitTasks.ContainsKey(unitType))
-                        currentRecruitTasks[unitType] = null;
-                    
-                    if (currentRecruitTasks[unitType] == null)
-                        StartNextRecruitment(unitType);
-                }
-                else
-                {
-                    Send(clientGuid, $"Log_Server|Risorse insufficienti per addestrare {count} {unitType}.");
-                    Console.WriteLine($"Risorse insufficienti per addestrare {count} {unitType}.");
-                }
-            }
-            public async void LoadQueueTrainUnits(string unitType, int count, Player player)
-            {
-                var unitCost = GetUnitCost(unitType);
-                if (!recruitQueues.ContainsKey(unitType))
-                    recruitQueues[unitType] = new Queue<RecruitTask>();
-                
-                int tempoAddestramentoInSecondi = Convert.ToInt32(unitCost.TempoReclutamento - player.Ricerca_Addestramento);
-                for (int i = 0; i < count; i++)
-                    recruitQueues[unitType].Enqueue(new RecruitTask(unitType, tempoAddestramentoInSecondi));
-                
-                if (!currentRecruitTasks.ContainsKey(unitType))
-                    currentRecruitTasks[unitType] = null;
-
-                if (currentRecruitTasks[unitType] == null)
-                    StartNextRecruitment(unitType);
-            }
-            private void StartNextRecruitment(string unitType)
-            {
-                if (recruitQueues[unitType].Count > 0)
-                {
-                    currentRecruitTasks[unitType] = recruitQueues[unitType].Dequeue();
-                    currentRecruitTasks[unitType].Start();
-                    //Console.WriteLine($"Addestramento di un'unità {unitType} iniziato, completamento previsto in {currentRecruitTasks[unitType].DurationInSeconds} secondi.");
-                }
-                else
-                    currentRecruitTasks[unitType] = null;
-            }
-            public void CompleteRecruitment(Guid clientGuid)
-            {
-                foreach (var unitType in currentRecruitTasks.Keys)
-                {
-                    var currentTask = currentRecruitTasks[unitType];
-                    if (currentTask != null && currentTask.IsComplete())
-                    {
-                        switch (unitType)
-                        {
-                            case "Arceri_1":
-                                Arceri[0]++;
-                                break;
-                            case "Guerrieri_1":
-                                Guerrieri[0]++;
-                                break;
-                            case "Lanceri_1":
-                                Lanceri[0]++;
-                                break;
-                            case "Catapulta":
-                                Catapulte[0]++;
-                                break;
-                            default:
-                                Console.WriteLine($"{unitType} addestrato!");
-                                break;
-                        }
-                        Send(clientGuid, $"Log_Server|{unitType} addestrato!\n\r");
-                        StartNextRecruitment(unitType);
-                    }
-                }
-            }
-            private Esercito.CostoReclutamento GetUnitCost(string unitType)
-            {
-                return unitType switch
-                {
-                    "Guerrieri_1" => Esercito.CostoReclutamento.Guerrieri_1,
-                    "Lanceri_1" => Esercito.CostoReclutamento.Lanceri_1,
-                    "Arceri_1" => Esercito.CostoReclutamento.Arceri_1,
-                    "Catapulta" => Esercito.CostoReclutamento.Catapulte_1,
-                    _ => null,
-                };
-            }
-            public void SetBuildings(int fattoria, int segheria, int cavaPietra, int mineraFerro, int mineraOro, int abitazioni, int ProdSp, int ProdLan, int ProdArc, int ProdScud, int ProdArmat, int ProdFrecce, int cas_Gu, int cas_Lan, int cas_Arc, int cas_Cat)
-            {
-                Fattoria = fattoria;
-                Segheria = segheria;
-                CavaPietra = cavaPietra;
-                MinieraFerro = mineraFerro;
-                MinieraOro = mineraOro;
-                Abitazioni = abitazioni;
-                Workshop_Spade = ProdSp;
-                Workshop_Lance = ProdLan;
-                Workshop_Archi = ProdArc;
-                Workshop_Scudi = ProdScud;
-                Workshop_Armature = ProdArmat;
-                Workshop_Frecce = ProdFrecce;
-                Caserma_Guerrieri = cas_Gu;
-                Caserma_Lancieri = cas_Lan;
-                Caserma_Arceri = cas_Arc;
-                Caserma_Catapulte = cas_Cat;
-            }
-            public Dictionary<string, int> GetQueuedBuildings()
-            {
-                var queuedBuildings = new Dictionary<string, int>();
-                foreach (var queue in constructionQueues)
-                {
-                    queuedBuildings[queue.Key] = queue.Value.Count;
-                }
-                return queuedBuildings;
-            }
-            public Dictionary<string, int> GetQueuedUnits()
-            {
-                var queuedUnits = new Dictionary<string, int>();
-                foreach (var queue in recruitQueues)
-                {
-                    queuedUnits[queue.Key] = queue.Value.Count;
-                }
-                return queuedUnits;
-            }
+            
         }
         
     }

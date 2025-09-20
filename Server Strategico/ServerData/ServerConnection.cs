@@ -69,10 +69,10 @@ namespace Server_Strategico.Server
                     if (Convert.ToInt32(msgArgs[18]) > 0) BuildingManager.Costruzione("CasermaCatapulte", Convert.ToInt32(msgArgs[18]), clientGuid, player); // Costruisci fattorie
                     break;
                 case "Reclutamento":
-                    if (Convert.ToInt32(msgArgs[3]) > 0) player.QueueTrainUnits("Guerrieri_1", Convert.ToInt32(msgArgs[3]), clientGuid, player); // Costruisci fattorie
-                    if (Convert.ToInt32(msgArgs[4]) > 0) player.QueueTrainUnits("Lanceri_1", Convert.ToInt32(msgArgs[4]), clientGuid, player); // Costruisci fattorie
-                    if (Convert.ToInt32(msgArgs[5]) > 0) player.QueueTrainUnits("Arceri_1", Convert.ToInt32(msgArgs[5]), clientGuid, player); // Costruisci fattorie
-                    if (Convert.ToInt32(msgArgs[6]) > 0) player.QueueTrainUnits("Catapulte_1", Convert.ToInt32(msgArgs[6]), clientGuid, player); // Costruisci fattorie
+                    if (Convert.ToInt32(msgArgs[4]) > 0) UnitManager.Reclutamento("Guerrieri_1", Convert.ToInt32(msgArgs[4]), clientGuid, player); // Costruisci fattorie
+                    if (Convert.ToInt32(msgArgs[5]) > 0) UnitManager.Reclutamento("Lanceri_1", Convert.ToInt32(msgArgs[5]), clientGuid, player); // Costruisci fattorie
+                    if (Convert.ToInt32(msgArgs[6]) > 0) UnitManager.Reclutamento("Arceri_1", Convert.ToInt32(msgArgs[6]), clientGuid, player); // Costruisci fattorie
+                    if (Convert.ToInt32(msgArgs[7]) > 0) UnitManager.Reclutamento("Catapulte_1", Convert.ToInt32(msgArgs[7]), clientGuid, player); // Costruisci fattorie
                     break;
                 case "Battaglia":
                     if (msgArgs[3] == "Barbari_PVE") Battaglie.Battaglia_Barbari(player, clientGuid, "Barbari_PVE");
@@ -397,11 +397,13 @@ namespace Server_Strategico.Server
         public static async Task<bool> Update_Data(Guid guid, string username, string password)
         {
             var player = Server.servers_.GetPlayer(username, password);
-            var buildingsQueue = player.GetQueuedBuildings();
-            var unitsQueue = player.GetQueuedUnits();
+            var buildingsQueue = BuildingManager.GetQueuedBuildings(player);
+            var unitsQueue = UnitManager.GetQueuedUnits(player);
 
             double Cibo = player.Guerrieri[0] * Esercito.Unità.Guerrieri_1.Cibo + player.Lanceri[0] * Esercito.Unità.Lanceri_1.Cibo + player.Arceri[0] * Esercito.Unità.Arceri_1.Cibo + player.Catapulte[0] * Esercito.Unità.Catapulte_1.Cibo;
             double Oro = player.Guerrieri[0] * Esercito.Unità.Guerrieri_1.Salario + player.Lanceri[0] * Esercito.Unità.Lanceri_1.Salario + player.Arceri[0] * Esercito.Unità.Arceri_1.Salario + player.Catapulte[0] * Esercito.Unità.Catapulte_1.Salario;
+
+            string time = UnitManager.Get_Total_Recruit_Time(player);
 
             string data =
             "Update_Data|" +
@@ -519,29 +521,29 @@ namespace Server_Strategico.Server
             $"caserme_catapulte_coda={buildingsQueue.GetValueOrDefault("CasermaCatapulte", 0)}|" +
 
             // Code unità
-            $"guerrieri_1_coda={unitsQueue.GetValueOrDefault("Guerrieri 1", 0)}|" +
-            $"guerrieri_2_coda={unitsQueue.GetValueOrDefault("Guerrieri 2", 0)}|" +
-            $"guerrieri_3_coda={unitsQueue.GetValueOrDefault("Guerrieri 3", 0)}|" +
-            $"guerrieri_4_coda={unitsQueue.GetValueOrDefault("Guerrieri 4", 0)}|" +
-            $"guerrieri_5_coda={unitsQueue.GetValueOrDefault("Guerrieri 5", 0)}|" +
+            $"guerrieri_1_coda={unitsQueue.GetValueOrDefault("Guerrieri_1", 0)}|" +
+            $"guerrieri_2_coda={unitsQueue.GetValueOrDefault("Guerrieri_2", 0)}|" +
+            $"guerrieri_3_coda={unitsQueue.GetValueOrDefault("Guerrieri_3", 0)}|" +
+            $"guerrieri_4_coda={unitsQueue.GetValueOrDefault("Guerrieri_4", 0)}|" +
+            $"guerrieri_5_coda={unitsQueue.GetValueOrDefault("Guerrieri_5", 0)}|" +
 
-            $"lanceri_1_coda={unitsQueue.GetValueOrDefault("Lanceri 1", 0)}|" +
-            $"lanceri_2_coda={unitsQueue.GetValueOrDefault("Lanceri 2", 0)}|" +
-            $"lanceri_3_coda={unitsQueue.GetValueOrDefault("Lanceri 3", 0)}|" +
-            $"lanceri_4_coda={unitsQueue.GetValueOrDefault("Lanceri 4", 0)}|" +
-            $"lanceri_5_coda={unitsQueue.GetValueOrDefault("Lanceri 5", 0)}|" +
+            $"lanceri_1_coda={unitsQueue.GetValueOrDefault("Lanceri_1", 0)}|" +
+            $"lanceri_2_coda={unitsQueue.GetValueOrDefault("Lanceri_2", 0)}|" +
+            $"lanceri_3_coda={unitsQueue.GetValueOrDefault("Lanceri_3", 0)}|" +
+            $"lanceri_4_coda={unitsQueue.GetValueOrDefault("Lanceri_4", 0)}|" +
+            $"lanceri_5_coda={unitsQueue.GetValueOrDefault("Lanceri_5", 0)}|" +
 
-            $"arceri_1_coda={unitsQueue.GetValueOrDefault("Arceri 1", 0)}|" +
-            $"arceri_2_coda={unitsQueue.GetValueOrDefault("Arceri 2", 0)}|" +
-            $"arceri_3_coda={unitsQueue.GetValueOrDefault("Arceri 3", 0)}|" +
-            $"arceri_4_coda={unitsQueue.GetValueOrDefault("Arceri 4", 0)}|" +
-            $"arceri_5_coda={unitsQueue.GetValueOrDefault("Arceri 5", 0)}|" +
+            $"arceri_1_coda={unitsQueue.GetValueOrDefault("Arceri_1", 0)}|" +
+            $"arceri_2_coda={unitsQueue.GetValueOrDefault("Arceri_2", 0)}|" +
+            $"arceri_3_coda={unitsQueue.GetValueOrDefault("Arceri_3", 0)}|" +
+            $"arceri_4_coda={unitsQueue.GetValueOrDefault("Arceri_4", 0)}|" +
+            $"arceri_5_coda={unitsQueue.GetValueOrDefault("Arceri_5", 0)}|" +
 
-            $"catapulte_1_coda={unitsQueue.GetValueOrDefault("Catapulte 1", 0)}|" +
-            $"catapulte_2_coda={unitsQueue.GetValueOrDefault("Catapulte 2", 0)}|" +
-            $"catapulte_3_coda={unitsQueue.GetValueOrDefault("Catapulte 3", 0)}|" +
-            $"catapulte_4_coda={unitsQueue.GetValueOrDefault("Catapulte 4", 0)}|" +
-            $"catapulte_5_coda={unitsQueue.GetValueOrDefault("Catapulte 5", 0)}|" +
+            $"catapulte_1_coda={unitsQueue.GetValueOrDefault("Catapulte_1", 0)}|" +
+            $"catapulte_2_coda={unitsQueue.GetValueOrDefault("Catapulte_2", 0)}|" +
+            $"catapulte_3_coda={unitsQueue.GetValueOrDefault("Catapulte_3", 0)}|" +
+            $"catapulte_4_coda={unitsQueue.GetValueOrDefault("Catapulte_4", 0)}|" +
+            $"catapulte_5_coda={unitsQueue.GetValueOrDefault("Catapulte_5", 0)}|" +
 
             $"forza_esercito={player.forza_Esercito:#,0.00}|" +
             $"forza_esercito_pve={player.forza_Esercito_PVE:#,0.00}|" +
@@ -812,8 +814,8 @@ namespace Server_Strategico.Server
             $"Code_Costruzioni={player.Code_Costruzione}|" +
             $"Code_Reclutamenti={player.Code_Reclutamento}|" +
 
-            $"Tempo_Costruzione={player.GetRemainingTrainings()}|" +
-            $"Tempo_Reclutamento={player.GetRemainingConstructions()}|" +
+            $"Tempo_Costruzione={BuildingManager.Get_Total_Building_Time(player)}|" +
+            $"Tempo_Reclutamento={UnitManager.Get_Total_Recruit_Time(player)}|" +
             $"Tempo_Ricerca_Citta={1}|" +
             $"Tempo_Ricerca_Globale={1}|" +
 

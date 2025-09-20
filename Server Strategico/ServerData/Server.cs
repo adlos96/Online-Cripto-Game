@@ -323,8 +323,8 @@ namespace Server_Strategico.Server
                     foreach (var player in players.Values)
                     {
 
-                        player.CompleteBuilds(player.guid_Player);
-                        player.CompleteRecruitment(player.guid_Player);
+                        BuildingManager.CompleteBuilds(player.guid_Player, player);
+                        UnitManager.CompleteRecruitment(player.guid_Player, player);
                         player.ProduceResources();
                         player.ManutenzioneEsercito();
 

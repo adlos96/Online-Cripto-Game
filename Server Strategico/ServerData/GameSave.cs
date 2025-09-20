@@ -113,8 +113,8 @@ namespace Server_Strategico.Server
                     Salute_CastelloMax = player.Salute_CastelloMax,
 
                     // Aggiungi queste proprietà per le code
-                    BuildingQueues = player.GetQueuedBuildings(),
-                    RecruitmentQueues = player.GetQueuedUnits(),
+                    BuildingQueues = BuildingManager.GetQueuedBuildings(player),
+                    RecruitmentQueues = UnitManager.GetQueuedUnits(player),
                 };
 
                 string fileName = Path.Combine(SavePath, $"{player.Username}.json");
@@ -171,7 +171,7 @@ namespace Server_Strategico.Server
                     player.Frecce = playerData.Frecce;
 
                     // Edifici
-                    player.SetBuildings(
+                    BuildingManager.SetBuildings(
                         playerData.Fattoria,
                         playerData.Segheria, 
                         playerData.CavaPietra,
@@ -187,7 +187,8 @@ namespace Server_Strategico.Server
                         playerData.CasermaGuerrieri,
                         playerData.CasermaLancieri,
                         playerData.CasermaArceri,
-                        playerData.CasermaCatapulte
+                        playerData.CasermaCatapulte, 
+                        player
                     );
 
                     // Esercito
@@ -253,7 +254,7 @@ namespace Server_Strategico.Server
                     foreach (var unit in playerData.RecruitmentQueues)
                     {
                         if (unit.Value > 0)
-                            player.LoadQueueTrainUnits(unit.Key, unit.Value, player);
+                            UnitManager.Reclutamento_1(unit.Key, unit.Value, player);
                     }
                     if (playerData.RecruitmentQueues.Count() != 0)
                     {

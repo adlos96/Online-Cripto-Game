@@ -1,6 +1,6 @@
-﻿using static Server_Strategico.Gioco.Giocatori;
+﻿using Server_Strategico.Gioco;
+using static Server_Strategico.Gioco.Giocatori;
 using static Server_Strategico.Gioco.Giocatori.Player;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Server_Strategico
 {
@@ -9,82 +9,254 @@ namespace Server_Strategico
         public static void Costruzione(string buildingType, int count, Guid clientGuid, Player player)
         {
             var manager = new BuildingManager();
-            manager.Coda_Costruzioni(buildingType, count, clientGuid, player);
+            manager.QueueConstruction(buildingType, count, clientGuid, player);
         }
 
         public static void Costruzione_1(string buildingType, int count, Player player)
         {
             var manager = new BuildingManager();
-            manager.Coda_Costruzioni(buildingType, count, player.guid_Player, player);
+            manager.QueueConstruction(buildingType, count, player.guid_Player, player);
         }
-        public void Coda_Costruzioni(string buildingType, int count, Guid clientGuid, Player player)
-        {
-            // Ottieni i costi di costruzione dell'edificio
-            var buildingCost = player.GetBuildingCost(buildingType);
 
-            // Verifica se il giocatore ha abbastanza risorse
+        public void QueueConstruction(string buildingType, int count, Guid clientGuid, Player player)
+        {
+            var buildingCost = GetBuildingCost(buildingType);
+            if (buildingCost == null)
+            {
+                Server.Server.Send(clientGuid, $"Log_Server|Tipo edificio {buildingType} non valido!");
+                return;
+            }
+
+            // Controllo risorse
             if (player.Cibo >= buildingCost.Cibo * count &&
                 player.Legno >= buildingCost.Legno * count &&
                 player.Pietra >= buildingCost.Pietra * count &&
                 player.Ferro >= buildingCost.Ferro * count &&
                 player.Oro >= buildingCost.Oro * count)
             {
-                // Sottrai le risorse necessarie
+                // Scala risorse
                 player.Cibo -= buildingCost.Cibo * count;
                 player.Legno -= buildingCost.Legno * count;
                 player.Pietra -= buildingCost.Pietra * count;
                 player.Ferro -= buildingCost.Ferro * count;
                 player.Oro -= buildingCost.Oro * count;
 
-                Server.Server.Send(clientGuid, $"Log_Server|Risorse utilizzate per {count} costruzione/i di {buildingType}:\r\n " +
-                    $"Cibo= {buildingCost.Cibo * count}, " +
-                    $"Legno= {buildingCost.Legno * count}, " +
-                    $"Pietra= {buildingCost.Pietra * count}, " +
-                    $"Ferro= {buildingCost.Ferro * count}, " +
-                    $"Oro= {buildingCost.Oro * count}\r\n");
-                Console.WriteLine($"Risorse consumate per {count} costruzione/i di {buildingType}:\r\n Cibo: {buildingCost.Cibo * count}, Legno: {buildingCost.Legno * count}, Pietra: {buildingCost.Pietra * count}, Ferro: {buildingCost.Ferro * count}, Oro: {buildingCost.Oro * count}\r\n");
+                Server.Server.Send(clientGuid, $"Log_Server|Risorse utilizzate per {count} costruzione/i di {buildingType}...");
 
-                // Verifica se la coda di costruzione esiste per questo tipo di edificio, altrimenti creala
-                if (!player.constructionQueues.ContainsKey(buildingType))
-                    player.constructionQueues[buildingType] = new Queue<Player.ConstructionTask>();
+                int tempoCostruzioneInSecondi = Math.Max(1, Convert.ToInt32(buildingCost.TempoCostruzione - player.Ricerca_Costruzione));
 
-                // Aggiungi i task di costruzione alla coda
-                int tempoCostruzioneInSecondi = Convert.ToInt32(buildingCost.TempoCostruzione - player.Ricerca_Costruzione);
                 for (int i = 0; i < count; i++)
-                    player.constructionQueues[buildingType].Enqueue(new Player.ConstructionTask(buildingType, tempoCostruzioneInSecondi));
+                    player.building_Queue.Enqueue(new ConstructionTask(buildingType, tempoCostruzioneInSecondi));
 
-                // Inizializza l'entry in currentTasks se non esiste
-                if (!player.currentTasks.ContainsKey(buildingType))
-                    player.currentTasks[buildingType] = null;
-
-                // Se non c'è nessuna costruzione in corso per questo tipo, inizia la prima
-                if (player.currentTasks[buildingType] == null)
-                    player.StartNextConstruction(buildingType);
+                StartNextConstructions(player, clientGuid);
             }
             else
             {
                 Server.Server.Send(clientGuid, $"Log_Server|Risorse insufficienti per costruire {count} {buildingType}.");
-                Console.WriteLine($"Risorse insufficienti per costruire {count} {buildingType}.");
             }
         }
-        public void Load_Coda_Costruzioni(string buildingType, int count, Player player)
+
+        private static void StartNextConstructions(Player player, Guid clientGuid)
         {
-            // Ottieni i costi di costruzione dell'edificio
-            var buildingCost = player.GetBuildingCost(buildingType);
+            int maxSlots = player.Code_Costruzione;
 
-            if (!player.constructionQueues.ContainsKey(buildingType)) // Verifica se la coda di costruzione esiste per questo tipo di edificio, altrimenti creala
-                player.constructionQueues[buildingType] = new Queue<ConstructionTask>();
+            while (player.currentTasks_Building.Count < maxSlots && player.building_Queue.Count > 0)
+            {
+                var nextTask = player.building_Queue.Dequeue();
+                nextTask.Start();
+                player.currentTasks_Building.Add(nextTask);
 
-            // Aggiungi i task di costruzione alla coda
-            int tempoCostruzioneInSecondi = Convert.ToInt32(buildingCost.TempoCostruzione - player.Ricerca_Costruzione);
-            for (int i = 0; i < count; i++)
-                player.constructionQueues[buildingType].Enqueue(new ConstructionTask(buildingType, tempoCostruzioneInSecondi));
+                Console.WriteLine($"Costruzione di {nextTask.Type} iniziata, durata {nextTask.DurationInSeconds}s");
+                Server.Server.Send(clientGuid, $"Log_Server|Costruzione di {nextTask.Type} iniziata.");
+            }
+        }
 
-            if (!player.currentTasks.ContainsKey(buildingType)) // Inizializza l'entry in currentTasks se non esiste
-                player.currentTasks[buildingType] = null;
+        public static void CompleteBuilds(Guid clientGuid, Player player)
+        {
+            for (int i = player.currentTasks_Building.Count - 1; i >= 0; i--)
+            {
+                var task = player.currentTasks_Building[i];
+                if (task.IsComplete())
+                {
+                    switch (task.Type)
+                    {
+                        case "Fattoria": player.Fattoria++; break;
+                        case "Segheria": player.Segheria++; break;
+                        case "CavaPietra": player.CavaPietra++; break;
+                        case "MinieraFerro": player.MinieraFerro++; break;
+                        case "MinieraOro": player.MinieraOro++; break;
+                        case "Case": player.Abitazioni++; break;
 
-            if (player.currentTasks[buildingType] == null)  // Se non c'è nessuna costruzione in corso per questo tipo, inizia la prima
-                player.StartNextConstruction(buildingType);
+                        case "ProduzioneSpade": player.Workshop_Spade++; break;
+                        case "ProduzioneLancie": player.Workshop_Lance++; break;
+                        case "ProduzioneArchi": player.Workshop_Archi++; break;
+                        case "ProduzioneScudi": player.Workshop_Scudi++; break;
+                        case "ProduzioneArmature": player.Workshop_Armature++; break;
+                        case "ProduzioneFrecce": player.Workshop_Frecce++; break;
+
+                        case "CasermaGuerrieri": player.Caserma_Guerrieri++; break;
+                        case "CasermaLancieri": player.Caserma_Lancieri++; break;
+                        case "CasermaArcieri": player.Caserma_Arceri++; break;
+                        case "CasermaCatapulte": player.Caserma_Catapulte++; break;
+
+                        case "Terreno Comune": player.Terreno_Comune++; break;
+                        case "Terreno Noncomune": player.Terreno_NonComune++; break;
+                        case "Terreno Raro": player.Terreno_Raro++; break;
+                        case "Terreno Epico": player.Terreno_Epico++; break;
+                        case "Terreno Leggendario": player.Terreno_Leggendario++; break;
+
+                        default: Console.WriteLine($"Costruzione {task.Type} non valida!"); break;
+                    }
+
+                    Console.WriteLine($"Costruzione completata: {task.Type}");
+                    Server.Server.Send(clientGuid, $"Log_Server|Costruzione completata: {task.Type}");
+
+                    player.currentTasks_Building.RemoveAt(i);
+                }
+            }
+
+            StartNextConstructions(player, clientGuid);
+        }
+
+        public static Dictionary<string, int> GetQueuedBuildings(Player player) 
+        { 
+            var queuedByType = new Dictionary<string, int>();
+            foreach (var task in player.building_Queue) 
+            { 
+                if (!queuedByType.ContainsKey(task.Type)) queuedByType[task.Type] = 0; queuedByType[task.Type]++; 
+            } 
+            return queuedByType; 
+        }
+        //caricamento dati da file giocatore
+        public static void SetBuildings(int fattoria, int segheria, int cavaPietra, int mineraFerro, int mineraOro, int abitazioni, int ProdSp, int ProdLan, int ProdArc, int ProdScud, int ProdArmat, int ProdFrecce, int cas_Gu, int cas_Lan, int cas_Arc, int cas_Cat, Player player)
+        { 
+            player.Fattoria = fattoria; 
+            player.Segheria = segheria; 
+            player.CavaPietra = cavaPietra; 
+            player.MinieraFerro = mineraFerro; 
+            player.MinieraOro = mineraOro; 
+            player.Abitazioni = abitazioni; 
+            player.Workshop_Spade = ProdSp; 
+            player.Workshop_Lance = ProdLan; 
+            player.Workshop_Archi = ProdArc; 
+            player.Workshop_Scudi = ProdScud; 
+            player.Workshop_Armature = ProdArmat; 
+            player.Workshop_Frecce = ProdFrecce; 
+            player.Caserma_Guerrieri = cas_Gu; 
+            player.Caserma_Lancieri = cas_Lan; 
+            player.Caserma_Arceri = cas_Arc; 
+            player.Caserma_Catapulte = cas_Cat; 
+            
+        }
+        public static string Get_Total_Building_Time(Player player)
+        {
+            double total = 0;
+
+            foreach (var task in player.currentTasks_Building)
+                total += task.GetRemainingTime();
+
+            foreach (var task in player.building_Queue)
+                total += task.DurationInSeconds;
+
+            return player.FormatTime(total);
+        }
+
+        public Strutture.Edifici GetBuildingCost(string buildingType)
+        {
+            return buildingType switch
+            {
+                "Fattoria" => Strutture.Edifici.Fattoria,
+                "Segheria" => Strutture.Edifici.Segheria,
+                "CavaPietra" => Strutture.Edifici.CavaPietra,
+                "MinieraFerro" => Strutture.Edifici.MinieraFerro,
+                "MinieraOro" => Strutture.Edifici.MinieraOro,
+                "Case" => Strutture.Edifici.Case,
+                "ProduzioneSpade" => Strutture.Edifici.ProduzioneSpade,
+                "ProduzioneLancie" => Strutture.Edifici.ProduzioneLance,
+                "ProduzioneArchi" => Strutture.Edifici.ProduzioneArchi,
+                "ProduzioneScudi" => Strutture.Edifici.ProduzioneScudi,
+                "ProduzioneArmature" => Strutture.Edifici.ProduzioneArmature,
+                "ProduzioneFrecce" => Strutture.Edifici.ProduzioneFrecce,
+                "CasermaGuerrieri" => Strutture.Edifici.CasermaGuerrieri,
+                "CasermaLancieri" => Strutture.Edifici.CasermaLanceri,
+                "CasermaArcieri" => Strutture.Edifici.CasermaArceri,
+                "CasermaCatapulte" => Strutture.Edifici.CasermaCatapulte,
+                _ => null,
+            };
+        }
+        public void Terreni_Virtuali(Player player, Guid clientGuid)
+        {
+            // Random robusto
+            Random rng = new Random();
+
+            // Tabella probabilità terreni
+            Dictionary<string, int> probabilita = new()
+            {
+                { "Terreno Comune", Variabili_Server.Terreni_Virtuali.Comune.Rarita },
+                { "Terreno Noncomune", Variabili_Server.Terreni_Virtuali.NonComune.Rarita },
+                { "Terreno Raro", Variabili_Server.Terreni_Virtuali.Raro.Rarita },
+                { "Terreno Epico", Variabili_Server.Terreni_Virtuali.Epico.Rarita },
+                { "Terreno Leggendario", Variabili_Server.Terreni_Virtuali.Leggendario.Rarita }
+            };
+
+            // Estrazione casuale
+            int roll = rng.Next(1, 101); // da 1 a 100
+            int cumulativo = 0;
+            string terrenoOttenuto = "Terreno Comune"; // default
+
+            foreach (var kvp in probabilita)
+            {
+                cumulativo += kvp.Value;
+                if (roll <= cumulativo)
+                {
+                    terrenoOttenuto = kvp.Key;
+                    break;
+                }
+            }
+
+            // Aggiorna player
+            switch (terrenoOttenuto)
+            {
+                case "Terreno Comune": player.Terreno_Comune++; break;
+                case "Terreno Noncomune": player.Terreno_NonComune++; break;
+                case "Terreno Raro": player.Terreno_Raro++; break;
+                case "Terreno Epico": player.Terreno_Epico++; break;
+                case "Terreno Leggendario": player.Terreno_Leggendario++; break;
+            }
+
+            // Log
+            Console.WriteLine($"Terreno generato: {terrenoOttenuto}");
+            Server.Server.Send(clientGuid, $"Log_Server|Terreno ottenuto: {terrenoOttenuto}");
+        }
+
+        public class ConstructionTask
+        {
+            public string Type { get; }
+            public int DurationInSeconds { get; }
+            private DateTime startTime;
+
+            public ConstructionTask(string type, int durationInSeconds)
+            {
+                Type = type;
+                DurationInSeconds = durationInSeconds;
+            }
+
+            public void Start()
+            {
+                startTime = DateTime.Now;
+            }
+
+            public bool IsComplete()
+            {
+                return DateTime.Now >= startTime.AddSeconds(DurationInSeconds);
+            }
+
+            public double GetRemainingTime()
+            {
+                if (startTime == default) return DurationInSeconds;
+                double elapsed = (DateTime.Now - startTime).TotalSeconds;
+                return Math.Max(0, DurationInSeconds - elapsed);
+            }
         }
     }
 }
