@@ -195,6 +195,7 @@ namespace Server_Strategico.Gioco
             // Coda e scudi
             public int Code_Reclutamento { get; set; }
             public int Code_Costruzione { get; set; }
+            public int Code_Ricerca { get; set; }
             public int ScudoDellaPace { get; set; }
 
             // Città - Ingresso
@@ -268,8 +269,8 @@ namespace Server_Strategico.Gioco
             public List<BuildingManager.ConstructionTask> currentTasks_Recruit = new(); // Lista dei task attualmente in costruzione (slot globali, max = Code_Reclutamento)
             public Queue<BuildingManager.ConstructionTask> recruit_Queue = new(); // Coda globale di attesa (quando tutti gli slot sono occupati)
 
-            public Dictionary<string, Queue<UnitManager.RecruitTask>> researchQueues;  // Dizionario per memorizzare le code di reclutamento per ogni tipo di unità
-            public Dictionary<string, UnitManager.RecruitTask> currentresearchTasks;  // Dizionario per memorizzare il task di reclutamento attuale per ogni tipo di unità
+            public List<BuildingManager.ConstructionTask> currentTasks_Research = new(); // Lista dei task attualmente in costruzione (slot globali, max = 1)
+            public Queue<BuildingManager.ConstructionTask> research_Queue = new(); // Coda globale di attesa (quando tutti gli slot sono occupati)
 
             public Player(string username, string password, Guid guid_Client)
             {
@@ -284,6 +285,7 @@ namespace Server_Strategico.Gioco
                 ScudoDellaPace = 0;
                 Code_Costruzione = 1;
                 Code_Reclutamento = 1;
+                Code_Ricerca = 1;
 
                 Livello = 1;
                 Esperienza = 0;
@@ -495,6 +497,12 @@ namespace Server_Strategico.Gioco
                 Oro += MinieraOro * (Strutture.Edifici.MinieraOro.Produzione + Ricerca_Produzione * Ricerca.Tipi.Incremento.Oro);
                 Popolazione += Abitazioni * (Strutture.Edifici.Case.Produzione + Ricerca_Produzione * Ricerca.Tipi.Incremento.Popolazione);
 
+                Dollari_Virtuali += (decimal)(Terreno_Comune * Variabili_Server.Terreni_Virtuali.Comune.Produzione) +
+                    (decimal)(Terreno_NonComune * Variabili_Server.Terreni_Virtuali.NonComune.Produzione) +
+                    (decimal)(Terreno_Raro * Variabili_Server.Terreni_Virtuali.Raro.Produzione) +
+                    (decimal)(Terreno_Epico * Variabili_Server.Terreni_Virtuali.Epico.Produzione) +
+                    (decimal)(Terreno_Leggendario * Variabili_Server.Terreni_Virtuali.Leggendario.Produzione); 
+
                 Spade += Workshop_Spade * Strutture.Edifici.ProduzioneSpade.Produzione;
                 Lance += Workshop_Lance * Strutture.Edifici.ProduzioneLance.Produzione;
                 Archi += Workshop_Archi * Strutture.Edifici.ProduzioneArchi.Produzione;
@@ -505,7 +513,17 @@ namespace Server_Strategico.Gioco
             public void ManutenzioneEsercito() //produzione risorse
             {
                 Cibo -= Guerrieri[0] * Esercito.Unità.Guerrieri_1.Cibo + Lanceri[0] * Esercito.Unità.Lanceri_1.Cibo + Arceri[0] * Esercito.Unità.Arceri_1.Cibo + Catapulte[0] * Esercito.Unità.Catapulte_1.Cibo;
+                Cibo -= Guerrieri[1] * Esercito.Unità.Guerriero_2.Cibo + Lanceri[1] * Esercito.Unità.Lancere_2.Cibo + Arceri[1] * Esercito.Unità.Arcere_2.Cibo + Catapulte[1] * Esercito.Unità.Catapulta_2.Cibo;
+                Cibo -= Guerrieri[2] * Esercito.Unità.Guerriero_3.Cibo + Lanceri[2] * Esercito.Unità.Lancere_3.Cibo + Arceri[2] * Esercito.Unità.Arcere_3.Cibo + Catapulte[2] * Esercito.Unità.Catapulta_3.Cibo;
+                Cibo -= Guerrieri[3] * Esercito.Unità.Guerriero_4.Cibo + Lanceri[3] * Esercito.Unità.Lancere_4.Cibo + Arceri[3] * Esercito.Unità.Arcere_4.Cibo + Catapulte[3] * Esercito.Unità.Catapulta_4.Cibo;
+                Cibo -= Guerrieri[4] * Esercito.Unità.Guerriero_5.Cibo + Lanceri[4] * Esercito.Unità.Lancere_5.Cibo + Arceri[4] * Esercito.Unità.Arcere_5.Cibo + Catapulte[4] * Esercito.Unità.Catapulta_5.Cibo;
+
                 Oro -= Guerrieri[0] * Esercito.Unità.Guerrieri_1.Salario + Lanceri[0] * Esercito.Unità.Lanceri_1.Salario + Arceri[0] * Esercito.Unità.Arceri_1.Salario + Catapulte[0] * Esercito.Unità.Catapulte_1.Salario;
+                Oro -= Guerrieri[1] * Esercito.Unità.Guerriero_2.Salario + Lanceri[1] * Esercito.Unità.Lancere_2.Salario + Arceri[1] * Esercito.Unità.Arcere_2.Salario + Catapulte[1] * Esercito.Unità.Catapulta_2.Salario;
+                Oro -= Guerrieri[2] * Esercito.Unità.Guerriero_3.Salario + Lanceri[2] * Esercito.Unità.Lancere_3.Salario + Arceri[2] * Esercito.Unità.Arcere_3.Salario + Catapulte[2] * Esercito.Unità.Catapulta_3.Salario;
+                Oro -= Guerrieri[3] * Esercito.Unità.Guerriero_4.Salario + Lanceri[3] * Esercito.Unità.Lancere_4.Salario + Arceri[3] * Esercito.Unità.Arcere_4.Salario + Catapulte[3] * Esercito.Unità.Catapulta_4.Salario;
+                Oro -= Guerrieri[4] * Esercito.Unità.Guerriero_5.Salario + Lanceri[4] * Esercito.Unità.Lancere_5.Salario + Arceri[4] * Esercito.Unità.Arcere_5.Salario + Catapulte[4] * Esercito.Unità.Catapulta_5.Salario;
+                
                 if (Cibo <= 0) Cibo = 0;
                 if (Oro <= 0) Oro = 0;
             }

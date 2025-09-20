@@ -460,7 +460,7 @@
                 Esperienza = 1,
                 Trasporto = 100
             };
-            public static Unità Lanciere_2 = new Unità
+            public static Unità Lancere_2 = new Unità
             {
                 Salute = 6,
                 Attacco = 4,
@@ -472,7 +472,7 @@
                 Esperienza = 1,
                 Trasporto = 150
             };
-            public static Unità Arciere_2 = new Unità
+            public static Unità Arcere_2 = new Unità
             {
                 Salute = 4,
                 Attacco = 7,
@@ -511,7 +511,7 @@
                 Esperienza = 1,
                 Trasporto = 100
             };
-            public static Unità Lanciere_3 = new Unità
+            public static Unità Lancere_3 = new Unità
             {
                 Salute = 6,
                 Attacco = 4,
@@ -523,7 +523,7 @@
                 Esperienza = 1,
                 Trasporto = 150
             };
-            public static Unità Arciere_3 = new Unità
+            public static Unità Arcere_3 = new Unità
             {
                 Salute = 4,
                 Attacco = 7,
@@ -562,7 +562,7 @@
                 Esperienza = 1,
                 Trasporto = 100
             };
-            public static Unità Lanciere_4 = new Unità
+            public static Unità Lancere_4 = new Unità
             {
                 Salute = 6,
                 Attacco = 4,
@@ -574,7 +574,7 @@
                 Esperienza = 1,
                 Trasporto = 150
             };
-            public static Unità Arciere_4 = new Unità
+            public static Unità Arcere_4 = new Unità
             {
                 Salute = 4,
                 Attacco = 7,
@@ -613,7 +613,7 @@
                 Esperienza = 1,
                 Trasporto = 100
             };
-            public static Unità Lanciere_5 = new Unità
+            public static Unità Lancere_5 = new Unità
             {
                 Salute = 6,
                 Attacco = 4,
@@ -625,7 +625,7 @@
                 Esperienza = 1,
                 Trasporto = 150
             };
-            public static Unità Arciere_5 = new Unità
+            public static Unità Arcere_5 = new Unità
             {
                 Salute = 4,
                 Attacco = 7,

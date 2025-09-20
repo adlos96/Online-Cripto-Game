@@ -325,6 +325,7 @@ namespace Server_Strategico.Server
 
                         BuildingManager.CompleteBuilds(player.guid_Player, player);
                         UnitManager.CompleteRecruitment(player.guid_Player, player);
+                        ResearchManager.CompleteResearch(player.guid_Player, player);
                         player.ProduceResources();
                         player.ManutenzioneEsercito();
 

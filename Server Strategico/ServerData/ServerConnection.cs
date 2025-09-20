@@ -85,9 +85,9 @@ namespace Server_Strategico.Server
                     }
                     break;
                 case "Ricerca":
-                    if (msgArgs[3] == "Produzione") Ricerca.Ricerca_Produzione(player, clientGuid);
-                    if (msgArgs[3] == "Costruzione") Ricerca.Ricerca_Costruzione(player, clientGuid);
-                    if (msgArgs[3] == "Addestramento") Ricerca.Ricerca_Addestramento(player, clientGuid);
+                    if (msgArgs[3] == "Produzione") ResearchManager.Reclutamento(msgArgs[3], clientGuid, player);
+                    if (msgArgs[3] == "Costruzione") ResearchManager.Reclutamento(msgArgs[3], clientGuid, player);
+                    if (msgArgs[3] == "Addestramento") ResearchManager.Reclutamento(msgArgs[3], clientGuid, player);
                     if (msgArgs[3] == "Truppe") Ricerca.Ricerca_Truppe(player, clientGuid, msgArgs[4], msgArgs[5]);
                     break;
                 case "Descrizione":
@@ -816,7 +816,7 @@ namespace Server_Strategico.Server
 
             $"Tempo_Costruzione={BuildingManager.Get_Total_Building_Time(player)}|" +
             $"Tempo_Reclutamento={UnitManager.Get_Total_Recruit_Time(player)}|" +
-            $"Tempo_Ricerca_Citta={1}|" +
+            $"Tempo_Ricerca_Citta={ResearchManager.GetTotalResearchTime(player)}|" +
             $"Tempo_Ricerca_Globale={1}|" +
 
             $"Ricerca_Attiva={player.Ricerca_Attiva}|" +
