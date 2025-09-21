@@ -7,7 +7,7 @@ namespace Server_Strategico
 {
     public class ResearchManager
     {
-        public static void Reclutamento(string research, Guid clientGuid, Player player)
+        public static void Ricerca(string research, Guid clientGuid, Player player)
         {
             var manager = new ResearchManager();
             manager.StartResearch(research, clientGuid, player);
@@ -74,6 +74,7 @@ namespace Server_Strategico
         private static void StartNextResearch(Player player, Guid clientGuid)
         {
             int maxSlots = 1; // Parametrizzabile
+            player.Ricerca_Attiva = true;// blocca i pulsanti ricerca del client
             while (player.currentTasks_Research.Count < maxSlots && player.research_Queue.Count > 0)
             {
                 var nextTask = player.research_Queue.Dequeue();
@@ -94,7 +95,7 @@ namespace Server_Strategico
                 if (task.IsComplete())
                 {
                     ApplyResearchEffects(task.Type, player);
-
+                    player.Ricerca_Attiva = false; // sblocca i pulsanti ricerca del client
                     Console.WriteLine($"Ricerca completata: {task.Type}");
                     Server.Server.Send(clientGuid, $"Log_Server|Ricerca completata: {task.Type}");
 

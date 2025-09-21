@@ -74,6 +74,9 @@ namespace Server_Strategico.Server
                     if (Convert.ToInt32(msgArgs[6]) > 0) UnitManager.Reclutamento("Arceri_1", Convert.ToInt32(msgArgs[6]), clientGuid, player); // Costruisci fattorie
                     if (Convert.ToInt32(msgArgs[7]) > 0) UnitManager.Reclutamento("Catapulte_1", Convert.ToInt32(msgArgs[7]), clientGuid, player); // Costruisci fattorie
                     break;
+                case "Costruzione_Terreni":
+                    BuildingManager.Terreni_Virtuali(clientGuid, player); // Costruisci fattorie
+                    break;
                 case "Battaglia":
                     if (msgArgs[3] == "Barbari_PVE") Battaglie.Battaglia_Barbari(player, clientGuid, "Barbari_PVE");
                     if (msgArgs[3] == "Barbari_PVP") Battaglie.Battaglia_Barbari(player, clientGuid, "Barbari_PVP");
@@ -85,9 +88,9 @@ namespace Server_Strategico.Server
                     }
                     break;
                 case "Ricerca":
-                    if (msgArgs[3] == "Produzione") ResearchManager.Reclutamento(msgArgs[3], clientGuid, player);
-                    if (msgArgs[3] == "Costruzione") ResearchManager.Reclutamento(msgArgs[3], clientGuid, player);
-                    if (msgArgs[3] == "Addestramento") ResearchManager.Reclutamento(msgArgs[3], clientGuid, player);
+                    if (msgArgs[3] == "Produzione") ResearchManager.Ricerca(msgArgs[3], clientGuid, player);
+                    if (msgArgs[3] == "Costruzione") ResearchManager.Ricerca(msgArgs[3], clientGuid, player);
+                    if (msgArgs[3] == "Addestramento") ResearchManager.Ricerca(msgArgs[3], clientGuid, player);
                     if (msgArgs[3] == "Truppe") Ricerca.Ricerca_Truppe(player, clientGuid, msgArgs[4], msgArgs[5]);
                     break;
                 case "Descrizione":
@@ -403,8 +406,6 @@ namespace Server_Strategico.Server
             double Cibo = player.Guerrieri[0] * Esercito.Unità.Guerrieri_1.Cibo + player.Lanceri[0] * Esercito.Unità.Lanceri_1.Cibo + player.Arceri[0] * Esercito.Unità.Arceri_1.Cibo + player.Catapulte[0] * Esercito.Unità.Catapulte_1.Cibo;
             double Oro = player.Guerrieri[0] * Esercito.Unità.Guerrieri_1.Salario + player.Lanceri[0] * Esercito.Unità.Lanceri_1.Salario + player.Arceri[0] * Esercito.Unità.Arceri_1.Salario + player.Catapulte[0] * Esercito.Unità.Catapulte_1.Salario;
 
-            string time = UnitManager.Get_Total_Recruit_Time(player);
-
             string data =
             "Update_Data|" +
 
@@ -521,6 +522,31 @@ namespace Server_Strategico.Server
             $"caserme_catapulte_coda={buildingsQueue.GetValueOrDefault("CasermaCatapulte", 0)}|" +
 
             // Code unità
+            $"guerrieri_1={player.Guerrieri[0]}|" +
+            $"guerrieri_2={player.Guerrieri[1]}|" +
+            $"guerrieri_3={player.Guerrieri[2]}|" +
+            $"guerrieri_4={player.Guerrieri[3]}|" +
+            $"guerrieri_5={player.Guerrieri[4]}|" +
+
+            $"lanceri_1={player.Lanceri[0]}|" +
+            $"lanceri_2={player.Lanceri[1]}|" +
+            $"lanceri_3={player.Lanceri[2]}|" +
+            $"lanceri_4={player.Lanceri[3]}|" +
+            $"lanceri_5={player.Lanceri[4]}|" +
+
+            $"arceri_1={player.Arceri[0]}|" +
+            $"arceri_2={player.Arceri[1]}|" +
+            $"arceri_3={player.Arceri[2]}|" +
+            $"arceri_4={player.Arceri[3]}|" +
+            $"arceri_5={player.Arceri[4]}|" +
+
+            $"catapulte_1={player.Catapulte[0]}|" +
+            $"catapulte_2={player.Catapulte[1]}|" +
+            $"catapulte_3={player.Catapulte[2]}|" +
+            $"catapulte_4={player.Catapulte[3]}|" +
+            $"catapulte_5={player.Catapulte[4]}|" +
+
+            // Code unità
             $"guerrieri_1_coda={unitsQueue.GetValueOrDefault("Guerrieri_1", 0)}|" +
             $"guerrieri_2_coda={unitsQueue.GetValueOrDefault("Guerrieri_2", 0)}|" +
             $"guerrieri_3_coda={unitsQueue.GetValueOrDefault("Guerrieri_3", 0)}|" +
@@ -546,7 +572,6 @@ namespace Server_Strategico.Server
             $"catapulte_5_coda={unitsQueue.GetValueOrDefault("Catapulte_5", 0)}|" +
 
             $"forza_esercito={player.forza_Esercito:#,0.00}|" +
-            $"forza_esercito_pve={player.forza_Esercito_PVE:#,0.00}|" +
 
             //Terreni Virtuali
             $"terreni_comune={player.Terreno_Comune}|" +

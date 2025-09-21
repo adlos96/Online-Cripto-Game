@@ -184,8 +184,18 @@ namespace Server_Strategico
                 _ => null,
             };
         }
-        public void Terreni_Virtuali(Player player, Guid clientGuid)
+        public static void Terreni_Virtuali(Guid clientGuid, Player player)
         {
+            if (player.Diamanti_Viola >= Strutture.Edifici.Terreni_Virtuali.Diamanti_Viola)
+            {
+                player.Diamanti_Viola -= Strutture.Edifici.Terreni_Virtuali.Diamanti_Viola;
+                Console.WriteLine($"Log_Server|Diamanti Viola utilizzati per un terreno virtuale...");
+            }
+            else
+            {
+                Console.WriteLine($"Log_Server|Non hai abbastanza Diamanti Viola per un terreno virtuale.");
+                return;
+            }
             // Random robusto
             Random rng = new Random();
 

@@ -32,7 +32,7 @@ namespace Server_Strategico.Gioco
         public class Player
         {
             #region Variabili giocatore
-            // Identità
+            // Giocatori
             public string Username { get; set; }
             public string Password { get; set; }
             public Guid guid_Player { get; set; }
@@ -43,10 +43,14 @@ namespace Server_Strategico.Gioco
             public int Punti_Quest { get; set; }
             public bool Vip { get; set; }
             public bool Ricerca_Attiva { get; set; }
+            // Coda e scudi
+            public int Code_Reclutamento { get; set; }
+            public int Code_Costruzione { get; set; }
+            public int Code_Ricerca { get; set; }
+            public int ScudoDellaPace { get; set; }
 
             // Forza esercito
             public double forza_Esercito { get; set; }
-            public double forza_Esercito_PVE { get; set; }
 
             // Terreni virtuali
             public int Terreno_Comune { get; set; }
@@ -92,10 +96,7 @@ namespace Server_Strategico.Gioco
             public double Armature { get; set; }
             public double Frecce { get; set; }
 
-            public int Consumo_Cibo_Esercito { get; set; }
-            public int Consumo_Oro_Esercito { get; set; }
-
-            // Statistiche di combattimento
+            // Statistiche
             public int Unità_Uccise { get; set; }
             public int Guerrieri_Uccisi { get; set; }
             public int Lanceri_Uccisi { get; set; }
@@ -122,6 +123,9 @@ namespace Server_Strategico.Gioco
             public int Risorse_Utilizzate { get; set; }
             public int Tempo_Addestramento_Risparmiato { get; set; }
             public int Tempo_Costruzione_Risparmiato { get; set; }
+
+            public int Consumo_Cibo_Esercito { get; set; }
+            public int Consumo_Oro_Esercito { get; set; }
 
             // Esercito
             public int[] Guerrieri = new int[5];
@@ -191,12 +195,6 @@ namespace Server_Strategico.Gioco
             // Premi
             public bool[] PremiNormali { get; set; } = new bool[20];
             public bool[] PremiVIP { get; set; } = new bool[20];
-
-            // Coda e scudi
-            public int Code_Reclutamento { get; set; }
-            public int Code_Costruzione { get; set; }
-            public int Code_Ricerca { get; set; }
-            public int ScudoDellaPace { get; set; }
 
             // Città - Ingresso
             public int Guarnigione_Ingresso { get; set; }

@@ -24,11 +24,18 @@ namespace Server_Strategico.Server
             {
                 var playerData = new PlayerSaveData
                 {
+                    //Giocatori
                     Username = player.Username,
                     Password = player.Password,
                     Livello = player.Livello,
                     Esperienza = player.Esperienza,
-                    
+                    Vip = player.Vip,
+                    ScudoDellaPace = player.ScudoDellaPace,
+                    Punti_Quest = player.Punti_Quest,
+                    Code_Costruzione = player.Code_Costruzione,
+                    Code_Reclutamento = player.Code_Reclutamento,
+                    Code_Ricerca = player.Code_Ricerca,
+
                     // Risorse
                     Cibo = player.Cibo,
                     Legno = player.Legno,
@@ -36,6 +43,10 @@ namespace Server_Strategico.Server
                     Ferro = player.Ferro,
                     Oro = player.Oro,
                     Popolazione = player.Popolazione,
+
+                    Diamanati_Blu = player.Diamanati_Blu,
+                    Diamanti_Viola = player.Diamanti_Viola,
+                    Dollari_Virtuali = player.Dollari_Virtuali,
 
                     Spade = player.Spade,
                     Lance = player.Lance,
@@ -52,17 +63,23 @@ namespace Server_Strategico.Server
                     MinieraOro = player.MinieraOro,
                     Abitazioni = player.Abitazioni,
 
-                    ProduzioneSpade = player.Workshop_Spade,
-                    ProduzioneLance = player.Workshop_Lance,
-                    ProduzioneArchi = player.Workshop_Archi,
-                    ProduzioneScudi = player.Workshop_Scudi,
-                    ProduzioneArmature = player.Workshop_Armature,
-                    ProduzioneFrecce = player.Workshop_Frecce,
+                    Workshop_Spade = player.Workshop_Spade,
+                    Workshop_Lance = player.Workshop_Lance,
+                    Workshop_Archi = player.Workshop_Archi,
+                    Workshop_Scudi = player.Workshop_Scudi,
+                    Workshop_Armature = player.Workshop_Armature,
+                    Workshop_Frecce = player.Workshop_Frecce,
 
-                    CasermaGuerrieri = player.Caserma_Guerrieri,
-                    CasermaLancieri = player.Caserma_Lancieri,
-                    CasermaArceri = player.Caserma_Arceri,
-                    CasermaCatapulte = player.Caserma_Catapulte,
+                    Caserma_Guerrieri = player.Caserma_Guerrieri,
+                    Caserma_Lancieri = player.Caserma_Lancieri,
+                    Caserma_Arceri = player.Caserma_Arceri,
+                    Caserma_Catapulte = player.Caserma_Catapulte,
+
+                    Terreno_Comune = player.Terreno_Comune,
+                    Terreno_NonComune = player.Terreno_NonComune,
+                    Terreno_Raro = player.Terreno_Raro,
+                    Terreno_Epico = player.Terreno_Epico,
+                    Terreno_Leggendario = player.Terreno_Leggendario,
 
                     // Esercito
                     Guerrieri = player.Guerrieri[0],
@@ -112,9 +129,68 @@ namespace Server_Strategico.Server
                     Salute_Castello = player.Salute_Castello,
                     Salute_CastelloMax = player.Salute_CastelloMax,
 
-                    // Aggiungi queste proprietà per le code
-                    BuildingQueues = BuildingManager.GetQueuedBuildings(player),
-                    RecruitmentQueues = UnitManager.GetQueuedUnits(player),
+                    // --- Code Costruzione ---
+                    CurrentBuildingTasks = player.currentTasks_Building
+                    .Select(t => new SavedTask
+                    {
+                        Type = t.Type,
+                        DurationInSeconds = t.DurationInSeconds,
+                        RemainingSeconds = t.GetRemainingTime(),
+                        IsInProgress = true
+                    })
+                    .ToList(),
+
+                    QueuedBuildingTasks = player.building_Queue
+                    .Select(t => new SavedTask
+                    {
+                        Type = t.Type,
+                        DurationInSeconds = t.DurationInSeconds,
+                        RemainingSeconds = t.DurationInSeconds,
+                        IsInProgress = false
+                    })
+                    .ToList(),
+
+                    // --- Reclutamento ---
+                    CurrentRecruitTasks = player.currentTasks_Recruit
+                    .Select(t => new SavedTask
+                    {
+                        Type = t.Type,
+                        DurationInSeconds = t.DurationInSeconds,
+                        RemainingSeconds = t.GetRemainingTime(),
+                        IsInProgress = true
+                    })
+                    .ToList(),
+
+                                    QueuedRecruitTasks = player.recruit_Queue
+                    .Select(t => new SavedTask
+                    {
+                        Type = t.Type,
+                        DurationInSeconds = t.DurationInSeconds,
+                        RemainingSeconds = t.DurationInSeconds,
+                        IsInProgress = false
+                    })
+                    .ToList(),
+
+                                    // --- Ricerca ---
+                                    CurrentResearchTasks = player.currentTasks_Research
+                    .Select(t => new SavedTask
+                    {
+                        Type = t.Type,
+                        DurationInSeconds = t.DurationInSeconds,
+                        RemainingSeconds = t.GetRemainingTime(),
+                        IsInProgress = true
+                    })
+                    .ToList(),
+
+                                    QueuedResearchTasks = player.research_Queue
+                    .Select(t => new SavedTask
+                    {
+                        Type = t.Type,
+                        DurationInSeconds = t.DurationInSeconds,
+                        RemainingSeconds = t.DurationInSeconds,
+                        IsInProgress = false
+                    })
+                    .ToList(),
                 };
 
                 string fileName = Path.Combine(SavePath, $"{player.Username}.json");
@@ -152,9 +228,29 @@ namespace Server_Strategico.Server
                 var player = Server.servers_.GetPlayer(username, password);
                 if (player != null)
                 {
+
+                    //Giocatori
+                    player.Username = playerData.Username;
+                    player.Password = playerData.Password;
                     player.Livello = playerData.Livello;
                     player.Esperienza = playerData.Esperienza;
-                    
+                    player.Vip = playerData.Vip;
+                    player.ScudoDellaPace = playerData.ScudoDellaPace;
+                    player.Punti_Quest = playerData.Punti_Quest;
+                    player.Code_Costruzione = playerData.Code_Costruzione;
+                    player.Code_Reclutamento = playerData.Code_Reclutamento;
+                    player.Code_Ricerca = playerData.Code_Ricerca;
+
+                    player.Diamanati_Blu = playerData.Diamanati_Blu;
+                    player.Diamanti_Viola = playerData.Diamanti_Viola;
+                    player.Dollari_Virtuali = playerData.Dollari_Virtuali;
+
+                    player.Terreno_Comune = playerData.Terreno_Comune;
+                    player.Terreno_NonComune = playerData.Terreno_NonComune;
+                    player.Terreno_Raro = playerData.Terreno_Raro;
+                    player.Terreno_Epico = playerData.Terreno_Epico;
+                    player.Terreno_Leggendario = playerData.Terreno_Leggendario;
+
                     // Risorse
                     player.Cibo = playerData.Cibo;
                     player.Legno = playerData.Legno;
@@ -178,16 +274,16 @@ namespace Server_Strategico.Server
                         playerData.MinieraFerro,
                         playerData.MinieraOro,
                         playerData.Abitazioni,
-                        playerData.ProduzioneSpade,
-                        playerData.ProduzioneLance,
-                        playerData.ProduzioneArchi,
-                        playerData.ProduzioneScudi,
-                        playerData.ProduzioneArmature,
-                        playerData.ProduzioneFrecce,
-                        playerData.CasermaGuerrieri,
-                        playerData.CasermaLancieri,
-                        playerData.CasermaArceri,
-                        playerData.CasermaCatapulte, 
+                        playerData.Workshop_Spade,
+                        playerData.Workshop_Lance,
+                        playerData.Workshop_Archi,
+                        playerData.Workshop_Scudi,
+                        playerData.Workshop_Armature,
+                        playerData.Workshop_Frecce,
+                        playerData.Caserma_Guerrieri,
+                        playerData.Caserma_Lancieri,
+                        playerData.Caserma_Arceri,
+                        playerData.Caserma_Catapulte, 
                         player
                     );
 
@@ -240,27 +336,45 @@ namespace Server_Strategico.Server
                     player.Salute_CastelloMax = playerData.Salute_CastelloMax;
 
                     // Ripristina le code
-                    foreach (var building in playerData.BuildingQueues)
-                    {
-                        if (building.Value > 0)
-                            BuildingManager.Costruzione_1(building.Key, building.Value, player);
-                    }
-                    if (playerData.BuildingQueues.Count() != 0)
-                    {
-                        Server.Send(player.guid_Player, $"Log_Server|Strutture in Coda ripristinate\r\n");
-                        Console.WriteLine($"Log_Server|Strutture in Coda ripristinate\r\n");
-                    }
+                    player.currentTasks_Building = playerData.CurrentBuildingTasks
+                        .Select(t =>
+                        {
+                            var task = new BuildingManager.ConstructionTask(t.Type, t.DurationInSeconds);
+                            if (t.IsInProgress) task.Start();
+                            return task;
+                        })
+                        .ToList();
 
-                    foreach (var unit in playerData.RecruitmentQueues)
-                    {
-                        if (unit.Value > 0)
-                            UnitManager.Reclutamento_1(unit.Key, unit.Value, player);
-                    }
-                    if (playerData.RecruitmentQueues.Count() != 0)
-                    {
-                        Server.Send(player.guid_Player, $"Log_Server|Unità in coda ripristinate\r\n");
-                        Console.WriteLine($"Log_Server|Unità in coda ripristinate\r\n");
-                    }
+                    // --- Ripristino costruzioni in coda ---
+                    player.building_Queue = new Queue<BuildingManager.ConstructionTask>(
+                        playerData.QueuedBuildingTasks.Select(t =>
+                            new BuildingManager.ConstructionTask(t.Type, t.DurationInSeconds)
+                        )
+                    );
+
+                    // --- Reclutamento ---
+                    player.currentTasks_Recruit = playerData.CurrentRecruitTasks
+                        .Select(t => {
+                            var task = new BuildingManager.ConstructionTask(t.Type, t.DurationInSeconds);
+                            if (t.IsInProgress) task.Start();
+                            return task;
+                        }).ToList();
+
+                    player.recruit_Queue = new Queue<BuildingManager.ConstructionTask>(
+                        playerData.QueuedRecruitTasks.Select(t => new BuildingManager.ConstructionTask(t.Type, t.DurationInSeconds))
+                    );
+
+                    // --- Ricerca ---
+                    player.currentTasks_Research = playerData.CurrentResearchTasks
+                        .Select(t => {
+                            var task = new BuildingManager.ConstructionTask(t.Type, t.DurationInSeconds);
+                            if (t.IsInProgress) task.Start();
+                            return task;
+                        }).ToList();
+
+                    player.research_Queue = new Queue<BuildingManager.ConstructionTask>(
+                        playerData.QueuedResearchTasks.Select(t => new BuildingManager.ConstructionTask(t.Type, t.DurationInSeconds))
+                    );
 
                     Console.WriteLine($"[GameSave] Caricati i dati del giocatore {username}");
                     return true;
@@ -365,6 +479,13 @@ namespace Server_Strategico.Server
             }
             return false;
         }
+        public class SavedTask
+        {
+            public string Type { get; set; }
+            public int DurationInSeconds { get; set; }
+            public double RemainingSeconds { get; set; }
+            public bool IsInProgress { get; set; }
+        }
         private class BarbariPVPData
         {
             public int Guerrieri { get; set; }
@@ -376,12 +497,36 @@ namespace Server_Strategico.Server
 
         private class PlayerSaveData
         {
+            // --- Code costruzione ---
+            public List<SavedTask> CurrentBuildingTasks { get; set; } = new();
+            public List<SavedTask> QueuedBuildingTasks { get; set; } = new();
+
+            public List<SavedTask> CurrentRecruitTasks { get; set; } = new();
+            public List<SavedTask> QueuedRecruitTasks { get; set; } = new();
+
+            public List<SavedTask> CurrentResearchTasks { get; set; } = new();
+            public List<SavedTask> QueuedResearchTasks { get; set; } = new();
+
+            // Giocatori
             public string Username { get; set; }
             public string Password { get; set; }
-            public int Livello { get; set; }
+            public Guid guid_Player { get; set; }
+
+            // Esperienza e VIP
             public int Esperienza { get; set; }
-            
-            // Risorse
+            public int Livello { get; set; }
+            public int Punti_Quest { get; set; }
+            public bool Vip { get; set; }
+            public bool Ricerca_Attiva { get; set; }
+            public int Code_Reclutamento { get; set; }
+            public int Code_Costruzione { get; set; }
+            public int Code_Ricerca { get; set; }
+            public int ScudoDellaPace { get; set; }
+
+            // Forza esercito
+            public double forza_Esercito { get; set; }
+
+            // Risorse civili
             public double Cibo { get; set; }
             public double Legno { get; set; }
             public double Pietra { get; set; }
@@ -389,14 +534,19 @@ namespace Server_Strategico.Server
             public double Oro { get; set; }
             public double Popolazione { get; set; }
 
-            public double Spade { get; set; }
-            public double Lance { get; set; }
-            public double Archi { get; set; }
-            public double Scudi { get; set; }
-            public double Armature { get; set; }
-            public double Frecce { get; set; }
+            // Risorse speciali
+            public int Diamanati_Blu { get; set; }
+            public int Diamanti_Viola { get; set; }
+            public decimal Dollari_Virtuali { get; set; }
 
-            // Edifici
+            // Terreni virtuali
+            public int Terreno_Comune { get; set; }
+            public int Terreno_NonComune { get; set; }
+            public int Terreno_Raro { get; set; }
+            public int Terreno_Epico { get; set; }
+            public int Terreno_Leggendario { get; set; }
+
+            // Edifici civili
             public int Fattoria { get; set; }
             public int Segheria { get; set; }
             public int CavaPietra { get; set; }
@@ -404,17 +554,57 @@ namespace Server_Strategico.Server
             public int MinieraOro { get; set; }
             public int Abitazioni { get; set; }
 
-            public int ProduzioneSpade { get; set; }
-            public int ProduzioneLance { get; set; }
-            public int ProduzioneArchi { get; set; }
-            public int ProduzioneScudi { get; set; }
-            public int ProduzioneArmature { get; set; }
-            public int ProduzioneFrecce { get; set; }
+            // Edifici militari
+            public int Workshop_Spade { get; set; }
+            public int Workshop_Lance { get; set; }
+            public int Workshop_Archi { get; set; }
+            public int Workshop_Scudi { get; set; }
+            public int Workshop_Armature { get; set; }
+            public int Workshop_Frecce { get; set; }
 
-            public int CasermaGuerrieri { get; set; }
-            public int CasermaLancieri { get; set; }
-            public int CasermaArceri { get; set; }
-            public int CasermaCatapulte { get; set; }
+            public int Caserma_Guerrieri { get; set; }
+            public int Caserma_Lancieri { get; set; }
+            public int Caserma_Arceri { get; set; }
+            public int Caserma_Catapulte { get; set; }
+
+            // Risorse militari
+            public double Spade { get; set; }
+            public double Lance { get; set; }
+            public double Archi { get; set; }
+            public double Scudi { get; set; }
+            public double Armature { get; set; }
+            public double Frecce { get; set; }
+
+            // Statistiche di combattimento
+            public int Unità_Uccise { get; set; }
+            public int Guerrieri_Uccisi { get; set; }
+            public int Lanceri_Uccisi { get; set; }
+            public int Arceri_Uccisi { get; set; }
+            public int Catapulte_Uccisi { get; set; }
+            public int Unita_Perse { get; set; }
+            public int Guerrieri_Persi { get; set; }
+            public int Lanceri_Persi { get; set; }
+            public int Arceri_Persi { get; set; }
+            public int Catapulte_Persi { get; set; }
+            public int Risorse_Razziate { get; set; }
+
+            public int Frecce_Utilizzate { get; set; }
+            public int Battaglie_Vinte { get; set; }
+            public int Battaglie_Perse { get; set; }
+            public int Barbari_Sconfitti { get; set; }
+            public int Accampamenti_Barbari_Sconfitti { get; set; }
+            public int Citta_Barbare_Sconfitte { get; set; }
+            public int Missioni_Completate { get; set; }
+            public int Attacchi_Subiti_PVP { get; set; }
+            public int Attacchi_Effettuati_PVP { get; set; }
+
+            public int Unita_Addestrate { get; set; }
+            public int Risorse_Utilizzate { get; set; }
+            public int Tempo_Addestramento_Risparmiato { get; set; }
+            public int Tempo_Costruzione_Risparmiato { get; set; }
+
+            public int Consumo_Cibo_Esercito { get; set; }
+            public int Consumo_Oro_Esercito { get; set; }
 
             // Esercito
             public int Guerrieri { get; set; }
@@ -464,9 +654,6 @@ namespace Server_Strategico.Server
             public int Salute_Castello { get; set; }
             public int Salute_CastelloMax { get; set; }
 
-            // Aggiungi queste proprietà per le code
-            public Dictionary<string, int> BuildingQueues { get; set; }
-            public Dictionary<string, int> RecruitmentQueues { get; set; }
         }
 
     }
