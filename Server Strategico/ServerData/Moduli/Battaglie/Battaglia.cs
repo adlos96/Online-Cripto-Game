@@ -1,4 +1,6 @@
 ﻿
+using Server_Strategico.ServerData.Moduli.Player;
+
 namespace Server_Strategico.ServerData.Moduli.Battaglie
 {
     public class Battaglia
@@ -58,7 +60,7 @@ namespace Server_Strategico.ServerData.Moduli.Battaglie
             public string Data { get; set; } = "";
             public bool Aperto { get; set; } = false;
             public RisultatoBattaglia Battaglia { get; set; }
-            public RisultatoBattaglia Spionaggio { get; set; }
+            public RisultatoSpionaggio Spionaggio { get; set; }
         }
 
         public class RisultatoBattaglia
@@ -67,15 +69,17 @@ namespace Server_Strategico.ServerData.Moduli.Battaglie
             public string Nome_Attaccante { get; set; } = "";
             public string Nome_Difensore { get; set; } = "";
             public double Forza_Attaccante { get; set; }
+            public double Forza_Attaccante_Finale { get; set; }
             public double Forza_Difensore { get; set; }
+            public double Forza_Difensore_Finale { get; set; }
             public bool Vittoria_Attaccante { get; set; }
             public int Xp_Attaccante { get; set; } = 0;
             public int Xp_Difensore { get; set; } = 0;
             public List<RisultatoFase> Fasi { get; set; } = new List<RisultatoFase>();
             public BonusRicerca Bonus_Ricerca_Difesa { get; set; } = new BonusRicerca();
             public BonusRicerca Bonus_Ricerca_Attacco { get; set; } = new BonusRicerca();
+            public RisorseRaccolte Risorse_Raccolte { get; set; } = new RisorseRaccolte();
         }
-
         public class RisultatoFase
         {
             public bool Vittoria_Attaccante { get; set; }
@@ -83,7 +87,7 @@ namespace Server_Strategico.ServerData.Moduli.Battaglie
             public bool Struttura_Crollata { get; set; }
             public int Xp_Attaccante { get; set; } = 0;
             public int Xp_Difensore { get; set; } = 0;
-            public Edificio Struttura { get; set; } = new Edificio();
+            public Villaggio Struttura { get; set; } = new Villaggio();
             public BattagliaDistanza Fase_Distanza { get; set; } = new BattagliaDistanza();
             public Unità Attaccante { get; set; } = new Unità();
             public Unità Difensore { get; set; } = new Unità();
@@ -95,7 +99,7 @@ namespace Server_Strategico.ServerData.Moduli.Battaglie
             public UnitGroup Sopravvisuti { get; set; } = new UnitGroup();
             public UnitGroup Perdite { get; set; } = new UnitGroup();
         }
-        public class Edificio
+        public class Villaggio
         {
             public string Nome { get; set; } = "";
             public int Salute { get; set; }
@@ -104,7 +108,6 @@ namespace Server_Strategico.ServerData.Moduli.Battaglie
             public int DifesaMax { get; set; }
             public int Guarnigione { get; set; }
         }
-
         public class BonusRicerca
         {
             public string Bonus_Salute_Unità { get; set; } = "0";
@@ -114,7 +117,6 @@ namespace Server_Strategico.ServerData.Moduli.Battaglie
             public string Bonus_Difesa_Strutture { get; set; } = "0";
             public string Bonus_Guarnigione_Strutture { get; set; } = "0";
         }
-
         public class BattagliaDistanza
         {
             public bool Attaccante_Poche_Frecce { get; set; }
@@ -184,6 +186,166 @@ namespace Server_Strategico.ServerData.Moduli.Battaglie
             public int Esperienza { get; set; }
             public int Diamanti_Blu { get; set; }
             public int Diamanti_Viola { get; set; }
-        } // Struttura per contenere le risorse raccolte
+            public int Capacità_Carico { get; set; }
+            public int Capacità_Carico_Usata { get; set; }
+        }
+
+        //Spionaggio
+        public class RisultatoSpionaggio
+        {
+            public string Tipo_Battaglia { get; set; } = "";
+            public bool Spionaggio_Riuscito { get; set; }
+            public DatiGiocatore Giocatore { get; set; } = new DatiGiocatore();
+            public RisorseCivili Risorse_Civili { get; set; } = new RisorseCivili();
+            public RisorseMilitari Risorse_Militari { get; set; } = new RisorseMilitari();
+            public RisorseSpeciali Risorse_Speciali { get; set; } = new RisorseSpeciali();
+            public Edifici_Civili Strutture_Civili { get; set; } = new Edifici_Civili();
+            public Workshop Workshop { get; set; } = new Workshop();
+            public Caserme Caserme { get; set; } = new Caserme();
+            public StatsUnità Stats_Unità { get; set; } = new StatsUnità();
+            public List<SpionaggioFase> Fasi { get; set; } = new List<SpionaggioFase>();
+            public RicercaCivile Ricerca_Civile { get; set; } = new RicercaCivile();
+            public RicercaMilitare Ricerca_Militare { get; set; } = new RicercaMilitare();
+            public Bonus Bonus { get; set; } = new Bonus();
+        }
+        public class RisorseCivili
+        {
+            public int Cibo { get; set; }
+            public int Legno { get; set; }
+            public int Pietra { get; set; }
+            public int Ferro { get; set; }
+            public int Oro { get; set; }
+            public int Popolazione { get; set; }
+        }
+        public class RisorseMilitari
+        {
+            public int Spade { get; set; }
+            public int Lance { get; set; }
+            public int Archi { get; set; }
+            public int Scudi { get; set; }
+            public int Armature { get; set; }
+            public int Frecce { get; set; }
+        }
+        public class RisorseSpeciali
+        {
+            public int Diamanti_Blu { get; set; }
+            public int Diamanti_Viola { get; set; }
+        }
+        public class DatiGiocatore
+        {
+            public string Nome { get; set; } = "";
+            public int Forza_Attaccante { get; set; }
+            public int Livello { get; set; }
+            public int Esperienza { get; set; }
+        }
+        public class Edifici_Civili
+        {
+            public TripleValue Fattoria { get; set; } = new TripleValue();
+            public TripleValue Segheria { get; set; } = new TripleValue();
+            public TripleValue Cava { get; set; } = new TripleValue();
+            public TripleValue Miniera_Ferrro { get; set; } = new TripleValue();
+            public TripleValue Miniera_Oro { get; set; } = new TripleValue();
+            public TripleValue Abitazioni { get; set; } = new TripleValue();
+        }
+        public class Workshop
+        {
+            public TripleValue Spade { get; set; } = new TripleValue();
+            public TripleValue Lance { get; set; } = new TripleValue();
+            public TripleValue Archi { get; set; } = new TripleValue();
+            public TripleValue Scudi { get; set; } = new TripleValue();
+            public TripleValue Armature { get; set; } = new TripleValue();
+            public TripleValue Frecce { get; set; } = new TripleValue();
+        }
+        public class Caserme
+        {
+            public TripleValue Guerrieri { get; set; } = new TripleValue();
+            public TripleValue Lanceri { get; set; } = new TripleValue();
+            public TripleValue Arcieri { get; set; } = new TripleValue();
+            public TripleValue Catapulte { get; set; } = new TripleValue();
+        }
+        public class TripleValue
+        {
+            public int Min { get; set; }
+            public int Reale { get; set; }
+            public int Max { get; set; }
+        }
+        public class SpionaggioFase
+        {
+            public SpionaggioVillaggio Struttura { get; set; } = new SpionaggioVillaggio();
+            public TripleValue[] Guerrieri { get; set; } = Enumerable.Range(0, 5).Select(_ => new TripleValue()).ToArray();
+            public TripleValue[] Lanceri { get; set; } = Enumerable.Range(0, 5).Select(_ => new TripleValue()).ToArray();
+            public TripleValue[] Arcieri { get; set; } = Enumerable.Range(0, 5).Select(_ => new TripleValue()).ToArray();
+            public TripleValue[] Catapulte { get; set; } = Enumerable.Range(0, 5).Select(_ => new TripleValue()).ToArray();
+        }
+        public class TipiStatistiche
+        {
+            public double Salute { get; set; } = new double();
+            public double Difesa { get; set; } = new double();
+            public double Attacco { get; set; } = new double();
+            public double Livello { get; set; } = new double();
+
+        }
+        public class StatsUnità
+        {
+            public TipiStatistiche[] Guerrieri { get; set; } = Enumerable.Range(0, 5).Select(_ => new TipiStatistiche()).ToArray();
+            public TipiStatistiche[] Lanceri { get; set; } = Enumerable.Range(0, 5).Select(_ => new TipiStatistiche()).ToArray();
+            public TipiStatistiche[] Arcieri { get; set; } = Enumerable.Range(0, 5).Select(_ => new TipiStatistiche()).ToArray();
+            public TipiStatistiche[] Catapulte { get; set; } = Enumerable.Range(0, 5).Select(_ => new TipiStatistiche()).ToArray();
+        }
+        public class SpionaggioVillaggio
+        {
+            public string Nome { get; set; } = "";
+            public int Salute { get; set; }
+            public int SaluteMin { get; set; }
+            public int SaluteMax { get; set; }
+            public int Difesa { get; set; }
+            public int DifesaMin { get; set; }
+            public int DifesaMax { get; set; }
+            public int Ricerca_Salute { get; set; }
+            public int Ricerca_Difesa { get; set; }
+            public int Ricerca_Guarnigione { get; set; }
+            public int Ricerca_Livello { get; set; }
+            public TripleValue Guarnigione { get; set; } = new TripleValue();
+        }
+        public class RicercaCivile
+        {
+            public int Produzione { get; set; }
+            public int Costruzione { get; set; }
+            public int Addestramento { get; set; }
+            public int Popolazione { get; set; }
+            public int Trasporto { get; set; }
+            public int Riparazione { get; set; }
+            public int Spionaggio { get; set; }
+            public int Contro_Spionaggio { get; set; }
+
+        }
+        public class RicercaMilitare
+        {
+            public TipiStatistiche Guerrieri { get; set; } = new TipiStatistiche();
+            public TipiStatistiche Lanceri { get; set; } = new TipiStatistiche();
+            public TipiStatistiche Arcieri { get; set; } = new TipiStatistiche();
+            public TipiStatistiche Catapulte { get; set; } = new TipiStatistiche();
+
+        }
+        public class Bonus
+        {
+            public TipiStatistiche Guerrieri { get; set; } = new TipiStatistiche();
+            public TipiStatistiche Lanceri { get; set; } = new TipiStatistiche();
+            public TipiStatistiche Arceri { get; set; } = new TipiStatistiche();
+            public TipiStatistiche Catapulte { get; set; } = new TipiStatistiche();
+
+            public double Salute_Strutture { get; set; }
+            public double Difesa_Strutture { get; set; }
+            public double Guarnigione_Strutture { get; set; }
+
+            public double Produzione_Risorse { get; set; }
+            public double Costruzione { get; set; }
+            public double Addestramento { get; set; }
+            public double Capacità_Trasporto { get; set; }
+            public double Ricerca { get; set; }
+            public double Riparazione { get; set; }
+            public double Spionaggio { get; set; }
+            public double Contro_Spionaggio { get; set; }
+        }
     }
 }
