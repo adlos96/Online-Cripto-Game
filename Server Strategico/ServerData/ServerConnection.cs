@@ -1,14 +1,14 @@
-﻿using Server_Strategico.Gioco;
+﻿using Newtonsoft.Json;
+using Server_Strategico.Gioco;
 using Server_Strategico.Manager;
 using Server_Strategico.ServerData.Moduli;
 using System.Text;
-using System.Text.Json;
 using WatsonTcp;
-using static BattaglieV2;
 using static Server_Strategico.Gioco.Barbari;
 using static Server_Strategico.Gioco.Giocatori;
 using static Server_Strategico.Gioco.Strutture;
 using static Server_Strategico.Manager.QuestManager;
+using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace Server_Strategico.Server
 {
@@ -189,7 +189,7 @@ namespace Server_Strategico.Server
                     {
                         var datisss = msgArgs[4].Split(',');
                         var difensore = Server.servers_.GetPlayer_Data(datisss[0]);
-                        var attackerUnits = new UnitGroup
+                        var attackerUnits = new BattaglieV2.UnitGroup
                         {
                             Guerrieri = guerrieri,
                             Lancieri = picchieri,
@@ -1189,6 +1189,9 @@ namespace Server_Strategico.Server
             "";
 
             Server.Send(guid, data);
+
+            string payload = JsonConvert.SerializeObject(player.Report);
+            Server.Send(guid, $"Update_Data|Report_Lista|{payload}");
         }
         public static void Update_Data(Guid guid, Player player)
         {

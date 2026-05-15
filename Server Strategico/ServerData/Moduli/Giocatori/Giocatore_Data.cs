@@ -61,9 +61,9 @@ namespace Server_Strategico.ServerData.Moduli.Player
             public double Guarnigione_Strutture { get; set; } = 0;
 
             public double Produzione_Risorse { get; set; } = 0;
-            public double Capacità_Trasporto { get; set; } = 0;
             public double Costruzione { get; set; } = 0;
             public double Addestramento { get; set; } = 0;
+            public double Capacità_Trasporto { get; set; } = 0;
             public double Ricerca { get; set; } = 0;
             public double Riparazione { get; set; } = 0;
         }

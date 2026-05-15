@@ -6,7 +6,7 @@ namespace Server_Strategico.ServerData.Moduli
 {
     internal class Shop
     {
-        public static void Shop_Call(Guid guid, Player player, string comando)
+        public static void Shop_Call(Guid guid, Giocatori.Player player, string comando)
         {
             int diamanti_Viola = player.Diamanti_Viola;
             int diamanti_Blu = player.Diamanti_Blu;

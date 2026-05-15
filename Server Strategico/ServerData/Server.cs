@@ -94,6 +94,7 @@ namespace Server_Strategico.Server
                         Console.WriteLine("Comando vuoto:                 [player]");                      // 
                         Console.WriteLine("Comando vuoto:                 [client]");                      // 
                         Console.WriteLine("Comando vuoto:                 [battaglia]");                      // 
+                        Console.WriteLine("Comando vuoto:                 [spionaggio]");                      // 
 
                         Console.WriteLine("----------------------------------------------------------------------");
                         break;
@@ -105,6 +106,9 @@ namespace Server_Strategico.Server
                         break;
                     case "battaglia":
                         BattagliaPVP.TestBattaglia();
+                        break;
+                    case "spionaggio":
+                        Spionaggio.EseguiSpionaggio();
                         break;
 
                     default: Console.WriteLine("[Server] >> Comando sconosciuto"); break;

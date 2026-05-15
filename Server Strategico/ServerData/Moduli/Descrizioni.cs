@@ -6,7 +6,7 @@ namespace Server_Strategico.ServerData.Moduli
 {
     internal class Descrizioni
     {
-        public static async void DescUpdate(Player player)
+        public static async void DescUpdate(Giocatori.Player player)
         {
             var L = LocalizationManager.Get(player); // unica riga aggiunta
 

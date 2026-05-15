@@ -20,20 +20,20 @@
         public static Int16 Max_Diamanti_Viola_PVP = 150; //massimo diamanti viola che un giocatore può guadagnare in un giorno tramite PVP
         public static Int16 max_Diamanti_Blu_PVP = 300; //massimo diamanti blu che un giocatore può guadagnare in un giorno tramite PVP
         public static Int16 Max_Diamanti_Viola_PVP_Giocatore = 10; //massimo diamanti viola che un giocatore può guadagnare da un singolo avversario tramite PVP
-        public static Int16 Max_Diamanti_Blu_PVP_Giocatore = 20; //massimo diamanti viola che un giocatore può guadagnare da un singolo avversario tramite PVP
+        public static Int16 Max_Diamanti_Blu_PVP_Giocatore = 20; //massimo diamanti blu che un giocatore può guadagnare da un singolo avversario tramite PVP
         public static bool Reset_Gironaliero = false;
         public static bool Reset_Settimanale = false;
         public static bool Reset_Mensile = false;
 
         //Trasporto - Pesi -
-        public static int peso_Risorse_Militare = 9; //peso base per ogni risorsa
-        public static int peso_Risorse_Cibo = 4;
-        public static int peso_Risorse_Legno = 6;
-        public static int peso_Risorse_Pietra = 9;
-        public static int peso_Risorse_Ferro = 12;
-        public static int peso_Risorse_Oro = 16;
-        public static int peso_Risorse_Diamante_Blu = 1200;
-        public static int peso_Risorse_Diamante_Viola = 2200;
+        public static int peso_Risorse_Militare = 8; //peso base per ogni risorsa
+        public static int peso_Risorse_Cibo = 3;
+        public static int peso_Risorse_Legno = 5;
+        public static int peso_Risorse_Pietra = 8;
+        public static int peso_Risorse_Ferro = 11;
+        public static int peso_Risorse_Oro = 15;
+        public static int peso_Risorse_Diamante_Blu = 1000;
+        public static int peso_Risorse_Diamante_Viola = 2000;
 
         public static int tempo_Riparazione = 12; //tempo in secondi per riparare le strutture danneggiate
 

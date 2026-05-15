@@ -24,7 +24,7 @@ namespace Server_Strategico.ServerData.Moduli
                 Directory.CreateDirectory(SavePath);
         }
 
-        public static async Task SavePlayer(Player player)
+        public static async Task SavePlayer(Giocatori.Player player)
         {
             try
             {

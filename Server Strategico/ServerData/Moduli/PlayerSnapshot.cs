@@ -12,7 +12,7 @@ namespace Server_Strategico.ServerData.Moduli
         private Dictionary<string, string> _currentState = new(250); // ← riusato, non ricreato ogni volta
 
         // Costruisci lo stato attuale come dizionario
-        public Dictionary<string, string> BuildCurrentState(Player player)
+        public Dictionary<string, string> BuildCurrentState(Giocatori.Player player)
         {
             var buildingsQueue = BuildingManagerV2.GetQueuedBuildings(player);
             var unitsQueue = UnitManagerV2.GetQueuedUnits(player);
@@ -237,6 +237,8 @@ namespace Server_Strategico.ServerData.Moduli
             _currentState["ricerca_popolazione"] = player.Ricerca_Popolazione.ToString();
             _currentState["ricerca_riparazione"] = player.Ricerca_Riparazione.ToString();
             _currentState["ricerca_trasporto"] = player.Ricerca_Trasporto.ToString();
+            _currentState["ricerca_Spionaggio"] = player.Ricerca_Riparazione.ToString();
+            _currentState["ricerca_Contro_Spionaggio"] = player.Ricerca_Trasporto.ToString();
 
             _currentState["guerriero_salute"] = player.Guerriero_Salute.ToString();
             _currentState["guerriero_difesa"] = player.Guerriero_Difesa.ToString();
