@@ -1,10 +1,14 @@
-﻿using Warrior_and_Wealth;
+﻿using Newtonsoft.Json;
+using Server_Strategico.ServerData.Moduli.Battaglie;
 using System.Globalization;
-using System.Numerics;
 using System.Text;
 using System.Text.Json;
+using Warrior_and_Wealth;
 using WatsonTcp;
 using static Strategico_V2.Variabili_Client;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using JsonSerializer = System.Text.Json.JsonSerializer;
+using String = System.String;
 
 namespace Strategico_V2
 {
@@ -171,6 +175,7 @@ namespace Strategico_V2
 
                 Quest(messaggio);
                 AggiornaVillaggiDalServer(messaggio);
+                Update_Report(messaggio);
 
                 string[]? mess = null;
                 if (messaggio.Contains('|'))
@@ -218,9 +223,27 @@ namespace Strategico_V2
                 }
 
             }
-            public static void Tutorial_Data(string messaggio)
+            public static void Update_Report(string messaggio)
             {
+                if (!messaggio.Contains("Report")) return;
 
+                var mess = messaggio.Split('|');
+                switch (mess[1])
+                {
+                    case "Report_Lista":   // al login, lista completa
+                        Variabili_Client.Report = JsonConvert.DeserializeObject<List<Battaglia.Report>>(mess[2]);
+                        break;
+
+                    case "Report_Nuovo":   // durante il gioco, solo il nuovo
+                        Variabili_Client.Report.Add(JsonConvert.DeserializeObject<Battaglia.Report>(mess[2]));
+                        break;
+
+                    case "Report_Aperto":  // solo aggiorna il flag
+                        int index = int.Parse(mess[2]);
+                        Variabili_Client.Report[index].Aperto = true;
+                        break;
+
+                }
             }
             public static void AggiornaVillaggiDalServer(string messaggio)
             {

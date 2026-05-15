@@ -933,6 +933,16 @@ namespace Warrior_and_Wealth.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Sfondo_Stats_Battaglia {
+            get {
+                object obj = ResourceManager.GetObject("Sfondo_Stats_Battaglia", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Shop_2_Photoroom_1_ {
             get {
                 object obj = ResourceManager.GetObject("Shop_2-Photoroom(1)", resourceCulture);

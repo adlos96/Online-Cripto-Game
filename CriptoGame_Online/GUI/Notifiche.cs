@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
+﻿
+using Strategico_V2;
 
 namespace Warrior_and_Wealth.GUI
 {
@@ -21,6 +13,11 @@ namespace Warrior_and_Wealth.GUI
 
         private void Notifiche_Load(object sender, EventArgs e)
         {
+            if (Variabili_Client.Report.Count == 0) return;
+            
+            foreach (var report in Variabili_Client.Report)
+                dataGridView1.Rows.Add(report.Tipo, "Valore", report.Data, "Dettagli");
+            
             dataGridView1.Rows.Add("Esplorazione", "Città Barbaro", "01-01-2026", "Dettagli");
             dataGridView1.Rows.Add("Esplorazione", "Villaggio Barbaro", "01-01-2026", "Dettagli");
             dataGridView1.Rows.Add("Attacco", "Adlos", "01-01-2026", "Dettagli");
@@ -29,10 +26,23 @@ namespace Warrior_and_Wealth.GUI
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0 && dataGridView1.Columns[e.ColumnIndex].Name == "Col_Bottone")
+            if (e.RowIndex < 0) return;
+            if (dataGridView1.Columns[e.ColumnIndex].Name != "Col_Bottone") return;
+
+            clickedRow = e.RowIndex;
+            var report = Variabili_Client.Report[clickedRow];
+
+            switch (report.Tipo)
             {
-                clickedRow = e.RowIndex; // salva la riga cliccata
-                                                                         // qui puoi aggiungere l'azione del bottone
+                case "Battaglia":
+                    var formBattaglia = new Log_Battaglie(report);
+                    formBattaglia.Show();
+                    break;
+
+                case "Spionaggio":
+                    var formEsplorazione = new Log_Esplorazione(report);
+                    formEsplorazione.Show();
+                    break;
             }
         }
 

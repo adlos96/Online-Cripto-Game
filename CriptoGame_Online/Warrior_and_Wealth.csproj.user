@@ -20,13 +20,13 @@
     <Compile Update="GUI\Citta_V2.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="GUI\Esplorazione.cs">
+    <Compile Update="GUI\LogForm\Log_Esplorazione.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="GUI\GamePassReward.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="GUI\Log_Battaglie.cs">
+    <Compile Update="GUI\LogForm\Log_Battaglie.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="GUI\Mappa.cs">

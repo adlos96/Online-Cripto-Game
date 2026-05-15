@@ -1,5 +1,6 @@
-﻿using Warrior_and_Wealth.GUI;
+﻿using Server_Strategico.ServerData.Moduli.Battaglie;
 using System.Collections.Generic;
+using Warrior_and_Wealth.GUI;
 
 namespace Strategico_V2
 {
@@ -152,6 +153,7 @@ namespace Strategico_V2
 
         public static List<VillaggioClient> VillaggiPersonali = new();
         public static List<VillaggioClient> CittaGlobali = new();
+        public static List<Battaglia.Report> Report = new();
 
         public static bool tutorial_Attivo = true;
         public static bool[] tutorial = new bool[32];
