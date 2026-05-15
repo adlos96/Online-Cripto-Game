@@ -877,14 +877,14 @@ namespace Server_Strategico.ServerData.Moduli
                 Variabili_Server.Reset_Mensile = serverData.Reset_Mensile;
 
                 //Trasporto - Pesi -
-                Variabili_Server.peso_Risorse_Militare = serverData.peso_Risorse_Militare;
-                Variabili_Server.peso_Risorse_Cibo = serverData.peso_Risorse_Cibo;
-                Variabili_Server.peso_Risorse_Legno = serverData.peso_Risorse_Legno;
-                Variabili_Server.peso_Risorse_Pietra = serverData.peso_Risorse_Pietra;
-                Variabili_Server.peso_Risorse_Ferro = serverData.peso_Risorse_Ferro;
-                Variabili_Server.peso_Risorse_Oro = serverData.peso_Risorse_Oro;
-                Variabili_Server.peso_Risorse_Diamante_Blu = serverData.peso_Risorse_Diamante_Blu;
-                Variabili_Server.peso_Risorse_Diamante_Viola = serverData.peso_Risorse_Diamante_Viola;
+                Variabili_Server.peso_Risorse_Militare = (short)serverData.peso_Risorse_Militare;
+                Variabili_Server.peso_Risorse_Cibo = (short)serverData.peso_Risorse_Cibo;
+                Variabili_Server.peso_Risorse_Legno = (short)serverData.peso_Risorse_Legno;
+                Variabili_Server.peso_Risorse_Pietra = (short)serverData.peso_Risorse_Pietra;
+                Variabili_Server.peso_Risorse_Ferro = (short)serverData.peso_Risorse_Ferro;
+                Variabili_Server.peso_Risorse_Oro = (short)serverData.peso_Risorse_Oro;
+                Variabili_Server.peso_Risorse_Diamante_Blu = (short)serverData.peso_Risorse_Diamante_Blu;
+                Variabili_Server.peso_Risorse_Diamante_Viola = (short)serverData.peso_Risorse_Diamante_Viola;
 
                 Variabili_Server.tempo_Riparazione = serverData.tempo_Riparazione;
 

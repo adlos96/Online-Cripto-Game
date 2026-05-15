@@ -6,7 +6,7 @@
         public static string[] lingue_Supportate = {"ITA", "ENG" };
 
         //ServerData
-        public static Int16 moltiplicatore_Esperienza = 10; //Moltiplicatore esperienza (10 + 1 * 10 == 20 -- 10 + 2 * 10 == 30 -- 10 + 3 * 10 == 40)
+        public static Int16 moltiplicatore_Esperienza = 10; //Moltiplicatore esperienza (10 + 1 * 10 == 20, 10 + 2 * 10 == 30, 10 + 3 * 10 == 40)
         public static Int16 D_Viola_To_Blu = 3; // Numero di diamanti blu ottenuti per ogni diamante viola
         public static Int16 Tributi_To_D_Viola = 45; // Numero di diamanti blu ottenuti per ogni diamante viola
         public static Int16 Velocizzazione_Tempo = 36; // per ogni diamante blu speso quanti secondi vengono velocizzati
@@ -26,14 +26,14 @@
         public static bool Reset_Mensile = false;
 
         //Trasporto - Pesi -
-        public static int peso_Risorse_Militare = 8; //peso base per ogni risorsa
-        public static int peso_Risorse_Cibo = 3;
-        public static int peso_Risorse_Legno = 5;
-        public static int peso_Risorse_Pietra = 8;
-        public static int peso_Risorse_Ferro = 11;
-        public static int peso_Risorse_Oro = 15;
-        public static int peso_Risorse_Diamante_Blu = 1000;
-        public static int peso_Risorse_Diamante_Viola = 2000;
+        public static Int16 peso_Risorse_Militare = 8; //peso base per ogni risorsa
+        public static Int16 peso_Risorse_Cibo = 3;
+        public static Int16 peso_Risorse_Legno = 5;
+        public static Int16 peso_Risorse_Pietra = 8;
+        public static Int16 peso_Risorse_Ferro = 11;
+        public static Int16 peso_Risorse_Oro = 15;
+        public static Int16 peso_Risorse_Diamante_Blu = 1000;
+        public static Int16 peso_Risorse_Diamante_Viola = 2000;
 
         public static int tempo_Riparazione = 12; //tempo in secondi per riparare le strutture danneggiate
 

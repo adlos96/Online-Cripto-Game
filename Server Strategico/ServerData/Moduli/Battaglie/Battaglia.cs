@@ -195,6 +195,8 @@ namespace Server_Strategico.ServerData.Moduli.Battaglie
         {
             public string Tipo_Battaglia { get; set; } = "";
             public bool Spionaggio_Riuscito { get; set; }
+            public int Forza_Spionaggio { get; set; }
+            public int Stadio { get; set; }
             public DatiGiocatore Giocatore { get; set; } = new DatiGiocatore();
             public RisorseCivili Risorse_Civili { get; set; } = new RisorseCivili();
             public RisorseMilitari Risorse_Militari { get; set; } = new RisorseMilitari();
@@ -306,6 +308,7 @@ namespace Server_Strategico.ServerData.Moduli.Battaglie
             public int Ricerca_Guarnigione { get; set; }
             public int Ricerca_Livello { get; set; }
             public TripleValue Guarnigione { get; set; } = new TripleValue();
+            public int Guarnigione_Max { get; set; }
         }
         public class RicercaCivile
         {

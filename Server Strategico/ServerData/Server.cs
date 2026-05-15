@@ -151,7 +151,7 @@ namespace Server_Strategico.Server
         {
             var player1 = servers_.GetPlayer(player, password);
 
-            player1.Tutorial = true;
+            player1.Tutorial = false;
             //player1.Cibo = 20000;
             //player1.Legno = 20000;
             //player1.Pietra = 20000;
@@ -425,7 +425,7 @@ namespace Server_Strategico.Server
                 await GameSave.Load_Player_Data_Auto();
                 servers_.AggiornaListaPVP();
                 await Gioco.Barbari.Inizializza();
-                _ = Task.Run(() => CompleteTask(cancellationToken));
+                _ = Task.Run(() => CompleteTask(cancellationToken)); //Task parallelo per completare operazioni che non devono bloccare il loop principale (es. rigenerazione barbari, quest, ecc.)
                 ScheduleManager.AvvioReset();
                 // ----------------------------------------------
                 int maxConcurrentTasks = Math.Max(1, Environment.ProcessorCount); //Core disponibili
@@ -648,7 +648,7 @@ namespace Server_Strategico.Server
                                 player.ManutenzioneEsercito();
                                 QuestManager.QuestUpdate(player);
                                 QuestManager.QuestRewardUpdate(player);
-                                //player.SetupVillaggioGiocatore(player);
+                                player.SetupVillaggioGiocatore(player);
                             }
 
                             lock (player.LockCostruzione)

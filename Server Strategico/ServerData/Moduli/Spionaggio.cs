@@ -1,5 +1,6 @@
 ﻿using Server_Strategico.Gioco;
 using Server_Strategico.ServerData.Moduli.Battaglie;
+using static Server_Strategico.Gioco.Giocatori;
 using static Server_Strategico.ServerData.Moduli.Battaglie.Battaglia;
 
 namespace Server_Strategico.ServerData.Moduli
@@ -23,8 +24,11 @@ namespace Server_Strategico.ServerData.Moduli
             int forza = CalcolaValoreSpionaggio(attaccante, difensore);
             int precisione = CalcolaPrecisioneSpionaggio(forza);
             int livello = CalcolaLivelloSpionaggio(forza);
+            /// Servono 13 punti di differenza per raggiungere LV: 6, con precisione: 812
 
             var spy = report.Spionaggio;
+            report.Spionaggio.Forza_Spionaggio = attaccante.Ricerca_Spionaggio;
+            report.Spionaggio.Stadio = livello;
 
             for (int i = 0; i <= 6; i++) spy.Fasi.Add(new SpionaggioFase()); //Aggiunge le fasi vuote da popolare
 
@@ -35,7 +39,12 @@ namespace Server_Strategico.ServerData.Moduli
                     var defenderUnits = BattagliaPVP.CaricaDatiStruttureDifensore(difensore, i + 1);
                     Load_Truppe(defenderUnits, spy, precisione, i);
                 }
-
+            if (livello <= 0)
+            {
+                report.Spionaggio.Spionaggio_Riuscito = false;
+            }
+            else
+                report.Spionaggio.Spionaggio_Riuscito = true;
             if (livello >= 1)
             {
                 Load_Risorse_Civili(difensore, spy);
@@ -67,16 +76,20 @@ namespace Server_Strategico.ServerData.Moduli
 
         public async static void EseguiSpionaggio()
         {
-            bool test2 = await Server.ServerConnection.New_Player("TEST", "123", Guid.Empty);
-            var attaccante = Server.Server.servers_.GetPlayer_Data("adly");
-            attaccante.Ricerca_Spionaggio = 15;
-
             bool test1 = await Server.ServerConnection.New_Player("adly", "123", Guid.Empty);
+            var attaccante = Server.Server.servers_.GetPlayer_Data("adly");
+            attaccante.Ricerca_Spionaggio = 14;
+
+            bool test2 = await Server.ServerConnection.New_Player("TEST", "123", Guid.Empty);
             var difensore = Server.Server.servers_.GetPlayer_Data("TEST");
             difensore.Ricerca_Contro_Spionaggio = 1;
 
             BattagliaPVP.AddTroops(difensore);
             BattagliaPVP.AddTroops(attaccante);
+
+            //Aggiornare valore guarnigione... farlo sempre non conviene...
+            Server.Server.GameServer.GuerrieriCitta(difensore);
+            Server.Server.GameServer.GuerrieriCitta(attaccante);
 
             Spionaggioo(difensore, attaccante);
         }
@@ -90,12 +103,12 @@ namespace Server_Strategico.ServerData.Moduli
 
         /// <summary>
         /// Ogni punto di forza vale 62.5 punti di precisione, cap a 1000.
-        /// Forza >= 16 garantisce il valore esatto (precisione >= 900).
+        /// Forza >= 20 garantisce il valore esatto (precisione >= 900).
         /// </summary>
         public static int CalcolaPrecisioneSpionaggio(int forza)
         {
             if (forza <= 0) return 0;
-            return Math.Min((int)(forza * 62.5f), 1000);
+            return Math.Min((int)(forza * 45f), 1000);
         }
 
         /// <summary>
@@ -162,16 +175,29 @@ namespace Server_Strategico.ServerData.Moduli
         /// </summary>
         public static void Load_Villaggio(Giocatori.Player difensore, RisultatoSpionaggio spionaggio, int precisione)
         {
-            if (spionaggio.Fasi.Count <= 6)
+            if (spionaggio.Fasi.Count == 7)
             {
                 spionaggio.Fasi[0].Struttura = new SpionaggioVillaggio { 
                     Nome = "Ingresso",
+                    Guarnigione = new TripleValue
+                    {
+                        Min = 0,
+                        Reale = difensore.Guarnigione_Ingresso,
+                        Max = 0
+                    },
+                    Guarnigione_Max = difensore.Guarnigione_IngressoMax,
                     Ricerca_Guarnigione = difensore.Ricerca_Ingresso_Guarnigione
-
                 };
                 spionaggio.Fasi[1].Struttura = new SpionaggioVillaggio
                 {
                     Nome = "Mura",
+                    Guarnigione = new TripleValue
+                    {
+                        Min = 0,
+                        Reale = difensore.Guarnigione_Mura,
+                        Max = 0
+                    },
+                    Guarnigione_Max = difensore.Guarnigione_MuraMax,
                     Salute = difensore.Salute_Mura,
                     SaluteMax = difensore.Salute_MuraMax,
                     Difesa = difensore.Difesa_Mura,
@@ -184,6 +210,13 @@ namespace Server_Strategico.ServerData.Moduli
                 spionaggio.Fasi[2].Struttura = new SpionaggioVillaggio
                 {
                     Nome = "Cancello",
+                    Guarnigione = new TripleValue
+                    {
+                        Min = 0,
+                        Reale = difensore.Guarnigione_Cancello,
+                        Max = 0
+                    },
+                    Guarnigione_Max = difensore.Guarnigione_CancelloMax,
                     Salute = difensore.Salute_Cancello,
                     SaluteMax = difensore.Difesa_CancelloMax,
                     Difesa = difensore.Difesa_Cancello,
@@ -196,6 +229,13 @@ namespace Server_Strategico.ServerData.Moduli
                 spionaggio.Fasi[3].Struttura = new SpionaggioVillaggio
                 {
                     Nome = "Torri",
+                    Guarnigione = new TripleValue
+                    {
+                        Min = 0,
+                        Reale = difensore.Guarnigione_Torri,
+                        Max = 0
+                    },
+                    Guarnigione_Max = difensore.Guarnigione_TorriMax,
                     Salute = difensore.Salute_Torri,
                     SaluteMax = difensore.Salute_TorriMax,
                     Difesa = difensore.Difesa_Torri,
@@ -205,10 +245,27 @@ namespace Server_Strategico.ServerData.Moduli
                     Ricerca_Guarnigione = difensore.Ricerca_Torri_Guarnigione,
                     Ricerca_Livello = difensore.Ricerca_Torri_Livello
                 };
-                spionaggio.Fasi[4].Struttura = new SpionaggioVillaggio { Nome = "Centro Villaggio", Ricerca_Guarnigione = difensore.Ricerca_Ingresso_Guarnigione };
+                spionaggio.Fasi[4].Struttura = new SpionaggioVillaggio 
+                { 
+                    Nome = "Centro Villaggio",
+                    Guarnigione = new TripleValue
+                    {
+                        Min = 0,
+                        Reale = difensore.Guarnigione_Citta,
+                        Max = 0
+                    },
+                    Guarnigione_Max = difensore.Guarnigione_CittaMax 
+                };
                 spionaggio.Fasi[5].Struttura = new SpionaggioVillaggio
                 {
                     Nome = "Castello",
+                    Guarnigione = new TripleValue
+                    {
+                        Min = 0,
+                        Reale = difensore.Guarnigione_Castello,
+                        Max = 0
+                    },
+                    Guarnigione_Max = difensore.Guarnigione_CastelloMax,
                     Salute = difensore.Salute_Castello,
                     SaluteMax = difensore.Salute_CastelloMax,
                     Difesa = difensore.Difesa_Castello,
@@ -218,10 +275,22 @@ namespace Server_Strategico.ServerData.Moduli
                     Ricerca_Guarnigione = difensore.Ricerca_Castello_Guarnigione,
                     Ricerca_Livello = difensore.Ricerca_Castello_Livello
                 };
-                spionaggio.Fasi[6].Struttura = new SpionaggioVillaggio { Nome = "Villaggio" };
-
-                for (int i = 0; i <= 6; i++)
-                    ApplicaPrecisione(spionaggio.Fasi[i].Struttura.Guarnigione, difensore.Guarnigione_Mura, precisione);
+                int guarnigione = difensore.Guerrieri.Sum() + difensore.Lanceri.Sum() + difensore.Arceri.Sum() + difensore.Catapulte.Sum();
+                int guarnigioneMax = difensore.Caserma_Guerrieri * Strutture.Edifici.CasermaGuerrieri.Limite +
+                                    difensore.Caserma_Lancieri * Strutture.Edifici.CasermaLanceri.Limite +
+                                    difensore.Caserma_Arceri * Strutture.Edifici.CasermaArceri.Limite +
+                                    difensore.Caserma_Catapulte * Strutture.Edifici.CasermaCatapulte.Limite;
+                spionaggio.Fasi[6].Struttura = new SpionaggioVillaggio 
+                { 
+                    Nome = "Villaggio",
+                    Guarnigione = new TripleValue
+                    {
+                        Min = 0,
+                        Reale = guarnigione,
+                        Max = 0
+                    },
+                    Guarnigione_Max = guarnigioneMax
+                };
             }
 
         }
