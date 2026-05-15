@@ -11,7 +11,7 @@ namespace Server_Strategico.ServerData.Moduli.Battaglie
             Server_Strategico.Server.Server.Send(clientGuid, message);
             Console.WriteLine(message.Replace("Log_Server|", ""));
         }
-        static UnitGroup CaricaDatiStruttureDifensore(Giocatori.Player difensore, int struttura)
+        public static UnitGroup CaricaDatiStruttureDifensore(Giocatori.Player difensore, int struttura)
         {
             var defenderUnits = new UnitGroup
             {
@@ -206,7 +206,7 @@ namespace Server_Strategico.ServerData.Moduli.Battaglie
             }
             return esperienza;
         }
-        private static (double GuerrieriAttacco, double GuerrieriDifesa, double GuerrieriSalute, int GuerrieriEsperienza,
+        public static (double GuerrieriAttacco, double GuerrieriDifesa, double GuerrieriSalute, int GuerrieriEsperienza,
                    double LancieriAttacco, double LancieriDifesa, double LancieriSalute, int LancieriEsperienza,
                    double ArcieriAttacco, double ArcieriDifesa, double ArcieriSalute, int ArcieriEsperienza,
                    double CatapulteAttacco, double CatapulteDifesa, double CatapulteSalute, int CatapulteEsperienza)
@@ -262,7 +262,7 @@ namespace Server_Strategico.ServerData.Moduli.Battaglie
                 _ => (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
             };
         }
-        private static (double GuerrieriAttacco, double GuerrieriDifesa, double GuerrieriSalute,
+        public static (double GuerrieriAttacco, double GuerrieriDifesa, double GuerrieriSalute,
                   double LancieriAttacco, double LancieriDifesa, double LancieriSalute,
                   double ArcieriAttacco, double ArcieriDifesa, double ArcieriSalute,
                   double CatapulteAttacco, double CatapulteDifesa, double CatapulteSalute)
@@ -280,21 +280,21 @@ namespace Server_Strategico.ServerData.Moduli.Battaglie
             };
 
             return ( // Applica i bonus delle ricerche
-                baseStats.Item1.Attacco + Ricerca.Soldati.Incremento.Attacco + (baseStats.Item1.Attacco * (1 + player.Bonus_Attacco_Guerrieri)), //Siamo siguri Incremento.Attacco * ? dovrebbe essere + ....
-                baseStats.Item1.Difesa + Ricerca.Soldati.Incremento.Difesa + (baseStats.Item1.Difesa * (1 + player.Bonus_Difesa_Guerrieri)),
-                baseStats.Item1.Salute + Ricerca.Soldati.Incremento.Salute + (baseStats.Item1.Salute * (1 + player.Bonus_Salute_Guerrieri)),
+                baseStats.Item1.Attacco + Ricerca.Soldati.Incremento.Attacco + (baseStats.Item1.Attacco * player.Bonus_Attacco_Guerrieri), //Siamo siguri Incremento.Attacco * ? dovrebbe essere + ....
+                baseStats.Item1.Difesa + Ricerca.Soldati.Incremento.Difesa + (baseStats.Item1.Difesa * player.Bonus_Difesa_Guerrieri),
+                baseStats.Item1.Salute + Ricerca.Soldati.Incremento.Salute + (baseStats.Item1.Salute * player.Bonus_Salute_Guerrieri),
 
-                baseStats.Item2.Attacco + Ricerca.Soldati.Incremento.Attacco + (baseStats.Item2.Attacco * (1 + player.Bonus_Attacco_Lanceri)),
-                baseStats.Item2.Difesa + Ricerca.Soldati.Incremento.Difesa + (baseStats.Item2.Difesa * (1 + player.Bonus_Difesa_Lanceri)),
-                baseStats.Item2.Salute + Ricerca.Soldati.Incremento.Salute + (baseStats.Item2.Salute * (1 + player.Bonus_Salute_Lanceri)),
+                baseStats.Item2.Attacco + Ricerca.Soldati.Incremento.Attacco + (baseStats.Item2.Attacco * player.Bonus_Attacco_Lanceri),
+                baseStats.Item2.Difesa + Ricerca.Soldati.Incremento.Difesa + (baseStats.Item2.Difesa * player.Bonus_Difesa_Lanceri),
+                baseStats.Item2.Salute + Ricerca.Soldati.Incremento.Salute + (baseStats.Item2.Salute * player.Bonus_Salute_Lanceri),
 
-                baseStats.Item3.Attacco + Ricerca.Soldati.Incremento.Attacco + (baseStats.Item3.Attacco * (1 + player.Bonus_Attacco_Arceri)),
-                baseStats.Item3.Difesa + Ricerca.Soldati.Incremento.Difesa + (baseStats.Item3.Difesa * (1 + player.Bonus_Difesa_Arceri)),
-                baseStats.Item3.Salute + Ricerca.Soldati.Incremento.Salute + (baseStats.Item3.Salute * (1 + player.Bonus_Salute_Arceri)),
+                baseStats.Item3.Attacco + Ricerca.Soldati.Incremento.Attacco + (baseStats.Item3.Attacco * player.Bonus_Attacco_Arceri),
+                baseStats.Item3.Difesa + Ricerca.Soldati.Incremento.Difesa + (baseStats.Item3.Difesa * player.Bonus_Difesa_Arceri),
+                baseStats.Item3.Salute + Ricerca.Soldati.Incremento.Salute + (baseStats.Item3.Salute * player.Bonus_Salute_Arceri),
 
-                baseStats.Item4.Attacco + Ricerca.Soldati.Incremento.Attacco + (baseStats.Item4.Attacco * (1 + player.Bonus_Attacco_Catapulte)),
-                baseStats.Item4.Difesa + Ricerca.Soldati.Incremento.Difesa + (baseStats.Item4.Difesa * (1 + player.Bonus_Difesa_Catapulte)),
-                baseStats.Item4.Salute + Ricerca.Soldati.Incremento.Salute + (baseStats.Item4.Salute * (1 + player.Bonus_Salute_Catapulte))
+                baseStats.Item4.Attacco + Ricerca.Soldati.Incremento.Attacco + (baseStats.Item4.Attacco * player.Bonus_Attacco_Catapulte),
+                baseStats.Item4.Difesa + Ricerca.Soldati.Incremento.Difesa + (baseStats.Item4.Difesa * player.Bonus_Difesa_Catapulte),
+                baseStats.Item4.Salute + Ricerca.Soldati.Incremento.Salute + (baseStats.Item4.Salute * player.Bonus_Salute_Catapulte)
             );
         }
         static int CalcoloFrecce(UnitGroup unità)
@@ -498,9 +498,9 @@ namespace Server_Strategico.ServerData.Moduli.Battaglie
             }
             return battle;
         }
-        private static void AssegnaRisorseVittoria_PvP(Giocatori.Player attaccante, Giocatori.Player difensore, Guid attackerGuid, UnitGroup sopravvissuti)
+        private static async Task<Report> AssegnaRisorseVittoria_PvP(Giocatori.Player attaccante, Giocatori.Player difensore, Guid attackerGuid, UnitGroup sopravvissuti, Report report)
         {
-            int capacitàCarico = CapacitàCarico(sopravvissuti, attaccante);
+            int capacitàCarico = CapacitàCarico(sopravvissuti, attaccante) / 5;
             int capacitàOriginale = capacitàCarico;
 
             // Il 50% delle risorse del difensore può essere rubato
@@ -584,33 +584,38 @@ namespace Server_Strategico.ServerData.Moduli.Battaglie
             if (raccolte.Diamanti_Blu > 0) SendClient(attackerGuid, $"Log_Server|Diamanti Blu:    +[blu][icon:diamanteBlu]{raccolte.Diamanti_Blu:N0}[/blu]");
             if (raccolte.Diamanti_Viola > 0) SendClient(attackerGuid, $"Log_Server|Diamanti Viola:    +[viola][icon:diamanteViola]{raccolte.Diamanti_Viola:N0}[/viola]");
             SendClient(attackerGuid, "Log_Server|════════════════════════════════════════════════════\n");
+
+            report.Battaglia.Risorse_Raccolte = raccolte;
+            report.Battaglia.Risorse_Raccolte.Capacità_Carico = capacitàOriginale;
+            report.Battaglia.Risorse_Raccolte.Capacità_Carico_Usata = pesoUtilizzato;
+            return report;
         }
         static int CapacitàCarico(UnitGroup playerUnits, Giocatori.Player player)
         {
             int capacitàCarico = 0;
-            capacitàCarico += (int)(playerUnits.Guerrieri[0] * Esercito.Unità.Guerriero_1.Trasporto * ((1 + player.Ricerca_Trasporto) * Ricerca.Tipi.Incremento.Trasporto));
-            capacitàCarico += (int)(playerUnits.Guerrieri[1] * Esercito.Unità.Guerriero_2.Trasporto * ((1 + player.Ricerca_Trasporto) * Ricerca.Tipi.Incremento.Trasporto));
-            capacitàCarico += (int)(playerUnits.Guerrieri[2] * Esercito.Unità.Guerriero_3.Trasporto * ((1 + player.Ricerca_Trasporto) * Ricerca.Tipi.Incremento.Trasporto));
-            capacitàCarico += (int)(playerUnits.Guerrieri[3] * Esercito.Unità.Guerriero_4.Trasporto * ((1 + player.Ricerca_Trasporto) * Ricerca.Tipi.Incremento.Trasporto));
-            capacitàCarico += (int)(playerUnits.Guerrieri[4] * Esercito.Unità.Guerriero_5.Trasporto * ((1 + player.Ricerca_Trasporto) * Ricerca.Tipi.Incremento.Trasporto));
+            capacitàCarico += (int)(playerUnits.Guerrieri[0] * Esercito.Unità.Guerriero_1.Trasporto * ((player.Ricerca_Trasporto) * Ricerca.Tipi.Incremento.Trasporto));
+            capacitàCarico += (int)(playerUnits.Guerrieri[1] * Esercito.Unità.Guerriero_2.Trasporto * ((player.Ricerca_Trasporto) * Ricerca.Tipi.Incremento.Trasporto));
+            capacitàCarico += (int)(playerUnits.Guerrieri[2] * Esercito.Unità.Guerriero_3.Trasporto * ((player.Ricerca_Trasporto) * Ricerca.Tipi.Incremento.Trasporto));
+            capacitàCarico += (int)(playerUnits.Guerrieri[3] * Esercito.Unità.Guerriero_4.Trasporto * ((player.Ricerca_Trasporto) * Ricerca.Tipi.Incremento.Trasporto));
+            capacitàCarico += (int)(playerUnits.Guerrieri[4] * Esercito.Unità.Guerriero_5.Trasporto * ((player.Ricerca_Trasporto) * Ricerca.Tipi.Incremento.Trasporto));
 
-            capacitàCarico += (int)(playerUnits.Lancieri[0] * Esercito.Unità.Lancere_1.Trasporto * ((1 + player.Ricerca_Trasporto) * Ricerca.Tipi.Incremento.Trasporto));
-            capacitàCarico += (int)(playerUnits.Lancieri[1] * Esercito.Unità.Lancere_2.Trasporto * ((1 + player.Ricerca_Trasporto) * Ricerca.Tipi.Incremento.Trasporto));
-            capacitàCarico += (int)(playerUnits.Lancieri[2] * Esercito.Unità.Lancere_3.Trasporto * ((1 + player.Ricerca_Trasporto) * Ricerca.Tipi.Incremento.Trasporto));
-            capacitàCarico += (int)(playerUnits.Lancieri[3] * Esercito.Unità.Lancere_4.Trasporto * ((1 + player.Ricerca_Trasporto) * Ricerca.Tipi.Incremento.Trasporto));
-            capacitàCarico += (int)(playerUnits.Lancieri[4] * Esercito.Unità.Lancere_5.Trasporto * ((1 + player.Ricerca_Trasporto) * Ricerca.Tipi.Incremento.Trasporto));
+            capacitàCarico += (int)(playerUnits.Lancieri[0] * Esercito.Unità.Lancere_1.Trasporto * ((player.Ricerca_Trasporto) * Ricerca.Tipi.Incremento.Trasporto));
+            capacitàCarico += (int)(playerUnits.Lancieri[1] * Esercito.Unità.Lancere_2.Trasporto * ((player.Ricerca_Trasporto) * Ricerca.Tipi.Incremento.Trasporto));
+            capacitàCarico += (int)(playerUnits.Lancieri[2] * Esercito.Unità.Lancere_3.Trasporto * ((player.Ricerca_Trasporto) * Ricerca.Tipi.Incremento.Trasporto));
+            capacitàCarico += (int)(playerUnits.Lancieri[3] * Esercito.Unità.Lancere_4.Trasporto * ((player.Ricerca_Trasporto) * Ricerca.Tipi.Incremento.Trasporto));
+            capacitàCarico += (int)(playerUnits.Lancieri[4] * Esercito.Unità.Lancere_5.Trasporto * ((player.Ricerca_Trasporto) * Ricerca.Tipi.Incremento.Trasporto));
 
-            capacitàCarico += (int)(playerUnits.Arcieri[0] * Esercito.Unità.Arcere_1.Trasporto * ((1 + player.Ricerca_Trasporto) * Ricerca.Tipi.Incremento.Trasporto));
-            capacitàCarico += (int)(playerUnits.Arcieri[1] * Esercito.Unità.Arcere_2.Trasporto * ((1 + player.Ricerca_Trasporto) * Ricerca.Tipi.Incremento.Trasporto));
-            capacitàCarico += (int)(playerUnits.Arcieri[2] * Esercito.Unità.Arcere_3.Trasporto * ((1 + player.Ricerca_Trasporto) * Ricerca.Tipi.Incremento.Trasporto));
-            capacitàCarico += (int)(playerUnits.Arcieri[3] * Esercito.Unità.Arcere_4.Trasporto * ((1 + player.Ricerca_Trasporto) * Ricerca.Tipi.Incremento.Trasporto));
-            capacitàCarico += (int)(playerUnits.Arcieri[4] * Esercito.Unità.Arcere_5.Trasporto * ((1 + player.Ricerca_Trasporto) * Ricerca.Tipi.Incremento.Trasporto));
+            capacitàCarico += (int)(playerUnits.Arcieri[0] * Esercito.Unità.Arcere_1.Trasporto * ((player.Ricerca_Trasporto) * Ricerca.Tipi.Incremento.Trasporto));
+            capacitàCarico += (int)(playerUnits.Arcieri[1] * Esercito.Unità.Arcere_2.Trasporto * ((player.Ricerca_Trasporto) * Ricerca.Tipi.Incremento.Trasporto));
+            capacitàCarico += (int)(playerUnits.Arcieri[2] * Esercito.Unità.Arcere_3.Trasporto * ((player.Ricerca_Trasporto) * Ricerca.Tipi.Incremento.Trasporto));
+            capacitàCarico += (int)(playerUnits.Arcieri[3] * Esercito.Unità.Arcere_4.Trasporto * ((player.Ricerca_Trasporto) * Ricerca.Tipi.Incremento.Trasporto));
+            capacitàCarico += (int)(playerUnits.Arcieri[4] * Esercito.Unità.Arcere_5.Trasporto * ((player.Ricerca_Trasporto) * Ricerca.Tipi.Incremento.Trasporto));
 
-            capacitàCarico += (int)(playerUnits.Catapulte[0] * Esercito.Unità.Catapulta_1.Trasporto * ((1 + player.Ricerca_Trasporto) * Ricerca.Tipi.Incremento.Trasporto));
-            capacitàCarico += (int)(playerUnits.Catapulte[1] * Esercito.Unità.Catapulta_2.Trasporto * ((1 + player.Ricerca_Trasporto) * Ricerca.Tipi.Incremento.Trasporto));
-            capacitàCarico += (int)(playerUnits.Catapulte[2] * Esercito.Unità.Catapulta_3.Trasporto * ((1 + player.Ricerca_Trasporto) * Ricerca.Tipi.Incremento.Trasporto));
-            capacitàCarico += (int)(playerUnits.Catapulte[3] * Esercito.Unità.Catapulta_4.Trasporto * ((1 + player.Ricerca_Trasporto) * Ricerca.Tipi.Incremento.Trasporto));
-            capacitàCarico += (int)(playerUnits.Catapulte[4] * Esercito.Unità.Catapulta_5.Trasporto * ((1 + player.Ricerca_Trasporto) * Ricerca.Tipi.Incremento.Trasporto));
+            capacitàCarico += (int)(playerUnits.Catapulte[0] * Esercito.Unità.Catapulta_1.Trasporto * ((player.Ricerca_Trasporto) * Ricerca.Tipi.Incremento.Trasporto));
+            capacitàCarico += (int)(playerUnits.Catapulte[1] * Esercito.Unità.Catapulta_2.Trasporto * ((player.Ricerca_Trasporto) * Ricerca.Tipi.Incremento.Trasporto));
+            capacitàCarico += (int)(playerUnits.Catapulte[2] * Esercito.Unità.Catapulta_3.Trasporto * ((player.Ricerca_Trasporto) * Ricerca.Tipi.Incremento.Trasporto));
+            capacitàCarico += (int)(playerUnits.Catapulte[3] * Esercito.Unità.Catapulta_4.Trasporto * ((player.Ricerca_Trasporto) * Ricerca.Tipi.Incremento.Trasporto));
+            capacitàCarico += (int)(playerUnits.Catapulte[4] * Esercito.Unità.Catapulta_5.Trasporto * ((player.Ricerca_Trasporto) * Ricerca.Tipi.Incremento.Trasporto));
             return (int)(capacitàCarico * (1 + player.Bonus_Capacità_Trasporto));//Aggiunge bonus trasporto
         }
         public static double CalcolaForza(UnitGroup units, double pesoAttacco = 0.8, double pesoDifesa = 0.5, double pesoSalute = 0.3)
@@ -799,11 +804,15 @@ namespace Server_Strategico.ServerData.Moduli.Battaglie
 
             //Calcolo forza attaccante/difensore...
             report.Battaglia.Forza_Attaccante = CalcolaForza(attackerUnits);
+            report.Battaglia.Forza_Attaccante_Finale = CalcolaForza(fase_ultima.Attaccante.Sopravvisuti);
             foreach (var f in report.Battaglia.Fasi)
-                report.Battaglia.Forza_Difensore += CalcolaForza(f.Difensore.Schierati);
+            {
+                report.Battaglia.Forza_Difensore += CalcolaForza(f.Fase_Distanza.Difensore_Schierati);
+                report.Battaglia.Forza_Difensore_Finale += CalcolaForza(f.Difensore.Sopravvisuti);
+            }
 
             //3: Risorse Battaglia
-            if (report.Battaglia.Vittoria_Attaccante) AssegnaRisorseVittoria_PvP(attaccante, difensore, attaccante.guid_Player, fase.Attaccante.Sopravvisuti);
+            if (report.Battaglia.Vittoria_Attaccante) report = await AssegnaRisorseVittoria_PvP(attaccante, difensore, attaccante.guid_Player, fase.Attaccante.Sopravvisuti, report);
 
             //Aggiornamento dati attaccante
             numeroFasi = report.Battaglia.Fasi.Count;
@@ -821,7 +830,7 @@ namespace Server_Strategico.ServerData.Moduli.Battaglie
             attaccante.Report.Add(report);
             difensore.Report.Add(report);
 
-            AggiornaDatiGiocatori(attaccante, difensore, report);//Statistiche 
+            AggiornaDatiGiocatori(attaccante, difensore, report); //Statistiche 
 
             //Quest
             OnEvent(attaccante, QuestEventType.Battaglie, "Attacco Giocatore", 1); //Quest
@@ -889,13 +898,13 @@ namespace Server_Strategico.ServerData.Moduli.Battaglie
             {
                 Struttura = struttura switch
                 {
-                    1 => new Edificio { Nome = "Ingresso", Guarnigione = defenderUnits.TotalUnits() },
-                    2 => new Edificio { Nome = "Mura", Salute = fase.Struttura.Salute, Difesa = fase.Struttura.Difesa, Guarnigione = defenderUnits.TotalUnits() },
-                    3 => new Edificio { Nome = "Cancello", Salute = fase.Struttura.Salute, Difesa = fase.Struttura.Difesa, Guarnigione = defenderUnits.TotalUnits() },
-                    4 => new Edificio { Nome = "Torri", Salute = fase.Struttura.Salute, Difesa = fase.Struttura.Difesa, Guarnigione = defenderUnits.TotalUnits() },
-                    5 => new Edificio { Nome = "Centro Villaggio", Guarnigione = defenderUnits.TotalUnits() },
-                    6 => new Edificio { Nome = "Castello", Salute = fase.Struttura.Salute, Difesa = fase.Struttura.Difesa, Guarnigione = defenderUnits.TotalUnits() },
-                    7 => new Edificio { Nome = "Villaggio", Guarnigione = defenderUnits.TotalUnits() }
+                    1 => new Villaggio { Nome = "Ingresso", Guarnigione = defenderUnits.TotalUnits() },
+                    2 => new Villaggio { Nome = "Mura", Salute = difensore.Salute_Mura, SaluteMax = difensore.Salute_MuraMax, Difesa = difensore.Difesa_Mura, DifesaMax = difensore.Difesa_MuraMax, Guarnigione = defenderUnits.TotalUnits() },
+                    3 => new Villaggio { Nome = "Cancello", Salute = difensore.Salute_Cancello, SaluteMax = difensore.Difesa_CancelloMax, Difesa = difensore.Difesa_Cancello, DifesaMax = difensore.Difesa_CancelloMax, Guarnigione = defenderUnits.TotalUnits() },
+                    4 => new Villaggio { Nome = "Torri", Salute = difensore.Salute_Torri, SaluteMax = difensore.Salute_TorriMax, Difesa = difensore.Difesa_Torri, DifesaMax = difensore.Difesa_TorriMax, Guarnigione = defenderUnits.TotalUnits() },
+                    5 => new Villaggio { Nome = "Centro Villaggio", Guarnigione = defenderUnits.TotalUnits() },
+                    6 => new Villaggio { Nome = "Castello", Salute = difensore.Salute_Castello, SaluteMax = difensore.Salute_CastelloMax, Difesa = difensore.Difesa_Castello, DifesaMax = difensore.Difesa_CastelloMax, Guarnigione = defenderUnits.TotalUnits() },
+                    7 => new Villaggio { Nome = "Villaggio", Guarnigione = defenderUnits.TotalUnits() }
                 }
             };
 
@@ -941,8 +950,13 @@ namespace Server_Strategico.ServerData.Moduli.Battaglie
             {
                 result.Attaccante_Sopravvisuti.Guerrieri[i] = result.Attaccante_Schierati.Guerrieri[i] - result.Attaccante_Morti.Guerrieri[i];
                 result.Attaccante_Sopravvisuti.Lancieri[i] = result.Attaccante_Schierati.Lancieri[i] - result.Attaccante_Morti.Lancieri[i];
+                result.Attaccante_Sopravvisuti.Arcieri[i] = result.Attaccante_Schierati.Arcieri[i] - result.Attaccante_Morti.Arcieri[i];
+                result.Attaccante_Sopravvisuti.Catapulte[i] = result.Attaccante_Schierati.Catapulte[i] - result.Attaccante_Morti.Catapulte[i];
+
                 result.Difensore_Sopravvisuti.Guerrieri[i] = result.Difensore_Schierati.Guerrieri[i] - result.Difensore_Morti.Guerrieri[i];
                 result.Difensore_Sopravvisuti.Lancieri[i] = result.Difensore_Schierati.Lancieri[i] - result.Difensore_Morti.Lancieri[i];
+                result.Difensore_Sopravvisuti.Arcieri[i] = result.Difensore_Schierati.Arcieri[i] - result.Difensore_Morti.Arcieri[i];
+                result.Difensore_Sopravvisuti.Catapulte[i] = result.Difensore_Schierati.Catapulte[i] - result.Difensore_Morti.Catapulte[i];
             }
             result.Attaccante_Sopravvisuti.Arcieri = result.Attaccante_Schierati.Arcieri;
             result.Attaccante_Sopravvisuti.Catapulte = result.Attaccante_Schierati.Catapulte;
@@ -1021,9 +1035,34 @@ namespace Server_Strategico.ServerData.Moduli.Battaglie
 
         public static async void TestBattaglia()
         {
+            //Aggiungere giocatore x test
+            bool test2 = await Server.ServerConnection.New_Player("TEST", "123", Guid.Empty);
+            var attaccante = Server.Server.servers_.GetPlayer_Data("TEST");
+
+            bool test1 = await Server.ServerConnection.New_Player("adly", "123", Guid.Empty);
+            var difensore = Server.Server.servers_.GetPlayer_Data("adly");
+
             int[] guerrieri = new int[] { 60, 0, 0, 0, 0 };
             int[] picchieri = new int[] { 50, 0, 0, 0, 0 };
-            int[] arcieri = new int[]   { 15, 0, 0, 0, 0 };
+            int[] arcieri = new int[] { 15, 0, 0, 0, 0 };
+            int[] catapulte = new int[] { 10, 0, 0, 0, 0 };
+
+            var attackerUnits = new UnitGroup
+            {
+                Guerrieri = guerrieri,
+                Lancieri = picchieri,
+                Arcieri = arcieri,
+                Catapulte = catapulte
+            };
+            AddTroops(difensore);
+            AddTroops(attaccante);
+            await Battaglia(attaccante, difensore, attackerUnits);
+        }
+        public static void AddTroops(Giocatori.Player difensore)
+        {
+            int[] guerrieri = new int[] { 60, 0, 0, 0, 0 };
+            int[] picchieri = new int[] { 50, 0, 0, 0, 0 };
+            int[] arcieri = new int[] { 15, 0, 0, 0, 0 };
             int[] catapulte = new int[] { 10, 0, 0, 0, 0 };
 
             var unitàStrutture = new UnitGroup
@@ -1041,8 +1080,6 @@ namespace Server_Strategico.ServerData.Moduli.Battaglie
                 Catapulte = new int[] { 10, 0, 0, 0, 0 }
             };
 
-            bool test1 = await Server.ServerConnection.New_Player("adly", "123", Guid.Empty);
-            var difensore = Server.Server.servers_.GetPlayer_Data("adly");
             difensore.Guerrieri_Ingresso = unitàStrutture.Guerrieri;
             difensore.Lanceri_Ingresso = unitàStrutture.Lancieri;
             difensore.Arceri_Ingresso = unitàStrutture.Arcieri;
@@ -1070,22 +1107,22 @@ namespace Server_Strategico.ServerData.Moduli.Battaglie
             difensore.Guerrieri = unitàDifensore.Guerrieri;
             difensore.Lanceri = unitàDifensore.Lancieri;
             difensore.Arceri = unitàDifensore.Arcieri;
+            difensore.Catapulte = unitàDifensore.Catapulte;
+
+            difensore.Salute_Mura = difensore.Salute_MuraMax;
+            difensore.Difesa_Mura = difensore.Difesa_MuraMax;
+
+            difensore.Salute_Cancello = difensore.Salute_CancelloMax;
+            difensore.Difesa_Cancello = difensore.Difesa_CancelloMax;
+
+            difensore.Salute_Torri = difensore.Salute_TorriMax;
+            difensore.Difesa_Torri = difensore.Difesa_TorriMax;
+
+            difensore.Salute_Castello = difensore.Salute_CastelloMax;
+            difensore.Difesa_Castello = difensore.Difesa_CastelloMax;
 
             difensore.Frecce = 5000;
-
-            //Aggiungere giocatore x test
-            bool test2 = await Server.ServerConnection.New_Player("TEST", "123", Guid.Empty);
-
-            var attaccante = Server.Server.servers_.GetPlayer_Data("TEST");
-            attaccante.Frecce = 5000;
-
-            var attackerUnits = new UnitGroup
-            {
-                Guerrieri = guerrieri,
-                Lancieri = picchieri,
-                Arcieri = arcieri,
-                Catapulte = catapulte
-            };
+            
             var DefenderUnits = new UnitGroup()
             {
                 Guerrieri = guerrieri,
@@ -1093,8 +1130,6 @@ namespace Server_Strategico.ServerData.Moduli.Battaglie
                 Arcieri = arcieri,
                 Catapulte = catapulte
             };
-
-            await Battaglia(attaccante, difensore, attackerUnits);
         }
     }
 }
