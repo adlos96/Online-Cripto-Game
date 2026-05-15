@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Log_Esplorazione));
             lbl_Spionaggio_Testo = new Label();
             lbl_Spionaggio_Valore = new Label();
-            doubleBufferedPanel6 = new Warrior_and_Wealth.Strumenti.DoubleBufferedPanel();
+            panel_Risorse = new Warrior_and_Wealth.Strumenti.DoubleBufferedPanel();
             lbl_Spade = new Label();
             lbl_Diamanti_Blu = new Label();
             doubleBufferedPanel1 = new Warrior_and_Wealth.Strumenti.DoubleBufferedPanel();
@@ -59,7 +59,7 @@
             txt_Titolo = new TextBox();
             panel1 = new Panel();
             lbl_Villaggio = new Label();
-            doubleBufferedPanel7 = new Warrior_and_Wealth.Strumenti.DoubleBufferedPanel();
+            panel_Fasi = new Warrior_and_Wealth.Strumenti.DoubleBufferedPanel();
             lbl_Ingresso = new Label();
             label6 = new Label();
             lbl_Mura = new Label();
@@ -69,13 +69,13 @@
             lbl_Castello = new Label();
             lbl_Centro = new Label();
             label45 = new Label();
-            doubleBufferedPanel9 = new Warrior_and_Wealth.Strumenti.DoubleBufferedPanel();
+            panel_Fasi_Stats = new Warrior_and_Wealth.Strumenti.DoubleBufferedPanel();
             lbl_Fase_Statistiche = new Label();
             lbl_Fase_Testo = new Label();
             lbl_Fase_Valore = new Label();
             lbl_Fase_Unità_Testo = new Label();
             lbl_Fase_Unità_Valore = new Label();
-            doubleBufferedPanel10 = new Warrior_and_Wealth.Strumenti.DoubleBufferedPanel();
+            panel_Unità = new Warrior_and_Wealth.Strumenti.DoubleBufferedPanel();
             lbl_Livello_Truppe_All = new Label();
             lbl_Livello_Truppe_1 = new Label();
             lbl_Livello_Truppe_2 = new Label();
@@ -84,56 +84,59 @@
             lbl_Livello_Truppe_4 = new Label();
             lbl_Strutture_Civile_Militare = new Label();
             label32 = new Label();
-            doubleBufferedPanel8 = new Warrior_and_Wealth.Strumenti.DoubleBufferedPanel();
-            doubleBufferedPanel15 = new Warrior_and_Wealth.Strumenti.DoubleBufferedPanel();
+            panel_Strutture = new Warrior_and_Wealth.Strumenti.DoubleBufferedPanel();
+            ico_Edificio_6 = new Warrior_and_Wealth.Strumenti.DoubleBufferedPanel();
             lbl_Abitazioni = new Label();
-            doubleBufferedPanel16 = new Warrior_and_Wealth.Strumenti.DoubleBufferedPanel();
+            ico_Edificio_5 = new Warrior_and_Wealth.Strumenti.DoubleBufferedPanel();
             lbl_Miniera_Oro = new Label();
-            doubleBufferedPanel13 = new Warrior_and_Wealth.Strumenti.DoubleBufferedPanel();
+            ico_Edificio_4 = new Warrior_and_Wealth.Strumenti.DoubleBufferedPanel();
             lbl_Miniera_Ferro = new Label();
-            doubleBufferedPanel14 = new Warrior_and_Wealth.Strumenti.DoubleBufferedPanel();
+            ico_Edificio_3 = new Warrior_and_Wealth.Strumenti.DoubleBufferedPanel();
             lbl_Cava = new Label();
-            doubleBufferedPanel12 = new Warrior_and_Wealth.Strumenti.DoubleBufferedPanel();
+            ico_Edificio_2 = new Warrior_and_Wealth.Strumenti.DoubleBufferedPanel();
             lbl_Segheria = new Label();
-            doubleBufferedPanel11 = new Warrior_and_Wealth.Strumenti.DoubleBufferedPanel();
+            ico_Edificio_1 = new Warrior_and_Wealth.Strumenti.DoubleBufferedPanel();
             lbl_Fattoria = new Label();
             btn_Strutture_Civile_Militare = new Button();
             label48 = new Label();
-            doubleBufferedPanel17 = new Warrior_and_Wealth.Strumenti.DoubleBufferedPanel();
-            doubleBufferedPanel20 = new Warrior_and_Wealth.Strumenti.DoubleBufferedPanel();
+            panel_Caserme = new Warrior_and_Wealth.Strumenti.DoubleBufferedPanel();
+            ico_Caserma_4 = new Warrior_and_Wealth.Strumenti.DoubleBufferedPanel();
             lbl_Caserma_Catapulte = new Label();
-            doubleBufferedPanel21 = new Warrior_and_Wealth.Strumenti.DoubleBufferedPanel();
+            ico_Caserma_3 = new Warrior_and_Wealth.Strumenti.DoubleBufferedPanel();
             lbl_Caserma_Arceri = new Label();
-            doubleBufferedPanel22 = new Warrior_and_Wealth.Strumenti.DoubleBufferedPanel();
+            ico_Caserma_2 = new Warrior_and_Wealth.Strumenti.DoubleBufferedPanel();
             lbl_Caserma_Lanceri = new Label();
-            doubleBufferedPanel23 = new Warrior_and_Wealth.Strumenti.DoubleBufferedPanel();
+            ico_Caserma_1 = new Warrior_and_Wealth.Strumenti.DoubleBufferedPanel();
             lbl_Caserma_Guerrieri = new Label();
-            label3 = new Label();
+            lbl_Caserme = new Label();
             label53 = new Label();
-            doubleBufferedPanel18 = new Warrior_and_Wealth.Strumenti.DoubleBufferedPanel();
+            panel_Villaggio = new Warrior_and_Wealth.Strumenti.DoubleBufferedPanel();
             lbl_Ricerca_Villaggio_Valore = new Label();
             lbl_Rcerca_Villaggio_Testo = new Label();
             lbl_Ricerca_Villaggio = new Label();
             label55 = new Label();
-            doubleBufferedPanel19 = new Warrior_and_Wealth.Strumenti.DoubleBufferedPanel();
+            panel_Ricerca = new Warrior_and_Wealth.Strumenti.DoubleBufferedPanel();
             lbl_Ricerca_Base_Valore = new Label();
             lbl_Ricerca_Base_Testo = new Label();
             lbl_Ricerca_Civile = new Label();
             label60 = new Label();
-            doubleBufferedPanel24 = new Warrior_and_Wealth.Strumenti.DoubleBufferedPanel();
+            panel_Bonus = new Warrior_and_Wealth.Strumenti.DoubleBufferedPanel();
             lbl_Bonus_Valore = new Label();
             lbl_Bonus_Testo = new Label();
             lbl_Bonus = new Label();
-            doubleBufferedPanel6.SuspendLayout();
+            Ricerca_Civ_Mil = new Button();
+            lbl_Spionaggio_Fallito = new Warrior_and_Wealth.Strumenti.TransparentLabel();
+            lbl_Spionaggio_Fallito_Desc = new Warrior_and_Wealth.Strumenti.TransparentLabel();
+            panel_Risorse.SuspendLayout();
             panel1.SuspendLayout();
-            doubleBufferedPanel7.SuspendLayout();
-            doubleBufferedPanel9.SuspendLayout();
-            doubleBufferedPanel10.SuspendLayout();
-            doubleBufferedPanel8.SuspendLayout();
-            doubleBufferedPanel17.SuspendLayout();
-            doubleBufferedPanel18.SuspendLayout();
-            doubleBufferedPanel19.SuspendLayout();
-            doubleBufferedPanel24.SuspendLayout();
+            panel_Fasi.SuspendLayout();
+            panel_Fasi_Stats.SuspendLayout();
+            panel_Unità.SuspendLayout();
+            panel_Strutture.SuspendLayout();
+            panel_Caserme.SuspendLayout();
+            panel_Villaggio.SuspendLayout();
+            panel_Ricerca.SuspendLayout();
+            panel_Bonus.SuspendLayout();
             SuspendLayout();
             // 
             // lbl_Spionaggio_Testo
@@ -162,40 +165,40 @@
             lbl_Spionaggio_Valore.TabIndex = 4;
             lbl_Spionaggio_Valore.Text = "100\r\n100";
             // 
-            // doubleBufferedPanel6
+            // panel_Risorse
             // 
-            doubleBufferedPanel6.Anchor = AnchorStyles.None;
-            doubleBufferedPanel6.BackColor = Color.Transparent;
-            doubleBufferedPanel6.BackgroundImageLayout = ImageLayout.Center;
-            doubleBufferedPanel6.Controls.Add(lbl_Spade);
-            doubleBufferedPanel6.Controls.Add(lbl_Diamanti_Blu);
-            doubleBufferedPanel6.Controls.Add(doubleBufferedPanel1);
-            doubleBufferedPanel6.Controls.Add(doubleBufferedPanel2);
-            doubleBufferedPanel6.Controls.Add(doubleBufferedPanel3);
-            doubleBufferedPanel6.Controls.Add(ico_11);
-            doubleBufferedPanel6.Controls.Add(doubleBufferedPanel4);
-            doubleBufferedPanel6.Controls.Add(doubleBufferedPanel5);
-            doubleBufferedPanel6.Controls.Add(ico_12);
-            doubleBufferedPanel6.Controls.Add(lbl_Lance);
-            doubleBufferedPanel6.Controls.Add(lbl_Diamanti_Viola);
-            doubleBufferedPanel6.Controls.Add(lbl_Archi);
-            doubleBufferedPanel6.Controls.Add(lbl_Frecce);
-            doubleBufferedPanel6.Controls.Add(lbl_Popolazione);
-            doubleBufferedPanel6.Controls.Add(lbl_Cibo);
-            doubleBufferedPanel6.Controls.Add(ico_2);
-            doubleBufferedPanel6.Controls.Add(ico_3);
-            doubleBufferedPanel6.Controls.Add(ico_4);
-            doubleBufferedPanel6.Controls.Add(ico_1);
-            doubleBufferedPanel6.Controls.Add(ico_5);
-            doubleBufferedPanel6.Controls.Add(lbl_Legno);
-            doubleBufferedPanel6.Controls.Add(lbl_Pietra);
-            doubleBufferedPanel6.Controls.Add(lbl_Ferro);
-            doubleBufferedPanel6.Controls.Add(lbl_Oro);
-            doubleBufferedPanel6.Location = new Point(16, 122);
-            doubleBufferedPanel6.Margin = new Padding(2, 3, 2, 3);
-            doubleBufferedPanel6.Name = "doubleBufferedPanel6";
-            doubleBufferedPanel6.Size = new Size(735, 80);
-            doubleBufferedPanel6.TabIndex = 65;
+            panel_Risorse.Anchor = AnchorStyles.None;
+            panel_Risorse.BackColor = Color.Transparent;
+            panel_Risorse.BackgroundImageLayout = ImageLayout.Center;
+            panel_Risorse.Controls.Add(lbl_Spade);
+            panel_Risorse.Controls.Add(lbl_Diamanti_Blu);
+            panel_Risorse.Controls.Add(doubleBufferedPanel1);
+            panel_Risorse.Controls.Add(doubleBufferedPanel2);
+            panel_Risorse.Controls.Add(doubleBufferedPanel3);
+            panel_Risorse.Controls.Add(ico_11);
+            panel_Risorse.Controls.Add(doubleBufferedPanel4);
+            panel_Risorse.Controls.Add(doubleBufferedPanel5);
+            panel_Risorse.Controls.Add(ico_12);
+            panel_Risorse.Controls.Add(lbl_Lance);
+            panel_Risorse.Controls.Add(lbl_Diamanti_Viola);
+            panel_Risorse.Controls.Add(lbl_Archi);
+            panel_Risorse.Controls.Add(lbl_Frecce);
+            panel_Risorse.Controls.Add(lbl_Popolazione);
+            panel_Risorse.Controls.Add(lbl_Cibo);
+            panel_Risorse.Controls.Add(ico_2);
+            panel_Risorse.Controls.Add(ico_3);
+            panel_Risorse.Controls.Add(ico_4);
+            panel_Risorse.Controls.Add(ico_1);
+            panel_Risorse.Controls.Add(ico_5);
+            panel_Risorse.Controls.Add(lbl_Legno);
+            panel_Risorse.Controls.Add(lbl_Pietra);
+            panel_Risorse.Controls.Add(lbl_Ferro);
+            panel_Risorse.Controls.Add(lbl_Oro);
+            panel_Risorse.Location = new Point(16, 122);
+            panel_Risorse.Margin = new Padding(2, 3, 2, 3);
+            panel_Risorse.Name = "panel_Risorse";
+            panel_Risorse.Size = new Size(735, 80);
+            panel_Risorse.TabIndex = 65;
             // 
             // lbl_Spade
             // 
@@ -521,23 +524,23 @@
             lbl_Villaggio.TabIndex = 78;
             lbl_Villaggio.Text = "Villaggio: Adly\r\nLivello: 1 Esperienza: 500 xp";
             // 
-            // doubleBufferedPanel7
+            // panel_Fasi
             // 
-            doubleBufferedPanel7.Anchor = AnchorStyles.None;
-            doubleBufferedPanel7.BackColor = Color.Transparent;
-            doubleBufferedPanel7.Controls.Add(lbl_Ingresso);
-            doubleBufferedPanel7.Controls.Add(label6);
-            doubleBufferedPanel7.Controls.Add(lbl_Mura);
-            doubleBufferedPanel7.Controls.Add(lbl_Cancello);
-            doubleBufferedPanel7.Controls.Add(lbl_Giocatore);
-            doubleBufferedPanel7.Controls.Add(lbl_Torri);
-            doubleBufferedPanel7.Controls.Add(lbl_Castello);
-            doubleBufferedPanel7.Controls.Add(lbl_Centro);
-            doubleBufferedPanel7.Location = new Point(16, 96);
-            doubleBufferedPanel7.Margin = new Padding(2, 3, 2, 3);
-            doubleBufferedPanel7.Name = "doubleBufferedPanel7";
-            doubleBufferedPanel7.Size = new Size(735, 27);
-            doubleBufferedPanel7.TabIndex = 62;
+            panel_Fasi.Anchor = AnchorStyles.None;
+            panel_Fasi.BackColor = Color.Transparent;
+            panel_Fasi.Controls.Add(lbl_Ingresso);
+            panel_Fasi.Controls.Add(label6);
+            panel_Fasi.Controls.Add(lbl_Mura);
+            panel_Fasi.Controls.Add(lbl_Cancello);
+            panel_Fasi.Controls.Add(lbl_Giocatore);
+            panel_Fasi.Controls.Add(lbl_Torri);
+            panel_Fasi.Controls.Add(lbl_Castello);
+            panel_Fasi.Controls.Add(lbl_Centro);
+            panel_Fasi.Location = new Point(16, 96);
+            panel_Fasi.Margin = new Padding(2, 3, 2, 3);
+            panel_Fasi.Name = "panel_Fasi";
+            panel_Fasi.Size = new Size(735, 27);
+            panel_Fasi.TabIndex = 62;
             // 
             // lbl_Ingresso
             // 
@@ -664,21 +667,21 @@
             label45.TabIndex = 48;
             label45.Text = "Esperienza Fase: 500 xp";
             // 
-            // doubleBufferedPanel9
+            // panel_Fasi_Stats
             // 
-            doubleBufferedPanel9.Anchor = AnchorStyles.None;
-            doubleBufferedPanel9.BackColor = Color.Transparent;
-            doubleBufferedPanel9.Controls.Add(lbl_Fase_Statistiche);
-            doubleBufferedPanel9.Controls.Add(lbl_Fase_Testo);
-            doubleBufferedPanel9.Controls.Add(lbl_Fase_Valore);
-            doubleBufferedPanel9.Controls.Add(label45);
-            doubleBufferedPanel9.Controls.Add(lbl_Fase_Unità_Testo);
-            doubleBufferedPanel9.Controls.Add(lbl_Fase_Unità_Valore);
-            doubleBufferedPanel9.Location = new Point(43, 238);
-            doubleBufferedPanel9.Margin = new Padding(2, 3, 2, 3);
-            doubleBufferedPanel9.Name = "doubleBufferedPanel9";
-            doubleBufferedPanel9.Size = new Size(689, 93);
-            doubleBufferedPanel9.TabIndex = 64;
+            panel_Fasi_Stats.Anchor = AnchorStyles.None;
+            panel_Fasi_Stats.BackColor = Color.Transparent;
+            panel_Fasi_Stats.Controls.Add(lbl_Fase_Statistiche);
+            panel_Fasi_Stats.Controls.Add(lbl_Fase_Testo);
+            panel_Fasi_Stats.Controls.Add(lbl_Fase_Valore);
+            panel_Fasi_Stats.Controls.Add(label45);
+            panel_Fasi_Stats.Controls.Add(lbl_Fase_Unità_Testo);
+            panel_Fasi_Stats.Controls.Add(lbl_Fase_Unità_Valore);
+            panel_Fasi_Stats.Location = new Point(43, 238);
+            panel_Fasi_Stats.Margin = new Padding(2, 3, 2, 3);
+            panel_Fasi_Stats.Name = "panel_Fasi_Stats";
+            panel_Fasi_Stats.Size = new Size(689, 93);
+            panel_Fasi_Stats.TabIndex = 64;
             // 
             // lbl_Fase_Statistiche
             // 
@@ -745,20 +748,20 @@
             lbl_Fase_Unità_Valore.TabIndex = 42;
             lbl_Fase_Unità_Valore.Text = "80.000 - 60.000\r\n60.000 - 40.000\r\n40.000 - 20.000\r\n10.000 - 5.000";
             // 
-            // doubleBufferedPanel10
+            // panel_Unità
             // 
-            doubleBufferedPanel10.BackColor = Color.Transparent;
-            doubleBufferedPanel10.Controls.Add(lbl_Livello_Truppe_All);
-            doubleBufferedPanel10.Controls.Add(lbl_Livello_Truppe_1);
-            doubleBufferedPanel10.Controls.Add(lbl_Livello_Truppe_2);
-            doubleBufferedPanel10.Controls.Add(lbl_Livello_Truppe_5);
-            doubleBufferedPanel10.Controls.Add(lbl_Livello_Truppe_3);
-            doubleBufferedPanel10.Controls.Add(lbl_Livello_Truppe_4);
-            doubleBufferedPanel10.Location = new Point(307, 201);
-            doubleBufferedPanel10.Margin = new Padding(2, 3, 2, 3);
-            doubleBufferedPanel10.Name = "doubleBufferedPanel10";
-            doubleBufferedPanel10.Size = new Size(172, 36);
-            doubleBufferedPanel10.TabIndex = 66;
+            panel_Unità.BackColor = Color.Transparent;
+            panel_Unità.Controls.Add(lbl_Livello_Truppe_All);
+            panel_Unità.Controls.Add(lbl_Livello_Truppe_1);
+            panel_Unità.Controls.Add(lbl_Livello_Truppe_2);
+            panel_Unità.Controls.Add(lbl_Livello_Truppe_5);
+            panel_Unità.Controls.Add(lbl_Livello_Truppe_3);
+            panel_Unità.Controls.Add(lbl_Livello_Truppe_4);
+            panel_Unità.Location = new Point(307, 201);
+            panel_Unità.Margin = new Padding(2, 3, 2, 3);
+            panel_Unità.Name = "panel_Unità";
+            panel_Unità.Size = new Size(172, 36);
+            panel_Unità.TabIndex = 66;
             // 
             // lbl_Livello_Truppe_All
             // 
@@ -871,38 +874,38 @@
             label32.TabIndex = 48;
             label32.Text = "Esperienza Fase: 500 xp";
             // 
-            // doubleBufferedPanel8
+            // panel_Strutture
             // 
-            doubleBufferedPanel8.BackColor = Color.Transparent;
-            doubleBufferedPanel8.Controls.Add(doubleBufferedPanel15);
-            doubleBufferedPanel8.Controls.Add(lbl_Abitazioni);
-            doubleBufferedPanel8.Controls.Add(doubleBufferedPanel16);
-            doubleBufferedPanel8.Controls.Add(lbl_Miniera_Oro);
-            doubleBufferedPanel8.Controls.Add(doubleBufferedPanel13);
-            doubleBufferedPanel8.Controls.Add(lbl_Miniera_Ferro);
-            doubleBufferedPanel8.Controls.Add(doubleBufferedPanel14);
-            doubleBufferedPanel8.Controls.Add(lbl_Cava);
-            doubleBufferedPanel8.Controls.Add(doubleBufferedPanel12);
-            doubleBufferedPanel8.Controls.Add(lbl_Segheria);
-            doubleBufferedPanel8.Controls.Add(doubleBufferedPanel11);
-            doubleBufferedPanel8.Controls.Add(label32);
-            doubleBufferedPanel8.Controls.Add(lbl_Fattoria);
-            doubleBufferedPanel8.Location = new Point(7, 365);
-            doubleBufferedPanel8.Margin = new Padding(2, 3, 2, 3);
-            doubleBufferedPanel8.Name = "doubleBufferedPanel8";
-            doubleBufferedPanel8.Size = new Size(187, 227);
-            doubleBufferedPanel8.TabIndex = 67;
+            panel_Strutture.BackColor = Color.Transparent;
+            panel_Strutture.Controls.Add(ico_Edificio_6);
+            panel_Strutture.Controls.Add(lbl_Abitazioni);
+            panel_Strutture.Controls.Add(ico_Edificio_5);
+            panel_Strutture.Controls.Add(lbl_Miniera_Oro);
+            panel_Strutture.Controls.Add(ico_Edificio_4);
+            panel_Strutture.Controls.Add(lbl_Miniera_Ferro);
+            panel_Strutture.Controls.Add(ico_Edificio_3);
+            panel_Strutture.Controls.Add(lbl_Cava);
+            panel_Strutture.Controls.Add(ico_Edificio_2);
+            panel_Strutture.Controls.Add(lbl_Segheria);
+            panel_Strutture.Controls.Add(ico_Edificio_1);
+            panel_Strutture.Controls.Add(label32);
+            panel_Strutture.Controls.Add(lbl_Fattoria);
+            panel_Strutture.Location = new Point(16, 365);
+            panel_Strutture.Margin = new Padding(2, 3, 2, 3);
+            panel_Strutture.Name = "panel_Strutture";
+            panel_Strutture.Size = new Size(215, 227);
+            panel_Strutture.TabIndex = 67;
             // 
-            // doubleBufferedPanel15
+            // ico_Edificio_6
             // 
-            doubleBufferedPanel15.BackColor = Color.Transparent;
-            doubleBufferedPanel15.BackgroundImage = Properties.Resources.wheat_sack;
-            doubleBufferedPanel15.BackgroundImageLayout = ImageLayout.Stretch;
-            doubleBufferedPanel15.Location = new Point(2, 193);
-            doubleBufferedPanel15.Margin = new Padding(2, 3, 2, 3);
-            doubleBufferedPanel15.Name = "doubleBufferedPanel15";
-            doubleBufferedPanel15.Size = new Size(32, 32);
-            doubleBufferedPanel15.TabIndex = 59;
+            ico_Edificio_6.BackColor = Color.Transparent;
+            ico_Edificio_6.BackgroundImage = Properties.Resources.wheat_sack;
+            ico_Edificio_6.BackgroundImageLayout = ImageLayout.Stretch;
+            ico_Edificio_6.Location = new Point(30, 193);
+            ico_Edificio_6.Margin = new Padding(2, 3, 2, 3);
+            ico_Edificio_6.Name = "ico_Edificio_6";
+            ico_Edificio_6.Size = new Size(32, 32);
+            ico_Edificio_6.TabIndex = 59;
             // 
             // lbl_Abitazioni
             // 
@@ -910,23 +913,23 @@
             lbl_Abitazioni.BackColor = Color.Transparent;
             lbl_Abitazioni.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lbl_Abitazioni.ForeColor = Color.Gainsboro;
-            lbl_Abitazioni.Location = new Point(36, 198);
+            lbl_Abitazioni.Location = new Point(64, 198);
             lbl_Abitazioni.Margin = new Padding(2, 0, 2, 0);
             lbl_Abitazioni.Name = "lbl_Abitazioni";
             lbl_Abitazioni.Size = new Size(122, 21);
             lbl_Abitazioni.TabIndex = 58;
             lbl_Abitazioni.Text = "80.000 - 60.000";
             // 
-            // doubleBufferedPanel16
+            // ico_Edificio_5
             // 
-            doubleBufferedPanel16.BackColor = Color.Transparent;
-            doubleBufferedPanel16.BackgroundImage = Properties.Resources.wheat_sack;
-            doubleBufferedPanel16.BackgroundImageLayout = ImageLayout.Stretch;
-            doubleBufferedPanel16.Location = new Point(2, 155);
-            doubleBufferedPanel16.Margin = new Padding(2, 3, 2, 3);
-            doubleBufferedPanel16.Name = "doubleBufferedPanel16";
-            doubleBufferedPanel16.Size = new Size(32, 32);
-            doubleBufferedPanel16.TabIndex = 57;
+            ico_Edificio_5.BackColor = Color.Transparent;
+            ico_Edificio_5.BackgroundImage = Properties.Resources.wheat_sack;
+            ico_Edificio_5.BackgroundImageLayout = ImageLayout.Stretch;
+            ico_Edificio_5.Location = new Point(30, 155);
+            ico_Edificio_5.Margin = new Padding(2, 3, 2, 3);
+            ico_Edificio_5.Name = "ico_Edificio_5";
+            ico_Edificio_5.Size = new Size(32, 32);
+            ico_Edificio_5.TabIndex = 57;
             // 
             // lbl_Miniera_Oro
             // 
@@ -934,23 +937,23 @@
             lbl_Miniera_Oro.BackColor = Color.Transparent;
             lbl_Miniera_Oro.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lbl_Miniera_Oro.ForeColor = Color.Gainsboro;
-            lbl_Miniera_Oro.Location = new Point(36, 160);
+            lbl_Miniera_Oro.Location = new Point(64, 160);
             lbl_Miniera_Oro.Margin = new Padding(2, 0, 2, 0);
             lbl_Miniera_Oro.Name = "lbl_Miniera_Oro";
             lbl_Miniera_Oro.Size = new Size(122, 21);
             lbl_Miniera_Oro.TabIndex = 56;
             lbl_Miniera_Oro.Text = "80.000 - 60.000";
             // 
-            // doubleBufferedPanel13
+            // ico_Edificio_4
             // 
-            doubleBufferedPanel13.BackColor = Color.Transparent;
-            doubleBufferedPanel13.BackgroundImage = Properties.Resources.wheat_sack;
-            doubleBufferedPanel13.BackgroundImageLayout = ImageLayout.Stretch;
-            doubleBufferedPanel13.Location = new Point(2, 117);
-            doubleBufferedPanel13.Margin = new Padding(2, 3, 2, 3);
-            doubleBufferedPanel13.Name = "doubleBufferedPanel13";
-            doubleBufferedPanel13.Size = new Size(32, 32);
-            doubleBufferedPanel13.TabIndex = 55;
+            ico_Edificio_4.BackColor = Color.Transparent;
+            ico_Edificio_4.BackgroundImage = Properties.Resources.wheat_sack;
+            ico_Edificio_4.BackgroundImageLayout = ImageLayout.Stretch;
+            ico_Edificio_4.Location = new Point(30, 117);
+            ico_Edificio_4.Margin = new Padding(2, 3, 2, 3);
+            ico_Edificio_4.Name = "ico_Edificio_4";
+            ico_Edificio_4.Size = new Size(32, 32);
+            ico_Edificio_4.TabIndex = 55;
             // 
             // lbl_Miniera_Ferro
             // 
@@ -958,23 +961,23 @@
             lbl_Miniera_Ferro.BackColor = Color.Transparent;
             lbl_Miniera_Ferro.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lbl_Miniera_Ferro.ForeColor = Color.Gainsboro;
-            lbl_Miniera_Ferro.Location = new Point(36, 122);
+            lbl_Miniera_Ferro.Location = new Point(64, 122);
             lbl_Miniera_Ferro.Margin = new Padding(2, 0, 2, 0);
             lbl_Miniera_Ferro.Name = "lbl_Miniera_Ferro";
             lbl_Miniera_Ferro.Size = new Size(122, 21);
             lbl_Miniera_Ferro.TabIndex = 54;
             lbl_Miniera_Ferro.Text = "80.000 - 60.000";
             // 
-            // doubleBufferedPanel14
+            // ico_Edificio_3
             // 
-            doubleBufferedPanel14.BackColor = Color.Transparent;
-            doubleBufferedPanel14.BackgroundImage = Properties.Resources.wheat_sack;
-            doubleBufferedPanel14.BackgroundImageLayout = ImageLayout.Stretch;
-            doubleBufferedPanel14.Location = new Point(2, 79);
-            doubleBufferedPanel14.Margin = new Padding(2, 3, 2, 3);
-            doubleBufferedPanel14.Name = "doubleBufferedPanel14";
-            doubleBufferedPanel14.Size = new Size(32, 32);
-            doubleBufferedPanel14.TabIndex = 53;
+            ico_Edificio_3.BackColor = Color.Transparent;
+            ico_Edificio_3.BackgroundImage = Properties.Resources.wheat_sack;
+            ico_Edificio_3.BackgroundImageLayout = ImageLayout.Stretch;
+            ico_Edificio_3.Location = new Point(30, 79);
+            ico_Edificio_3.Margin = new Padding(2, 3, 2, 3);
+            ico_Edificio_3.Name = "ico_Edificio_3";
+            ico_Edificio_3.Size = new Size(32, 32);
+            ico_Edificio_3.TabIndex = 53;
             // 
             // lbl_Cava
             // 
@@ -982,23 +985,23 @@
             lbl_Cava.BackColor = Color.Transparent;
             lbl_Cava.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lbl_Cava.ForeColor = Color.Gainsboro;
-            lbl_Cava.Location = new Point(36, 84);
+            lbl_Cava.Location = new Point(64, 84);
             lbl_Cava.Margin = new Padding(2, 0, 2, 0);
             lbl_Cava.Name = "lbl_Cava";
             lbl_Cava.Size = new Size(122, 21);
             lbl_Cava.TabIndex = 52;
             lbl_Cava.Text = "80.000 - 60.000";
             // 
-            // doubleBufferedPanel12
+            // ico_Edificio_2
             // 
-            doubleBufferedPanel12.BackColor = Color.Transparent;
-            doubleBufferedPanel12.BackgroundImage = Properties.Resources.wheat_sack;
-            doubleBufferedPanel12.BackgroundImageLayout = ImageLayout.Stretch;
-            doubleBufferedPanel12.Location = new Point(2, 41);
-            doubleBufferedPanel12.Margin = new Padding(2, 3, 2, 3);
-            doubleBufferedPanel12.Name = "doubleBufferedPanel12";
-            doubleBufferedPanel12.Size = new Size(32, 32);
-            doubleBufferedPanel12.TabIndex = 51;
+            ico_Edificio_2.BackColor = Color.Transparent;
+            ico_Edificio_2.BackgroundImage = Properties.Resources.wheat_sack;
+            ico_Edificio_2.BackgroundImageLayout = ImageLayout.Stretch;
+            ico_Edificio_2.Location = new Point(30, 41);
+            ico_Edificio_2.Margin = new Padding(2, 3, 2, 3);
+            ico_Edificio_2.Name = "ico_Edificio_2";
+            ico_Edificio_2.Size = new Size(32, 32);
+            ico_Edificio_2.TabIndex = 51;
             // 
             // lbl_Segheria
             // 
@@ -1006,23 +1009,23 @@
             lbl_Segheria.BackColor = Color.Transparent;
             lbl_Segheria.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lbl_Segheria.ForeColor = Color.Gainsboro;
-            lbl_Segheria.Location = new Point(36, 46);
+            lbl_Segheria.Location = new Point(64, 46);
             lbl_Segheria.Margin = new Padding(2, 0, 2, 0);
             lbl_Segheria.Name = "lbl_Segheria";
             lbl_Segheria.Size = new Size(122, 21);
             lbl_Segheria.TabIndex = 50;
             lbl_Segheria.Text = "80.000 - 60.000";
             // 
-            // doubleBufferedPanel11
+            // ico_Edificio_1
             // 
-            doubleBufferedPanel11.BackColor = Color.Transparent;
-            doubleBufferedPanel11.BackgroundImage = Properties.Resources.wheat_sack;
-            doubleBufferedPanel11.BackgroundImageLayout = ImageLayout.Stretch;
-            doubleBufferedPanel11.Location = new Point(2, 3);
-            doubleBufferedPanel11.Margin = new Padding(2, 3, 2, 3);
-            doubleBufferedPanel11.Name = "doubleBufferedPanel11";
-            doubleBufferedPanel11.Size = new Size(32, 32);
-            doubleBufferedPanel11.TabIndex = 49;
+            ico_Edificio_1.BackColor = Color.Transparent;
+            ico_Edificio_1.BackgroundImage = Properties.Resources.wheat_sack;
+            ico_Edificio_1.BackgroundImageLayout = ImageLayout.Stretch;
+            ico_Edificio_1.Location = new Point(30, 3);
+            ico_Edificio_1.Margin = new Padding(2, 3, 2, 3);
+            ico_Edificio_1.Name = "ico_Edificio_1";
+            ico_Edificio_1.Size = new Size(32, 32);
+            ico_Edificio_1.TabIndex = 49;
             // 
             // lbl_Fattoria
             // 
@@ -1030,7 +1033,7 @@
             lbl_Fattoria.BackColor = Color.Transparent;
             lbl_Fattoria.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lbl_Fattoria.ForeColor = Color.Gainsboro;
-            lbl_Fattoria.Location = new Point(36, 8);
+            lbl_Fattoria.Location = new Point(64, 8);
             lbl_Fattoria.Margin = new Padding(2, 0, 2, 0);
             lbl_Fattoria.Name = "lbl_Fattoria";
             lbl_Fattoria.Size = new Size(122, 21);
@@ -1067,34 +1070,34 @@
             label48.TabIndex = 48;
             label48.Text = "Esperienza Fase: 500 xp";
             // 
-            // doubleBufferedPanel17
+            // panel_Caserme
             // 
-            doubleBufferedPanel17.BackColor = Color.Transparent;
-            doubleBufferedPanel17.Controls.Add(doubleBufferedPanel20);
-            doubleBufferedPanel17.Controls.Add(lbl_Caserma_Catapulte);
-            doubleBufferedPanel17.Controls.Add(doubleBufferedPanel21);
-            doubleBufferedPanel17.Controls.Add(lbl_Caserma_Arceri);
-            doubleBufferedPanel17.Controls.Add(doubleBufferedPanel22);
-            doubleBufferedPanel17.Controls.Add(lbl_Caserma_Lanceri);
-            doubleBufferedPanel17.Controls.Add(doubleBufferedPanel23);
-            doubleBufferedPanel17.Controls.Add(label48);
-            doubleBufferedPanel17.Controls.Add(lbl_Caserma_Guerrieri);
-            doubleBufferedPanel17.Location = new Point(7, 617);
-            doubleBufferedPanel17.Margin = new Padding(2, 3, 2, 3);
-            doubleBufferedPanel17.Name = "doubleBufferedPanel17";
-            doubleBufferedPanel17.Size = new Size(187, 152);
-            doubleBufferedPanel17.TabIndex = 69;
+            panel_Caserme.BackColor = Color.Transparent;
+            panel_Caserme.Controls.Add(ico_Caserma_4);
+            panel_Caserme.Controls.Add(lbl_Caserma_Catapulte);
+            panel_Caserme.Controls.Add(ico_Caserma_3);
+            panel_Caserme.Controls.Add(lbl_Caserma_Arceri);
+            panel_Caserme.Controls.Add(ico_Caserma_2);
+            panel_Caserme.Controls.Add(lbl_Caserma_Lanceri);
+            panel_Caserme.Controls.Add(ico_Caserma_1);
+            panel_Caserme.Controls.Add(label48);
+            panel_Caserme.Controls.Add(lbl_Caserma_Guerrieri);
+            panel_Caserme.Location = new Point(16, 617);
+            panel_Caserme.Margin = new Padding(2, 3, 2, 3);
+            panel_Caserme.Name = "panel_Caserme";
+            panel_Caserme.Size = new Size(215, 152);
+            panel_Caserme.TabIndex = 69;
             // 
-            // doubleBufferedPanel20
+            // ico_Caserma_4
             // 
-            doubleBufferedPanel20.BackColor = Color.Transparent;
-            doubleBufferedPanel20.BackgroundImage = Properties.Resources.wheat_sack;
-            doubleBufferedPanel20.BackgroundImageLayout = ImageLayout.Stretch;
-            doubleBufferedPanel20.Location = new Point(2, 117);
-            doubleBufferedPanel20.Margin = new Padding(2, 3, 2, 3);
-            doubleBufferedPanel20.Name = "doubleBufferedPanel20";
-            doubleBufferedPanel20.Size = new Size(32, 32);
-            doubleBufferedPanel20.TabIndex = 55;
+            ico_Caserma_4.BackColor = Color.Transparent;
+            ico_Caserma_4.BackgroundImage = Properties.Resources.wheat_sack;
+            ico_Caserma_4.BackgroundImageLayout = ImageLayout.Stretch;
+            ico_Caserma_4.Location = new Point(30, 117);
+            ico_Caserma_4.Margin = new Padding(2, 3, 2, 3);
+            ico_Caserma_4.Name = "ico_Caserma_4";
+            ico_Caserma_4.Size = new Size(32, 32);
+            ico_Caserma_4.TabIndex = 55;
             // 
             // lbl_Caserma_Catapulte
             // 
@@ -1102,23 +1105,23 @@
             lbl_Caserma_Catapulte.BackColor = Color.Transparent;
             lbl_Caserma_Catapulte.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lbl_Caserma_Catapulte.ForeColor = Color.Gainsboro;
-            lbl_Caserma_Catapulte.Location = new Point(36, 122);
+            lbl_Caserma_Catapulte.Location = new Point(64, 122);
             lbl_Caserma_Catapulte.Margin = new Padding(2, 0, 2, 0);
             lbl_Caserma_Catapulte.Name = "lbl_Caserma_Catapulte";
             lbl_Caserma_Catapulte.Size = new Size(122, 21);
             lbl_Caserma_Catapulte.TabIndex = 54;
             lbl_Caserma_Catapulte.Text = "80.000 - 60.000";
             // 
-            // doubleBufferedPanel21
+            // ico_Caserma_3
             // 
-            doubleBufferedPanel21.BackColor = Color.Transparent;
-            doubleBufferedPanel21.BackgroundImage = Properties.Resources.wheat_sack;
-            doubleBufferedPanel21.BackgroundImageLayout = ImageLayout.Stretch;
-            doubleBufferedPanel21.Location = new Point(2, 79);
-            doubleBufferedPanel21.Margin = new Padding(2, 3, 2, 3);
-            doubleBufferedPanel21.Name = "doubleBufferedPanel21";
-            doubleBufferedPanel21.Size = new Size(32, 32);
-            doubleBufferedPanel21.TabIndex = 53;
+            ico_Caserma_3.BackColor = Color.Transparent;
+            ico_Caserma_3.BackgroundImage = Properties.Resources.wheat_sack;
+            ico_Caserma_3.BackgroundImageLayout = ImageLayout.Stretch;
+            ico_Caserma_3.Location = new Point(30, 79);
+            ico_Caserma_3.Margin = new Padding(2, 3, 2, 3);
+            ico_Caserma_3.Name = "ico_Caserma_3";
+            ico_Caserma_3.Size = new Size(32, 32);
+            ico_Caserma_3.TabIndex = 53;
             // 
             // lbl_Caserma_Arceri
             // 
@@ -1126,23 +1129,23 @@
             lbl_Caserma_Arceri.BackColor = Color.Transparent;
             lbl_Caserma_Arceri.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lbl_Caserma_Arceri.ForeColor = Color.Gainsboro;
-            lbl_Caserma_Arceri.Location = new Point(36, 84);
+            lbl_Caserma_Arceri.Location = new Point(64, 84);
             lbl_Caserma_Arceri.Margin = new Padding(2, 0, 2, 0);
             lbl_Caserma_Arceri.Name = "lbl_Caserma_Arceri";
             lbl_Caserma_Arceri.Size = new Size(122, 21);
             lbl_Caserma_Arceri.TabIndex = 52;
             lbl_Caserma_Arceri.Text = "80.000 - 60.000";
             // 
-            // doubleBufferedPanel22
+            // ico_Caserma_2
             // 
-            doubleBufferedPanel22.BackColor = Color.Transparent;
-            doubleBufferedPanel22.BackgroundImage = Properties.Resources.wheat_sack;
-            doubleBufferedPanel22.BackgroundImageLayout = ImageLayout.Stretch;
-            doubleBufferedPanel22.Location = new Point(2, 41);
-            doubleBufferedPanel22.Margin = new Padding(2, 3, 2, 3);
-            doubleBufferedPanel22.Name = "doubleBufferedPanel22";
-            doubleBufferedPanel22.Size = new Size(32, 32);
-            doubleBufferedPanel22.TabIndex = 51;
+            ico_Caserma_2.BackColor = Color.Transparent;
+            ico_Caserma_2.BackgroundImage = Properties.Resources.wheat_sack;
+            ico_Caserma_2.BackgroundImageLayout = ImageLayout.Stretch;
+            ico_Caserma_2.Location = new Point(30, 41);
+            ico_Caserma_2.Margin = new Padding(2, 3, 2, 3);
+            ico_Caserma_2.Name = "ico_Caserma_2";
+            ico_Caserma_2.Size = new Size(32, 32);
+            ico_Caserma_2.TabIndex = 51;
             // 
             // lbl_Caserma_Lanceri
             // 
@@ -1150,23 +1153,23 @@
             lbl_Caserma_Lanceri.BackColor = Color.Transparent;
             lbl_Caserma_Lanceri.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lbl_Caserma_Lanceri.ForeColor = Color.Gainsboro;
-            lbl_Caserma_Lanceri.Location = new Point(36, 46);
+            lbl_Caserma_Lanceri.Location = new Point(64, 46);
             lbl_Caserma_Lanceri.Margin = new Padding(2, 0, 2, 0);
             lbl_Caserma_Lanceri.Name = "lbl_Caserma_Lanceri";
             lbl_Caserma_Lanceri.Size = new Size(122, 21);
             lbl_Caserma_Lanceri.TabIndex = 50;
             lbl_Caserma_Lanceri.Text = "80.000 - 60.000";
             // 
-            // doubleBufferedPanel23
+            // ico_Caserma_1
             // 
-            doubleBufferedPanel23.BackColor = Color.Transparent;
-            doubleBufferedPanel23.BackgroundImage = Properties.Resources.wheat_sack;
-            doubleBufferedPanel23.BackgroundImageLayout = ImageLayout.Stretch;
-            doubleBufferedPanel23.Location = new Point(2, 3);
-            doubleBufferedPanel23.Margin = new Padding(2, 3, 2, 3);
-            doubleBufferedPanel23.Name = "doubleBufferedPanel23";
-            doubleBufferedPanel23.Size = new Size(32, 32);
-            doubleBufferedPanel23.TabIndex = 49;
+            ico_Caserma_1.BackColor = Color.Transparent;
+            ico_Caserma_1.BackgroundImage = Properties.Resources.wheat_sack;
+            ico_Caserma_1.BackgroundImageLayout = ImageLayout.Stretch;
+            ico_Caserma_1.Location = new Point(30, 3);
+            ico_Caserma_1.Margin = new Padding(2, 3, 2, 3);
+            ico_Caserma_1.Name = "ico_Caserma_1";
+            ico_Caserma_1.Size = new Size(32, 32);
+            ico_Caserma_1.TabIndex = 49;
             // 
             // lbl_Caserma_Guerrieri
             // 
@@ -1174,25 +1177,25 @@
             lbl_Caserma_Guerrieri.BackColor = Color.Transparent;
             lbl_Caserma_Guerrieri.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lbl_Caserma_Guerrieri.ForeColor = Color.Gainsboro;
-            lbl_Caserma_Guerrieri.Location = new Point(36, 8);
+            lbl_Caserma_Guerrieri.Location = new Point(64, 8);
             lbl_Caserma_Guerrieri.Margin = new Padding(2, 0, 2, 0);
             lbl_Caserma_Guerrieri.Name = "lbl_Caserma_Guerrieri";
             lbl_Caserma_Guerrieri.Size = new Size(122, 21);
             lbl_Caserma_Guerrieri.TabIndex = 42;
             lbl_Caserma_Guerrieri.Text = "80.000 - 60.000";
             // 
-            // label3
+            // lbl_Caserme
             // 
-            label3.AutoSize = true;
-            label3.BackColor = Color.Transparent;
-            label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            label3.ForeColor = SystemColors.Control;
-            label3.Location = new Point(7, 595);
-            label3.Margin = new Padding(2, 0, 2, 0);
-            label3.Name = "label3";
-            label3.Size = new Size(75, 21);
-            label3.TabIndex = 70;
-            label3.Text = "Caserme";
+            lbl_Caserme.AutoSize = true;
+            lbl_Caserme.BackColor = Color.Transparent;
+            lbl_Caserme.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            lbl_Caserme.ForeColor = SystemColors.Control;
+            lbl_Caserme.Location = new Point(46, 594);
+            lbl_Caserme.Margin = new Padding(2, 0, 2, 0);
+            lbl_Caserme.Name = "lbl_Caserme";
+            lbl_Caserme.Size = new Size(75, 21);
+            lbl_Caserme.TabIndex = 70;
+            lbl_Caserme.Text = "Caserme";
             // 
             // label53
             // 
@@ -1208,18 +1211,18 @@
             label53.TabIndex = 48;
             label53.Text = "Esperienza Fase: 500 xp";
             // 
-            // doubleBufferedPanel18
+            // panel_Villaggio
             // 
-            doubleBufferedPanel18.AutoScroll = true;
-            doubleBufferedPanel18.BackColor = Color.Transparent;
-            doubleBufferedPanel18.Controls.Add(lbl_Ricerca_Villaggio_Valore);
-            doubleBufferedPanel18.Controls.Add(lbl_Rcerca_Villaggio_Testo);
-            doubleBufferedPanel18.Controls.Add(label53);
-            doubleBufferedPanel18.Location = new Point(533, 677);
-            doubleBufferedPanel18.Margin = new Padding(2, 3, 2, 3);
-            doubleBufferedPanel18.Name = "doubleBufferedPanel18";
-            doubleBufferedPanel18.Size = new Size(220, 91);
-            doubleBufferedPanel18.TabIndex = 71;
+            panel_Villaggio.AutoScroll = true;
+            panel_Villaggio.BackColor = Color.Transparent;
+            panel_Villaggio.Controls.Add(lbl_Ricerca_Villaggio_Valore);
+            panel_Villaggio.Controls.Add(lbl_Rcerca_Villaggio_Testo);
+            panel_Villaggio.Controls.Add(label53);
+            panel_Villaggio.Location = new Point(533, 677);
+            panel_Villaggio.Margin = new Padding(2, 3, 2, 3);
+            panel_Villaggio.Name = "panel_Villaggio";
+            panel_Villaggio.Size = new Size(220, 91);
+            panel_Villaggio.TabIndex = 71;
             // 
             // lbl_Ricerca_Villaggio_Valore
             // 
@@ -1254,7 +1257,7 @@
             lbl_Ricerca_Villaggio.BackColor = Color.Transparent;
             lbl_Ricerca_Villaggio.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lbl_Ricerca_Villaggio.ForeColor = SystemColors.Control;
-            lbl_Ricerca_Villaggio.Location = new Point(533, 654);
+            lbl_Ricerca_Villaggio.Location = new Point(536, 653);
             lbl_Ricerca_Villaggio.Margin = new Padding(2, 0, 2, 0);
             lbl_Ricerca_Villaggio.Name = "lbl_Ricerca_Villaggio";
             lbl_Ricerca_Villaggio.Size = new Size(80, 21);
@@ -1275,18 +1278,18 @@
             label55.TabIndex = 48;
             label55.Text = "Esperienza Fase: 500 xp";
             // 
-            // doubleBufferedPanel19
+            // panel_Ricerca
             // 
-            doubleBufferedPanel19.AutoScroll = true;
-            doubleBufferedPanel19.BackColor = Color.Transparent;
-            doubleBufferedPanel19.Controls.Add(lbl_Ricerca_Base_Valore);
-            doubleBufferedPanel19.Controls.Add(lbl_Ricerca_Base_Testo);
-            doubleBufferedPanel19.Controls.Add(label55);
-            doubleBufferedPanel19.Location = new Point(533, 362);
-            doubleBufferedPanel19.Margin = new Padding(2, 3, 2, 3);
-            doubleBufferedPanel19.Name = "doubleBufferedPanel19";
-            doubleBufferedPanel19.Size = new Size(220, 132);
-            doubleBufferedPanel19.TabIndex = 73;
+            panel_Ricerca.AutoScroll = true;
+            panel_Ricerca.BackColor = Color.Transparent;
+            panel_Ricerca.Controls.Add(lbl_Ricerca_Base_Valore);
+            panel_Ricerca.Controls.Add(lbl_Ricerca_Base_Testo);
+            panel_Ricerca.Controls.Add(label55);
+            panel_Ricerca.Location = new Point(533, 362);
+            panel_Ricerca.Margin = new Padding(2, 3, 2, 3);
+            panel_Ricerca.Name = "panel_Ricerca";
+            panel_Ricerca.Size = new Size(220, 132);
+            panel_Ricerca.TabIndex = 73;
             // 
             // lbl_Ricerca_Base_Valore
             // 
@@ -1321,12 +1324,12 @@
             lbl_Ricerca_Civile.BackColor = Color.Transparent;
             lbl_Ricerca_Civile.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lbl_Ricerca_Civile.ForeColor = SystemColors.Control;
-            lbl_Ricerca_Civile.Location = new Point(537, 338);
+            lbl_Ricerca_Civile.Location = new Point(561, 335);
             lbl_Ricerca_Civile.Margin = new Padding(2, 0, 2, 0);
             lbl_Ricerca_Civile.Name = "lbl_Ricerca_Civile";
-            lbl_Ricerca_Civile.Size = new Size(92, 21);
+            lbl_Ricerca_Civile.Size = new Size(112, 21);
             lbl_Ricerca_Civile.TabIndex = 74;
-            lbl_Ricerca_Civile.Text = "Produttivo";
+            lbl_Ricerca_Civile.Text = "Ricerca Civile";
             // 
             // label60
             // 
@@ -1342,18 +1345,18 @@
             label60.TabIndex = 48;
             label60.Text = "Esperienza Fase: 500 xp";
             // 
-            // doubleBufferedPanel24
+            // panel_Bonus
             // 
-            doubleBufferedPanel24.AutoScroll = true;
-            doubleBufferedPanel24.BackColor = Color.Transparent;
-            doubleBufferedPanel24.Controls.Add(lbl_Bonus_Valore);
-            doubleBufferedPanel24.Controls.Add(lbl_Bonus_Testo);
-            doubleBufferedPanel24.Controls.Add(label60);
-            doubleBufferedPanel24.Location = new Point(533, 520);
-            doubleBufferedPanel24.Margin = new Padding(2, 3, 2, 3);
-            doubleBufferedPanel24.Name = "doubleBufferedPanel24";
-            doubleBufferedPanel24.Size = new Size(220, 131);
-            doubleBufferedPanel24.TabIndex = 75;
+            panel_Bonus.AutoScroll = true;
+            panel_Bonus.BackColor = Color.Transparent;
+            panel_Bonus.Controls.Add(lbl_Bonus_Valore);
+            panel_Bonus.Controls.Add(lbl_Bonus_Testo);
+            panel_Bonus.Controls.Add(label60);
+            panel_Bonus.Location = new Point(533, 520);
+            panel_Bonus.Margin = new Padding(2, 3, 2, 3);
+            panel_Bonus.Name = "panel_Bonus";
+            panel_Bonus.Size = new Size(220, 131);
+            panel_Bonus.TabIndex = 75;
             // 
             // lbl_Bonus_Valore
             // 
@@ -1388,12 +1391,54 @@
             lbl_Bonus.BackColor = Color.Transparent;
             lbl_Bonus.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lbl_Bonus.ForeColor = SystemColors.Control;
-            lbl_Bonus.Location = new Point(537, 496);
+            lbl_Bonus.Location = new Point(536, 496);
             lbl_Bonus.Margin = new Padding(2, 0, 2, 0);
             lbl_Bonus.Name = "lbl_Bonus";
             lbl_Bonus.Size = new Size(57, 21);
             lbl_Bonus.TabIndex = 76;
             lbl_Bonus.Text = "Bonus";
+            // 
+            // Ricerca_Civ_Mil
+            // 
+            Ricerca_Civ_Mil.BackColor = Color.Transparent;
+            Ricerca_Civ_Mil.BackgroundImage = Properties.Resources.exchange_Edit_removebg_preview;
+            Ricerca_Civ_Mil.BackgroundImageLayout = ImageLayout.Stretch;
+            Ricerca_Civ_Mil.FlatAppearance.BorderSize = 0;
+            Ricerca_Civ_Mil.FlatStyle = FlatStyle.Flat;
+            Ricerca_Civ_Mil.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Ricerca_Civ_Mil.Location = new Point(533, 335);
+            Ricerca_Civ_Mil.Margin = new Padding(2, 3, 2, 3);
+            Ricerca_Civ_Mil.Name = "Ricerca_Civ_Mil";
+            Ricerca_Civ_Mil.Size = new Size(24, 24);
+            Ricerca_Civ_Mil.TabIndex = 79;
+            Ricerca_Civ_Mil.UseVisualStyleBackColor = false;
+            Ricerca_Civ_Mil.Click += Ricerca_Civ_Mil_Click;
+            // 
+            // lbl_Spionaggio_Fallito
+            // 
+            lbl_Spionaggio_Fallito.BackColor = Color.Transparent;
+            lbl_Spionaggio_Fallito.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lbl_Spionaggio_Fallito.ForeColor = SystemColors.Control;
+            lbl_Spionaggio_Fallito.Location = new Point(230, 337);
+            lbl_Spionaggio_Fallito.Multiline = false;
+            lbl_Spionaggio_Fallito.Name = "lbl_Spionaggio_Fallito";
+            lbl_Spionaggio_Fallito.Size = new Size(302, 24);
+            lbl_Spionaggio_Fallito.TabIndex = 82;
+            lbl_Spionaggio_Fallito.Text = "Spionaggio fallito";
+            lbl_Spionaggio_Fallito.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // lbl_Spionaggio_Fallito_Desc
+            // 
+            lbl_Spionaggio_Fallito_Desc.BackColor = Color.Transparent;
+            lbl_Spionaggio_Fallito_Desc.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lbl_Spionaggio_Fallito_Desc.ForeColor = Color.DarkGray;
+            lbl_Spionaggio_Fallito_Desc.Location = new Point(230, 370);
+            lbl_Spionaggio_Fallito_Desc.Multiline = true;
+            lbl_Spionaggio_Fallito_Desc.Name = "lbl_Spionaggio_Fallito_Desc";
+            lbl_Spionaggio_Fallito_Desc.Size = new Size(302, 68);
+            lbl_Spionaggio_Fallito_Desc.TabIndex = 83;
+            lbl_Spionaggio_Fallito_Desc.Text = "Spionaggio fallito";
+            lbl_Spionaggio_Fallito_Desc.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // Log_Esplorazione
             // 
@@ -1404,23 +1449,26 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(764, 776);
+            Controls.Add(lbl_Spionaggio_Fallito_Desc);
+            Controls.Add(lbl_Spionaggio_Fallito);
+            Controls.Add(Ricerca_Civ_Mil);
             Controls.Add(lbl_Villaggio);
             Controls.Add(panel1);
             Controls.Add(lbl_Bonus);
-            Controls.Add(doubleBufferedPanel24);
+            Controls.Add(panel_Bonus);
             Controls.Add(lbl_Ricerca_Civile);
-            Controls.Add(doubleBufferedPanel19);
+            Controls.Add(panel_Ricerca);
             Controls.Add(lbl_Ricerca_Villaggio);
-            Controls.Add(doubleBufferedPanel18);
-            Controls.Add(label3);
-            Controls.Add(doubleBufferedPanel17);
+            Controls.Add(panel_Villaggio);
+            Controls.Add(lbl_Caserme);
+            Controls.Add(panel_Caserme);
             Controls.Add(btn_Strutture_Civile_Militare);
-            Controls.Add(doubleBufferedPanel8);
+            Controls.Add(panel_Strutture);
             Controls.Add(lbl_Strutture_Civile_Militare);
-            Controls.Add(doubleBufferedPanel10);
-            Controls.Add(doubleBufferedPanel6);
-            Controls.Add(doubleBufferedPanel9);
-            Controls.Add(doubleBufferedPanel7);
+            Controls.Add(panel_Unità);
+            Controls.Add(panel_Risorse);
+            Controls.Add(panel_Fasi_Stats);
+            Controls.Add(panel_Fasi);
             Controls.Add(lbl_Spionaggio_Valore);
             Controls.Add(lbl_Spionaggio_Testo);
             DoubleBuffered = true;
@@ -1428,26 +1476,26 @@
             Name = "Log_Esplorazione";
             Text = "Esplorazione";
             Load += Log_Esplorazione_Load;
-            doubleBufferedPanel6.ResumeLayout(false);
-            doubleBufferedPanel6.PerformLayout();
+            panel_Risorse.ResumeLayout(false);
+            panel_Risorse.PerformLayout();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            doubleBufferedPanel7.ResumeLayout(false);
-            doubleBufferedPanel7.PerformLayout();
-            doubleBufferedPanel9.ResumeLayout(false);
-            doubleBufferedPanel9.PerformLayout();
-            doubleBufferedPanel10.ResumeLayout(false);
-            doubleBufferedPanel10.PerformLayout();
-            doubleBufferedPanel8.ResumeLayout(false);
-            doubleBufferedPanel8.PerformLayout();
-            doubleBufferedPanel17.ResumeLayout(false);
-            doubleBufferedPanel17.PerformLayout();
-            doubleBufferedPanel18.ResumeLayout(false);
-            doubleBufferedPanel18.PerformLayout();
-            doubleBufferedPanel19.ResumeLayout(false);
-            doubleBufferedPanel19.PerformLayout();
-            doubleBufferedPanel24.ResumeLayout(false);
-            doubleBufferedPanel24.PerformLayout();
+            panel_Fasi.ResumeLayout(false);
+            panel_Fasi.PerformLayout();
+            panel_Fasi_Stats.ResumeLayout(false);
+            panel_Fasi_Stats.PerformLayout();
+            panel_Unità.ResumeLayout(false);
+            panel_Unità.PerformLayout();
+            panel_Strutture.ResumeLayout(false);
+            panel_Strutture.PerformLayout();
+            panel_Caserme.ResumeLayout(false);
+            panel_Caserme.PerformLayout();
+            panel_Villaggio.ResumeLayout(false);
+            panel_Villaggio.PerformLayout();
+            panel_Ricerca.ResumeLayout(false);
+            panel_Ricerca.PerformLayout();
+            panel_Bonus.ResumeLayout(false);
+            panel_Bonus.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -1455,7 +1503,7 @@
         #endregion
         private Label lbl_Spionaggio_Testo;
         private Label lbl_Spionaggio_Valore;
-        private Strumenti.DoubleBufferedPanel doubleBufferedPanel6;
+        private Strumenti.DoubleBufferedPanel panel_Risorse;
         private Label lbl_Diamanti_Blu;
         private Label lbl_Cibo;
         private Strumenti.DoubleBufferedPanel ico_11;
@@ -1483,7 +1531,7 @@
         private TextBox txt_Titolo;
         private Panel panel1;
         private Label lbl_Villaggio;
-        private Strumenti.DoubleBufferedPanel doubleBufferedPanel7;
+        private Strumenti.DoubleBufferedPanel panel_Fasi;
         private Label lbl_Ingresso;
         private Label label6;
         private Label lbl_Mura;
@@ -1493,13 +1541,13 @@
         private Label lbl_Castello;
         private Label lbl_Centro;
         private Label label45;
-        private Strumenti.DoubleBufferedPanel doubleBufferedPanel9;
+        private Strumenti.DoubleBufferedPanel panel_Fasi_Stats;
         private Label lbl_Fase_Statistiche;
         private Label lbl_Fase_Testo;
         private Label lbl_Fase_Valore;
         private Label lbl_Fase_Unità_Testo;
         private Label lbl_Fase_Unità_Valore;
-        private Strumenti.DoubleBufferedPanel doubleBufferedPanel10;
+        private Strumenti.DoubleBufferedPanel panel_Unità;
         private Label lbl_Livello_Truppe_1;
         private Label lbl_Livello_Truppe_2;
         private Label lbl_Livello_Truppe_5;
@@ -1507,46 +1555,49 @@
         private Label lbl_Livello_Truppe_4;
         private Label lbl_Strutture_Civile_Militare;
         private Label label32;
-        private Strumenti.DoubleBufferedPanel doubleBufferedPanel8;
-        private Strumenti.DoubleBufferedPanel doubleBufferedPanel15;
+        private Strumenti.DoubleBufferedPanel panel_Strutture;
+        private Strumenti.DoubleBufferedPanel ico_Edificio_6;
         private Label lbl_Abitazioni;
-        private Strumenti.DoubleBufferedPanel doubleBufferedPanel16;
+        private Strumenti.DoubleBufferedPanel ico_Edificio_5;
         private Label lbl_Miniera_Oro;
-        private Strumenti.DoubleBufferedPanel doubleBufferedPanel13;
+        private Strumenti.DoubleBufferedPanel ico_Edificio_4;
         private Label lbl_Miniera_Ferro;
-        private Strumenti.DoubleBufferedPanel doubleBufferedPanel14;
+        private Strumenti.DoubleBufferedPanel ico_Edificio_3;
         private Label lbl_Cava;
-        private Strumenti.DoubleBufferedPanel doubleBufferedPanel12;
+        private Strumenti.DoubleBufferedPanel ico_Edificio_2;
         private Label lbl_Segheria;
-        private Strumenti.DoubleBufferedPanel doubleBufferedPanel11;
+        private Strumenti.DoubleBufferedPanel ico_Edificio_1;
         private Label lbl_Fattoria;
         private Button btn_Strutture_Civile_Militare;
         private Label label48;
-        private Strumenti.DoubleBufferedPanel doubleBufferedPanel17;
-        private Strumenti.DoubleBufferedPanel doubleBufferedPanel20;
+        private Strumenti.DoubleBufferedPanel panel_Caserme;
+        private Strumenti.DoubleBufferedPanel ico_Caserma_4;
         private Label lbl_Caserma_Catapulte;
-        private Strumenti.DoubleBufferedPanel doubleBufferedPanel21;
+        private Strumenti.DoubleBufferedPanel ico_Caserma_3;
         private Label lbl_Caserma_Arceri;
-        private Strumenti.DoubleBufferedPanel doubleBufferedPanel22;
+        private Strumenti.DoubleBufferedPanel ico_Caserma_2;
         private Label lbl_Caserma_Lanceri;
-        private Strumenti.DoubleBufferedPanel doubleBufferedPanel23;
+        private Strumenti.DoubleBufferedPanel ico_Caserma_1;
         private Label lbl_Caserma_Guerrieri;
-        private Label label3;
+        private Label lbl_Caserme;
         private Label label53;
-        private Strumenti.DoubleBufferedPanel doubleBufferedPanel18;
+        private Strumenti.DoubleBufferedPanel panel_Villaggio;
         private Label lbl_Rcerca_Villaggio_Testo;
         private Label lbl_Ricerca_Villaggio_Valore;
         private Label lbl_Ricerca_Villaggio;
         private Label label55;
-        private Strumenti.DoubleBufferedPanel doubleBufferedPanel19;
+        private Strumenti.DoubleBufferedPanel panel_Ricerca;
         private Label lbl_Ricerca_Base_Testo;
         private Label lbl_Ricerca_Base_Valore;
         private Label lbl_Ricerca_Civile;
         private Label label60;
-        private Strumenti.DoubleBufferedPanel doubleBufferedPanel24;
+        private Strumenti.DoubleBufferedPanel panel_Bonus;
         private Label lbl_Bonus_Testo;
         private Label lbl_Bonus_Valore;
         private Label lbl_Bonus;
         private Label lbl_Livello_Truppe_All;
+        private Button Ricerca_Civ_Mil;
+        private Strumenti.TransparentLabel lbl_Spionaggio_Fallito;
+        private Strumenti.TransparentLabel lbl_Spionaggio_Fallito_Desc;
     }
 }

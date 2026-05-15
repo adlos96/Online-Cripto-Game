@@ -10,18 +10,32 @@ namespace Warrior_and_Wealth.GUI
         {
             InitializeComponent();
         }
+        private void AggiungiRiga(string tipo, string destinazione, string data, string dettagli, bool mostraBottone = true)
+        {
+            int rowIndex = dataGridView1.Rows.Add(tipo, destinazione, data, dettagli);
 
+            if (!mostraBottone) // Sostituisce il bottone con una cella testo vuota
+                dataGridView1.Rows[rowIndex].Cells[4] = new DataGridViewTextBoxCell();
+            
+        }
         private void Notifiche_Load(object sender, EventArgs e)
         {
             if (Variabili_Client.Report.Count == 0) return;
-            
+
             foreach (var report in Variabili_Client.Report)
-                dataGridView1.Rows.Add(report.Tipo, "Valore", report.Data, "Dettagli");
+            {
+                if (report.Tipo == "Spionaggio")
+                    AggiungiRiga(report.Tipo, report.Spionaggio.Giocatore.Nome, report.Data, "Dettagli");
+                else
+                    AggiungiRiga(report.Tipo, "Battaglia", report.Data, "Dettagli");
+            }
             
-            dataGridView1.Rows.Add("Esplorazione", "Città Barbaro", "01-01-2026", "Dettagli");
-            dataGridView1.Rows.Add("Esplorazione", "Villaggio Barbaro", "01-01-2026", "Dettagli");
-            dataGridView1.Rows.Add("Attacco", "Adlos", "01-01-2026", "Dettagli");
-            dataGridView1.Rows.Add("Difesa", "Franco", "01-01-2026", "Dettagli");
+            AggiungiRiga("Esplorazione", "Città Barbaro", "01-01-2026", "Dettagli");
+            AggiungiRiga("Esplorazione", "Villaggio Barbaro", "01-01-2026", "Dettagli");
+            AggiungiRiga("Attacco", "Adlos", "01-01-2026", "Dettagli");
+            AggiungiRiga("Difesa", "Franco", "01-01-2026", "Dettagli");
+
+            //dataGridView1.Rows.Add("Spionaggio/Battaglia", "PVP/PVE", "Città Barbaro/Giocatore", "01-01-2026", "Dettagli");
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
