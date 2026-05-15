@@ -23,25 +23,25 @@ namespace Warrior_and_Wealth.GUI
         }
         private async void Log_Battaglie_Load(object sender, EventArgs e)
         {
-            AnimaNumero(lbl_Peso, 0, temp_Report.Battaglia.Risorse_Raccolte.Capacità_Carico_Usata, durataMs: 3500, suffisso: $"/{temp_Report.Battaglia.Risorse_Raccolte.Capacità_Carico.ToString("N0", cultura)}");
+            AnimaNumero(lbl_Peso, 0, temp_Report.Battaglia.Risorse_Raccolte.Capacità_Carico_Usata, suffisso: $"/{temp_Report.Battaglia.Risorse_Raccolte.Capacità_Carico.ToString("N0", cultura)}");
 
-            AnimaNumero(lbl_Cibo, 0, temp_Report.Battaglia.Risorse_Raccolte.Cibo, durataMs: 3500);
-            AnimaNumero(lbl_Legno, 0, temp_Report.Battaglia.Risorse_Raccolte.Legno, durataMs: 3500);
-            AnimaNumero(lbl_Pietra, 0, temp_Report.Battaglia.Risorse_Raccolte.Pietra, durataMs: 3500);
-            AnimaNumero(lbl_Ferro, 0, temp_Report.Battaglia.Risorse_Raccolte.Ferro, durataMs: 3500);
-            AnimaNumero(lbl_Oro, 0, temp_Report.Battaglia.Risorse_Raccolte.Oro, durataMs: 3500);
-            AnimaNumero(lbl_DIamanti_Viola, 0, temp_Report.Battaglia.Risorse_Raccolte.Diamanti_Viola, durataMs: 3500);
-            AnimaNumero(lbl_DIamanti_Blu, 0, temp_Report.Battaglia.Risorse_Raccolte.Diamanti_Blu, durataMs: 3500);
+            AnimaNumero(lbl_Cibo, 0, temp_Report.Battaglia.Risorse_Raccolte.Cibo);
+            AnimaNumero(lbl_Legno, 0, temp_Report.Battaglia.Risorse_Raccolte.Legno);
+            AnimaNumero(lbl_Pietra, 0, temp_Report.Battaglia.Risorse_Raccolte.Pietra);
+            AnimaNumero(lbl_Ferro, 0, temp_Report.Battaglia.Risorse_Raccolte.Ferro);
+            AnimaNumero(lbl_Oro, 0, temp_Report.Battaglia.Risorse_Raccolte.Oro);
+            AnimaNumero(lbl_DIamanti_Viola, 0, temp_Report.Battaglia.Risorse_Raccolte.Diamanti_Viola);
+            AnimaNumero(lbl_DIamanti_Blu, 0, temp_Report.Battaglia.Risorse_Raccolte.Diamanti_Blu);
 
             if (!attaccante)
             {
-                AnimaNumero(lbl_Forza_Attaccante, (int)temp_Report.Battaglia.Forza_Attaccante, (int)temp_Report.Battaglia.Forza_Attaccante_Finale, durataMs: 3500, prefisso: $"Forza: ({temp_Report.Battaglia.Forza_Attaccante.ToString("N0", cultura)}) ");
-                await AnimaNumero(lbl_Forza_Difensore, (int)temp_Report.Battaglia.Forza_Difensore, (int)temp_Report.Battaglia.Forza_Difensore_Finale, durataMs: 3500, prefisso: $"Forza: ({temp_Report.Battaglia.Forza_Difensore.ToString("N0", cultura)}) ");
+                AnimaNumero(lbl_Forza_Attaccante, (int)temp_Report.Battaglia.Forza_Attaccante, (int)temp_Report.Battaglia.Forza_Attaccante_Finale, prefisso: $"Forza: ({temp_Report.Battaglia.Forza_Attaccante.ToString("N0", cultura)}) ");
+                await AnimaNumero(lbl_Forza_Difensore, (int)temp_Report.Battaglia.Forza_Difensore, (int)temp_Report.Battaglia.Forza_Difensore_Finale, prefisso: $"Forza: ({temp_Report.Battaglia.Forza_Difensore.ToString("N0", cultura)}) ");
             }
             else
             {
-                AnimaNumero(lbl_Forza_Attaccante, (int)temp_Report.Battaglia.Forza_Difensore, (int)temp_Report.Battaglia.Forza_Difensore_Finale, durataMs: 3500, prefisso: $"Forza: ({temp_Report.Battaglia.Forza_Difensore.ToString("N0", cultura)}) ");
-                await AnimaNumero(lbl_Forza_Difensore, (int)temp_Report.Battaglia.Forza_Attaccante, (int)temp_Report.Battaglia.Forza_Attaccante_Finale, durataMs: 3500, prefisso: $"Forza: ({temp_Report.Battaglia.Forza_Attaccante.ToString("N0", cultura)}) ");
+                AnimaNumero(lbl_Forza_Attaccante, (int)temp_Report.Battaglia.Forza_Difensore, (int)temp_Report.Battaglia.Forza_Difensore_Finale, prefisso: $"Forza: ({temp_Report.Battaglia.Forza_Difensore.ToString("N0", cultura)}) ");
+                await AnimaNumero(lbl_Forza_Difensore, (int)temp_Report.Battaglia.Forza_Attaccante, (int)temp_Report.Battaglia.Forza_Attaccante_Finale, prefisso: $"Forza: ({temp_Report.Battaglia.Forza_Attaccante.ToString("N0", cultura)}) ");
             }
         }
 
@@ -165,6 +165,20 @@ namespace Warrior_and_Wealth.GUI
             var fase = report.Battaglia.Fasi[faseIdx];
             int lv = livello_Truppa; // 0 = tutti i livelli sommati
 
+            if (faseIdx == 0 || faseIdx == 4 || faseIdx == 6)
+            {
+                lbl_HP.Visible = false;
+                label46.Visible = false;
+                lbl_DEF.Visible = false;
+                label47.Visible = false;
+            }else
+            {
+                lbl_HP.Visible = true;
+                label46.Visible = true;
+                lbl_DEF.Visible = true;
+                label47.Visible = true;
+            }
+
             lbl_HP.Text = $"{report.Battaglia.Fasi[faseIdx].Struttura.Salute.ToString("N0", cultura)}/{report.Battaglia.Fasi[faseIdx].Struttura.SaluteMax.ToString("N0", cultura)}";
             lbl_DEF.Text = $"{report.Battaglia.Fasi[faseIdx].Struttura.Difesa.ToString("N0", cultura)}/{report.Battaglia.Fasi[faseIdx].Struttura.DifesaMax.ToString("N0", cultura)}";
 
@@ -264,7 +278,7 @@ namespace Warrior_and_Wealth.GUI
             }
             Load_Data(temp_Report);
         }
-        async Task<bool> AnimaNumero(Label lbl, int da, int a, int durataMs = 1000, string prefisso = "", string suffisso = "")
+        async Task<bool> AnimaNumero(Label lbl, int da, int a, int durataMs = 5000, string prefisso = "", string suffisso = "")
         {
             var cultura = new CultureInfo("it-IT");
             int steps = 60;
