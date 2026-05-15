@@ -1,5 +1,6 @@
 ﻿using Server_Strategico.Manager;
 using Server_Strategico.ServerData.Moduli;
+using Server_Strategico.ServerData.Moduli.Battaglie;
 using static Server_Strategico.Gioco.Giocatori;
 using static Server_Strategico.Gioco.Variabili_Server;
 using static Server_Strategico.Manager.QuestManager;
@@ -162,6 +163,8 @@ namespace Server_Strategico.Gioco
             public int Ricerca_Popolazione { get; set; }
             public int Ricerca_Trasporto { get; set; }
             public int Ricerca_Riparazione { get; set; }
+            public int Ricerca_Spionaggio { get; set; }
+            public int Ricerca_Contro_Spionaggio { get; set; }
 
 
             //Ricerca Città
@@ -307,6 +310,8 @@ namespace Server_Strategico.Gioco
             public double Bonus_Addestramento { get; set; }
             public double Bonus_Ricerca { get; set; }
             public double Bonus_Riparazione { get; set; }
+            public double Bonus_Spionaggio { get; set; }
+            public double Bonus_Contro_Spionaggio { get; set; }
 
             //Potenza
             public double Potenza_Totale { get; set; }
@@ -337,7 +342,7 @@ namespace Server_Strategico.Gioco
             public Queue<ResearchManager.ResearchTask> research_Queue = new(); // Coda globale di attesa (quando tutti gli slot sono occupati)
 
             //Report Battaglie e Spionaggio
-            public List<BattaglieV2.Report> Report = new(); // Lista dei task attualmente in costruzione (slot globali, max = 1)
+            public List<Battaglia.Report> Report = new(); // Lista dei task attualmente in costruzione (slot globali, max = 1)
 
             public PlayerSnapshot Snapshot = new PlayerSnapshot();
 
@@ -541,6 +546,8 @@ namespace Server_Strategico.Gioco
                 Ricerca_Popolazione = 0;
                 Ricerca_Trasporto = 0;
                 Ricerca_Riparazione = 0;
+                Ricerca_Spionaggio = 0;
+                Ricerca_Contro_Spionaggio = 0;
 
                 //Ricerca CIttà
                 Ricerca_Ingresso_Guarnigione = 0;
@@ -985,7 +992,7 @@ namespace Server_Strategico.Gioco
                 }
                 if (GamePass_Avanzato)
                 {
-                    bonusAttack = 6; bonusHealth = 0.06; bonusDefense = 0.06;
+                    bonusAttack = 0.06; bonusHealth = 0.06; bonusDefense = 0.06;
 
                     Bonus_Costruzione = 0.04;
                     Bonus_Addestramento = 0.04;
