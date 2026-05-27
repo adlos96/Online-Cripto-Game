@@ -39,20 +39,19 @@
             Panel_Mappa.Name = "Panel_Mappa";
             Panel_Mappa.Size = new Size(914, 600);
             Panel_Mappa.TabIndex = 0;
-            // 
+            //
             // Mappa
-            // 
+            //
             AutoScaleDimensions = new SizeF(120F, 120F);
             AutoScaleMode = AutoScaleMode.Dpi;
-            AutoSize = true;
-            AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            ClientSize = new Size(914, 600);
+            AutoSize = false;                          // ← togli AutoSize
+            ClientSize = new Size(1200, 800);          // ← dimensioni iniziali che vuoi
+            WindowState = FormWindowState.Maximized;   // ← opzionale: parte già a schermo intero
             Controls.Add(Panel_Mappa);
             Margin = new Padding(3, 4, 3, 4);
             Name = "Mappa";
             Text = "Mappa";
             Load += Mappa_Load;
-            ResumeLayout(false);
         }
 
         #endregion
