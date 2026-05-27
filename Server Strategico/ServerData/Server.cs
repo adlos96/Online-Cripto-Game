@@ -151,47 +151,27 @@ namespace Server_Strategico.Server
         {
             var player1 = servers_.GetPlayer(player, password);
 
+            //Tutorial off
+            //player1.Tutorial = true;
+
+            //Tutorial off + risorse per test
             player1.Tutorial = false;
-            //player1.Cibo = 20000;
-            //player1.Legno = 20000;
-            //player1.Pietra = 20000;
-            //player1.Ferro = 20000;
-            //player1.Oro = 20000;
-            //player1.Popolazione = 1000;
+            player1.Cibo = 20000;
+            player1.Legno = 20000;
+            player1.Pietra = 20000;
+            player1.Ferro = 20000;
+            player1.Oro = 20000;
+            player1.Popolazione = 1000;
 
-            //player1.Spade = 2000;
-            //player1.Lance = 2000;
-            //player1.Archi = 2000;
-            //player1.Scudi = 2000;
-            //player1.Armature = 2000;
-            //player1.Frecce = 200;
+            player1.Spade = 2000;
+            player1.Lance = 2000;
+            player1.Archi = 2000;
+            player1.Scudi = 2000;
+            player1.Armature = 2000;
+            player1.Frecce = 200;
 
-            //player1.Caserma_Guerrieri = 5;
-            //player1.Caserma_Lancieri = 5;
-            //player1.Caserma_Arceri = 5;
-            //player1.Caserma_Catapulte = 5;
-
-            //player1.Diamanti_Blu = 15000;
-            //player1.Diamanti_Viola = 30000;
-
-            //Test battaglie
-            //if (!player1.Tutorial) //Senza tutorial, per test truppe e battaglie
-            //{
-            //    player1.Guerrieri = [25, 0, 0, 0, 0];
-            //    player1.Lanceri = [25, 0, 0, 0, 0];
-            //    player1.Arceri = [25, 0, 0, 0, 0];
-            //    player1.Catapulte = [25, 0, 0, 0, 0];
-            //
-            //    player1.Guerrieri_Ingresso = [5, 0, 0, 0, 0];
-            //    player1.Lanceri_Ingresso = [5, 0, 0, 0, 0];
-            //    player1.Arceri_Ingresso = [5, 0, 0, 0, 0];
-            //    player1.Catapulte_Ingresso = [0, 0, 0, 0, 0];
-            //
-            //    player1.Guerrieri_Cancello = [5, 0, 0, 0, 0];
-            //    player1.Lanceri_Cancello = [5, 0, 0, 0, 0];
-            //    player1.Arceri_Cancello = [5, 0, 0, 0, 0];
-            //    player1.Catapulte_Cancello = [5, 0, 0, 0, 0];
-            //}
+            player1.Diamanti_Blu = 15000;
+            player1.Diamanti_Viola = 30000;
 
             Gioco.Barbari.GeneraVillaggiPerGiocatore(player1);
         }
@@ -725,6 +705,7 @@ namespace Server_Strategico.Server
                         }
                     }
 
+                    if (savePlayer >= 80) await SaveSomePlayersAsync(100); //Salva 50 player per volta...
                     if (saveServer >= 1200)
                     {
                         await GameSave.SaveServerData();
@@ -745,7 +726,6 @@ namespace Server_Strategico.Server
                         await Auto_Update_Clients();
                         tempo_1 = 0;
                     }
-                    //if (savePlayer >= 80) await SaveSomePlayersAsync(100); //Salva 50 player per volta...
                     if (saveServer >= 1200) saveServer = 0;
                     if (savePlayer >= 80) savePlayer = 0;
                     tempo_1++;
