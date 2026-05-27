@@ -26,29 +26,29 @@ namespace Warrior_and_Wealth
             btn_IV.Font = new Font("Cinzel Decorative", 7, FontStyle.Bold);
             btn_V.Font = new Font("Cinzel Decorative", 7, FontStyle.Bold);
 
-            toolTip1.SetToolTip(this.ico_Structure_1, "[black]Fattorie");
-            toolTip1.SetToolTip(this.ico_Structure_2, "[black]Segherie");
-            toolTip1.SetToolTip(this.ico_Structure_3, "[black]Cave di pietra");
-            toolTip1.SetToolTip(this.ico_Structure_4, "[black]Miniere di ferro");
-            toolTip1.SetToolTip(this.ico_Structure_5, "[black]Miniere d'oro");
-            toolTip1.SetToolTip(this.ico_Structure_6, "[black]Abitazioni");
+            toolTip1.SetToolTip(this.ico_Structure_1, Variabili_Client.Costruzione.Fattorie.Descrizione);
+            toolTip1.SetToolTip(this.ico_Structure_2, Variabili_Client.Costruzione.Segherie.Descrizione);
+            toolTip1.SetToolTip(this.ico_Structure_3, Variabili_Client.Costruzione.CaveDiPietra.Descrizione);
+            toolTip1.SetToolTip(this.ico_Structure_4, Variabili_Client.Costruzione.Miniera_Ferro.Descrizione);
+            toolTip1.SetToolTip(this.ico_Structure_5, Variabili_Client.Costruzione.Miniera_Oro.Descrizione);
+            toolTip1.SetToolTip(this.ico_Structure_6, Variabili_Client.Costruzione.Case.Descrizione);
 
-            toolTip1.SetToolTip(this.ico_Structure_7, "[black]Workshop spade");
-            toolTip1.SetToolTip(this.ico_Structure_8, "[black]Workshop lancie");
-            toolTip1.SetToolTip(this.ico_Structure_9, "[black]Workshop archi");
-            toolTip1.SetToolTip(this.ico_Structure_10, "[black]Workshop scudi");
-            toolTip1.SetToolTip(this.ico_Structure_11, "[black]Workshop armature");
-            toolTip1.SetToolTip(this.ico_Structure_12, "[black]Workshop frecce");
+            toolTip1.SetToolTip(this.ico_Structure_7, Variabili_Client.Costruzione.Workshop_Spade.Descrizione);
+            toolTip1.SetToolTip(this.ico_Structure_8, Variabili_Client.Costruzione.Workshop_Lance.Descrizione);
+            toolTip1.SetToolTip(this.ico_Structure_9, Variabili_Client.Costruzione.Workshop_Archi.Descrizione);
+            toolTip1.SetToolTip(this.ico_Structure_10, Variabili_Client.Costruzione.Workshop_Scudi.Descrizione);
+            toolTip1.SetToolTip(this.ico_Structure_11, Variabili_Client.Costruzione.Workshop_Armature.Descrizione);
+            toolTip1.SetToolTip(this.ico_Structure_12, Variabili_Client.Costruzione.Workshop_Frecce.Descrizione);
 
-            toolTip1.SetToolTip(this.ico_Unita_1, "[black]Guerrieri");
-            toolTip1.SetToolTip(this.ico_Unita_2, "[black]Lanceri");
-            toolTip1.SetToolTip(this.ico_Unita_3, "[black]Arceri");
-            toolTip1.SetToolTip(this.ico_Unita_4, "[black]Catapulte");
+            toolTip1.SetToolTip(this.ico_Unita_1, Variabili_Client.Reclutamento.Guerrieri_1.Descrizione);
+            toolTip1.SetToolTip(this.ico_Unita_2, Variabili_Client.Reclutamento.Lanceri_1.Descrizione);
+            toolTip1.SetToolTip(this.ico_Unita_3, Variabili_Client.Reclutamento.Arceri_1.Descrizione);
+            toolTip1.SetToolTip(this.ico_Unita_4, Variabili_Client.Reclutamento.Catapulte_1.Descrizione);
 
-            toolTip1.SetToolTip(this.ico_Caserma_1, "[black]Caserma guerrieri");
-            toolTip1.SetToolTip(this.ico_Caserma_2, "[black]Caserma lancieri");
-            toolTip1.SetToolTip(this.ico_Caserma_3, "[black]Caserma arcieri");
-            toolTip1.SetToolTip(this.ico_Caserma_4, "[black]Caserma catapulte");
+            toolTip1.SetToolTip(this.ico_Caserma_1, Variabili_Client.Costruzione.Caserme_Guerrieri.Descrizione);
+            toolTip1.SetToolTip(this.ico_Caserma_2, Variabili_Client.Costruzione.Caserme_Lanceri.Descrizione);
+            toolTip1.SetToolTip(this.ico_Caserma_3, Variabili_Client.Costruzione.Caserme_arceri.Descrizione);
+            toolTip1.SetToolTip(this.ico_Caserma_4, Variabili_Client.Costruzione.Caserme_Catapulte.Descrizione);
 
             UnlockSoldierTier(livello_Esercito);
             if (Variabili_Client.tutorial_Attivo) Tutorial_Start();
@@ -190,7 +190,18 @@ namespace Warrior_and_Wealth
         }
         private void Costruzione_Load(object sender, EventArgs e)
         {
+            Localizzazione();
             Task.Run(() => Gui_Update(cts.Token), cts.Token);
+        }
+        void Localizzazione()
+        {
+            groupBox_Strutture_Civili.Text = LocalizationManager.Current.Label_Strutture_Civili();
+            groupBox_Strutture_Militari.Text = LocalizationManager.Current.Label_Strutture_Militari();
+            groupBox_Caserme.Text = LocalizationManager.Current.Label_Caserme();
+            groupBox_Reclutamento.Text = LocalizationManager.Current.Label_Reclutamento();
+
+            Btn_Costruzione.Text = LocalizationManager.Current.Label_Costruzione();
+            btn_Reclutamento.Text = LocalizationManager.Current.Label_Reclutamento();
         }
         void Tutorial_Start()
         {

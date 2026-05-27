@@ -787,7 +787,6 @@ namespace Strategico_V2
                 SetValue<int>("Catapulte_4_Ingresso", v => Variabili_Client.Citta.Ingresso.Catapulte_4 = v);
                 SetValue<int>("Catapulte_5_Ingresso", v => Variabili_Client.Citta.Ingresso.Catapulte_5 = v);
 
-
                 // Guarnigione Città
                 SetValue<int>("Guarnigione_Citta", v => Variabili_Client.Citta.Città.Guarnigione = v);
                 SetValue<int>("Guarnigione_CittaMax", v => Variabili_Client.Citta.Città.Guarnigione_Max = v);
@@ -1441,6 +1440,38 @@ namespace Strategico_V2
                         break;
                     case "Shop GamePass Avanzato":
                         Variabili_Client.Shop.GamePass_Avanzato.desc = desc;
+                        break;
+
+                    case "Città Testo":
+                        Variabili_Client.Città_Desc = desc;
+                        break;
+                    case "Ricerca Testo":
+                        Variabili_Client.Ricerca_Desc = desc;
+                        break;
+                    case "Scambia DV_DB Testo":
+                        Variabili_Client.Scambia_DV_T_DB_Desc = desc;
+                        break;
+                    case "Scambia Tributi_DB Testo":
+                        Variabili_Client.Scambia_Tributi_T_DB_Desc = desc;
+                        break;
+
+                    case "Feudi Info":
+                        Variabili_Client.Feudi_Desc = desc;
+                        break;
+                    case "Feudo Comune":
+                        Variabili_Client.Feudo_Comune_Desc = desc;
+                        break;
+                    case "Feudo Non Comune":
+                        Variabili_Client.Feudo_NonComune_Desc = desc;
+                        break;
+                    case "Feudo Raro":
+                        Variabili_Client.Feudo_Raro_Desc = desc;
+                        break;
+                    case "Feudo Epico":
+                        Variabili_Client.Feudo_Epico_Desc = desc;
+                        break;
+                    case "Feudo Leggendario":
+                        Variabili_Client.Feudo_Leggendario_Desc = desc;
                         break;
                 }
             }

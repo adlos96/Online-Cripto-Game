@@ -433,13 +433,16 @@ namespace Server_Strategico.ServerData.Localization
         public string Label_Mantenimento_Pietra() => "Mantenimento pietra";
         public string Label_Mantenimento_Ferro() => "Mantenimento ferro";
         public string Label_Mantenimento_Oro() => "Mantenimento oro";
+        public string Label_Guerrieri() => "Guerrieri";
+        public string Label_Lancieri() => "Lancieri";
+        public string Label_Arcieri() => "Arcieri";
+        public string Label_Catapulte() => "Catapulte";
         public string Label_Livello() => "Livello";
         public string Label_Salute() => "Salute";
         public string Label_Difesa() => "Difesa";
         public string Label_Attacco() => "Attacco";
         public string Label_Limite_Magazzino() => "Limite magazzino";
-        public string Label_Limite_Unità() => "Limite";
-        public string Label_Limite_Strutture() => "Limite";
+        public string Label_Limite() => "Limite";
 
         //Terreni Virtuali - Feudi
         public string Terreni_DiamantiInsufficienti() =>
@@ -482,13 +485,13 @@ namespace Server_Strategico.ServerData.Localization
         public string Addestramento_LimiteRaggiunto(string unità, string numero, string limite) =>
             $"Log_Server|[title]Limite truppe raggiunto per i {unità}.[icon:{unità}] [warning]{numero}/{limite}";
         public string Addestramento_RisorseUtilizzate(int count, string unità, Esercito.CostoReclutamento unitCost) =>
-           $"Log_Server|[info]Risorse utilizzate[/info] per l'ddestramento di [warning]{count} {unità}[/warning]:\r\n " +
-                $"[cibo][icon:cibo]-{(unitCost.Cibo * count):N0}[/cibo] " +
-                $"[legno][icon:legno]]-{(unitCost.Legno * count):N0}[/legno] " +
-                $"[pietra][icon:pietra]-{(unitCost.Pietra * count):N0}[/pietra] " +
-                $"[ferro][icon:ferro]-{(unitCost.Ferro * count):N0}[/ferro] " +
-                $"[oro][icon:oro]-{(unitCost.Oro * count):N0}[/oro] " +
-                $"[popolazione][icon:popolazione]-{(unitCost.Popolazione * count):N0}[/oro]";
+            $"Log_Server|[info]Risorse utilizzate[/info] per l'ddestramento di [warning]{count} {unità}[/warning]:\r\n " +
+            $"[cibo][icon:cibo]-{(unitCost.Cibo * count):N0}[/cibo] " +
+            $"[legno][icon:legno]]-{(unitCost.Legno * count):N0}[/legno] " +
+            $"[pietra][icon:pietra]-{(unitCost.Pietra * count):N0}[/pietra] " +
+            $"[ferro][icon:ferro]-{(unitCost.Ferro * count):N0}[/ferro] " +
+            $"[oro][icon:oro]-{(unitCost.Oro * count):N0}[/oro] " +
+            $"[popolazione][icon:popolazione]-{(unitCost.Popolazione * count):N0}[/oro]";
 
         public string Addestramento_RisorseInsufficienti(int count, string unità) =>
             $"Log_Server|[error]Risorse insufficienti per costruire [title]{count} {unità}.";
@@ -621,79 +624,79 @@ namespace Server_Strategico.ServerData.Localization
             $"Inoltre possono essere richiesti in alcune quest, velocizzare i tempi d'attesa per strutture e unità militari.\n";
 
         public string Desc_DiamantiViola() =>
-                $"I [viola]Diamanti Viola[/viola][black][icon:diamanteViola] fondamentali per l'acquisto di [warning]feudi[warning][black], sono alla base dell'economia.\n\nPossono essere scambiati per [blu]Diamanti Blu[/blu][black][icon:diamanteBlu] ed utilizzati " +
-                $"all'interno dello shop per l'acquisto di pacchetti o per una migliore gestione della città.\n\n" +
-                $"Oltre ad essere richiesti in alcune quest, dovrebbero essere sempre presenti nelle casse della città.";
+            $"I [viola]Diamanti Viola[/viola][black][icon:diamanteViola] fondamentali per l'acquisto di [warning]feudi[warning][black], sono alla base dell'economia.\n\nPossono essere scambiati per [blu]Diamanti Blu[/blu][black][icon:diamanteBlu] ed utilizzati " +
+            $"all'interno dello shop per l'acquisto di pacchetti o per una migliore gestione della città.\n\n" +
+            $"Oltre ad essere richiesti in alcune quest, dovrebbero essere sempre presenti nelle casse della città.";
 
         public string Desc_DollariVirtuali() =>
-                $"I [icon:dollariVirtuali]Tributi dei feudi vengono generati tramite i feudi posseduti dal giocatore.\n\nPossono essere prelevati raggiunta la soglia di [verde]{Variabili_Server.prelievo_Minimo}$[/verde][black][icon:dollariVirtuali] " +
-                $"oppure utilizzati all'interno dello shop per l'acquisto di pacchetti.\nAttualmente [icon:dollariVirtuali]1 tributo equivale ad [icon:usdt]1 USDT";
+            $"I [icon:dollariVirtuali]Tributi dei feudi vengono generati tramite i feudi posseduti dal giocatore.\n\nPossono essere prelevati raggiunta la soglia di [icon:dollariVirtuali][black][verde]{Variabili_Server.prelievo_Minimo} " +
+            $"oppure utilizzati all'interno dello shop per l'acquisto di pacchetti.\nAttualmente [icon:dollariVirtuali] 1 tributo equivale ad [icon:usdt] 1 USDT";
 
         public string Desc_Cibo() =>
-                $"Il [icon:cibo]Cibo, è fondamentale per il mantenimento delle unità militari, per il loro addestramento e la costruzione di strutture.\n\n" +
-                $"Necessario anche per la ricerca.\n\n";
+            $"Il [icon:cibo]Cibo, è fondamentale per il mantenimento delle unità militari, per il loro addestramento e la costruzione di strutture.\n\n" +
+            $"Necessario anche per la ricerca.\n\n";
 
         public string Desc_Legno() =>
-                $"Il [icon:legno]Legno, è necessario per l'addestramento di unità militari e la costruzione di strutture. Necessario per la ricerca.\n\n";
+            $"Il [icon:legno]Legno, è necessario per l'addestramento di unità militari e la costruzione di strutture. Necessario per la ricerca.\n\n";
 
         public string Desc_Pietra() =>
-                $"La [icon:pietra]Pietra, fondamentale per la riparazione delle strutture difensive. Necessario per la ricerca.\n\n";
+            $"La [icon:pietra]Pietra, fondamentale per la riparazione delle strutture difensive. Necessario per la ricerca.\n\n";
 
         public string Desc_Ferro() =>
-                $"Il [icon:ferro]Ferro, fondamentale per la costruzione di edifici e la riparazione delle strutture difensive.\n\n" +
-                $"E' necessiamo per la produzione di armamento militare e per la ricerca.\n\n";
+            $"Il [icon:ferro]Ferro, fondamentale per la costruzione di edifici e la riparazione delle strutture difensive.\n\n" +
+            $"E' necessiamo per la produzione di armamento militare e per la ricerca.\n\n";
 
         public string Desc_Oro() =>
-                $"L [icon:oro]Oro è una risorsa primaria per le casse della città, necessario per la costruzione di edifici civili e militari, oltre che per il reclutamento delle unità.\n\n" +
-                $"E' fondamentale per il mantenimento di unità e strutture belliche oltre alla ricerca.\n\n";
+            $"L [icon:oro]Oro è una risorsa primaria per le casse della città, necessario per la costruzione di edifici civili e militari, oltre che per il reclutamento delle unità.\n\n" +
+            $"E' fondamentale per il mantenimento di unità e strutture belliche oltre alla ricerca.\n\n";
 
         public string Desc_Popolazione() =>
-                $"La [icon:popolazione]Popolazione è fondamentale per la costruzione di strutture civili e militari, oltre al reclutamento di unità.\n\n";
+            $"La [icon:popolazione]Popolazione è fondamentale per la costruzione di strutture civili e militari, oltre al reclutamento di unità.\n\n";
 
         public string Desc_Spade() => 
-            $"Descrizione|Spade|[black]Le Spade[icon:spade] sono necessarie per l'addestramento dei [cuoioScuro]guerrieri[icon:guerriero][black].\n\n";
+            $"[black]Le Spade[icon:spade] sono necessarie per l'addestramento dei [cuoioScuro]guerrieri[icon:guerriero][black].\n\n";
         
         public string Desc_Lance() => 
-            $"Descrizione|Lance|[black]Le Lancie[icon:lance] sono necessarie per l'addestramento dei [cuoioScuro]lancieri[icon:lancere][black].\n\n";
+            $"[black]Le Lancie[icon:lance] sono necessarie per l'addestramento dei [cuoioScuro]lancieri[icon:lancere][black].\n\n";
         
         public string Desc_Archi() => 
-            $"Descrizione|Archi|[black]Gli Archi[icon:archi] sono necessari per l'addestramento degli [cuoioScuro]arcieri[icon:arcere][black].\n\n";
+            $"[black]Gli Archi[icon:archi] sono necessari per l'addestramento degli [cuoioScuro]arcieri[icon:arcere][black].\n\n";
         
         public string Desc_Scudi() => 
-            $"Descrizione|Scudi|[black]Gli Scudi[icon:scudi] sono necessari per l'addestramento delle unità militari.\n\n";
+            $"[black]Gli Scudi[icon:scudi] sono necessari per l'addestramento delle unità militari.\n\n";
         
         public string Desc_Armature() => 
-            $"Descrizione|Armature|[black]Le Armature[icon:armature] sono necessarie per l'addestramento delle unità militari.\n\n";
+            $"[black]Le Armature[icon:armature] sono necessarie per l'addestramento delle unità militari.\n\n";
         
         public string Desc_Frecce() => 
-            $"Descrizione|Frecce|[black]Le Frecce[icon:frecce] sono fondamentali per le [cuoioScuro]unità a distanza[black], senza di esse sono praticamente inutili.\n\n";
+            $"[black]Le Frecce[icon:frecce] sono fondamentali per le [cuoioScuro]unità a distanza[black], senza di esse sono praticamente inutili.\n\n";
 
         // ── Descrizioni narrative: shop ────────────────────────────────────────
         public string Desc_Shop_GamePassBase() =>
-            "Tramite l'acquito di questo pacchetto 'GamePass Base'...\nAttualmente non disponibili vantaggi. Ha una durata di [title]30 [black]giorni";
+            "[black]Tramite l'acquito di questo pacchetto 'GamePass Base'...\nAttualmente non disponibili vantaggi. Ha una durata di [ferroScuro]30 [black]giorni";
 
         public string Desc_Shop_GamePassAvanzato() =>
-            "Tramite l'acquito di questo pacchetto 'GamePass Avanzato' ...\nAttualmente non disponibili vantaggi. Ha una durata di [title]30 [black]giorni";
+            "[black]Tramite l'acquito di questo pacchetto 'GamePass Avanzato' ...\nAttualmente non disponibili vantaggi. Ha una durata di [ferroScuro]30 [black]giorni";
 
         public string Desc_Shop_Vip1() =>
-            "Tramite l'acquito di questo pacchetto 'Vip 1', il tempo del vip verrà incrementato.\n Un massimo di [ferroScuro]2 [black]giorni può essere accumulato, acquistando più pacchetti";
+            "[black]Tramite l'acquito di questo pacchetto 'Vip 1', il tempo del vip verrà incrementato.\n Un massimo di [ferroScuro]2 [black]giorni può essere accumulato, acquistando più pacchetti";
 
         public string Desc_Shop_Vip2() =>
-            "Tramite l'acquito di questo pacchetto 'Vip 2', il tempo del vip verrà incrementato. Una volta confermata la transazione dalla blockchain i diamanti verranno accreditati immediatamente.\n Un massimo di [ferroScuro]2 [black]giorni può essere accumulato, acquistando più pacchetti";
+            "[black]Tramite l'acquito di questo pacchetto 'Vip 2', il tempo del vip verrà incrementato.\n Un massimo di [ferroScuro]2 [black]giorni può essere accumulato, acquistando più pacchetti";
 
         public string Desc_Shop_Costruttore(string durata) =>
-            $"Tramite l'acquito di questo pacchetto 'Costruttore {durata}' è possibile richiedere un costruttore aggiuntivo.\n" +
-            "Il tempo di costruzione verrà incrementato.\n Un massimo di [ferroScuro]3 [black]giorni può essere accumulato, acquistando più pacchetti";
+            $"[black]Tramite l'acquito di questo pacchetto 'Costruttore {durata}' è possibile richiedere un costruttore aggiuntivo.\n" +
+            "Il tempo di costruzione verrà incrementato.\n Un massimo di [ferroScuro]3 [black]giorni può essere accumulato, acquistando più pacchetti\n";
 
         public string Desc_Shop_Reclutatore(string durata) =>
-            $"Tramite l'acquito di questo pacchetto 'Reclutatore {durata}' è possibile richiedere un reclutatore aggiuntivo.\n" +
-            "Il tempo di reclutamento verrà incrementato.\n Un massimo di [ferroScuro]2 [black]giorni può essere accumulato, acquistando più pacchetti";
+            $"[black]Tramite l'acquito di questo pacchetto 'Reclutatore {durata}' è possibile richiedere un reclutatore aggiuntivo.\n" +
+            "Il tempo di reclutamento verrà incrementato.\n Un massimo di [ferroScuro]2 [black]giorni può essere accumulato, acquistando più pacchetti\n";
 
         public string Desc_Shop_ScudoPace(string durata) =>
-            $"Tramite l'acquito di questo pacchetto 'scudo della pace {durata}', si otterrà una protezione dagli attacchi degli altri giocatori.\n" +
-            "Il tempo dello scudo verrà incrementato al tempo disponibile dello scudo.\n Un massimo di [ferroScuro]7 [black]giorni può essere accumulato, acquistando più pacchetti";
+            $"[black]Tramite l'acquito di questo pacchetto 'scudo della pace {durata}', si otterrà una protezione dagli attacchi degli altri giocatori.\n" +
+            "Il tempo dello scudo verrà incrementato al tempo disponibile dello scudo.\n Un massimo di [ferroScuro]7 [black]giorni può essere accumulato, acquistando più pacchetti\n";
 
-        //Ricerca
+        //Villaggio
         public string Desc_SaluteMura() =>
             $"Descrizione|Mura Salute|[black]Ripara la [verdeF]salute[black] delle [porporaReale]mura[black] al massimo.\nCosto riparazioni per [verdeF]1 HP[/verdeF][black] per ogni ciclo.\n\n";
         public string Desc_DifesaMura() =>
@@ -710,106 +713,114 @@ namespace Server_Strategico.ServerData.Localization
             $"Descrizione|Castello Salute|[black]Ripara la [verdeF]salute[black] del [porporaReale]castello[black]al massimo.\nCosto riparazioni per [verdeF]1 HP[/verdeF][black] per ogni ciclo.\n\n";
         public string Desc_CastelloDifesa() =>
             $"Descrizione|Castello Difesa|[black]Ripara la [blu]difesa[black] del [porporaReale]castello[black]al massimo.\nCosto riparazioni per [blu]1 DEF[/blu][black] per ogni ciclo.\n\n";
-        public string Desc_RicercaAddestramento(int livello) =>
-            $"Descrizione|Ricerca Addestramento|[black]Permette di diminuire il tempo necessario per l'addestramento di ogni unità.\nCosto ricerca addestramento lv {livello}\n\n";
-        public string Desc_RicercaCostruzione(int livello) =>
-            $"Descrizione|Ricerca Costruzione|[black]Permette di diminuire il tempo necessario per la costruzione di ogni edificio.\nCosto ricerca costruzione lv {livello}\n\n";
-        public string Desc_RicercaProduzione(int livello) =>
-            $"Descrizione|Ricerca Produzione|[black]Permette di incrementare la quantità di risorse prodotte da ogni struttura produttiva.\nCosto ricerca produzione lv {livello}\n\n";
-        public string Desc_RicercaPopolazione(int livello) =>
-            $"Descrizione|Ricerca Popolazione|[black]Permette di implementaremigliori strategie per aumentare il numero di cittadini che giungono nel tuo villaggio.\nCosto ricerca popolazione lv {livello}\n\n";
-        public string Desc_RicercaTrasporto(int livello) =>
-            $"Descrizione|Ricerca Trasporto|[black]Permette di aumentare la capacità di trasporto delle singole unità militari.\nCosto ricerca trasporto lv {livello}\n\n";
-        public string Desc_RicercaRiparazione(int livello) =>
-            $"Descrizione|Ricerca Riparazione|[black]Permette di migliorare la riparazione delle singole strutture.\nCosto ricerca riparazione lv {livello}\n\n";
-        public string Desc_RicercaGuerrieroLivello(int livello) =>
-            $"Descrizione|Ricerca Guerriero Livello|[black]Aumenta il livello dei guerrieri.\nCosto ricerca livello guerriero lv {livello}\n\n";
-        public string Desc_RicercaGuerrieroSalute(int livello) =>
-            $"Descrizione|Ricerca Guerriero Salute|[black]Aumenta la salute dei guerrieri.\nCosto ricerca salute guerriero lv {livello}\n\n";
-        public string Desc_RicercaGuerrieroAttacco(int livello) =>
-            $"Descrizione|Ricerca Guerriero Attacco|[black]Aumenta l'attacco dei guerrieri.\nCosto ricerca attacco guerriero lv {livello}\n\n";
-        public string Desc_RicercaGuerrieroDifesa(int livello) =>
-            $"Descrizione|Ricerca Guerriero Difesa|[black]Aumenta la difesa dei guerrieri.\nCosto ricerca difesa guerriero lv {livello}\n\n";
-        public string Desc_RicercaLancereLivello(int livello) =>
-            $"Descrizione|Ricerca Lancere Livello|[black]Aumenta il livello dei Lancieri.\nCosto ricerca livello Lanciere lv {livello}\n\n";
-        public string Desc_RicercaLancereSalute(int livello) =>
-            $"Descrizione|Ricerca Lancere Salute|[black]Aumenta la salute dei Lancieri.\nCosto ricerca salute Lanciere lv {livello}\n\n";
-        public string Desc_RicercaLancereAttacco(int livello) =>
-            $"Descrizione|Ricerca Lancere Attacco|[black]Aumenta l'attacco dei Lancieri.\nCosto ricerca attacco Lanciere lv {livello}\n\n";
-        public string Desc_RicercaLancereDifesa(int livello) =>
-            $"Descrizione|Ricerca Lancere Difesa|[black]Aumenta la difesa dei Lancieri.\nCosto ricerca difesa Lanciere lv {livello}\n\n";
-        public string Desc_RicercaArcereLivelloe(int livello) =>
-            $"Descrizione|Ricerca Arcere Livello|[black]Aumenta il livello degli Arcieri.\nCosto ricerca livello Arciere lv {livello}\n\n";
-        public string Desc_RicercaArcereSalute(int livello) =>
-            $"Descrizione|Ricerca Arcere Salute|[black]Aumenta la salute degli Arcieri.\nCosto ricerca salute Arciere lv {livello}\n\n";
-        public string Desc_RicercaArcereAttacco(int livello) =>
-            $"Descrizione|Ricerca Arcere Attacco|[black]Aumenta l'attacco degli Arcieri.\nCosto ricerca attacco Arciere lv {livello}\n\n";
-        public string Desc_RicercaArcereDifesa(int livello) =>
-            $"Descrizione|Ricerca Arcere Difesa|[black]Aumenta la difesa degli Arcieri.\nCosto ricerca difesa Arciere lv {livello}\n\n";
-        public string Desc_RicercaCatapultaLivello(int livello) =>
-            $"Descrizione|Ricerca Catapulta Livello|[black]Aumenta il livello delle Catapulte.\nCosto ricerca livello catapulte lv {livello}\n\n";
-        public string Desc_RicercaCatapultaSalute(int livello) =>
-            $"Descrizione|Ricerca Catapulta Salute|[black]Aumenta la salute delle Catapulte.\nCosto ricerca salute catapulta lv {livello}\n\n";
-        public string Desc_RicercaCatapultaAttacco(int livello) =>
-            $"Descrizione|Ricerca Catapulta Attacco|[black]Aumenta l'attacco delle Catapulte.\nCosto ricerca attacco catapulta lv {livello}\n\n";
-        public string Desc_RicercaCatapultaDifesa(int livello) =>
-            $"Descrizione|Ricerca Catapulta Difesa|[black]Aumenta la difesa delle Catapulte.\nCosto ricerca difesa catapulta lv {livello}\n\n";
-        public string Desc_RicercaIngressoGuarnigione(int livello) =>
-            $"Descrizione|Ricerca Ingresso Guarnigione|[black]Aumenta il numero massimo di unità che può ospitare la struttura.\nCosto ricerca ingresso guarnigione lv {livello}\n\n";
-        public string Desc_RicercaCittaGuarnigione(int livello) =>
-            $"Descrizione|Ricerca Citta Guarnigione|[black]Aumenta il numero massimo di unità che può ospitare la struttura.\nCosto ricerca citta guarnigione lv {livello}\n\n";
-        public string Desc_RicercaMuraLivello(int livello) =>
-            $"Descrizione|Ricerca Mura Livello|[black]Aumenta il livello della struttura.\nCosto ricerca livello mura: {livello}\n\n";
-        public string Desc_RicercaMuraGuarnigione(int livello) =>
-            $"Descrizione|Ricerca Mura Guarnigione|[black]Aumenta il numero massimo di unità che può ospitare la struttura.\nCosto ricerca guarnigione mura lv: {livello}\n\n";
-        public string Desc_RicercaMuraSalute(int livello) =>
-            $"Descrizione|Ricerca Mura Salute|[black]Aumenta il numero massimo di punti salute della struttura.\nCosto ricerca salute mura lv: {livello}\n\n";
-        public string Desc_RicercaMuraDifesa(int livello) =>
-            $"Descrizione|Ricerca Mura Difesa|[black]Aumenta il numero massimo di punti difesa della struttura.\nCosto ricerca difesa mura lv: {livello}\n\n";
-        public string Desc_RicercaCancelloLivello(int livello) =>
-            $"Descrizione|Ricerca Cancello Livello|[black]Aumenta il numero massimo di unità che può ospitare la struttura.\nCosto ricerca livello cancello: {livello}\n\n";
-        public string Desc_RicercaCancelloGuarnigione(int livello) =>
-            $"Descrizione|Ricerca Cancello Guarnigione|[black]Aumenta il numero massimo di unità che può ospitare la struttura.\nCosto ricerca guarnigione cancello lv: {livello}\n\n";
-        public string Desc_RicercaCancelloSalute(int livello) =>
-            $"Descrizione|Ricerca Cancello Salute|[black]Aumenta il numero massimo di punti salute della struttura.\nCosto ricerca salute cancello lv: {livello}\n\n";
-        public string Desc_RicercaCancelloDifesa(int livello) =>
-            $"Descrizione|Ricerca Cancello Difesa|[black]Aumenta il numero massimo di punti difesa della struttura.\nCosto ricerca difesa cancello lv: {livello}\n\n";
-        public string Desc_RicercaTorriLivello(int livello) =>
-            $"Descrizione|Ricerca Torri Livello|[black]Aumenta il numero massimo di unità che può ospitare la struttura.\nCosto ricerca livello torri: {livello}\n\n";
-        public string Desc_RicercaTorriGuarnigione(int livello) =>
-            $"Descrizione|Ricerca Torri Guarnigione|[black]Aumenta il numero massimo di unità che può ospitare la struttura.\nCosto ricerca guarnigione torri lv: {livello}\n\n";
-        public string Desc_RicercaTorriSalute(int livello) =>
-            $"Descrizione|Ricerca Torri Salute|[black]Aumenta il numero massimo di punti salute della struttura.\nCosto ricerca salute torri lv: {livello}\n\n";
-        public string Desc_RicercaTorriDifesa(int livello) =>
-            $"Descrizione|Ricerca Torri Difesa|[black]Aumenta il numero massimo di punti difesa della struttura.\nCosto ricerca difesa torri lv: {livello}\n\n";
-        public string Desc_RicercaCastelloLivello(int livello) =>
-            $"Descrizione|Ricerca Castello Livello|[black]Aumenta il numero massimo di unità che può ospitare la struttura.\nCosto ricerca livello castello: {livello}\n\n";
-        public string Desc_RicercaCastelloGuarnigione(int livello) =>
-            $"Descrizione|Ricerca Castello Guarnigione|[black]Aumenta il numero massimo di unità che può ospitare la struttura.\nCosto ricerca guarnigione castello lv: {livello}\n\n";
-        public string Desc_RicercaCastelloSalute(int livello) =>
-            $"Descrizione|Ricerca Castello Salute|[black]Aumenta il numero massimo di punti salute della struttura.\nCosto ricerca salute castello lv: {livello}\n\n";
-        public string Desc_RicercaCastelloDifesa(int livello) =>
-            $"Descrizione|Ricerca Castello Difesa|[black]Aumenta il numero massimo di punti difesa della struttura.\nCosto ricerca difesa castello lv: {livello}\n\n";
 
+        //Ricerca
+        public string Desc_RicercaAddestramento(int livello) =>
+            $"[black]Permette di diminuire il tempo necessario per l'addestramento di ogni unità.\nCosto ricerca addestramento lv {livello}\n\n";
+        public string Desc_RicercaCostruzione(int livello) =>
+            $"[black]Permette di diminuire il tempo necessario per la costruzione di ogni edificio.\nCosto ricerca costruzione lv {livello}\n\n";
+        public string Desc_RicercaProduzione(int livello) =>
+            $"[black]Permette di incrementare la quantità di risorse prodotte da ogni struttura produttiva.\nCosto ricerca produzione lv {livello}\n\n";
+        public string Desc_RicercaPopolazione(int livello) =>
+            $"[black]Permette di implementaremigliori strategie per aumentare il numero di cittadini che giungono nel tuo villaggio.\nCosto ricerca popolazione lv {livello}\n\n";
+        public string Desc_RicercaTrasporto(int livello) =>
+            $"[black]Permette di aumentare la capacità di trasporto delle singole unità militari.\nCosto ricerca trasporto lv {livello}\n\n";
+        public string Desc_RicercaRiparazione(int livello) =>
+            $"[black]Permette di migliorare la riparazione delle singole strutture.\nCosto ricerca riparazione lv {livello}\n\n";
+        public string Desc_RicercaGuerrieroLivello(int livello) =>
+            $"[black]Aumenta il livello dei guerrieri.\nCosto ricerca livello guerriero lv {livello}\n\n";
+        public string Desc_RicercaGuerrieroSalute(int livello) =>
+            $"[black]Aumenta la salute dei guerrieri.\nCosto ricerca salute guerriero lv {livello}\n\n";
+        public string Desc_RicercaGuerrieroAttacco(int livello) =>
+            $"[black]Aumenta l'attacco dei guerrieri.\nCosto ricerca attacco guerriero lv {livello}\n\n";
+        public string Desc_RicercaGuerrieroDifesa(int livello) =>
+            $"[black]Aumenta la difesa dei guerrieri.\nCosto ricerca difesa guerriero lv {livello}\n\n";
+        public string Desc_RicercaLancereLivello(int livello) =>
+            $"[black]Aumenta il livello dei Lancieri.\nCosto ricerca livello Lanciere lv {livello}\n\n";
+        public string Desc_RicercaLancereSalute(int livello) =>
+            $"[black]Aumenta la salute dei Lancieri.\nCosto ricerca salute Lanciere lv {livello}\n\n";
+        public string Desc_RicercaLancereAttacco(int livello) =>
+            $"[black]Aumenta l'attacco dei Lancieri.\nCosto ricerca attacco Lanciere lv {livello}\n\n";
+        public string Desc_RicercaLancereDifesa(int livello) =>
+            $"[black]Aumenta la difesa dei Lancieri.\nCosto ricerca difesa Lanciere lv {livello}\n\n";
+        public string Desc_RicercaArcereLivelloe(int livello) =>
+            $"[black]Aumenta il livello degli Arcieri.\nCosto ricerca livello Arciere lv {livello}\n\n";
+        public string Desc_RicercaArcereSalute(int livello) =>
+            $"[black]Aumenta la salute degli Arcieri.\nCosto ricerca salute Arciere lv {livello}\n\n";
+        public string Desc_RicercaArcereAttacco(int livello) =>
+            $"[black]Aumenta l'attacco degli Arcieri.\nCosto ricerca attacco Arciere lv {livello}\n\n";
+        public string Desc_RicercaArcereDifesa(int livello) =>
+            $"[black]Aumenta la difesa degli Arcieri.\nCosto ricerca difesa Arciere lv {livello}\n\n";
+        public string Desc_RicercaCatapultaLivello(int livello) =>
+            $"[black]Aumenta il livello delle Catapulte.\nCosto ricerca livello catapulte lv {livello}\n\n";
+        public string Desc_RicercaCatapultaSalute(int livello) =>
+            $"[black]Aumenta la salute delle Catapulte.\nCosto ricerca salute catapulta lv {livello}\n\n";
+        public string Desc_RicercaCatapultaAttacco(int livello) =>
+            $"[black]Aumenta l'attacco delle Catapulte.\nCosto ricerca attacco catapulta lv {livello}\n\n";
+        public string Desc_RicercaCatapultaDifesa(int livello) =>
+            $"[black]Aumenta la difesa delle Catapulte.\nCosto ricerca difesa catapulta lv {livello}\n\n";
+        public string Desc_RicercaIngressoGuarnigione(int livello) =>
+            $"[black]Aumenta il numero massimo di unità che può ospitare la struttura.\nCosto ricerca ingresso guarnigione lv {livello}\n\n";
+        public string Desc_RicercaCittaGuarnigione(int livello) =>
+            $"[black]Aumenta il numero massimo di unità che può ospitare la struttura.\nCosto ricerca citta guarnigione lv {livello}\n\n";
+        public string Desc_RicercaMuraLivello(int livello) =>
+            $"[black]Aumenta il livello della struttura.\nCosto ricerca livello mura: {livello}\n\n";
+        public string Desc_RicercaMuraGuarnigione(int livello) =>
+            $"[black]Aumenta il numero massimo di unità che può ospitare la struttura.\nCosto ricerca guarnigione mura lv: {livello}\n\n";
+        public string Desc_RicercaMuraSalute(int livello) =>
+            $"[black]Aumenta il numero massimo di punti salute della struttura.\nCosto ricerca salute mura lv: {livello}\n\n";
+        public string Desc_RicercaMuraDifesa(int livello) =>
+            $"[black]Aumenta il numero massimo di punti difesa della struttura.\nCosto ricerca difesa mura lv: {livello}\n\n";
+        public string Desc_RicercaCancelloLivello(int livello) =>
+            $"[black]Aumenta il numero massimo di unità che può ospitare la struttura.\nCosto ricerca livello cancello: {livello}\n\n";
+        public string Desc_RicercaCancelloGuarnigione(int livello) =>
+            $"[black]Aumenta il numero massimo di unità che può ospitare la struttura.\nCosto ricerca guarnigione cancello lv: {livello}\n\n";
+        public string Desc_RicercaCancelloSalute(int livello) =>
+            $"[black]Aumenta il numero massimo di punti salute della struttura.\nCosto ricerca salute cancello lv: {livello}\n\n";
+        public string Desc_RicercaCancelloDifesa(int livello) =>
+            $"[black]Aumenta il numero massimo di punti difesa della struttura.\nCosto ricerca difesa cancello lv: {livello}\n\n";
+        public string Desc_RicercaTorriLivello(int livello) =>
+            $"[black]Aumenta il numero massimo di unità che può ospitare la struttura.\nCosto ricerca livello torri: {livello}\n\n";
+        public string Desc_RicercaTorriGuarnigione(int livello) =>
+            $"[black]Aumenta il numero massimo di unità che può ospitare la struttura.\nCosto ricerca guarnigione torri lv: {livello}\n\n";
+        public string Desc_RicercaTorriSalute(int livello) =>
+            $"[black]Aumenta il numero massimo di punti salute della struttura.\nCosto ricerca salute torri lv: {livello}\n\n";
+        public string Desc_RicercaTorriDifesa(int livello) =>
+            $"[black]Aumenta il numero massimo di punti difesa della struttura.\nCosto ricerca difesa torri lv: {livello}\n\n";
+        public string Desc_RicercaCastelloLivello(int livello) =>
+            $"[black]Aumenta il numero massimo di unità che può ospitare la struttura.\nCosto ricerca livello castello: {livello}\n\n";
+        public string Desc_RicercaCastelloGuarnigione(int livello) =>
+            $"[black]Aumenta il numero massimo di unità che può ospitare la struttura.\nCosto ricerca guarnigione castello lv: {livello}\n\n";
+        public string Desc_RicercaCastelloSalute(int livello) =>
+            $"[black]Aumenta il numero massimo di punti salute della struttura.\nCosto ricerca salute castello lv: {livello}\n\n";
+        public string Desc_RicercaCastelloDifesa(int livello) =>
+            $"[black]Aumenta il numero massimo di punti difesa della struttura.\nCosto ricerca difesa castello lv: {livello}\n\n";
+
+        //Descrizioni form, se presente
         public string Desc_Città_Testo() =>
-            $"Descrizione|Feudi Testo|[black]Questa è panoramica del tuo villaggio, fortifica ogni settore, dall'Ingresso alle imponenti Mura del Castello.\n" +
+            $"[black]Questa è panoramica del tuo villaggio, fortifica ogni settore, dall'Ingresso alle imponenti Mura del Castello.\n" +
             $"Ogni struttura, possiede caratteristiche specifiche come salute, difesa e guarnigione, che dovrai monitorare costantemente.\n" +
             $"Assicurati che ogni edificio sia in ottima efficienza per proteggere al meglio i tuoi domini dagli attacchi nemici.";
         public string Desc_Ricerca_Testo() =>
-            $"Descrizione|Feudi Testo|[black]La Ricerca rappresenta il progresso delle conoscenze del tuo regno. Investendo tempo e risorse potrai sbloccare nuove possibilità, migliorare strutture, eserciti e strategie. " +
+            $"[black]La Ricerca rappresenta il progresso delle conoscenze del tuo regno. Investendo tempo e risorse potrai sbloccare nuove possibilità, migliorare strutture, eserciti e strategie. " +
             $"Un regno che non ricerca è destinato a restare indietro.";
+        public string Desc_Scambia_DV_T_DB_Testo() =>
+           $"[black]La Ricerca rappresenta il progresso delle conoscenze del tuo regno.";
+        public string Desc_Scambia_Tributi_T_DB_Testo() =>
+           $"[black]La Ricerca rappresenta il progresso delle conoscenze del tuo regno.";
+
         public string Desc_Feudi_Testo() =>
-            $"Descrizione|Feudi Testo|[black]Acquista il tuo feudo e diventa proprietario di una porzione di terra. Ogni terreno genera una rendita giornaliera automatica. L’ammontare della rendita dipende dalla rarità.";
+            $"[black]Acquista il tuo feudo e diventa proprietario di una porzione di terra. Ogni terreno genera una rendita giornaliera automatica. L’ammontare della rendita dipende dalla rarità.";
         public string Label_Comune() =>
-            $"Descrizione|Feudi Testo|Comune";
+            $"Comune";
         public string Label_NonComune() =>
-            $"Descrizione|Feudi Testo|Non Comune";
+            $"Non Comune";
         public string Label_Raro() =>
-            $"Descrizione|Feudi Testo|Raro";
+            $"Raro";
         public string Label_Epico() =>
-            $"Descrizione|Feudi Testo|Epico";
+            $"Epico";
         public string Label_Leggendario() =>
-            $"Descrizione|Feudi Testo|Leggendario";
+            $"Leggendario";
 
         public static string ToRoman(int n) => n switch
         {

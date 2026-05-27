@@ -48,6 +48,7 @@ namespace Strategico_V2
         public static string Ricerca_1_Bottone_Cliccato = "";
         public static string Server = "0";
         public static string Versione = "0";
+        public static string lingua_Selezionata = "ITA";
 
         public static string Esperienza_Desc = "";
         public static string Livello_Desc = "";
@@ -81,6 +82,9 @@ namespace Strategico_V2
         public static string Feudo_Raro_Desc = "";
         public static string Feudo_Epico_Desc = "";
         public static string Feudo_Leggendario_Desc = "";
+
+        public static string Scambia_DV_T_DB_Desc = "";
+        public static string Scambia_Tributi_T_DB_Desc = "";
 
         //Città
         public static string Città_Desc = "";

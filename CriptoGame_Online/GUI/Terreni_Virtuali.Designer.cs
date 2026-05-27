@@ -158,7 +158,7 @@
             txt_Rarita_5.Margin = new Padding(2, 3, 2, 3);
             txt_Rarita_5.Name = "txt_Rarita_5";
             txt_Rarita_5.ReadOnly = true;
-            txt_Rarita_5.Size = new Size(77, 18);
+            txt_Rarita_5.Size = new Size(141, 18);
             txt_Rarita_5.TabIndex = 36;
             txt_Rarita_5.Text = "Leggendaria";
             // 
@@ -170,7 +170,7 @@
             txt_Rarita_1.Margin = new Padding(2, 3, 2, 3);
             txt_Rarita_1.Name = "txt_Rarita_1";
             txt_Rarita_1.ReadOnly = true;
-            txt_Rarita_1.Size = new Size(52, 18);
+            txt_Rarita_1.Size = new Size(141, 18);
             txt_Rarita_1.TabIndex = 32;
             txt_Rarita_1.Text = "Comune";
             // 
@@ -182,7 +182,7 @@
             txt_Rarita_2.Margin = new Padding(2, 3, 2, 3);
             txt_Rarita_2.Name = "txt_Rarita_2";
             txt_Rarita_2.ReadOnly = true;
-            txt_Rarita_2.Size = new Size(81, 18);
+            txt_Rarita_2.Size = new Size(141, 18);
             txt_Rarita_2.TabIndex = 33;
             txt_Rarita_2.Text = "Non Comune";
             // 
@@ -194,7 +194,7 @@
             txt_Rarita_3.Margin = new Padding(2, 3, 2, 3);
             txt_Rarita_3.Name = "txt_Rarita_3";
             txt_Rarita_3.ReadOnly = true;
-            txt_Rarita_3.Size = new Size(30, 18);
+            txt_Rarita_3.Size = new Size(141, 18);
             txt_Rarita_3.TabIndex = 34;
             txt_Rarita_3.Text = "Rara";
             // 
@@ -206,7 +206,7 @@
             txt_Rarita_4.Margin = new Padding(2, 3, 2, 3);
             txt_Rarita_4.Name = "txt_Rarita_4";
             txt_Rarita_4.ReadOnly = true;
-            txt_Rarita_4.Size = new Size(36, 18);
+            txt_Rarita_4.Size = new Size(141, 18);
             txt_Rarita_4.TabIndex = 35;
             txt_Rarita_4.Text = "Epica";
             // 

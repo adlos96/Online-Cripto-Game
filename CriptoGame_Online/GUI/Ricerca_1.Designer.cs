@@ -1301,9 +1301,9 @@ namespace Warrior_and_Wealth
             label15.Location = new Point(378, 876);
             label15.Margin = new Padding(2, 0, 2, 0);
             label15.Name = "label15";
-            label15.Size = new Size(37, 17);
+            label15.Size = new Size(49, 17);
             label15.TabIndex = 105;
-            label15.Text = "Città";
+            label15.Text = "Centro";
             // 
             // label14
             // 

@@ -13,6 +13,10 @@ namespace Warrior_and_Wealth.GUI
 
         private void GamePassReward_Load(object sender, EventArgs e)
         {
+            if (Variabili_Client.Utente.User_GamePass_Avanzato)
+                lbl_GamePass_Info.Text = $"Il Game Pass Avanzato è attivo! riscatta il premio disponibile.\nAttivo per: {Variabili_Client.Utente.User_GamePass_Avanzato_Tempo}";
+            else lbl_GamePass_Info.Text = $"Il Game Pass Avanzato non è attivo! Visita lo shop per acquistarlo.\n";
+
             lbl_Giorno_1.Text = "1";
             lbl_Giorno_2.Text = "2";
             lbl_Giorno_3.Text = "3";

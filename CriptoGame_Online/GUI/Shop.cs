@@ -1,19 +1,32 @@
 ﻿using Strategico_V2;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Warrior_and_Wealth
 {
     public partial class Shop : Form
     {
+
+        private static readonly Dictionary<(int pagina, int bottone), string> _shopComandi = new()
+        {
+            { (1, 1), "Vip_1" },
+            { (1, 2), "Vip_2" },
+            { (1, 3), "Pacchetto_1" },
+            { (1, 4), "Pacchetto_2" },
+            { (1, 5), "Pacchetto_3" },
+            { (1, 6), "Pacchetto_4" },
+        
+            { (2, 1), "Costruttori_24H" },
+            { (2, 2), "Costruttori_48H" },
+            { (2, 3), "Reclutatori_24H" },
+            { (2, 4), "Reclutatori_48H" },
+            { (2, 5), "Scudo_Pace_8H" },
+            { (2, 6), "Scudo_Pace_24H" },
+        
+            { (3, 1), "Scudo_Pace_72H" },
+            { (3, 2), "GamePass_Base" },
+            { (3, 3), "GamePass_Avanzato" },
+        };
+
         int pagina = 1; // pagina iniziale
         public static CustomToolTip toolTip1;
         public Shop()
@@ -99,7 +112,6 @@ namespace Warrior_and_Wealth
             panel1.BackColor = Color.Transparent;
             Update_UI();
         }
-
         private void panel_Prossimo_Click(object sender, EventArgs e)
         {
             if (pagina >= 1 && pagina < 3)
@@ -205,7 +217,7 @@ namespace Warrior_and_Wealth
                 txt_Shop_1.Text = Variabili_Client.Shop.Costruttore_24h.Costo.ToString(); //Costo effettivo
                 txt_Shop_2.Text = Variabili_Client.Shop.Costruttore_48h.Costo.ToString();
                 txt_Shop_3.Text = Variabili_Client.Shop.Reclutatore_24h.Costo.ToString();
-                txt_Shop_4.Text = Variabili_Client.Shop.Reclutatore_24h.Costo.ToString();
+                txt_Shop_4.Text = Variabili_Client.Shop.Reclutatore_48h.Costo.ToString();
                 txt_Shop_5.Text = Variabili_Client.Shop.Scudo_Pace_8h.Costo.ToString();
                 txt_Shop_6.Text = Variabili_Client.Shop.Scudo_Pace_24h.Costo.ToString();
 
@@ -216,12 +228,12 @@ namespace Warrior_and_Wealth
                 txt_Image_5.Text = Variabili_Client.Shop.Scudo_Pace_8h.Reward.ToString() + " H";
                 txt_Image_6.Text = Variabili_Client.Shop.Scudo_Pace_24h.Reward.ToString() + " H";
 
-                txt_Pacchetto_Desc_1.Text = "Costruttori";
-                txt_Pacchetto_Desc_2.Text = "Costruttori";
-                txt_Pacchetto_Desc_3.Text = "Reclutatori";
-                txt_Pacchetto_Desc_4.Text = "Reclutatori";
-                txt_Pacchetto_Desc_5.Text = "Scudo della pace";
-                txt_Pacchetto_Desc_6.Text = "Scudo della pace";
+                txt_Pacchetto_Desc_1.Text = $"{LocalizationManager.Current.Label_Costruttori()}";
+                txt_Pacchetto_Desc_2.Text = $"{LocalizationManager.Current.Label_Costruttori()}";
+                txt_Pacchetto_Desc_3.Text = $"{LocalizationManager.Current.Label_Reclutatori()}";
+                txt_Pacchetto_Desc_4.Text = $"{LocalizationManager.Current.Label_Reclutatori()}";
+                txt_Pacchetto_Desc_5.Text = $"{LocalizationManager.Current.Label_Scudo_Pace()}";
+                txt_Pacchetto_Desc_6.Text = $"{LocalizationManager.Current.Label_Scudo_Pace()}";
 
                 toolTip1.SetToolTip(this.panel_Image_1, Variabili_Client.Shop.Costruttore_24h.desc);
                 toolTip1.SetToolTip(this.panel_Image_2, Variabili_Client.Shop.Costruttore_48h.desc);
@@ -280,9 +292,9 @@ namespace Warrior_and_Wealth
                 txt_Image_5.Text = "";
                 txt_Image_6.Text = "";
 
-                txt_Pacchetto_Desc_1.Text = "Scudo della pace";
-                txt_Pacchetto_Desc_2.Text = "GamePass Silver";
-                txt_Pacchetto_Desc_3.Text = "GamePass Gold";
+                txt_Pacchetto_Desc_1.Text = $"{LocalizationManager.Current.Label_Scudo_Pace()}";
+                txt_Pacchetto_Desc_2.Text = $"GamePass Silver";
+                txt_Pacchetto_Desc_3.Text = $"GamePass Gold";
                 txt_Pacchetto_Desc_4.Text = "";
                 txt_Pacchetto_Desc_5.Text = "";
                 txt_Pacchetto_Desc_6.Text = "";
@@ -293,137 +305,31 @@ namespace Warrior_and_Wealth
             }
         }
 
-        private async void panel_Bottone_1_MouseClick(object sender, MouseEventArgs e)
+        private async Task OnBottoneShopClick(Panel bottone, int numeroBottone)
         {
-            // Messaggio di conferma chiaro
             var result = MessageBox.Show(
-                $"Sei sicuro di voler acquistare questo oggetto?\n",
-                $"Conferma acquisto",
+                $"{LocalizationManager.Current.Label_Acquisto_Testo()}\n",
+                $"{LocalizationManager.Current.Label_Conferma_Acquisto()}",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Warning
             );
 
-            if (pagina == 1 && result == DialogResult.Yes)
-                    ClientConnection.TestClient.Send($"Shop|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Vip_1");
-            
-            if (pagina == 2 && result == DialogResult.Yes)
-                    ClientConnection.TestClient.Send($"Shop|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Costruttori_24H");
-            
-            if (pagina == 3 && result == DialogResult.Yes)
-                    ClientConnection.TestClient.Send($"Shop|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Scudo_Pace_72H");
-            
-            panel_Bottone_1.Enabled = false;
-            await Sleep(2); // meglio di Thread.Sleep
-            panel_Bottone_1.Enabled = true;
-        }
-        private async void panel_Bottone_2_MouseClick(object sender, MouseEventArgs e)
-        {
-            var result = MessageBox.Show(
-                $"Sei sicuro di voler acquistare questo oggetto?\n",
-                $"Conferma acquisto",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Warning
-            );
+            if (result == DialogResult.Yes && _shopComandi.TryGetValue((pagina, numeroBottone), out var comando))
+                ClientConnection.TestClient.Send($"Shop|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|{comando}");
 
-            if (pagina == 1 && result == DialogResult.Yes)
-                    ClientConnection.TestClient.Send($"Shop|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Vip_2");
-
-            if (pagina == 2 && result == DialogResult.Yes)
-                    ClientConnection.TestClient.Send($"Shop|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Costruttori_48H");
-            if (pagina == 3)
-                ClientConnection.TestClient.Send($"Shop|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|GamePass_Base");
-
-            panel_Bottone_2.Enabled = false;
-            await Sleep(2); // meglio di Thread.Sleep
-            panel_Bottone_2.Enabled = true;
-        }
-        private async void panel_Bottone_3_MouseClick(object sender, MouseEventArgs e)
-        {
-            var result = MessageBox.Show(
-                $"Sei sicuro di voler acquistare questo oggetto?\n",
-                $"Conferma acquisto",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Warning
-            );
-
-            if (pagina == 1 && result == DialogResult.Yes)
-                    ClientConnection.TestClient.Send($"Shop|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Pacchetto_1");
-
-            if (pagina == 2 && result == DialogResult.Yes)
-                    ClientConnection.TestClient.Send($"Shop|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Reclutatori_24H");
-            if (pagina == 3)
-                ClientConnection.TestClient.Send($"Shop|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|GamePass_Avanzato");
-
-            panel_Bottone_3.Enabled = false;
-            await Sleep(2); // meglio di Thread.Sleep
-            panel_Bottone_3.Enabled = true;
+            bottone.Enabled = false;
+            await Sleep(2);
+            bottone.Enabled = true;
         }
 
-        private async void panel_Bottone_4_MouseClick(object sender, MouseEventArgs e)
-        {
-            var result = MessageBox.Show(
-                $"Sei sicuro di voler acquistare questo oggetto?\n",
-                $"Conferma acquisto",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Warning
-            );
+        // I 6 handler diventano tutti uguali:
+        private async void panel_Bottone_1_MouseClick(object sender, MouseEventArgs e) => await OnBottoneShopClick(panel_Bottone_1, 1);
+        private async void panel_Bottone_2_MouseClick(object sender, MouseEventArgs e) => await OnBottoneShopClick(panel_Bottone_2, 2);
+        private async void panel_Bottone_3_MouseClick(object sender, MouseEventArgs e) => await OnBottoneShopClick(panel_Bottone_3, 3);
+        private async void panel_Bottone_4_MouseClick(object sender, MouseEventArgs e) => await OnBottoneShopClick(panel_Bottone_4, 4);
+        private async void panel_Bottone_5_MouseClick(object sender, MouseEventArgs e) => await OnBottoneShopClick(panel_Bottone_5, 5);
+        private async void panel_Bottone_6_MouseClick(object sender, MouseEventArgs e) => await OnBottoneShopClick(panel_Bottone_6, 6);
 
-            if (pagina == 1 && result == DialogResult.Yes)
-                    ClientConnection.TestClient.Send($"Shop|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Pacchetto_2");
-
-            if (pagina == 2 && result == DialogResult.Yes)
-                    ClientConnection.TestClient.Send($"Shop|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Reclutatori_48H");
-
-
-            panel_Bottone_4.Enabled = false;
-            await Sleep(2); // meglio di Thread.Sleep
-            panel_Bottone_4.Enabled = true;
-        }
-
-        private async void panel_Bottone_5_MouseClick(object sender, MouseEventArgs e)
-        {
-            var result = MessageBox.Show(
-                $"Sei sicuro di voler acquistare questo oggetto?\n",
-                $"Conferma acquisto",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Warning
-            );
-
-            if (pagina == 1 && result == DialogResult.Yes)
-                    ClientConnection.TestClient.Send($"Shop|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Pacchetto_3");
-
-            if (pagina == 2 && result == DialogResult.Yes)
-                    ClientConnection.TestClient.Send($"Shop|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Scudo_Pace_8H");
-
-            
-            panel_Bottone_5.Enabled = false;
-            await Sleep(2); // meglio di Thread.Sleep
-            panel_Bottone_5.Enabled = true;
-        }
-
-        private async void panel_Bottone_6_MouseClick(object sender, MouseEventArgs e)
-        {
-            var result = MessageBox.Show(
-                $"Sei sicuro di voler acquistare questo oggetto?\n",
-                $"Conferma acquisto",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Warning
-            );
-
-            if (pagina == 1 && result == DialogResult.Yes)
-                    ClientConnection.TestClient.Send($"Shop|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Pacchetto_4");
-            if (pagina == 2 && result == DialogResult.Yes)
-                    ClientConnection.TestClient.Send($"Shop|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Scudo_Pace_24H");
-
-            panel_Bottone_6.Enabled = false;
-            await Sleep(2); // meglio di Thread.Sleep
-            panel_Bottone_6.Enabled = true;
-        }
-
-        public static async Task<bool> Sleep(int secondi)
-        {
-            Task.Delay(1000 * secondi);
-            return true;
-        }
+        public static async Task Sleep(int secondi) => await Task.Delay(secondi * 1000);
     }
 }

@@ -57,8 +57,8 @@
             txt_Livello = new TextBox();
             ico_Livello = new Warrior_and_Wealth.Strumenti.DoubleBufferedPanel();
             doubleBufferedPanel1 = new Warrior_and_Wealth.Strumenti.DoubleBufferedPanel();
-            btn_Mappa = new Button();
             ico_Notifiche = new Warrior_and_Wealth.Strumenti.DoubleBufferedPanel();
+            btn_Mappa = new Button();
             btn_Home = new Button();
             btn_GamePass_Reward = new Button();
             textBox9 = new TextBox();
@@ -107,14 +107,14 @@
             panel_Risorse_1.Location = new Point(0, 0);
             panel_Risorse_1.Margin = new Padding(2, 3, 2, 3);
             panel_Risorse_1.Name = "panel_Risorse_1";
-            panel_Risorse_1.Size = new Size(1544, 37);
+            panel_Risorse_1.Size = new Size(1544, 53);
             panel_Risorse_1.TabIndex = 8;
             // 
             // txt_Diamond_2
             // 
             txt_Diamond_2.Anchor = AnchorStyles.None;
             txt_Diamond_2.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txt_Diamond_2.Location = new Point(1070, 5);
+            txt_Diamond_2.Location = new Point(1070, 15);
             txt_Diamond_2.Margin = new Padding(2, 3, 2, 3);
             txt_Diamond_2.Name = "txt_Diamond_2";
             txt_Diamond_2.ReadOnly = true;
@@ -131,7 +131,7 @@
             btn_Cambia_Risorse.FlatAppearance.BorderSize = 0;
             btn_Cambia_Risorse.FlatStyle = FlatStyle.Flat;
             btn_Cambia_Risorse.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btn_Cambia_Risorse.Location = new Point(813, 0);
+            btn_Cambia_Risorse.Location = new Point(813, 8);
             btn_Cambia_Risorse.Margin = new Padding(2, 3, 2, 3);
             btn_Cambia_Risorse.Name = "btn_Cambia_Risorse";
             btn_Cambia_Risorse.Size = new Size(36, 36);
@@ -144,7 +144,7 @@
             ico_Player.Anchor = AnchorStyles.None;
             ico_Player.BackgroundImage = Properties.Resources.user;
             ico_Player.BackgroundImageLayout = ImageLayout.Zoom;
-            ico_Player.Location = new Point(5, 0);
+            ico_Player.Location = new Point(5, 8);
             ico_Player.Margin = new Padding(2, 3, 2, 3);
             ico_Player.Name = "ico_Player";
             ico_Player.Size = new Size(36, 36);
@@ -156,7 +156,7 @@
             ico_DiamantiV.Anchor = AnchorStyles.None;
             ico_DiamantiV.BackgroundImage = Properties.Resources.DiamanteViola_V2;
             ico_DiamantiV.BackgroundImageLayout = ImageLayout.Stretch;
-            ico_DiamantiV.Location = new Point(1030, 0);
+            ico_DiamantiV.Location = new Point(1030, 8);
             ico_DiamantiV.Margin = new Padding(2, 3, 2, 3);
             ico_DiamantiV.Name = "ico_DiamantiV";
             ico_DiamantiV.Size = new Size(36, 36);
@@ -166,7 +166,7 @@
             // 
             txt_Tipi_Risorse.Anchor = AnchorStyles.None;
             txt_Tipi_Risorse.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txt_Tipi_Risorse.Location = new Point(853, 5);
+            txt_Tipi_Risorse.Location = new Point(853, 15);
             txt_Tipi_Risorse.Margin = new Padding(2, 3, 2, 3);
             txt_Tipi_Risorse.Name = "txt_Tipi_Risorse";
             txt_Tipi_Risorse.ReadOnly = true;
@@ -180,7 +180,7 @@
             ico_Tributi.Anchor = AnchorStyles.None;
             ico_Tributi.BackgroundImage = Properties.Resources.Tributi_V2;
             ico_Tributi.BackgroundImageLayout = ImageLayout.Stretch;
-            ico_Tributi.Location = new Point(1147, 0);
+            ico_Tributi.Location = new Point(1147, 8);
             ico_Tributi.Margin = new Padding(2, 3, 2, 3);
             ico_Tributi.Name = "ico_Tributi";
             ico_Tributi.Size = new Size(36, 36);
@@ -191,7 +191,7 @@
             // 
             txt_Risorsa6.Anchor = AnchorStyles.None;
             txt_Risorsa6.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txt_Risorsa6.Location = new Point(740, 5);
+            txt_Risorsa6.Location = new Point(740, 15);
             txt_Risorsa6.Margin = new Padding(2, 3, 2, 3);
             txt_Risorsa6.Name = "txt_Risorsa6";
             txt_Risorsa6.ReadOnly = true;
@@ -204,7 +204,7 @@
             // 
             txt_Diamond_1.Anchor = AnchorStyles.None;
             txt_Diamond_1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txt_Diamond_1.Location = new Point(956, 5);
+            txt_Diamond_1.Location = new Point(956, 15);
             txt_Diamond_1.Margin = new Padding(2, 3, 2, 3);
             txt_Diamond_1.Name = "txt_Diamond_1";
             txt_Diamond_1.ReadOnly = true;
@@ -217,7 +217,7 @@
             // 
             txt_Risorsa5.Anchor = AnchorStyles.None;
             txt_Risorsa5.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txt_Risorsa5.Location = new Point(627, 5);
+            txt_Risorsa5.Location = new Point(627, 15);
             txt_Risorsa5.Margin = new Padding(2, 3, 2, 3);
             txt_Risorsa5.Name = "txt_Risorsa5";
             txt_Risorsa5.ReadOnly = true;
@@ -230,7 +230,7 @@
             // 
             txt_Virtual_Dolla.Anchor = AnchorStyles.None;
             txt_Virtual_Dolla.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txt_Virtual_Dolla.Location = new Point(1187, 6);
+            txt_Virtual_Dolla.Location = new Point(1187, 14);
             txt_Virtual_Dolla.Margin = new Padding(2, 3, 2, 3);
             txt_Virtual_Dolla.Name = "txt_Virtual_Dolla";
             txt_Virtual_Dolla.ReadOnly = true;
@@ -244,7 +244,7 @@
             ico_Popolazione.Anchor = AnchorStyles.None;
             ico_Popolazione.BackgroundImage = Properties.Resources.Popolazione_V2;
             ico_Popolazione.BackgroundImageLayout = ImageLayout.Stretch;
-            ico_Popolazione.Location = new Point(700, 0);
+            ico_Popolazione.Location = new Point(700, 8);
             ico_Popolazione.Margin = new Padding(2, 3, 2, 3);
             ico_Popolazione.Name = "ico_Popolazione";
             ico_Popolazione.Size = new Size(36, 36);
@@ -255,7 +255,7 @@
             ico_DiamantiB.Anchor = AnchorStyles.None;
             ico_DiamantiB.BackgroundImage = Properties.Resources.DiamanteBlu_V2;
             ico_DiamantiB.BackgroundImageLayout = ImageLayout.Stretch;
-            ico_DiamantiB.Location = new Point(916, 0);
+            ico_DiamantiB.Location = new Point(916, 8);
             ico_DiamantiB.Margin = new Padding(2, 3, 2, 3);
             ico_DiamantiB.Name = "ico_DiamantiB";
             ico_DiamantiB.Size = new Size(36, 36);
@@ -266,7 +266,7 @@
             ico_Oro.Anchor = AnchorStyles.None;
             ico_Oro.BackgroundImage = Properties.Resources.Oro_V2;
             ico_Oro.BackgroundImageLayout = ImageLayout.Stretch;
-            ico_Oro.Location = new Point(587, 0);
+            ico_Oro.Location = new Point(587, 8);
             ico_Oro.Margin = new Padding(2, 3, 2, 3);
             ico_Oro.Name = "ico_Oro";
             ico_Oro.Size = new Size(36, 36);
@@ -277,7 +277,7 @@
             txt_Username.Anchor = AnchorStyles.None;
             txt_Username.BorderStyle = BorderStyle.None;
             txt_Username.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txt_Username.Location = new Point(45, 8);
+            txt_Username.Location = new Point(45, 18);
             txt_Username.Margin = new Padding(2, 3, 2, 3);
             txt_Username.Name = "txt_Username";
             txt_Username.ReadOnly = true;
@@ -290,7 +290,7 @@
             // 
             txt_Risorsa1.Anchor = AnchorStyles.None;
             txt_Risorsa1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txt_Risorsa1.Location = new Point(175, 5);
+            txt_Risorsa1.Location = new Point(175, 15);
             txt_Risorsa1.Margin = new Padding(2, 3, 2, 3);
             txt_Risorsa1.Name = "txt_Risorsa1";
             txt_Risorsa1.ReadOnly = true;
@@ -303,7 +303,7 @@
             // 
             txt_Risorsa4.Anchor = AnchorStyles.None;
             txt_Risorsa4.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txt_Risorsa4.Location = new Point(514, 5);
+            txt_Risorsa4.Location = new Point(514, 15);
             txt_Risorsa4.Margin = new Padding(2, 3, 2, 3);
             txt_Risorsa4.Name = "txt_Risorsa4";
             txt_Risorsa4.ReadOnly = true;
@@ -317,7 +317,7 @@
             ico_Cibo.Anchor = AnchorStyles.None;
             ico_Cibo.BackgroundImage = Properties.Resources.Grano_V2;
             ico_Cibo.BackgroundImageLayout = ImageLayout.Stretch;
-            ico_Cibo.Location = new Point(135, 0);
+            ico_Cibo.Location = new Point(135, 8);
             ico_Cibo.Margin = new Padding(2, 3, 2, 3);
             ico_Cibo.Name = "ico_Cibo";
             ico_Cibo.Size = new Size(36, 36);
@@ -327,7 +327,7 @@
             // 
             txt_Risorsa3.Anchor = AnchorStyles.None;
             txt_Risorsa3.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txt_Risorsa3.Location = new Point(401, 5);
+            txt_Risorsa3.Location = new Point(401, 15);
             txt_Risorsa3.Margin = new Padding(2, 3, 2, 3);
             txt_Risorsa3.Name = "txt_Risorsa3";
             txt_Risorsa3.ReadOnly = true;
@@ -341,7 +341,7 @@
             ico_Ferro.Anchor = AnchorStyles.None;
             ico_Ferro.BackgroundImage = Properties.Resources.Ferro_V2;
             ico_Ferro.BackgroundImageLayout = ImageLayout.Stretch;
-            ico_Ferro.Location = new Point(474, 0);
+            ico_Ferro.Location = new Point(474, 8);
             ico_Ferro.Margin = new Padding(2, 3, 2, 3);
             ico_Ferro.Name = "ico_Ferro";
             ico_Ferro.Size = new Size(36, 36);
@@ -352,7 +352,7 @@
             ico_Pietra.Anchor = AnchorStyles.None;
             ico_Pietra.BackgroundImage = Properties.Resources.Pietra_V2;
             ico_Pietra.BackgroundImageLayout = ImageLayout.Stretch;
-            ico_Pietra.Location = new Point(361, 0);
+            ico_Pietra.Location = new Point(361, 8);
             ico_Pietra.Margin = new Padding(2, 3, 2, 3);
             ico_Pietra.Name = "ico_Pietra";
             ico_Pietra.Size = new Size(36, 36);
@@ -362,7 +362,7 @@
             // 
             txt_Esperienza.Anchor = AnchorStyles.None;
             txt_Esperienza.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txt_Esperienza.Location = new Point(1378, 6);
+            txt_Esperienza.Location = new Point(1378, 14);
             txt_Esperienza.Margin = new Padding(2, 3, 2, 3);
             txt_Esperienza.Name = "txt_Esperienza";
             txt_Esperienza.ReadOnly = true;
@@ -376,7 +376,7 @@
             ico_Esperienza.Anchor = AnchorStyles.None;
             ico_Esperienza.BackgroundImage = Properties.Resources.Exp_1;
             ico_Esperienza.BackgroundImageLayout = ImageLayout.Stretch;
-            ico_Esperienza.Location = new Point(1338, 1);
+            ico_Esperienza.Location = new Point(1338, 7);
             ico_Esperienza.Margin = new Padding(2, 3, 2, 3);
             ico_Esperienza.Name = "ico_Esperienza";
             ico_Esperienza.Size = new Size(36, 36);
@@ -386,7 +386,7 @@
             // 
             txt_Risorsa2.Anchor = AnchorStyles.None;
             txt_Risorsa2.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txt_Risorsa2.Location = new Point(288, 5);
+            txt_Risorsa2.Location = new Point(288, 15);
             txt_Risorsa2.Margin = new Padding(2, 3, 2, 3);
             txt_Risorsa2.Name = "txt_Risorsa2";
             txt_Risorsa2.ReadOnly = true;
@@ -400,7 +400,7 @@
             ico_Legno.Anchor = AnchorStyles.None;
             ico_Legno.BackgroundImage = Properties.Resources.Legna_V2;
             ico_Legno.BackgroundImageLayout = ImageLayout.Stretch;
-            ico_Legno.Location = new Point(248, 0);
+            ico_Legno.Location = new Point(248, 8);
             ico_Legno.Margin = new Padding(2, 3, 2, 3);
             ico_Legno.Name = "ico_Legno";
             ico_Legno.Size = new Size(36, 36);
@@ -410,7 +410,7 @@
             // 
             txt_Livello.Anchor = AnchorStyles.None;
             txt_Livello.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txt_Livello.Location = new Point(1488, 6);
+            txt_Livello.Location = new Point(1488, 14);
             txt_Livello.Margin = new Padding(2, 3, 2, 3);
             txt_Livello.Name = "txt_Livello";
             txt_Livello.ReadOnly = true;
@@ -424,7 +424,7 @@
             ico_Livello.Anchor = AnchorStyles.None;
             ico_Livello.BackgroundImage = Properties.Resources.level_up_1_;
             ico_Livello.BackgroundImageLayout = ImageLayout.Stretch;
-            ico_Livello.Location = new Point(1448, 1);
+            ico_Livello.Location = new Point(1448, 7);
             ico_Livello.Margin = new Padding(2, 3, 2, 3);
             ico_Livello.Name = "ico_Livello";
             ico_Livello.Size = new Size(36, 36);
@@ -433,8 +433,8 @@
             // doubleBufferedPanel1
             // 
             doubleBufferedPanel1.BackgroundImage = Properties.Resources._11111111111;
-            doubleBufferedPanel1.Controls.Add(btn_Mappa);
             doubleBufferedPanel1.Controls.Add(ico_Notifiche);
+            doubleBufferedPanel1.Controls.Add(btn_Mappa);
             doubleBufferedPanel1.Controls.Add(btn_Home);
             doubleBufferedPanel1.Controls.Add(btn_GamePass_Reward);
             doubleBufferedPanel1.Controls.Add(textBox9);
@@ -445,52 +445,52 @@
             doubleBufferedPanel1.Controls.Add(btn_Shop);
             doubleBufferedPanel1.Controls.Add(btn_Ricerca);
             doubleBufferedPanel1.Dock = DockStyle.Bottom;
-            doubleBufferedPanel1.Location = new Point(0, 599);
+            doubleBufferedPanel1.Location = new Point(0, 588);
             doubleBufferedPanel1.Margin = new Padding(2, 3, 2, 3);
             doubleBufferedPanel1.Name = "doubleBufferedPanel1";
-            doubleBufferedPanel1.Size = new Size(1544, 42);
+            doubleBufferedPanel1.Size = new Size(1544, 53);
             doubleBufferedPanel1.TabIndex = 9;
-            // 
-            // btn_Mappa
-            // 
-            btn_Mappa.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
-            btn_Mappa.BackgroundImage = Properties.Resources.Texture_Wood_2;
-            btn_Mappa.FlatAppearance.BorderSize = 0;
-            btn_Mappa.FlatStyle = FlatStyle.Popup;
-            btn_Mappa.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btn_Mappa.Location = new Point(1172, 4);
-            btn_Mappa.Margin = new Padding(2, 3, 2, 3);
-            btn_Mappa.Name = "btn_Mappa";
-            btn_Mappa.Size = new Size(62, 34);
-            btn_Mappa.TabIndex = 52;
-            btn_Mappa.Text = "Mappa";
-            btn_Mappa.UseVisualStyleBackColor = true;
-            btn_Mappa.Click += btn_Mappa_Click;
             // 
             // ico_Notifiche
             // 
-            ico_Notifiche.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+            ico_Notifiche.Anchor = AnchorStyles.None;
             ico_Notifiche.BackColor = Color.Transparent;
             ico_Notifiche.BackgroundImage = (Image)resources.GetObject("ico_Notifiche.BackgroundImage");
             ico_Notifiche.BackgroundImageLayout = ImageLayout.Stretch;
-            ico_Notifiche.Location = new Point(1238, 4);
+            ico_Notifiche.Location = new Point(1326, 10);
             ico_Notifiche.Margin = new Padding(2, 3, 2, 3);
             ico_Notifiche.Name = "ico_Notifiche";
             ico_Notifiche.Size = new Size(30, 34);
             ico_Notifiche.TabIndex = 53;
             ico_Notifiche.MouseClick += ico_Notifiche_MouseClick;
             // 
+            // btn_Mappa
+            // 
+            btn_Mappa.Anchor = AnchorStyles.None;
+            btn_Mappa.BackgroundImage = Properties.Resources.Texture_Wood_2;
+            btn_Mappa.FlatAppearance.BorderSize = 0;
+            btn_Mappa.FlatStyle = FlatStyle.Popup;
+            btn_Mappa.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btn_Mappa.Location = new Point(1222, 8);
+            btn_Mappa.Margin = new Padding(2, 3, 2, 3);
+            btn_Mappa.Name = "btn_Mappa";
+            btn_Mappa.Size = new Size(100, 38);
+            btn_Mappa.TabIndex = 52;
+            btn_Mappa.Text = "Mappa";
+            btn_Mappa.UseVisualStyleBackColor = true;
+            btn_Mappa.Click += btn_Mappa_Click;
+            // 
             // btn_Home
             // 
-            btn_Home.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+            btn_Home.Anchor = AnchorStyles.None;
             btn_Home.BackgroundImage = Properties.Resources.Texture_Wood_2;
             btn_Home.FlatAppearance.BorderSize = 0;
             btn_Home.FlatStyle = FlatStyle.Popup;
             btn_Home.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btn_Home.Location = new Point(364, 4);
+            btn_Home.Location = new Point(345, 8);
             btn_Home.Margin = new Padding(2, 3, 2, 3);
             btn_Home.Name = "btn_Home";
-            btn_Home.Size = new Size(90, 34);
+            btn_Home.Size = new Size(100, 38);
             btn_Home.TabIndex = 51;
             btn_Home.Text = "Home";
             btn_Home.UseVisualStyleBackColor = true;
@@ -498,15 +498,15 @@
             // 
             // btn_GamePass_Reward
             // 
-            btn_GamePass_Reward.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+            btn_GamePass_Reward.Anchor = AnchorStyles.None;
             btn_GamePass_Reward.BackgroundImage = Properties.Resources.Texture_Wood_2;
             btn_GamePass_Reward.FlatAppearance.BorderSize = 0;
             btn_GamePass_Reward.FlatStyle = FlatStyle.Popup;
             btn_GamePass_Reward.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btn_GamePass_Reward.Location = new Point(921, 4);
+            btn_GamePass_Reward.Location = new Point(969, 8);
             btn_GamePass_Reward.Margin = new Padding(2, 3, 2, 3);
             btn_GamePass_Reward.Name = "btn_GamePass_Reward";
-            btn_GamePass_Reward.Size = new Size(87, 34);
+            btn_GamePass_Reward.Size = new Size(100, 38);
             btn_GamePass_Reward.TabIndex = 50;
             btn_GamePass_Reward.Text = "GamePass";
             btn_GamePass_Reward.UseVisualStyleBackColor = true;
@@ -516,7 +516,7 @@
             // 
             textBox9.Anchor = AnchorStyles.None;
             textBox9.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            textBox9.Location = new Point(1570, -23);
+            textBox9.Location = new Point(1570, -18);
             textBox9.Margin = new Padding(2, 3, 2, 3);
             textBox9.Name = "textBox9";
             textBox9.ReadOnly = true;
@@ -527,15 +527,15 @@
             // 
             // btn_Citta
             // 
-            btn_Citta.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+            btn_Citta.Anchor = AnchorStyles.None;
             btn_Citta.BackgroundImage = Properties.Resources.Texture_Wood_2;
             btn_Citta.FlatAppearance.BorderSize = 0;
             btn_Citta.FlatStyle = FlatStyle.Popup;
             btn_Citta.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btn_Citta.Location = new Point(553, 4);
+            btn_Citta.Location = new Point(553, 8);
             btn_Citta.Margin = new Padding(2, 3, 2, 3);
             btn_Citta.Name = "btn_Citta";
-            btn_Citta.Size = new Size(87, 34);
+            btn_Citta.Size = new Size(100, 38);
             btn_Citta.TabIndex = 46;
             btn_Citta.Text = "Citta";
             btn_Citta.UseVisualStyleBackColor = true;
@@ -543,15 +543,15 @@
             // 
             // Btn_Costruzione
             // 
-            Btn_Costruzione.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+            Btn_Costruzione.Anchor = AnchorStyles.None;
             Btn_Costruzione.BackgroundImage = Properties.Resources.Texture_Wood_2;
             Btn_Costruzione.FlatAppearance.BorderSize = 0;
             Btn_Costruzione.FlatStyle = FlatStyle.Popup;
             Btn_Costruzione.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Btn_Costruzione.Location = new Point(458, 4);
+            Btn_Costruzione.Location = new Point(449, 8);
             Btn_Costruzione.Margin = new Padding(2, 3, 2, 3);
             Btn_Costruzione.Name = "Btn_Costruzione";
-            Btn_Costruzione.Size = new Size(90, 34);
+            Btn_Costruzione.Size = new Size(100, 38);
             Btn_Costruzione.TabIndex = 44;
             Btn_Costruzione.Text = "Costruzione";
             Btn_Costruzione.UseVisualStyleBackColor = true;
@@ -559,15 +559,15 @@
             // 
             // btn_PVP_PVE
             // 
-            btn_PVP_PVE.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+            btn_PVP_PVE.Anchor = AnchorStyles.None;
             btn_PVP_PVE.BackgroundImage = Properties.Resources.Texture_Wood_2;
             btn_PVP_PVE.FlatAppearance.BorderSize = 0;
             btn_PVP_PVE.FlatStyle = FlatStyle.Popup;
             btn_PVP_PVE.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btn_PVP_PVE.Location = new Point(829, 4);
+            btn_PVP_PVE.Location = new Point(865, 8);
             btn_PVP_PVE.Margin = new Padding(2, 3, 2, 3);
             btn_PVP_PVE.Name = "btn_PVP_PVE";
-            btn_PVP_PVE.Size = new Size(87, 34);
+            btn_PVP_PVE.Size = new Size(100, 38);
             btn_PVP_PVE.TabIndex = 49;
             btn_PVP_PVE.Text = "PVP/PVE";
             btn_PVP_PVE.UseVisualStyleBackColor = true;
@@ -575,15 +575,15 @@
             // 
             // btn_Quest_Mensile
             // 
-            btn_Quest_Mensile.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+            btn_Quest_Mensile.Anchor = AnchorStyles.None;
             btn_Quest_Mensile.BackgroundImage = Properties.Resources.Texture_Wood_2;
             btn_Quest_Mensile.FlatAppearance.BorderSize = 0;
             btn_Quest_Mensile.FlatStyle = FlatStyle.Popup;
             btn_Quest_Mensile.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btn_Quest_Mensile.Location = new Point(1012, 4);
+            btn_Quest_Mensile.Location = new Point(1073, 8);
             btn_Quest_Mensile.Margin = new Padding(2, 3, 2, 3);
             btn_Quest_Mensile.Name = "btn_Quest_Mensile";
-            btn_Quest_Mensile.Size = new Size(97, 34);
+            btn_Quest_Mensile.Size = new Size(100, 38);
             btn_Quest_Mensile.TabIndex = 48;
             btn_Quest_Mensile.Text = "Quest Mensile";
             btn_Quest_Mensile.UseVisualStyleBackColor = true;
@@ -591,15 +591,15 @@
             // 
             // btn_Shop
             // 
-            btn_Shop.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+            btn_Shop.Anchor = AnchorStyles.None;
             btn_Shop.BackgroundImage = Properties.Resources.Texture_Wood_2;
             btn_Shop.FlatAppearance.BorderSize = 0;
             btn_Shop.FlatStyle = FlatStyle.Popup;
             btn_Shop.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btn_Shop.Location = new Point(646, 4);
+            btn_Shop.Location = new Point(657, 8);
             btn_Shop.Margin = new Padding(2, 3, 2, 3);
             btn_Shop.Name = "btn_Shop";
-            btn_Shop.Size = new Size(87, 34);
+            btn_Shop.Size = new Size(100, 38);
             btn_Shop.TabIndex = 45;
             btn_Shop.Text = "Shop";
             btn_Shop.UseVisualStyleBackColor = true;
@@ -607,15 +607,15 @@
             // 
             // btn_Ricerca
             // 
-            btn_Ricerca.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+            btn_Ricerca.Anchor = AnchorStyles.None;
             btn_Ricerca.BackgroundImage = Properties.Resources.Texture_Wood_2;
             btn_Ricerca.FlatAppearance.BorderSize = 0;
             btn_Ricerca.FlatStyle = FlatStyle.Popup;
             btn_Ricerca.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btn_Ricerca.Location = new Point(738, 4);
+            btn_Ricerca.Location = new Point(761, 8);
             btn_Ricerca.Margin = new Padding(2, 3, 2, 3);
             btn_Ricerca.Name = "btn_Ricerca";
-            btn_Ricerca.Size = new Size(87, 34);
+            btn_Ricerca.Size = new Size(100, 38);
             btn_Ricerca.TabIndex = 47;
             btn_Ricerca.Text = "Ricerca";
             btn_Ricerca.UseVisualStyleBackColor = true;
@@ -625,7 +625,7 @@
             // 
             panel1.BackColor = SystemColors.ActiveCaptionText;
             panel1.Dock = DockStyle.Top;
-            panel1.Location = new Point(0, 37);
+            panel1.Location = new Point(0, 53);
             panel1.Name = "panel1";
             panel1.Size = new Size(1544, 5);
             panel1.TabIndex = 0;
@@ -633,17 +633,17 @@
             // panel_Gioco
             // 
             panel_Gioco.Dock = DockStyle.Left;
-            panel_Gioco.Location = new Point(0, 42);
+            panel_Gioco.Location = new Point(0, 58);
             panel_Gioco.Name = "panel_Gioco";
-            panel_Gioco.Size = new Size(1183, 557);
+            panel_Gioco.Size = new Size(1183, 530);
             panel_Gioco.TabIndex = 10;
             // 
             // panel_Tutorial
             // 
             panel_Tutorial.Dock = DockStyle.Fill;
-            panel_Tutorial.Location = new Point(1183, 42);
+            panel_Tutorial.Location = new Point(1183, 58);
             panel_Tutorial.Name = "panel_Tutorial";
-            panel_Tutorial.Size = new Size(361, 557);
+            panel_Tutorial.Size = new Size(361, 530);
             panel_Tutorial.TabIndex = 11;
             // 
             // Main

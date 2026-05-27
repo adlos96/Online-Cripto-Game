@@ -17,6 +17,26 @@ namespace Warrior_and_Wealth
             // Imposta qualche proprietà opzionale
             toolTip1.InitialDelay = 150;
             toolTip1.AutoPopDelay = 15000;
+            Localizzazione();
+        }
+        void Localizzazione()
+        {
+            txt_Testo.Text = Variabili_Client.Ricerca_Desc;
+
+            label17.Text = LocalizationManager.Current.Label_Strutture_Civili();
+            label3.Text = LocalizationManager.Current.Label_Esercito();
+            label10.Text = LocalizationManager.Current.Label_Guerrieri();
+            label16.Text = LocalizationManager.Current.Label_Lancieri();
+            label18.Text = LocalizationManager.Current.Label_Arcieri();
+            label19.Text = LocalizationManager.Current.Label_Catapulte();
+
+            label11.Text = LocalizationManager.Current.Label_Città();
+            label7.Text = LocalizationManager.Current.Label_Castello();
+            label1.Text = LocalizationManager.Current.Label_Torri();
+            label8.Text = LocalizationManager.Current.Label_Mura();
+            label9.Text = LocalizationManager.Current.Label_Cancello();
+            label2.Text = LocalizationManager.Current.Label_Ingresso();
+            label15.Text = LocalizationManager.Current.Label_Centro();
         }
         private void Ricerca_1_Load(object sender, EventArgs e)
         {
@@ -136,61 +156,61 @@ namespace Warrior_and_Wealth
                 {
                     panel_Sfondo.BeginInvoke((Action)(() =>
                     {
-                        lbl_Tempo_Ricerca.Text = "Tempo ricerca: " + Variabili_Client.Utente.Tempo_Ricerca + "s";
+                        lbl_Tempo_Ricerca.Text = $"{LocalizationManager.Current.Label_Tempo_Ricerca()}: " + Variabili_Client.Utente.Tempo_Ricerca + "s";
 
-                        if (lbl_Tempo_Ricerca.Text == "Tempo ricerca: 00:00:00s")
+                        if (lbl_Tempo_Ricerca.Text == $"{LocalizationManager.Current.Label_Tempo_Ricerca()}: 00:00:00s")
                             pictureBox_Speed.Visible = false;
                         else pictureBox_Speed.Visible = true;
 
-                        btn_Costruzione.Text = $"Costruzione: {Variabili_Client.Utente_Ricerca.Ricerca_Costruzione}";
-                        btn_Risorse.Text = $"Produzione: {Variabili_Client.Utente_Ricerca.Ricerca_Produzione}";
-                        btn_Addestramento.Text = $"Addestramento: {Variabili_Client.Utente_Ricerca.Ricerca_Addestramento}";
-                        btn_Popolazione.Text = $"Popolazione: {Variabili_Client.Utente_Ricerca.Ricerca_Popolazione}";
-                        btn_Trasporto.Text = $"Trasporto: {Variabili_Client.Utente_Ricerca.Ricerca_Trasporto}";
-                        btn_Riparazione.Text = $"Riparazione: {Variabili_Client.Utente_Ricerca.Ricerca_Riparazione}";
+                        btn_Costruzione.Text = $"{LocalizationManager.Current.Label_Costruzione()}: {Variabili_Client.Utente_Ricerca.Ricerca_Costruzione}";
+                        btn_Risorse.Text = $"{LocalizationManager.Current.Label_Produzione()}: {Variabili_Client.Utente_Ricerca.Ricerca_Produzione}";
+                        btn_Addestramento.Text = $"{LocalizationManager.Current.Label_Addestramento()}: {Variabili_Client.Utente_Ricerca.Ricerca_Addestramento}";
+                        btn_Popolazione.Text = $"{LocalizationManager.Current.Label_Popolazione()}: {Variabili_Client.Utente_Ricerca.Ricerca_Popolazione}";
+                        btn_Trasporto.Text = $"{LocalizationManager.Current.Label_Trasporto()}: {Variabili_Client.Utente_Ricerca.Ricerca_Trasporto}";
+                        btn_Riparazione.Text = $"{LocalizationManager.Current.Label_Riparazione()}: {Variabili_Client.Utente_Ricerca.Ricerca_Riparazione}";
 
-                        btn_Livello_Guerrieri.Text = $"Livello: {Variabili_Client.Utente_Ricerca.Livello_Spadaccini}";
-                        btn_Attacco_Guerrieri.Text = $"Attacco: {Variabili_Client.Utente_Ricerca.Attacco_Spadaccini}";
-                        btn_Difesa_Guerrieri.Text = $"Difesa: {Variabili_Client.Utente_Ricerca.Difesa_Spadaccini}";
-                        btn_Salute_Guerrieri.Text = $"Salute: {Variabili_Client.Utente_Ricerca.Salute_Spadaccini}";
+                        btn_Livello_Guerrieri.Text = $"{LocalizationManager.Current.Label_Livello()}: {Variabili_Client.Utente_Ricerca.Livello_Spadaccini}";
+                        btn_Attacco_Guerrieri.Text = $"{LocalizationManager.Current.Label_Attacco()}: {Variabili_Client.Utente_Ricerca.Attacco_Spadaccini}";
+                        btn_Difesa_Guerrieri.Text = $"{LocalizationManager.Current.Label_Difesa()}: {Variabili_Client.Utente_Ricerca.Difesa_Spadaccini}";
+                        btn_Salute_Guerrieri.Text = $"{LocalizationManager.Current.Label_Salute()}: {Variabili_Client.Utente_Ricerca.Salute_Spadaccini}";
 
-                        btn_Livello_Lanceri.Text = $"Livello: {Variabili_Client.Utente_Ricerca.Livello_Lanceri}";
-                        btn_Attacco_Lanceri.Text = $"Attacco: {Variabili_Client.Utente_Ricerca.Attacco_Lanceri}";
-                        btn_Difesa_Lanceri.Text = $"Difesa: {Variabili_Client.Utente_Ricerca.Difesa_Lanceri}";
-                        btn_Salute_Lanceri.Text = $"Salute: {Variabili_Client.Utente_Ricerca.Salute_Lanceri}";
+                        btn_Livello_Lanceri.Text = $"{LocalizationManager.Current.Label_Livello()}: {Variabili_Client.Utente_Ricerca.Livello_Lanceri}";
+                        btn_Attacco_Lanceri.Text = $"{LocalizationManager.Current.Label_Attacco()}: {Variabili_Client.Utente_Ricerca.Attacco_Lanceri}";
+                        btn_Difesa_Lanceri.Text = $"{LocalizationManager.Current.Label_Difesa()}: {Variabili_Client.Utente_Ricerca.Difesa_Lanceri}";
+                        btn_Salute_Lanceri.Text = $"{LocalizationManager.Current.Label_Salute()}: {Variabili_Client.Utente_Ricerca.Salute_Lanceri}";
 
-                        btn_Livello_Arceri.Text = $"Livello: {Variabili_Client.Utente_Ricerca.Livello_Arceri}";
-                        btn_Attacco_Arceri.Text = $"Attacco: {Variabili_Client.Utente_Ricerca.Attacco_Arceri}";
-                        btn_Difesa_Arceri.Text = $"Difesa: {Variabili_Client.Utente_Ricerca.Difesa_Arceri}";
-                        btn_Salute_Arceri.Text = $"Salute: {Variabili_Client.Utente_Ricerca.Salute_Arceri}";
+                        btn_Livello_Arceri.Text = $"{LocalizationManager.Current.Label_Livello()}: {Variabili_Client.Utente_Ricerca.Livello_Arceri}";
+                        btn_Attacco_Arceri.Text = $"{LocalizationManager.Current.Label_Attacco()}: {Variabili_Client.Utente_Ricerca.Attacco_Arceri}";
+                        btn_Difesa_Arceri.Text = $"{LocalizationManager.Current.Label_Difesa()}: {Variabili_Client.Utente_Ricerca.Difesa_Arceri}";
+                        btn_Salute_Arceri.Text = $"{LocalizationManager.Current.Label_Salute()}: {Variabili_Client.Utente_Ricerca.Salute_Arceri}";
 
-                        btn_Livello_Catapulte.Text = $"Livello: {Variabili_Client.Utente_Ricerca.Livello_Catapulte}";
-                        btn_Attacco_Catapulte.Text = $"Attacco: {Variabili_Client.Utente_Ricerca.Attacco_Catapulte}";
-                        btn_Difesa_Catapulte.Text = $"Difesa: {Variabili_Client.Utente_Ricerca.Difesa_Catapulte}";
-                        btn_Salute_Catapulte.Text = $"Salute: {Variabili_Client.Utente_Ricerca.Salute_Catapulte}";
+                        btn_Livello_Catapulte.Text = $"{LocalizationManager.Current.Label_Livello()}: {Variabili_Client.Utente_Ricerca.Livello_Catapulte}";
+                        btn_Attacco_Catapulte.Text = $"{LocalizationManager.Current.Label_Attacco()}: {Variabili_Client.Utente_Ricerca.Attacco_Catapulte}";
+                        btn_Difesa_Catapulte.Text = $"{LocalizationManager.Current.Label_Difesa()}: {Variabili_Client.Utente_Ricerca.Difesa_Catapulte}";
+                        btn_Salute_Catapulte.Text = $"{LocalizationManager.Current.Label_Salute()}: {Variabili_Client.Utente_Ricerca.Salute_Catapulte}";
 
-                        btn_Guarnigione_Ingresso.Text = $"Guarnigione: {Variabili_Client.Utente_Ricerca.Ricerca_Ingresso_Guarnigione}";
-                        btn_Guarnigione_Citta.Text = $"Guernigione: {Variabili_Client.Utente_Ricerca.Ricerca_Citta_Guarnigione}";
+                        btn_Guarnigione_Ingresso.Text = $"{LocalizationManager.Current.Label_Guarnigione()}: {Variabili_Client.Utente_Ricerca.Ricerca_Ingresso_Guarnigione}";
+                        btn_Guarnigione_Citta.Text = $"{LocalizationManager.Current.Label_Guarnigione()}: {Variabili_Client.Utente_Ricerca.Ricerca_Citta_Guarnigione}";
 
-                        btn_Livello_Cancello.Text = $"Livello: {Variabili_Client.Utente_Ricerca.Ricerca_Cancello_Livello}";
-                        btn_Salute_Cancello.Text = $"Salute: {Variabili_Client.Utente_Ricerca.Ricerca_Cancello_Salute}";
-                        btn_Difesa_Cancello.Text = $"Difesa: {Variabili_Client.Utente_Ricerca.Ricerca_Cancello_Difesa}";
-                        btn_Guarnigione_Cancello.Text = $"Guarnigione: {Variabili_Client.Utente_Ricerca.Ricerca_Cancello_Guarnigione}";
+                        btn_Livello_Cancello.Text = $"{LocalizationManager.Current.Label_Livello()}: {Variabili_Client.Utente_Ricerca.Ricerca_Cancello_Livello}";
+                        btn_Salute_Cancello.Text = $"{LocalizationManager.Current.Label_Salute()}: {Variabili_Client.Utente_Ricerca.Ricerca_Cancello_Salute}";
+                        btn_Difesa_Cancello.Text = $"{LocalizationManager.Current.Label_Difesa()}: {Variabili_Client.Utente_Ricerca.Ricerca_Cancello_Difesa}";
+                        btn_Guarnigione_Cancello.Text = $"{LocalizationManager.Current.Label_Guarnigione()}: {Variabili_Client.Utente_Ricerca.Ricerca_Cancello_Guarnigione}";
 
-                        btn_Livello_Mura.Text = $"Livello: {Variabili_Client.Utente_Ricerca.Ricerca_Mura_Livello}";
-                        btn_Salute_Mura.Text = $"Salute: {Variabili_Client.Utente_Ricerca.Ricerca_Mura_Salute}";
-                        btn_Difesa_Mura.Text = $"Difesa: {Variabili_Client.Utente_Ricerca.Ricerca_Mura_Difesa}";
-                        btn_Guarnigione_Mura.Text = $"Guarnigione: {Variabili_Client.Utente_Ricerca.Ricerca_Mura_Guarnigione}";
+                        btn_Livello_Mura.Text = $"{LocalizationManager.Current.Label_Livello()}: {Variabili_Client.Utente_Ricerca.Ricerca_Mura_Livello}";
+                        btn_Salute_Mura.Text = $"{LocalizationManager.Current.Label_Salute()}: {Variabili_Client.Utente_Ricerca.Ricerca_Mura_Salute}";
+                        btn_Difesa_Mura.Text = $"{LocalizationManager.Current.Label_Difesa()}: {Variabili_Client.Utente_Ricerca.Ricerca_Mura_Difesa}";
+                        btn_Guarnigione_Mura.Text = $"{LocalizationManager.Current.Label_Guarnigione()}: {Variabili_Client.Utente_Ricerca.Ricerca_Mura_Guarnigione}";
 
-                        btn_Livello_Torri.Text = $"Livello: {Variabili_Client.Utente_Ricerca.Ricerca_Torri_Livello}";
-                        btn_Salute_Torri.Text = $"Salute: {Variabili_Client.Utente_Ricerca.Ricerca_Torri_Salute}";
-                        btn_Difesa_Torri.Text = $"Difesa: {Variabili_Client.Utente_Ricerca.Ricerca_Torri_Difesa}";
-                        btn_Guarnigione_Torri.Text = $"Guarnigione: {Variabili_Client.Utente_Ricerca.Ricerca_Torri_Guarnigione}";
+                        btn_Livello_Torri.Text = $"{LocalizationManager.Current.Label_Livello()}: {Variabili_Client.Utente_Ricerca.Ricerca_Torri_Livello}";
+                        btn_Salute_Torri.Text = $"{LocalizationManager.Current.Label_Salute()}: {Variabili_Client.Utente_Ricerca.Ricerca_Torri_Salute}";
+                        btn_Difesa_Torri.Text = $"{LocalizationManager.Current.Label_Difesa()}: {Variabili_Client.Utente_Ricerca.Ricerca_Torri_Difesa}";
+                        btn_Guarnigione_Torri.Text = $"{LocalizationManager.Current.Label_Guarnigione()}: {Variabili_Client.Utente_Ricerca.Ricerca_Torri_Guarnigione}";
 
-                        btn_Livello_Castello.Text = $"Livello: {Variabili_Client.Utente_Ricerca.Ricerca_Castello_Livello}";
-                        btn_Salute_Castello.Text = $"Salute: {Variabili_Client.Utente_Ricerca.Ricerca_Castello_Salute}";
-                        btn_Difesa_Castello.Text = $"Difesa: {Variabili_Client.Utente_Ricerca.Ricerca_Castello_Difesa}";
-                        btn_Guarnigione_Castello.Text = $"Guarnigione: {Variabili_Client.Utente_Ricerca.Ricerca_Castello_Guarnigione}";
+                        btn_Livello_Castello.Text = $"{LocalizationManager.Current.Label_Livello()}: {Variabili_Client.Utente_Ricerca.Ricerca_Castello_Livello}";
+                        btn_Salute_Castello.Text = $"{LocalizationManager.Current.Label_Salute()}: {Variabili_Client.Utente_Ricerca.Ricerca_Castello_Salute}";
+                        btn_Difesa_Castello.Text = $"{LocalizationManager.Current.Label_Difesa()}: {Variabili_Client.Utente_Ricerca.Ricerca_Castello_Difesa}";
+                        btn_Guarnigione_Castello.Text = $"{LocalizationManager.Current.Label_Guarnigione()}: {Variabili_Client.Utente_Ricerca.Ricerca_Castello_Guarnigione}";
 
                         if (Variabili_Client.Utente.Ricerca_Attiva == false)
                         {

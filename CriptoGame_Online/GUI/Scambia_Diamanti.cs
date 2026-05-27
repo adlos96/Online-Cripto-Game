@@ -28,7 +28,6 @@ namespace Warrior_and_Wealth.GUI
                 ico_12.BackgroundImage = Properties.Resources.Tributi_V2;
                 ico_11.BackgroundImage = Properties.Resources.DiamanteViola_V2;
             }
-
         }
 
         private  async void btn_Scambia_Click(object sender, EventArgs e)
@@ -76,7 +75,6 @@ namespace Warrior_and_Wealth.GUI
                     btn_Scambia.Enabled = true;
                 }
             }
-            Gioco.Log_FlushBuffer();
         }
 
 

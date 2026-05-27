@@ -1,4 +1,6 @@
 ﻿
+using Strategico_V2;
+
 namespace Warrior_and_Wealth
 {
     public partial class Terreni_Virtuali : Form
@@ -10,8 +12,9 @@ namespace Warrior_and_Wealth
 
         private void Terreni_Virtuali_Load(object sender, EventArgs e)
         {
-
             this.ActiveControl = ico_1; // assegna il focus al bottone
+            txt_Testo.Text = Variabili_Client.Feudi_Desc;
+
             txt_Rarita_1.Text = "Comune";
             txt_Rarita_2.Text = "Non Comune";
             txt_Rarita_3.Text = "Raro";

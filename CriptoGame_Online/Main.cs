@@ -99,6 +99,7 @@ namespace Warrior_and_Wealth
             InitializeComponent();
             ScaleAllControls(this);
             Risorse_1();
+            Localizzazione();
             this.ActiveControl = ico_Player; // assegna il focus al bottone
 
             logBox = new GameTextBox()
@@ -129,6 +130,16 @@ namespace Warrior_and_Wealth
                 Task.Run(() => Tutorial_Update(cts.Token), cts.Token);
                 Tutorial_Start();
             }
+        }
+        void Localizzazione()
+        {
+            btn_Home.Text = LocalizationManager.Current.Label_Main();
+            Btn_Costruzione.Text = LocalizationManager.Current.Label_Costruzione();
+            btn_Citta.Text = LocalizationManager.Current.Label_Città();
+            btn_Shop.Text = LocalizationManager.Current.Label_Shop();
+            btn_Ricerca.Text = LocalizationManager.Current.Label_Ricerca();
+            btn_Quest_Mensile.Text = LocalizationManager.Current.Label_Quest_Mensili();
+            btn_Mappa.Text = LocalizationManager.Current.Label_Mappa();
         }
         #region TUTORIAL
         void Tutorial_Start()

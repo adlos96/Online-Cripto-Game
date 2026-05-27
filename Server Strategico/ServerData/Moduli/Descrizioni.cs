@@ -98,7 +98,7 @@ namespace Server_Strategico.ServerData.Moduli
                 $"{L.Label_Oro()}: [icon:oro]{Strutture.Edifici.Case.Oro.ToString("#,0")}\n" +
                 $"{L.Label_Costruzione()}: [icon:tempo]{player.FormatTime(tempoCalcolato)}{(tempoCalcolato == tempoBase ? "" : $" ({player.FormatTime(tempoBase)})")}\n" +
                 $"{L.Label_Produzione()}: [icon:popolazione]{(Strutture.Edifici.Case.Produzione + player.Ricerca_Produzione * Ricerca.Tipi.Incremento.Popolazione).ToString("0.0000")} s\n" +
-                $"Limite abitanti: [icon:popolazione][ferroScuro]{Strutture.Edifici.Case.Limite.ToString()}");
+                $"{L.Label_Limite()} {L.Label_Popolazione()}: [icon:popolazione][ferroScuro]{Strutture.Edifici.Case.Limite.ToString()}");
 
             tempoCalcolato = Strutture.Edifici.ProduzioneSpade.TempoCostruzione - player.Ricerca_Costruzione - (Strutture.Edifici.ProduzioneSpade.TempoCostruzione * player.Bonus_Costruzione);
             tempoBase = Strutture.Edifici.ProduzioneSpade.TempoCostruzione;
@@ -113,7 +113,7 @@ namespace Server_Strategico.ServerData.Moduli
                 $"{L.Label_Popolazione()}: [icon:popolazione]{Strutture.Edifici.ProduzioneSpade.Popolazione.ToString("#,0")}\n" +
                 $"{L.Label_Costruzione()}: [icon:tempo]{player.FormatTime(tempoCalcolato)}{(tempoCalcolato == tempoBase ? "" : $" ({player.FormatTime(tempoBase)})")}\n" +
                 $"{L.Label_Produzione()}: [icon:spade]{(Strutture.Edifici.ProduzioneSpade.Produzione + player.Ricerca_Produzione * Ricerca.Tipi.Incremento.Spade).ToString("0.00")} s\n" +
-                $"Limite spade [icon:spade][ferroScuro]{Strutture.Edifici.ProduzioneSpade.Limite.ToString()}[black]\n" +
+                $"{L.Label_Limite()} {L.Label_Spade()} [icon:spade][ferroScuro]{Strutture.Edifici.ProduzioneSpade.Limite.ToString()}[black]\n" +
                 $"{L.Label_Mantenimento_Legno()}: [icon:legno][rosso]-{Strutture.Edifici.ProduzioneSpade.Consumo_Legno}[black] s\n" +
                 $"{L.Label_Mantenimento_Ferro()}: [icon:ferro][rosso]-{Strutture.Edifici.ProduzioneSpade.Consumo_Ferro}[black] s\n" +
                 $"{L.Label_Mantenimento_Oro()}: [icon:oro][rosso]-{Strutture.Edifici.ProduzioneSpade.Consumo_Oro}[black] s\n");
@@ -121,7 +121,7 @@ namespace Server_Strategico.ServerData.Moduli
             tempoCalcolato = Strutture.Edifici.ProduzioneLance.TempoCostruzione - player.Ricerca_Costruzione - (Strutture.Edifici.ProduzioneLance.TempoCostruzione * player.Bonus_Costruzione);
             tempoBase = Strutture.Edifici.ProduzioneLance.TempoCostruzione;
             Send(player.guid_Player, $"Descrizione|Produzione Lance|[black]" +
-                $"{L.Label_Lancie()}\n\n" +
+                $"{L.Desc_ProduzioneLance()}\n\n" +
                 $"{L.Label_CostoCostruzione()}\n" +
                 $"{L.Label_Cibo()} [icon:cibo]{Strutture.Edifici.ProduzioneLance.Cibo.ToString("#,0")}\n" +
                 $"{L.Label_Legno()}: [icon:legno]{Strutture.Edifici.ProduzioneLance.Legno.ToString("#,0")}\n" +
@@ -131,7 +131,7 @@ namespace Server_Strategico.ServerData.Moduli
                 $"{L.Label_Popolazione()}: [icon:popolazione]{Strutture.Edifici.ProduzioneLance.Popolazione.ToString("#,0")}\n" +
                 $"{L.Label_Costruzione()}: [icon:tempo]{player.FormatTime(tempoCalcolato)}{(tempoCalcolato == tempoBase ? "" : $" ({player.FormatTime(tempoBase)})")}\n" +
                 $"{L.Label_Produzione()}: [icon:lance]{(Strutture.Edifici.ProduzioneLance.Produzione + player.Ricerca_Produzione * Ricerca.Tipi.Incremento.Lance).ToString("0.00")} s\n" +
-                $"Limite lancie [icon:lance][ferroScuro]{Strutture.Edifici.ProduzioneLance.Limite.ToString()}[black]\n" +
+                $"{L.Label_Limite()} {L.Label_Lancie()} [icon:lance][ferroScuro]{Strutture.Edifici.ProduzioneLance.Limite.ToString()}[black]\n" +
                 $"{L.Label_Mantenimento_Legno()}: [icon:legno][rosso]-{Strutture.Edifici.ProduzioneLance.Consumo_Legno}[black] s\n" +
                 $"{L.Label_Mantenimento_Ferro()}: [icon:ferro][rosso]-{Strutture.Edifici.ProduzioneLance.Consumo_Ferro}[black] s\n" +
                 $"{L.Label_Mantenimento_Oro()}: [icon:oro][rosso]-{Strutture.Edifici.ProduzioneLance.Consumo_Oro}[black] s\n");
@@ -149,7 +149,7 @@ namespace Server_Strategico.ServerData.Moduli
                 $"{L.Label_Popolazione()}: [icon:archi]{Strutture.Edifici.ProduzioneArchi.Popolazione.ToString("#,0")}\n" +
                 $"{L.Label_Costruzione()}: [icon:tempo]{player.FormatTime(tempoCalcolato)}{(tempoCalcolato == tempoBase ? "" : $" ({player.FormatTime(tempoBase)})")}\n" +
                 $"{L.Label_Produzione()}: [icon:archi]{(Strutture.Edifici.ProduzioneArchi.Produzione + player.Ricerca_Produzione * Ricerca.Tipi.Incremento.Archi).ToString("0.00")} s\n" +
-                $"Limite archi [icon:archi][ferroScuro]{Strutture.Edifici.ProduzioneArchi.Limite.ToString()}[black]\n" +
+                $"{L.Label_Limite()} {L.Label_Archi()} [icon:archi][ferroScuro]{Strutture.Edifici.ProduzioneArchi.Limite.ToString()}[black]\n" +
                 $"{L.Label_Mantenimento_Legno()}: [icon:legno][rosso]-{Strutture.Edifici.ProduzioneArchi.Consumo_Legno}[black] s\n" +
                 $"{L.Label_Mantenimento_Oro()}: [icon:oro][rosso]-{Strutture.Edifici.ProduzioneArchi.Consumo_Oro}[black] s\n");
 
@@ -166,7 +166,7 @@ namespace Server_Strategico.ServerData.Moduli
                 $"{L.Label_Popolazione()}: [icon:popolazione]{Strutture.Edifici.ProduzioneScudi.Popolazione.ToString("#,0")}\n" +
                 $"{L.Label_Costruzione()}: [icon:tempo]{player.FormatTime(tempoCalcolato)}{(tempoCalcolato == tempoBase ? "" : $" ({player.FormatTime(tempoBase)})")}\n" +
                 $"{L.Label_Produzione()}: [icon:scudi]{(Strutture.Edifici.ProduzioneScudi.Produzione + player.Ricerca_Produzione * Ricerca.Tipi.Incremento.Scudi).ToString("0.00")} s\n" +
-                $"Limite scudi [icon:scudi][ferroScuro]{Strutture.Edifici.ProduzioneScudi.Limite.ToString()}[black]\n" +
+                $"{L.Label_Limite()} {L.Label_Scudi()} [icon:scudi][ferroScuro]{Strutture.Edifici.ProduzioneScudi.Limite.ToString()}[black]\n" +
                 $"{L.Label_Mantenimento_Legno()}: [icon:legno][rosso]-{Strutture.Edifici.ProduzioneScudi.Consumo_Legno}[black] s\n" +
                 $"{L.Label_Mantenimento_Ferro()}: [icon:ferro][rosso]-{Strutture.Edifici.ProduzioneScudi.Consumo_Ferro}[black] s\n" +
                 $"{L.Label_Mantenimento_Oro()}: [icon:oro][rosso]-{Strutture.Edifici.ProduzioneScudi.Consumo_Oro}[black] s\n");
@@ -184,7 +184,7 @@ namespace Server_Strategico.ServerData.Moduli
                 $"{L.Label_Popolazione()}: [icon:popolazione]{Strutture.Edifici.ProduzioneArmature.Popolazione.ToString("#,0")}\n" +
                 $"{L.Label_Costruzione()}: [icon:tempo]{player.FormatTime(tempoCalcolato)}{(tempoCalcolato == tempoBase ? "" : $" ({player.FormatTime(tempoBase)})")}\n" +
                 $"{L.Label_Produzione()}: [icon:armature]{(Strutture.Edifici.ProduzioneArmature.Produzione + player.Ricerca_Produzione * Ricerca.Tipi.Incremento.Armature).ToString("0.00")} s\n" +
-                $"Limite {L.Label_Armature()}: [icon:armature][ferroScuro]{Strutture.Edifici.ProduzioneArmature.Limite.ToString()}[black]\n" +
+                $"{L.Label_Limite()} {L.Label_Armature()}: [icon:armature][ferroScuro]{Strutture.Edifici.ProduzioneArmature.Limite.ToString()}[black]\n" +
                 $"{L.Label_Mantenimento_Ferro()}: [icon:ferro][rosso]-{Strutture.Edifici.ProduzioneArmature.Consumo_Ferro}[black] s\n" +
                 $"{L.Label_Mantenimento_Oro()}: [icon:oro][rosso]-{Strutture.Edifici.ProduzioneArmature.Consumo_Oro}[black] s");
 
@@ -201,7 +201,7 @@ namespace Server_Strategico.ServerData.Moduli
                 $"{L.Label_Popolazione()}: [icon:popolazione]{Strutture.Edifici.ProduzioneFrecce.Popolazione.ToString("#,0")}\n" +
                 $"{L.Label_Costruzione()}: [icon:tempo]{player.FormatTime(tempoCalcolato)}{(tempoCalcolato == tempoBase ? "" : $" ({player.FormatTime(tempoBase)})")}\n" +
                 $"{L.Label_Produzione()}: [icon:frecce]{(Strutture.Edifici.ProduzioneFrecce.Produzione + player.Ricerca_Produzione * Ricerca.Tipi.Incremento.Oro).ToString("0.00")} s\n" +
-                $"Limite frecce [icon:frecce][ferroScuro]{Strutture.Edifici.ProduzioneFrecce.Limite.ToString()}[black]\n" +
+                $"{L.Label_Limite()} {L.Label_Frecce()} [icon:frecce][ferroScuro]{Strutture.Edifici.ProduzioneFrecce.Limite.ToString()}[black]\n" +
                 $"{L.Label_Mantenimento_Legno()}: [icon:legno][rosso]-{Strutture.Edifici.ProduzioneFrecce.Consumo_Legno.ToString()}[black] s\n" +
                 $"{L.Label_Mantenimento_Pietra()}: [icon:pietra][rosso]-{Strutture.Edifici.ProduzioneFrecce.Consumo_Pietra.ToString()}[black] s\n" +
                 $"{L.Label_Mantenimento_Ferro()}: [icon:ferro][rosso]-{Strutture.Edifici.ProduzioneFrecce.Consumo_Ferro.ToString()}[black] s\n" +
@@ -220,7 +220,7 @@ namespace Server_Strategico.ServerData.Moduli
                  $"{L.Label_Oro()}: [icon:oro]{Strutture.Edifici.CasermaGuerrieri.Oro.ToString("#,0")}\n" +
                  $"{L.Label_Popolazione()}: [icon:popolazione]{Strutture.Edifici.CasermaGuerrieri.Popolazione.ToString("#,0")}\n" +
                  $"{L.Label_Costruzione()}: [icon:tempo]{player.FormatTime(tempoCalcolato)}{(tempoCalcolato == tempoBase ? "" : $" ({player.FormatTime(tempoBase)})")}\n" +
-                 $"Limite Guerrieri: [icon:guerrieri]{Strutture.Edifici.CasermaGuerrieri.Limite.ToString("#,0")}\n" +
+                 $"{L.Label_Limite()} {L.Label_Guerrieri()}: [icon:guerrieri]{Strutture.Edifici.CasermaGuerrieri.Limite.ToString("#,0")}\n" +
                  $"{L.Label_Mantenimento_Cibo()} [icon:cibo][rosso]-{Strutture.Edifici.CasermaGuerrieri.Consumo_Cibo}[black] s\n" +
                  $"{L.Label_Mantenimento_Oro()}: [icon:oro][rosso]-{Strutture.Edifici.CasermaGuerrieri.Consumo_Oro}[black] s\n\n");
 
@@ -236,7 +236,7 @@ namespace Server_Strategico.ServerData.Moduli
                  $"{L.Label_Oro()}: [icon:oro]{Strutture.Edifici.CasermaLanceri.Oro.ToString("#,0")}\n" +
                  $"{L.Label_Popolazione()}: [icon:popolazione]{Strutture.Edifici.CasermaLanceri.Popolazione.ToString("#,0")}\n" +
                  $"{L.Label_Costruzione()}: [icon:tempo]{player.FormatTime(tempoCalcolato)}{(tempoCalcolato == tempoBase ? "" : $" ({player.FormatTime(tempoBase)})")}\n" +
-                 $"Limite Lancieri: [icon:lanceri]{Strutture.Edifici.CasermaLanceri.Limite.ToString("#,0")}\n" +
+                 $"{L.Label_Limite()} {L.Label_Lancieri()}: [icon:lanceri]{Strutture.Edifici.CasermaLanceri.Limite.ToString("#,0")}\n" +
                  $"{L.Label_Mantenimento_Cibo()} [icon:cibo][rosso]-{Strutture.Edifici.CasermaLanceri.Consumo_Cibo}[black] s\n" +
                  $"{L.Label_Mantenimento_Oro()}: [icon:oro][rosso]-{Strutture.Edifici.CasermaLanceri.Consumo_Oro}[black] s\n\n");
 
@@ -252,7 +252,7 @@ namespace Server_Strategico.ServerData.Moduli
                  $"{L.Label_Oro()}: [icon:oro]{Strutture.Edifici.CasermaArceri.Oro.ToString("#,0")}\n" +
                  $"{L.Label_Popolazione()}: [icon:popolazione]{Strutture.Edifici.CasermaArceri.Popolazione.ToString("#,0")}\n" +
                  $"{L.Label_Costruzione()}: [icon:tempo]{player.FormatTime(tempoCalcolato)}{(tempoCalcolato == tempoBase ? "" : $" ({player.FormatTime(tempoBase)})")}\n" +
-                 $"Limite Arceri: [icon:arceri]{Strutture.Edifici.CasermaArceri.Limite.ToString("#,0")}\n" +
+                 $"{L.Label_Limite()} {L.Label_Arcieri()}: [icon:arceri]{Strutture.Edifici.CasermaArceri.Limite.ToString("#,0")}\n" +
                  $"{L.Label_Mantenimento_Cibo()} [icon:cibo][rosso]-{Strutture.Edifici.CasermaArceri.Consumo_Cibo}[black] s\n" +
                  $"{L.Label_Mantenimento_Oro()}: [icon:oro][rosso]-{Strutture.Edifici.CasermaArceri.Consumo_Oro}[black] s\n\n");
 
@@ -268,7 +268,7 @@ namespace Server_Strategico.ServerData.Moduli
                  $"{L.Label_Oro()}: [icon:oro]{Strutture.Edifici.CasermaCatapulte.Oro.ToString("#,0")}\n" +
                  $"{L.Label_Popolazione()}: [icon:popolazione]{Strutture.Edifici.CasermaCatapulte.Popolazione.ToString("#,0")}\n" +
                  $"{L.Label_Costruzione()}: [icon:tempo]{player.FormatTime(tempoCalcolato)}{(tempoCalcolato == tempoBase ? "" : $" ({player.FormatTime(tempoBase)})")}\n" +
-                 $"Limite Catapulte: [icon:catapulte]{Strutture.Edifici.CasermaCatapulte.Limite.ToString("#,0")}\n" +
+                 $"{L.Label_Limite()} {L.Label_Catapulte()}: [icon:catapulte]{Strutture.Edifici.CasermaCatapulte.Limite.ToString("#,0")}\n" +
                  $"{L.Label_Mantenimento_Cibo()} [icon:cibo][rosso]-{Strutture.Edifici.CasermaCatapulte.Consumo_Cibo}[black] s\n" +
                  $"{L.Label_Mantenimento_Oro()}: [icon:oro][rosso]-{Strutture.Edifici.CasermaCatapulte.Consumo_Oro}[black] s\n\n");
 
@@ -1158,6 +1158,14 @@ namespace Server_Strategico.ServerData.Moduli
             Send(player.guid_Player, $"Descrizione|Shop Scudo Pace 72h|{L.Desc_Shop_ScudoPace(player.FormatTime(Variabili_Server.Shop.Scudo_Pace_72h.Reward))}");
 
             Send(player.guid_Player, $"Descrizione|Feudi Info|{L.Desc_Feudi_Testo()}");
+            Send(player.guid_Player, $"Descrizione|Feudo Comune|{L.Label_Comune()}");
+            Send(player.guid_Player, $"Descrizione|Feudi Non Comune|{L.Label_NonComune()}");
+            Send(player.guid_Player, $"Descrizione|Feudi Raro|{L.Label_Raro()}");
+            Send(player.guid_Player, $"Descrizione|Feudi Epico|{L.Label_Epico()}");
+            Send(player.guid_Player, $"Descrizione|Feudo Leggendario|{L.Label_Leggendario()}");
+
+            Send(player.guid_Player, $"Descrizione|Città Testo|{L.Desc_Città_Testo()}");
+            Send(player.guid_Player, $"Descrizione|Ricerca Testo|{L.Desc_Ricerca_Testo()}");
         }
     }
 }

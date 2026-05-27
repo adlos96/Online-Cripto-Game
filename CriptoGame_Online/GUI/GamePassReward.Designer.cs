@@ -122,6 +122,7 @@
             lbl_Reward_2 = new Label();
             lbl_Reward_1 = new Label();
             label1 = new Label();
+            lbl_GamePass_Info = new Warrior_and_Wealth.Strumenti.TransparentLabel();
             SuspendLayout();
             // 
             // btn_Reward_GamePass_1
@@ -1536,6 +1537,20 @@
             label1.TabIndex = 163;
             label1.Text = "GamePass - Gold";
             // 
+            // lbl_GamePass_Info
+            // 
+            lbl_GamePass_Info.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            lbl_GamePass_Info.BackColor = Color.Transparent;
+            lbl_GamePass_Info.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lbl_GamePass_Info.ForeColor = Color.WhiteSmoke;
+            lbl_GamePass_Info.Location = new Point(12, 12);
+            lbl_GamePass_Info.Multiline = false;
+            lbl_GamePass_Info.Name = "lbl_GamePass_Info";
+            lbl_GamePass_Info.Size = new Size(671, 66);
+            lbl_GamePass_Info.TabIndex = 166;
+            lbl_GamePass_Info.Text = "Game Pass non attivo!";
+            lbl_GamePass_Info.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // GamePassReward
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
@@ -1544,6 +1559,7 @@
             BackgroundImage = Properties.Resources.Gamepass_Reward_V2;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(695, 783);
+            Controls.Add(lbl_GamePass_Info);
             Controls.Add(lbl_Reward_30);
             Controls.Add(lbl_Reward_24);
             Controls.Add(lbl_Reward_18);
@@ -1743,5 +1759,6 @@
         private Label lbl_Reward_26;
         private Label lbl_Reward_25;
         private Label label1;
+        private Strumenti.TransparentLabel lbl_GamePass_Info;
     }
 }

@@ -15,7 +15,7 @@ namespace Warrior_and_Wealth
         static int livello_Esercito = 1;
 
         // Buffer per i messaggi arrivati prima che il form fosse pronto
-        private static readonly Queue<string> _logBuffer = new Queue<string>();
+        public static readonly Queue<string> _logBuffer = new Queue<string>();
 
         private CancellationTokenSource cts = new CancellationTokenSource();
 
@@ -83,11 +83,22 @@ namespace Warrior_and_Wealth
 
             //Load Guid
             GUI();
+            Localizzazione();
 
             Task.Run(() => Gui_Update(cts.Token), cts.Token);
             Log_Update($"[info]Benvenuto[/info] giocatore: [title]{Variabili_Client.Utente.Username}");
             Tutorial_Start();
-            Log_FlushBuffer();
+        }
+        void Localizzazione()
+        {
+            groupBox_Terreni.Text = LocalizationManager.Current.Label_Feudi();
+            btn_Acquista_Terreni.Text = LocalizationManager.Current.Label_Acquista();
+            btn_Scambia.Text = LocalizationManager.Current.Label_Scambia();
+
+            if (Caserme == "Caserme") groupBox_Esercito.Text = LocalizationManager.Current.Label_Caserme();
+            else groupBox_Esercito.Text = LocalizationManager.Current.Label_Esercito();
+            if (strutture == "Civile") groupBox_Strutture.Text = LocalizationManager.Current.Label_Strutture_Civili();
+            else groupBox_Strutture.Text = LocalizationManager.Current.Label_Strutture_Militari();
         }
         void Tutorial_Start()
         {
@@ -124,6 +135,8 @@ namespace Warrior_and_Wealth
                 {
                     panel2.BeginInvoke((Action)(async () =>
                     {
+                        if (_logBuffer.Count != 0) Log_FlushBuffer();
+
                         //Tutorial
                         if (Variabili_Client.tutorial_Attivo)
                         {
@@ -225,8 +238,6 @@ namespace Warrior_and_Wealth
                             txt_Structure_Coda_5.Text = Variabili_Client.Costruzione_Coda.Miniera_Oro.Quantità;
                             txt_Structure_Coda_6.Text = Variabili_Client.Costruzione_Coda.Case.Quantità;
                         }
-
-                       
 
                         if (Caserme == "Caserme") //Caserme
                         {
@@ -336,23 +347,23 @@ namespace Warrior_and_Wealth
                         if (lbl_Timer_Costruzione.Text == "Build: 0s")
                         {
                             pictureBox_Speed_Costruzione.Visible = false;
-                            lbl_Coda_Costruzione.Text = $"Code disponibili: {Variabili_Client.Utente.Code_Costruzione}/{Variabili_Client.Utente.Code_Costruzione}";
+                            lbl_Coda_Costruzione.Text = $"{LocalizationManager.Current.Label_Code_Disponibili()}: {Variabili_Client.Utente.Code_Costruzione}/{Variabili_Client.Utente.Code_Costruzione}";
                         }
                         else
                         {
                             pictureBox_Speed_Costruzione.Visible = true;
-                            lbl_Coda_Costruzione.Text = $"Code disponibili: {Convert.ToInt32(Variabili_Client.Utente.Code_Costruzione) - Convert.ToInt32(Variabili_Client.Utente.Code_Costruzione_Disponibili)}/{Variabili_Client.Utente.Code_Costruzione}";
+                            lbl_Coda_Costruzione.Text = $"{LocalizationManager.Current.Label_Code_Disponibili()}: {Convert.ToInt32(Variabili_Client.Utente.Code_Costruzione) - Convert.ToInt32(Variabili_Client.Utente.Code_Costruzione_Disponibili)}/{Variabili_Client.Utente.Code_Costruzione}";
                         }
 
                         if (lbl_Timer_Addestramento.Text == "Recruit: 0s" || Caserme == "Caserme")
                         {
                             pictureBox_Speed_Reclutamento.Visible = false;
-                            lbl_Coda_Reclutamento.Text = $"Code disponibili: {Convert.ToInt32(Variabili_Client.Utente.Code_Reclutamento) - Convert.ToInt32(Variabili_Client.Utente.Code_Reclutamento_Disponibili)}/{Variabili_Client.Utente.Code_Reclutamento}";
+                            lbl_Coda_Reclutamento.Text = $"{LocalizationManager.Current.Label_Code_Disponibili()}: {Convert.ToInt32(Variabili_Client.Utente.Code_Reclutamento) - Convert.ToInt32(Variabili_Client.Utente.Code_Reclutamento_Disponibili)}/{Variabili_Client.Utente.Code_Reclutamento}";
                         }
                         else if (Caserme == "Esercito") // Non serve la coda, finisce in building
                         {
                             pictureBox_Speed_Reclutamento.Visible = true;
-                            lbl_Coda_Reclutamento.Text = $"Code disponibili: {Convert.ToInt32(Variabili_Client.Utente.Code_Reclutamento) - Convert.ToInt32(Variabili_Client.Utente.Code_Reclutamento_Disponibili)}/{Variabili_Client.Utente.Code_Reclutamento}";
+                            lbl_Coda_Reclutamento.Text = $"{LocalizationManager.Current.Label_Code_Disponibili()}: {Convert.ToInt32(Variabili_Client.Utente.Code_Reclutamento) - Convert.ToInt32(Variabili_Client.Utente.Code_Reclutamento_Disponibili)}/{Variabili_Client.Utente.Code_Reclutamento}";
                         }
                     }));
 
@@ -468,15 +479,14 @@ namespace Warrior_and_Wealth
             txt_Terreno_3.BackColor = Color.FromArgb(229, 208, 181);
             txt_Terreno_4.BackColor = Color.FromArgb(229, 208, 181);
             txt_Terreno_5.BackColor = Color.FromArgb(229, 208, 181);
-
         }
 
         private async void btn_Civile_Militare_Click(object sender, EventArgs e)
         {
-            if (groupBox_Strutture.Text == "Strutture Civili")
+            if (strutture == "Civile")
             {
-                groupBox_Strutture.Text = "Strutture Militari";
                 strutture = "Militare";
+                groupBox_Strutture.Text = LocalizationManager.Current.Label_Strutture_Militari();
                 ico_Structure_1.BackgroundImage = Properties.Resources.Workshop_Spade_V2;
                 ico_Structure_2.BackgroundImage = Properties.Resources.Workshop_Lance_V2;
                 ico_Structure_3.BackgroundImage = Properties.Resources.Workshop_Archi_V2;
@@ -488,8 +498,8 @@ namespace Warrior_and_Wealth
                 return;
             }
 
-            groupBox_Strutture.Text = "Strutture Civili";
             strutture = "Civile";
+            groupBox_Strutture.Text = LocalizationManager.Current.Label_Strutture_Civili();
             ico_Structure_1.BackgroundImage = Properties.Resources.Fattoria_V2;
             ico_Structure_2.BackgroundImage = Properties.Resources.Segheria_V2;
             ico_Structure_3.BackgroundImage = Properties.Resources.CavaDiPietra_V2;
@@ -627,7 +637,8 @@ namespace Warrior_and_Wealth
         {
             if (Caserme == "Esercito")
             {
-                groupBox_Esercito.Text = "Caserme";
+                Caserme = "Caserme";
+                groupBox_Esercito.Text = LocalizationManager.Current.Label_Caserme();
                 panel_Sfondo_Bottoni.Visible = false;
                 lbl_Coda_Reclutamento.Visible = false;
                 lbl_Timer_Addestramento.Visible = false;
@@ -641,12 +652,11 @@ namespace Warrior_and_Wealth
                 lbl_Lanceri_Max.Visible = false;
                 lbl_Arceri_Max.Visible = false;
                 lbl_Catapulte_Max.Visible = false;
-
-                Caserme = "Caserme";
             }
             else
             {
-                groupBox_Esercito.Text = "Esercito";
+                Caserme = "Esercito";
+                groupBox_Esercito.Text = LocalizationManager.Current.Label_Esercito();
                 panel_Sfondo_Bottoni.Visible = true;
                 lbl_Coda_Reclutamento.Visible = true;
                 lbl_Timer_Addestramento.Visible = true;
@@ -659,8 +669,6 @@ namespace Warrior_and_Wealth
                 lbl_Lanceri_Max.Visible = true;
                 lbl_Arceri_Max.Visible = true;
                 lbl_Catapulte_Max.Visible = true;
-
-                Caserme = "Esercito";
             }
 
         }
@@ -680,16 +688,13 @@ namespace Warrior_and_Wealth
                 MessageBoxIcon.Warning
             );
 
-            if (result == DialogResult.Yes)
+            if (result == DialogResult.Yes) // Esegui l'acquisto
             {
-                // Esegui l'acquisto
                 ClientConnection.TestClient.Send($"Costruzione_Terreni|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|");
                 if (Variabili_Client.tutorial_Attivo == true && await Main.TutorialPrecedentiCompletati(8))
                     ClientConnection.TestClient.Send($"Tutorial Update|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|{8}");
             }
-            await Login.Sleep(3);
-            Log_FlushBuffer();
-            await Login.Sleep(7);
+            await Login.Sleep(10);
             btn_Acquista_Terreni.Enabled = true;
         }
 

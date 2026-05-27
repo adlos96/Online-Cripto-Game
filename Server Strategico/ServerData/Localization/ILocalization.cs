@@ -43,8 +43,7 @@ namespace Server_Strategico.ServerData.Localization
         string Label_Attacco();
 
         string Label_Limite_Magazzino();
-        string Label_Limite_Unità();
-        string Label_Limite_Strutture();
+        string Label_Limite();
 
         //Costruzione
         string Costruzione_RisorseUtilizzate(int count, string buildingType, Strutture.Edifici cost);
@@ -101,6 +100,11 @@ namespace Server_Strategico.ServerData.Localization
         string Desc_CasermaLanceri();
         string Desc_CasermaArceri();
         string Desc_CasermaCatapulte();
+
+        string Label_Guerrieri();
+        string Label_Lancieri();
+        string Label_Arcieri();
+        string Label_Catapulte();
 
         string Desc_Guerriero(int numero);
         string Desc_Lancere(int numero);

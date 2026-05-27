@@ -185,7 +185,7 @@ namespace Warrior_and_Wealth
             groupBox_Terreni.Name = "groupBox_Terreni";
             groupBox_Terreni.Padding = new Padding(2, 3, 2, 3);
             groupBox_Terreni.RightToLeft = RightToLeft.No;
-            groupBox_Terreni.Size = new Size(131, 361);
+            groupBox_Terreni.Size = new Size(131, 367);
             groupBox_Terreni.TabIndex = 28;
             groupBox_Terreni.TabStop = false;
             groupBox_Terreni.Text = "Feudi";
@@ -194,7 +194,7 @@ namespace Warrior_and_Wealth
             // 
             panel_Image_3.BackgroundImage = Properties.Resources.DiamanteViola_V2;
             panel_Image_3.BackgroundImageLayout = ImageLayout.Stretch;
-            panel_Image_3.Location = new Point(83, 317);
+            panel_Image_3.Location = new Point(83, 322);
             panel_Image_3.Margin = new Padding(2, 3, 2, 3);
             panel_Image_3.Name = "panel_Image_3";
             panel_Image_3.Size = new Size(26, 28);
@@ -214,7 +214,7 @@ namespace Warrior_and_Wealth
             panel3.Controls.Add(ico_Terreno_3);
             panel3.Controls.Add(txt_Terreno_1);
             panel3.Controls.Add(ico_Terreno_2);
-            panel3.Location = new Point(2, 19);
+            panel3.Location = new Point(2, 24);
             panel3.Margin = new Padding(2, 3, 2, 3);
             panel3.Name = "panel3";
             panel3.Size = new Size(123, 254);
@@ -346,7 +346,7 @@ namespace Warrior_and_Wealth
             btn_Scambia.FlatAppearance.BorderSize = 0;
             btn_Scambia.FlatStyle = FlatStyle.Popup;
             btn_Scambia.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btn_Scambia.Location = new Point(18, 317);
+            btn_Scambia.Location = new Point(18, 322);
             btn_Scambia.Margin = new Padding(2, 3, 2, 3);
             btn_Scambia.Name = "btn_Scambia";
             btn_Scambia.Size = new Size(91, 28);
@@ -360,7 +360,7 @@ namespace Warrior_and_Wealth
             // 
             panel_Image_2.BackgroundImage = Properties.Resources.DiamanteViola_V2;
             panel_Image_2.BackgroundImageLayout = ImageLayout.Stretch;
-            panel_Image_2.Location = new Point(99, 283);
+            panel_Image_2.Location = new Point(99, 288);
             panel_Image_2.Margin = new Padding(2, 3, 2, 3);
             panel_Image_2.Name = "panel_Image_2";
             panel_Image_2.Size = new Size(24, 28);
@@ -372,7 +372,7 @@ namespace Warrior_and_Wealth
             btn_Acquista_Terreni.FlatAppearance.BorderSize = 0;
             btn_Acquista_Terreni.FlatStyle = FlatStyle.Popup;
             btn_Acquista_Terreni.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btn_Acquista_Terreni.Location = new Point(9, 283);
+            btn_Acquista_Terreni.Location = new Point(9, 288);
             btn_Acquista_Terreni.Margin = new Padding(2, 3, 2, 3);
             btn_Acquista_Terreni.Name = "btn_Acquista_Terreni";
             btn_Acquista_Terreni.Size = new Size(114, 28);
@@ -388,11 +388,11 @@ namespace Warrior_and_Wealth
             groupBox_Esercito.Controls.Add(panel7);
             groupBox_Esercito.Controls.Add(panel_Sfondo_Bottoni);
             groupBox_Esercito.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            groupBox_Esercito.Location = new Point(295, 6);
+            groupBox_Esercito.Location = new Point(295, 7);
             groupBox_Esercito.Margin = new Padding(2, 3, 2, 3);
             groupBox_Esercito.Name = "groupBox_Esercito";
             groupBox_Esercito.Padding = new Padding(2, 3, 2, 3);
-            groupBox_Esercito.Size = new Size(167, 361);
+            groupBox_Esercito.Size = new Size(167, 367);
             groupBox_Esercito.TabIndex = 27;
             groupBox_Esercito.TabStop = false;
             groupBox_Esercito.Text = "Esercito";
@@ -404,7 +404,7 @@ namespace Warrior_and_Wealth
             btn_Esercito_Caserme.FlatAppearance.BorderSize = 0;
             btn_Esercito_Caserme.FlatStyle = FlatStyle.Flat;
             btn_Esercito_Caserme.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btn_Esercito_Caserme.Location = new Point(109, -4);
+            btn_Esercito_Caserme.Location = new Point(144, -3);
             btn_Esercito_Caserme.Margin = new Padding(2, 3, 2, 3);
             btn_Esercito_Caserme.Name = "btn_Esercito_Caserme";
             btn_Esercito_Caserme.Size = new Size(21, 23);
@@ -434,7 +434,7 @@ namespace Warrior_and_Wealth
             panel7.Controls.Add(ico_Unit_3);
             panel7.Controls.Add(txt_Unit_2);
             panel7.Controls.Add(txt_Unit_Coda_3);
-            panel7.Location = new Point(2, 63);
+            panel7.Location = new Point(2, 68);
             panel7.Margin = new Padding(2, 3, 2, 3);
             panel7.Name = "panel7";
             panel7.Size = new Size(161, 238);
@@ -665,7 +665,7 @@ namespace Warrior_and_Wealth
             panel_Sfondo_Bottoni.Controls.Add(btn_III);
             panel_Sfondo_Bottoni.Controls.Add(btn_IV);
             panel_Sfondo_Bottoni.Controls.Add(btn_II);
-            panel_Sfondo_Bottoni.Location = new Point(2, 19);
+            panel_Sfondo_Bottoni.Location = new Point(2, 24);
             panel_Sfondo_Bottoni.Margin = new Padding(2, 3, 2, 3);
             panel_Sfondo_Bottoni.Name = "panel_Sfondo_Bottoni";
             panel_Sfondo_Bottoni.Size = new Size(161, 38);
@@ -747,7 +747,7 @@ namespace Warrior_and_Wealth
             groupBox_Strutture.Margin = new Padding(2, 3, 2, 3);
             groupBox_Strutture.Name = "groupBox_Strutture";
             groupBox_Strutture.Padding = new Padding(2, 3, 2, 3);
-            groupBox_Strutture.Size = new Size(166, 360);
+            groupBox_Strutture.Size = new Size(166, 366);
             groupBox_Strutture.TabIndex = 26;
             groupBox_Strutture.TabStop = false;
             groupBox_Strutture.Text = "Strutture Civili";
@@ -776,7 +776,7 @@ namespace Warrior_and_Wealth
             panel6.Controls.Add(ico_Structure_4);
             panel6.Controls.Add(txt_Structure_2);
             panel6.Controls.Add(txt_Structure_Coda_2);
-            panel6.Location = new Point(4, 19);
+            panel6.Location = new Point(4, 24);
             panel6.Margin = new Padding(2, 3, 2, 3);
             panel6.Name = "panel6";
             panel6.Size = new Size(157, 335);
@@ -1025,7 +1025,7 @@ namespace Warrior_and_Wealth
             btn_Civile_Militare.FlatAppearance.BorderSize = 0;
             btn_Civile_Militare.FlatStyle = FlatStyle.Flat;
             btn_Civile_Militare.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btn_Civile_Militare.Location = new Point(100, -3);
+            btn_Civile_Militare.Location = new Point(141, -3);
             btn_Civile_Militare.Margin = new Padding(2, 3, 2, 3);
             btn_Civile_Militare.Name = "btn_Civile_Militare";
             btn_Civile_Militare.Size = new Size(21, 23);

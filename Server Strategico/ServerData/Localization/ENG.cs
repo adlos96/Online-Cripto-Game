@@ -433,9 +433,12 @@ namespace Server_Strategico.ServerData.Localization
         public string Label_Salute() => "Health";
         public string Label_Difesa() => "Defense";
         public string Label_Attacco() => "Attack";
+        public string Label_Guerrieri() => "Warriors";
+        public string Label_Lancieri() => "Spearmen";
+        public string Label_Arcieri() => "Archers";
+        public string Label_Catapulte() => "Catapults";
         public string Label_Limite_Magazzino() => "Storage Limit";
-        public string Label_Limite_Unità() => "Limit";
-        public string Label_Limite_Strutture() => "Limit";
+        public string Label_Limite() => "Limit";
 
         //Virtual Lands - Fiefs
         public string Terreni_DiamantiInsufficienti() =>
@@ -829,23 +832,23 @@ namespace Server_Strategico.ServerData.Localization
             $"[black]Increases the maximum defense points of the structure.\nCastle defense research cost lv: {livello}\n\n";
 
         public string Desc_Città_Testo() =>
-            $"Descrizione|Feudi Testo|[black]Questa è panoramica del tuo villaggio, fortifica ogni settore, dall'Ingresso alle imponenti Mura del Castello.\n" +
-            $"Ogni struttura, possiede caratteristiche specifiche come salute, difesa e guarnigione, che dovrai monitorare costantemente.\n" +
-            $"Assicurati che ogni edificio sia in ottima efficienza per proteggere al meglio i tuoi domini dagli attacchi nemici.";
+            $"This is an overview of your village. Fortify every sector, from the Entrance to the imposing Castle Walls.\n" +
+            $"Each structure has specific characteristics such as health, defense and garrison, which you must constantly monitor.\n" +
+            $"Make sure every building is in top condition to best protect your domains from enemy attacks.";
         public string Desc_Ricerca_Testo() =>
-            $"Descrizione|Feudi Testo|[black]La Ricerca rappresenta il progresso delle conoscenze del tuo regno. Investendo tempo e risorse potrai sbloccare nuove possibilità, migliorare strutture, eserciti e strategie. " +
-            $"Un regno che non ricerca è destinato a restare indietro.";
+            $"Research represents the progress of knowledge in your kingdom. By investing time and resources you can unlock new possibilities, improve structures, armies and strategies. " +
+            $"A kingdom that does not research is destined to fall behind.";
         public string Desc_Feudi_Testo() =>
-            $"Descrizione|Feudi Testo|[black]Acquista il tuo feudo e diventa proprietario di una porzione di terra. Ogni terreno genera una rendita giornaliera automatica. L’ammontare della rendita dipende dalla rarità.";
+            $"Purchase your fief and become the owner of a plot of land. Each plot generates an automatic daily income. The amount of income depends on its rarity.";
         public string Label_Comune() =>
-            $"Descrizione|Feudi Testo|Comune";
+            $"Common";
         public string Label_NonComune() =>
-            $"Descrizione|Feudi Testo|Non Comune";
+            $"Uncommon";
         public string Label_Raro() =>
-            $"Descrizione|Feudi Testo|Raro";
+            $"Rare";
         public string Label_Epico() =>
-            $"Descrizione|Feudi Testo|Epico";
+            $"Epic";
         public string Label_Leggendario() =>
-            $"Descrizione|Feudi Testo|Leggendario";
+            $"Legendary";
     }
 }

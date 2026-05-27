@@ -304,7 +304,19 @@ namespace Warrior_and_Wealth.GUI
             // Imposta qualche proprietà opzionale
             toolTip1.InitialDelay = 150;
             toolTip1.AutoPopDelay = 15000;
+            txt_Testo.Text = Variabili_Client.Città_Desc;
+            Localizzazione();
             Task.Run(() => Gui_Update(cts.Token), cts.Token);
+        }
+        void Localizzazione()
+        {
+            btn_Ingresso.Text = LocalizationManager.Current.Label_Guarnigione();
+            btn_Mura.Text = LocalizationManager.Current.Label_Guarnigione();
+            btn_Cancello.Text = LocalizationManager.Current.Label_Guarnigione();
+            btn_Torri.Text = LocalizationManager.Current.Label_Guarnigione();
+            btn_Citta.Text = LocalizationManager.Current.Label_Guarnigione();
+            btn_Castello.Text = LocalizationManager.Current.Label_Guarnigione();
+            btn_Ripara_Tutto.Text = LocalizationManager.Current.Label_Riparazione();
         }
         async void Gui_Update(CancellationToken token)
         {
@@ -465,10 +477,12 @@ namespace Warrior_and_Wealth.GUI
                             }
                         }
 
-                        lbl_Mura.Text = $"Mura      [2]      Lv: {Variabili_Client.Citta.Mura.Livello}";
-                        lbl_Cancello.Text = $"Cancello      [3]      Lv: {Variabili_Client.Citta.Cancello.Livello}";
-                        lbl_Torri.Text = $"Torri      [4]      Lv: {Variabili_Client.Citta.Torri.Livello}";
-                        lbl_Castello.Text = $"Castello      [5]      Lv: {Variabili_Client.Citta.Castello.Livello}";
+                        lbl_Ingresso.Text = LocalizationManager.Current.Label_Ingresso();
+                        lbl_Mura.Text = $"{LocalizationManager.Current.Label_Mura()}      [2]      Lv: {Variabili_Client.Citta.Mura.Livello}";
+                        lbl_Cancello.Text = $"{LocalizationManager.Current.Label_Cancello()}      [3]      Lv: {Variabili_Client.Citta.Cancello.Livello}";
+                        lbl_Torri.Text = $"{LocalizationManager.Current.Label_Torri()}      [4]      Lv: {Variabili_Client.Citta.Torri.Livello}";
+                        lbl_Centro.Text = LocalizationManager.Current.Label_Centro();
+                        lbl_Castello.Text = $"{LocalizationManager.Current.Label_Castello()}      [5]      Lv: {Variabili_Client.Citta.Castello.Livello}";
                     }));
                 }
                 await Task.Delay(1000); // meglio di Thread.Sleep
