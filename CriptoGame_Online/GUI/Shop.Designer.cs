@@ -30,12 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Shop));
             panel1 = new Panel();
-            txt_Pacchetto_Desc_1 = new TextBox();
-            txt_Pacchetto_Desc_2 = new TextBox();
-            txt_Pacchetto_Desc_3 = new TextBox();
-            txt_Pacchetto_Desc_4 = new TextBox();
-            txt_Pacchetto_Desc_5 = new TextBox();
-            txt_Pacchetto_Desc_6 = new TextBox();
             txt_Image_1 = new TextBox();
             txt_Image_2 = new TextBox();
             txt_Image_3 = new TextBox();
@@ -68,6 +62,12 @@
             panel_Bottone_2 = new Panel();
             panel_Diamond_Image_2 = new Panel();
             txt_Shop_2 = new TextBox();
+            txt_Pacchetto_Desc_4 = new Warrior_and_Wealth.Strumenti.TransparentLabel();
+            txt_Pacchetto_Desc_5 = new Warrior_and_Wealth.Strumenti.TransparentLabel();
+            txt_Pacchetto_Desc_6 = new Warrior_and_Wealth.Strumenti.TransparentLabel();
+            txt_Pacchetto_Desc_3 = new Warrior_and_Wealth.Strumenti.TransparentLabel();
+            txt_Pacchetto_Desc_2 = new Warrior_and_Wealth.Strumenti.TransparentLabel();
+            txt_Pacchetto_Desc_1 = new Warrior_and_Wealth.Strumenti.TransparentLabel();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -76,12 +76,12 @@
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel1.BackgroundImage = (Image)resources.GetObject("panel1.BackgroundImage");
             panel1.BackgroundImageLayout = ImageLayout.Zoom;
-            panel1.Controls.Add(txt_Pacchetto_Desc_1);
-            panel1.Controls.Add(txt_Pacchetto_Desc_2);
             panel1.Controls.Add(txt_Pacchetto_Desc_3);
-            panel1.Controls.Add(txt_Pacchetto_Desc_4);
-            panel1.Controls.Add(txt_Pacchetto_Desc_5);
+            panel1.Controls.Add(txt_Pacchetto_Desc_2);
+            panel1.Controls.Add(txt_Pacchetto_Desc_1);
             panel1.Controls.Add(txt_Pacchetto_Desc_6);
+            panel1.Controls.Add(txt_Pacchetto_Desc_5);
+            panel1.Controls.Add(txt_Pacchetto_Desc_4);
             panel1.Controls.Add(txt_Image_1);
             panel1.Controls.Add(txt_Image_2);
             panel1.Controls.Add(txt_Image_3);
@@ -121,90 +121,6 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(636, 706);
             panel1.TabIndex = 0;
-            // 
-            // txt_Pacchetto_Desc_1
-            // 
-            txt_Pacchetto_Desc_1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            txt_Pacchetto_Desc_1.BorderStyle = BorderStyle.None;
-            txt_Pacchetto_Desc_1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txt_Pacchetto_Desc_1.Location = new Point(92, 179);
-            txt_Pacchetto_Desc_1.Margin = new Padding(2, 3, 2, 3);
-            txt_Pacchetto_Desc_1.Name = "txt_Pacchetto_Desc_1";
-            txt_Pacchetto_Desc_1.ReadOnly = true;
-            txt_Pacchetto_Desc_1.Size = new Size(138, 18);
-            txt_Pacchetto_Desc_1.TabIndex = 51;
-            txt_Pacchetto_Desc_1.Text = "VIP";
-            txt_Pacchetto_Desc_1.TextAlign = HorizontalAlignment.Center;
-            // 
-            // txt_Pacchetto_Desc_2
-            // 
-            txt_Pacchetto_Desc_2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            txt_Pacchetto_Desc_2.BorderStyle = BorderStyle.None;
-            txt_Pacchetto_Desc_2.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txt_Pacchetto_Desc_2.Location = new Point(249, 179);
-            txt_Pacchetto_Desc_2.Margin = new Padding(2, 3, 2, 3);
-            txt_Pacchetto_Desc_2.Name = "txt_Pacchetto_Desc_2";
-            txt_Pacchetto_Desc_2.ReadOnly = true;
-            txt_Pacchetto_Desc_2.Size = new Size(138, 18);
-            txt_Pacchetto_Desc_2.TabIndex = 50;
-            txt_Pacchetto_Desc_2.Text = "VIP";
-            txt_Pacchetto_Desc_2.TextAlign = HorizontalAlignment.Center;
-            // 
-            // txt_Pacchetto_Desc_3
-            // 
-            txt_Pacchetto_Desc_3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            txt_Pacchetto_Desc_3.BorderStyle = BorderStyle.None;
-            txt_Pacchetto_Desc_3.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txt_Pacchetto_Desc_3.Location = new Point(404, 179);
-            txt_Pacchetto_Desc_3.Margin = new Padding(2, 3, 2, 3);
-            txt_Pacchetto_Desc_3.Name = "txt_Pacchetto_Desc_3";
-            txt_Pacchetto_Desc_3.ReadOnly = true;
-            txt_Pacchetto_Desc_3.Size = new Size(138, 18);
-            txt_Pacchetto_Desc_3.TabIndex = 49;
-            txt_Pacchetto_Desc_3.Text = "150";
-            txt_Pacchetto_Desc_3.TextAlign = HorizontalAlignment.Center;
-            // 
-            // txt_Pacchetto_Desc_4
-            // 
-            txt_Pacchetto_Desc_4.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            txt_Pacchetto_Desc_4.BorderStyle = BorderStyle.None;
-            txt_Pacchetto_Desc_4.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txt_Pacchetto_Desc_4.Location = new Point(92, 386);
-            txt_Pacchetto_Desc_4.Margin = new Padding(2, 3, 2, 3);
-            txt_Pacchetto_Desc_4.Name = "txt_Pacchetto_Desc_4";
-            txt_Pacchetto_Desc_4.ReadOnly = true;
-            txt_Pacchetto_Desc_4.Size = new Size(138, 18);
-            txt_Pacchetto_Desc_4.TabIndex = 48;
-            txt_Pacchetto_Desc_4.Text = "475";
-            txt_Pacchetto_Desc_4.TextAlign = HorizontalAlignment.Center;
-            // 
-            // txt_Pacchetto_Desc_5
-            // 
-            txt_Pacchetto_Desc_5.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            txt_Pacchetto_Desc_5.BorderStyle = BorderStyle.None;
-            txt_Pacchetto_Desc_5.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txt_Pacchetto_Desc_5.Location = new Point(249, 386);
-            txt_Pacchetto_Desc_5.Margin = new Padding(2, 3, 2, 3);
-            txt_Pacchetto_Desc_5.Name = "txt_Pacchetto_Desc_5";
-            txt_Pacchetto_Desc_5.ReadOnly = true;
-            txt_Pacchetto_Desc_5.Size = new Size(138, 18);
-            txt_Pacchetto_Desc_5.TabIndex = 47;
-            txt_Pacchetto_Desc_5.Text = "800";
-            txt_Pacchetto_Desc_5.TextAlign = HorizontalAlignment.Center;
-            // 
-            // txt_Pacchetto_Desc_6
-            // 
-            txt_Pacchetto_Desc_6.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            txt_Pacchetto_Desc_6.BorderStyle = BorderStyle.None;
-            txt_Pacchetto_Desc_6.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txt_Pacchetto_Desc_6.Location = new Point(404, 386);
-            txt_Pacchetto_Desc_6.Margin = new Padding(2, 3, 2, 3);
-            txt_Pacchetto_Desc_6.Name = "txt_Pacchetto_Desc_6";
-            txt_Pacchetto_Desc_6.ReadOnly = true;
-            txt_Pacchetto_Desc_6.Size = new Size(138, 18);
-            txt_Pacchetto_Desc_6.TabIndex = 46;
-            txt_Pacchetto_Desc_6.Text = "1500";
-            txt_Pacchetto_Desc_6.TextAlign = HorizontalAlignment.Center;
             // 
             // txt_Image_1
             // 
@@ -592,6 +508,78 @@
             txt_Shop_2.Text = "14,99";
             txt_Shop_2.TextAlign = HorizontalAlignment.Center;
             // 
+            // txt_Pacchetto_Desc_4
+            // 
+            txt_Pacchetto_Desc_4.BackColor = Color.Transparent;
+            txt_Pacchetto_Desc_4.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            txt_Pacchetto_Desc_4.Location = new Point(92, 367);
+            txt_Pacchetto_Desc_4.Multiline = false;
+            txt_Pacchetto_Desc_4.Name = "txt_Pacchetto_Desc_4";
+            txt_Pacchetto_Desc_4.Size = new Size(138, 18);
+            txt_Pacchetto_Desc_4.TabIndex = 52;
+            txt_Pacchetto_Desc_4.Text = "transparentLabel1";
+            txt_Pacchetto_Desc_4.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // txt_Pacchetto_Desc_5
+            // 
+            txt_Pacchetto_Desc_5.BackColor = Color.Transparent;
+            txt_Pacchetto_Desc_5.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            txt_Pacchetto_Desc_5.Location = new Point(249, 367);
+            txt_Pacchetto_Desc_5.Multiline = false;
+            txt_Pacchetto_Desc_5.Name = "txt_Pacchetto_Desc_5";
+            txt_Pacchetto_Desc_5.Size = new Size(138, 18);
+            txt_Pacchetto_Desc_5.TabIndex = 53;
+            txt_Pacchetto_Desc_5.Text = "transparentLabel1";
+            txt_Pacchetto_Desc_5.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // txt_Pacchetto_Desc_6
+            // 
+            txt_Pacchetto_Desc_6.BackColor = Color.Transparent;
+            txt_Pacchetto_Desc_6.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            txt_Pacchetto_Desc_6.Location = new Point(404, 367);
+            txt_Pacchetto_Desc_6.Multiline = false;
+            txt_Pacchetto_Desc_6.Name = "txt_Pacchetto_Desc_6";
+            txt_Pacchetto_Desc_6.Size = new Size(138, 18);
+            txt_Pacchetto_Desc_6.TabIndex = 54;
+            txt_Pacchetto_Desc_6.Text = "transparentLabel1";
+            txt_Pacchetto_Desc_6.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // txt_Pacchetto_Desc_3
+            // 
+            txt_Pacchetto_Desc_3.BackColor = Color.Transparent;
+            txt_Pacchetto_Desc_3.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            txt_Pacchetto_Desc_3.Location = new Point(404, 161);
+            txt_Pacchetto_Desc_3.Multiline = false;
+            txt_Pacchetto_Desc_3.Name = "txt_Pacchetto_Desc_3";
+            txt_Pacchetto_Desc_3.Size = new Size(138, 18);
+            txt_Pacchetto_Desc_3.TabIndex = 57;
+            txt_Pacchetto_Desc_3.Text = "transparentLabel1";
+            txt_Pacchetto_Desc_3.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // txt_Pacchetto_Desc_2
+            // 
+            txt_Pacchetto_Desc_2.BackColor = Color.Transparent;
+            txt_Pacchetto_Desc_2.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            txt_Pacchetto_Desc_2.Location = new Point(249, 161);
+            txt_Pacchetto_Desc_2.Multiline = false;
+            txt_Pacchetto_Desc_2.Name = "txt_Pacchetto_Desc_2";
+            txt_Pacchetto_Desc_2.Size = new Size(138, 18);
+            txt_Pacchetto_Desc_2.TabIndex = 56;
+            txt_Pacchetto_Desc_2.Text = "transparentLabel4";
+            txt_Pacchetto_Desc_2.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // txt_Pacchetto_Desc_1
+            // 
+            txt_Pacchetto_Desc_1.BackColor = Color.Transparent;
+            txt_Pacchetto_Desc_1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            txt_Pacchetto_Desc_1.Location = new Point(92, 161);
+            txt_Pacchetto_Desc_1.Multiline = false;
+            txt_Pacchetto_Desc_1.Name = "txt_Pacchetto_Desc_1";
+            txt_Pacchetto_Desc_1.Size = new Size(138, 18);
+            txt_Pacchetto_Desc_1.TabIndex = 55;
+            txt_Pacchetto_Desc_1.Text = "transparentLabel1";
+            txt_Pacchetto_Desc_1.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // Shop
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
@@ -646,11 +634,11 @@
         private TextBox txt_Image_3;
         private TextBox txt_Image_4;
         private TextBox txt_Image_5;
-        private TextBox txt_Pacchetto_Desc_1;
-        private TextBox txt_Pacchetto_Desc_2;
-        private TextBox txt_Pacchetto_Desc_3;
-        private TextBox txt_Pacchetto_Desc_4;
-        private TextBox txt_Pacchetto_Desc_5;
-        private TextBox txt_Pacchetto_Desc_6;
+        private Strumenti.TransparentLabel txt_Pacchetto_Desc_4;
+        private Strumenti.TransparentLabel txt_Pacchetto_Desc_3;
+        private Strumenti.TransparentLabel txt_Pacchetto_Desc_2;
+        private Strumenti.TransparentLabel txt_Pacchetto_Desc_1;
+        private Strumenti.TransparentLabel txt_Pacchetto_Desc_6;
+        private Strumenti.TransparentLabel txt_Pacchetto_Desc_5;
     }
 }

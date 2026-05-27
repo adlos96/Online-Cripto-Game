@@ -14,6 +14,9 @@ namespace Warrior_and_Wealth
         static string Caserme = "Esercito";
         static int livello_Esercito = 1;
 
+        // Buffer per i messaggi arrivati prima che il form fosse pronto
+        private static readonly Queue<string> _logBuffer = new Queue<string>();
+
         private CancellationTokenSource cts = new CancellationTokenSource();
 
         public Gioco()
@@ -29,9 +32,34 @@ namespace Warrior_and_Wealth
             panel_Log.Controls.Add(logBox);// texbox personallizata
         }
 
+        // Salva il messaggio nel buffer (da chiamare sempre, o come fallback)
+        public static void Log_Bufferizza(string messaggio)
+        {
+            lock (_logBuffer)
+            {
+                _logBuffer.Enqueue(messaggio);
+            }
+        }
+
+        // Mostra tutti i messaggi bufferizzati + aggiorna in tempo reale
         public static void Log_Update(string messaggio)
         {
-            if (logBox != null) logBox.Invoke(new Action(() => logBox.AddLineFromServer(messaggio)));
+            Log_Bufferizza(messaggio);
+        }
+
+        // Da chiamare quando il form "Gioco" diventa attivo
+        public static void Log_FlushBuffer()
+        {
+            if (logBox == null || Instance.Name != "Gioco") return;
+
+            lock (_logBuffer)
+            {
+                while (_logBuffer.Count > 0)
+                {
+                    string msg = _logBuffer.Dequeue();
+                    logBox.Invoke(new Action(() => logBox.AddLineFromServer(msg)));
+                }
+            }
         }
 
         private void Gioco_Load(object sender, EventArgs e)
@@ -59,6 +87,7 @@ namespace Warrior_and_Wealth
             Task.Run(() => Gui_Update(cts.Token), cts.Token);
             Log_Update($"[info]Benvenuto[/info] giocatore: [title]{Variabili_Client.Utente.Username}");
             Tutorial_Start();
+            Log_FlushBuffer();
         }
         void Tutorial_Start()
         {
@@ -69,8 +98,6 @@ namespace Warrior_and_Wealth
             groupBox_Esercito.Visible = false;
 
             btn_Acquista_Terreni.Visible = false;
-            btn_Mappa.Visible = false;
-            ico_Notifiche.Visible = false;
 
             btn_Scambia.Visible = false;
             btn_Acquista_Terreni.Visible = false;
@@ -125,8 +152,7 @@ namespace Warrior_and_Wealth
                             }
                             if (Variabili_Client.tutorial[29]) //Battaglie
                             {
-                                btn_Mappa.Visible = false;
-                                ico_Notifiche.Visible = false;
+
                             }
                             if (Variabili_Client.tutorial[31]) //Visualizza il resto al termine... 
                             {
@@ -624,10 +650,10 @@ namespace Warrior_and_Wealth
                 panel_Sfondo_Bottoni.Visible = true;
                 lbl_Coda_Reclutamento.Visible = true;
                 lbl_Timer_Addestramento.Visible = true;
-                ico_Unit_1.BackgroundImage = Properties.Resources.Spade_V2;
-                ico_Unit_2.BackgroundImage = Properties.Resources.Spade_V2;
-                ico_Unit_3.BackgroundImage = Properties.Resources.Spade_V2;
-                ico_Unit_4.BackgroundImage = Properties.Resources.Spade_V2;
+                ico_Unit_1.BackgroundImage = Properties.Resources.Guerriero_V2;
+                ico_Unit_2.BackgroundImage = Properties.Resources.Lanciere_V2;
+                ico_Unit_3.BackgroundImage = Properties.Resources.Arciere_V2;
+                ico_Unit_4.BackgroundImage = Properties.Resources.Catapulta_V2;
 
                 lbl_Guerrieri_Max.Visible = true;
                 lbl_Lanceri_Max.Visible = true;
@@ -641,6 +667,9 @@ namespace Warrior_and_Wealth
 
         private async void btn_Acquista_Terreni_Click(object sender, EventArgs e)
         {
+            this.ActiveControl = ico_Structure_1; // assegna il focus al bottone
+            btn_Acquista_Terreni.Enabled = false;
+            
             // Messaggio di conferma chiaro
             var result = MessageBox.Show(
                 $"Sei sicuro di voler acquistare un feudo?\n" +
@@ -658,25 +687,10 @@ namespace Warrior_and_Wealth
                 if (Variabili_Client.tutorial_Attivo == true && await Main.TutorialPrecedentiCompletati(8))
                     ClientConnection.TestClient.Send($"Tutorial Update|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|{8}");
             }
-        }
-
-        private void btn_Mappa_Click(object sender, EventArgs e)
-        {
-            Mappa form_Gioco = new Mappa();
-            form_Gioco.ShowDialog();
-        }
-
-        private void ico_Notifiche_MouseClick(object sender, MouseEventArgs e)
-        {
-            Notifiche form_Gioco = new Notifiche();
-            form_Gioco.ShowDialog();
-        }
-
-        private void ico_13_MouseClick(object sender, MouseEventArgs e)
-        {
-            Scambia_Diamanti.nome_Form = "Scambia_Tributi";
-            Scambia_Diamanti form_Gioco = new Scambia_Diamanti();
-            form_Gioco.ShowDialog();
+            await Login.Sleep(3);
+            Log_FlushBuffer();
+            await Login.Sleep(7);
+            btn_Acquista_Terreni.Enabled = true;
         }
 
         private void Gioco_FormClosing(object sender, FormClosingEventArgs e)

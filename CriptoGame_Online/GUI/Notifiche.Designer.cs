@@ -33,6 +33,7 @@
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             dataGridView1 = new DataGridView();
             Col_Stato = new DataGridViewTextBoxColumn();
+            col_Battaglia = new DataGridViewTextBoxColumn();
             Col_Villaggio = new DataGridViewTextBoxColumn();
             Col_Data = new DataGridViewTextBoxColumn();
             Col_Bottone = new DataGridViewButtonColumn();
@@ -56,7 +57,7 @@
             dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.ColumnHeadersHeight = 29;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Col_Stato, Col_Villaggio, Col_Data, Col_Bottone });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Col_Stato, col_Battaglia, Col_Villaggio, Col_Data, Col_Bottone });
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = Color.Gray;
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
@@ -69,7 +70,7 @@
             dataGridView1.EnableHeadersVisualStyles = false;
             dataGridView1.GridColor = Color.Gray;
             dataGridView1.Location = new Point(0, 0);
-            dataGridView1.Margin = new Padding(3, 4, 3, 4);
+            dataGridView1.Margin = new Padding(2, 3, 2, 3);
             dataGridView1.MultiSelect = false;
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
@@ -89,7 +90,7 @@
             dataGridView1.RowTemplate.Resizable = DataGridViewTriState.False;
             dataGridView1.ScrollBars = ScrollBars.Vertical;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.CellSelect;
-            dataGridView1.Size = new Size(674, 276);
+            dataGridView1.Size = new Size(539, 221);
             dataGridView1.TabIndex = 0;
             dataGridView1.CellClick += dataGridView1_CellClick;
             dataGridView1.CellPainting += dataGridView1_CellPainting;
@@ -102,6 +103,12 @@
             Col_Stato.Name = "Col_Stato";
             Col_Stato.ReadOnly = true;
             Col_Stato.Resizable = DataGridViewTriState.False;
+            // 
+            // col_Battaglia
+            // 
+            col_Battaglia.HeaderText = "Tipo";
+            col_Battaglia.Name = "col_Battaglia";
+            col_Battaglia.ReadOnly = true;
             // 
             // Col_Villaggio
             // 
@@ -132,14 +139,14 @@
             // 
             // Notifiche
             // 
-            AutoScaleDimensions = new SizeF(120F, 120F);
+            AutoScaleDimensions = new SizeF(96F, 96F);
             AutoScaleMode = AutoScaleMode.Dpi;
             AutoSize = true;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             BackColor = SystemColors.Control;
-            ClientSize = new Size(674, 276);
+            ClientSize = new Size(539, 221);
             Controls.Add(dataGridView1);
-            Margin = new Padding(3, 4, 3, 4);
+            Margin = new Padding(2, 3, 2, 3);
             Name = "Notifiche";
             Text = "Notifiche";
             Load += Notifiche_Load;
@@ -151,6 +158,7 @@
 
         private DataGridView dataGridView1;
         private DataGridViewTextBoxColumn Col_Stato;
+        private DataGridViewTextBoxColumn col_Battaglia;
         private DataGridViewTextBoxColumn Col_Villaggio;
         private DataGridViewTextBoxColumn Col_Data;
         private DataGridViewButtonColumn Col_Bottone;

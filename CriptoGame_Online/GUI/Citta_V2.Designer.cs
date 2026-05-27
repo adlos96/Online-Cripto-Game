@@ -154,6 +154,7 @@
             // 
             // panel_Centro
             // 
+            panel_Centro.Anchor = AnchorStyles.None;
             panel_Centro.BackColor = Color.Transparent;
             panel_Centro.BackgroundImageLayout = ImageLayout.Stretch;
             panel_Centro.Controls.Add(lbl_Centro);
@@ -198,10 +199,10 @@
             btn_Citta.FlatStyle = FlatStyle.Popup;
             btn_Citta.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_Citta.ForeColor = Color.Black;
-            btn_Citta.Location = new Point(30, 50);
+            btn_Citta.Location = new Point(27, 50);
             btn_Citta.Margin = new Padding(2, 3, 2, 3);
             btn_Citta.Name = "btn_Citta";
-            btn_Citta.Size = new Size(77, 26);
+            btn_Citta.Size = new Size(85, 26);
             btn_Citta.TabIndex = 45;
             btn_Citta.Text = "Guarnigione";
             btn_Citta.UseVisualStyleBackColor = true;
@@ -209,6 +210,7 @@
             // 
             // panel_Castello
             // 
+            panel_Castello.Anchor = AnchorStyles.None;
             panel_Castello.BackColor = Color.Transparent;
             panel_Castello.BackgroundImageLayout = ImageLayout.Stretch;
             panel_Castello.Controls.Add(lbl_Castello);
@@ -281,10 +283,10 @@
             btn_Castello.FlatStyle = FlatStyle.Popup;
             btn_Castello.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_Castello.ForeColor = Color.Black;
-            btn_Castello.Location = new Point(30, 100);
+            btn_Castello.Location = new Point(27, 100);
             btn_Castello.Margin = new Padding(2, 3, 2, 3);
             btn_Castello.Name = "btn_Castello";
-            btn_Castello.Size = new Size(77, 26);
+            btn_Castello.Size = new Size(85, 26);
             btn_Castello.TabIndex = 35;
             btn_Castello.Text = "Guarnigione";
             btn_Castello.UseVisualStyleBackColor = true;
@@ -320,6 +322,7 @@
             // 
             // panel_Torri
             // 
+            panel_Torri.Anchor = AnchorStyles.None;
             panel_Torri.BackColor = Color.Transparent;
             panel_Torri.BackgroundImageLayout = ImageLayout.Stretch;
             panel_Torri.Controls.Add(lbl_Torri);
@@ -356,10 +359,10 @@
             btn_Torri.FlatStyle = FlatStyle.Popup;
             btn_Torri.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_Torri.ForeColor = Color.Black;
-            btn_Torri.Location = new Point(28, 100);
+            btn_Torri.Location = new Point(25, 100);
             btn_Torri.Margin = new Padding(2, 3, 2, 3);
             btn_Torri.Name = "btn_Torri";
-            btn_Torri.Size = new Size(77, 26);
+            btn_Torri.Size = new Size(85, 26);
             btn_Torri.TabIndex = 36;
             btn_Torri.Text = "Guarnigione";
             btn_Torri.UseVisualStyleBackColor = true;
@@ -431,6 +434,7 @@
             // 
             // panel_Mura
             // 
+            panel_Mura.Anchor = AnchorStyles.None;
             panel_Mura.BackColor = Color.Transparent;
             panel_Mura.BackgroundImageLayout = ImageLayout.Stretch;
             panel_Mura.Controls.Add(lbl_Mura);
@@ -503,10 +507,10 @@
             btn_Mura.FlatStyle = FlatStyle.Popup;
             btn_Mura.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_Mura.ForeColor = Color.Black;
-            btn_Mura.Location = new Point(59, 105);
+            btn_Mura.Location = new Point(56, 105);
             btn_Mura.Margin = new Padding(2, 3, 2, 3);
             btn_Mura.Name = "btn_Mura";
-            btn_Mura.Size = new Size(77, 26);
+            btn_Mura.Size = new Size(85, 26);
             btn_Mura.TabIndex = 38;
             btn_Mura.Text = "Guarnigione";
             btn_Mura.UseVisualStyleBackColor = true;
@@ -542,6 +546,7 @@
             // 
             // panel_Ingresso
             // 
+            panel_Ingresso.Anchor = AnchorStyles.None;
             panel_Ingresso.BackColor = Color.Transparent;
             panel_Ingresso.BackgroundImageLayout = ImageLayout.Stretch;
             panel_Ingresso.Controls.Add(lbl_Ingresso);
@@ -586,10 +591,10 @@
             btn_Ingresso.FlatStyle = FlatStyle.Popup;
             btn_Ingresso.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_Ingresso.ForeColor = Color.Black;
-            btn_Ingresso.Location = new Point(30, 48);
+            btn_Ingresso.Location = new Point(27, 48);
             btn_Ingresso.Margin = new Padding(2, 3, 2, 3);
             btn_Ingresso.Name = "btn_Ingresso";
-            btn_Ingresso.Size = new Size(77, 26);
+            btn_Ingresso.Size = new Size(85, 26);
             btn_Ingresso.TabIndex = 42;
             btn_Ingresso.Text = "Guarnigione";
             btn_Ingresso.UseVisualStyleBackColor = true;
@@ -597,6 +602,7 @@
             // 
             // panel_Cancello
             // 
+            panel_Cancello.Anchor = AnchorStyles.None;
             panel_Cancello.BackColor = Color.Transparent;
             panel_Cancello.BackgroundImageLayout = ImageLayout.Stretch;
             panel_Cancello.Controls.Add(lbl_Cancello);
@@ -657,10 +663,10 @@
             btn_Cancello.FlatStyle = FlatStyle.Popup;
             btn_Cancello.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_Cancello.ForeColor = Color.Black;
-            btn_Cancello.Location = new Point(28, 102);
+            btn_Cancello.Location = new Point(25, 102);
             btn_Cancello.Margin = new Padding(2, 3, 2, 3);
             btn_Cancello.Name = "btn_Cancello";
-            btn_Cancello.Size = new Size(77, 26);
+            btn_Cancello.Size = new Size(85, 26);
             btn_Cancello.TabIndex = 37;
             btn_Cancello.Text = "Guarnigione";
             btn_Cancello.UseVisualStyleBackColor = true;
@@ -708,6 +714,7 @@
             // 
             // btn_Ripara_Tutto
             // 
+            btn_Ripara_Tutto.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btn_Ripara_Tutto.BackgroundImage = Properties.Resources.Texture_Wood_2;
             btn_Ripara_Tutto.FlatAppearance.BorderSize = 0;
             btn_Ripara_Tutto.FlatStyle = FlatStyle.Popup;

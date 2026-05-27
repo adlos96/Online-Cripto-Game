@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             panel_Risorse_1 = new Warrior_and_Wealth.Strumenti.DoubleBufferedPanel();
             txt_Diamond_2 = new TextBox();
             btn_Cambia_Risorse = new Button();
@@ -56,6 +57,8 @@
             txt_Livello = new TextBox();
             ico_Livello = new Warrior_and_Wealth.Strumenti.DoubleBufferedPanel();
             doubleBufferedPanel1 = new Warrior_and_Wealth.Strumenti.DoubleBufferedPanel();
+            btn_Mappa = new Button();
+            ico_Notifiche = new Warrior_and_Wealth.Strumenti.DoubleBufferedPanel();
             btn_Home = new Button();
             btn_GamePass_Reward = new Button();
             textBox9 = new TextBox();
@@ -182,6 +185,7 @@
             ico_Tributi.Name = "ico_Tributi";
             ico_Tributi.Size = new Size(36, 36);
             ico_Tributi.TabIndex = 6;
+            ico_Tributi.MouseClick += ico_Tributi_MouseClick;
             // 
             // txt_Risorsa6
             // 
@@ -429,6 +433,8 @@
             // doubleBufferedPanel1
             // 
             doubleBufferedPanel1.BackgroundImage = Properties.Resources._11111111111;
+            doubleBufferedPanel1.Controls.Add(btn_Mappa);
+            doubleBufferedPanel1.Controls.Add(ico_Notifiche);
             doubleBufferedPanel1.Controls.Add(btn_Home);
             doubleBufferedPanel1.Controls.Add(btn_GamePass_Reward);
             doubleBufferedPanel1.Controls.Add(textBox9);
@@ -444,6 +450,35 @@
             doubleBufferedPanel1.Name = "doubleBufferedPanel1";
             doubleBufferedPanel1.Size = new Size(1544, 42);
             doubleBufferedPanel1.TabIndex = 9;
+            // 
+            // btn_Mappa
+            // 
+            btn_Mappa.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+            btn_Mappa.BackgroundImage = Properties.Resources.Texture_Wood_2;
+            btn_Mappa.FlatAppearance.BorderSize = 0;
+            btn_Mappa.FlatStyle = FlatStyle.Popup;
+            btn_Mappa.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btn_Mappa.Location = new Point(1172, 4);
+            btn_Mappa.Margin = new Padding(2, 3, 2, 3);
+            btn_Mappa.Name = "btn_Mappa";
+            btn_Mappa.Size = new Size(62, 34);
+            btn_Mappa.TabIndex = 52;
+            btn_Mappa.Text = "Mappa";
+            btn_Mappa.UseVisualStyleBackColor = true;
+            btn_Mappa.Click += btn_Mappa_Click;
+            // 
+            // ico_Notifiche
+            // 
+            ico_Notifiche.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+            ico_Notifiche.BackColor = Color.Transparent;
+            ico_Notifiche.BackgroundImage = (Image)resources.GetObject("ico_Notifiche.BackgroundImage");
+            ico_Notifiche.BackgroundImageLayout = ImageLayout.Stretch;
+            ico_Notifiche.Location = new Point(1238, 4);
+            ico_Notifiche.Margin = new Padding(2, 3, 2, 3);
+            ico_Notifiche.Name = "ico_Notifiche";
+            ico_Notifiche.Size = new Size(30, 34);
+            ico_Notifiche.TabIndex = 53;
+            ico_Notifiche.MouseClick += ico_Notifiche_MouseClick;
             // 
             // btn_Home
             // 
@@ -673,5 +708,7 @@
         private Panel panel1;
         private Panel panel_Gioco;
         private Panel panel_Tutorial;
+        private Button btn_Mappa;
+        private Strumenti.DoubleBufferedPanel ico_Notifiche;
     }
 }

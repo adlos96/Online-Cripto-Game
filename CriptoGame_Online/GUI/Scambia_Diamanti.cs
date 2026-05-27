@@ -76,6 +76,7 @@ namespace Warrior_and_Wealth.GUI
                     btn_Scambia.Enabled = true;
                 }
             }
+            Gioco.Log_FlushBuffer();
         }
 
 

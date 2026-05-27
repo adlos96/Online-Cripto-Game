@@ -104,8 +104,6 @@ namespace Warrior_and_Wealth
             txt_Structure_2 = new TextBox();
             txt_Structure_Coda_2 = new TextBox();
             btn_Civile_Militare = new Button();
-            btn_Mappa = new Button();
-            ico_Notifiche = new DoubleBufferedPanel();
             banner_10 = new DoubleBufferedPanel();
             banner_7 = new DoubleBufferedPanel();
             banner_4 = new DoubleBufferedPanel();
@@ -1035,33 +1033,6 @@ namespace Warrior_and_Wealth
             btn_Civile_Militare.UseVisualStyleBackColor = true;
             btn_Civile_Militare.Click += btn_Civile_Militare_Click;
             // 
-            // btn_Mappa
-            // 
-            btn_Mappa.BackgroundImage = Properties.Resources.Texture_Wood_2;
-            btn_Mappa.FlatAppearance.BorderSize = 0;
-            btn_Mappa.FlatStyle = FlatStyle.Popup;
-            btn_Mappa.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btn_Mappa.Location = new Point(248, 4);
-            btn_Mappa.Margin = new Padding(2, 3, 2, 3);
-            btn_Mappa.Name = "btn_Mappa";
-            btn_Mappa.Size = new Size(62, 34);
-            btn_Mappa.TabIndex = 42;
-            btn_Mappa.Text = "Mappa";
-            btn_Mappa.UseVisualStyleBackColor = true;
-            btn_Mappa.Click += btn_Mappa_Click;
-            // 
-            // ico_Notifiche
-            // 
-            ico_Notifiche.BackColor = Color.Transparent;
-            ico_Notifiche.BackgroundImage = (Image)resources.GetObject("ico_Notifiche.BackgroundImage");
-            ico_Notifiche.BackgroundImageLayout = ImageLayout.Stretch;
-            ico_Notifiche.Location = new Point(314, 4);
-            ico_Notifiche.Margin = new Padding(2, 3, 2, 3);
-            ico_Notifiche.Name = "ico_Notifiche";
-            ico_Notifiche.Size = new Size(30, 34);
-            ico_Notifiche.TabIndex = 43;
-            ico_Notifiche.MouseClick += ico_Notifiche_MouseClick;
-            // 
             // banner_10
             // 
             banner_10.BackgroundImage = Properties.Resources.Banner_Blue_removebg_preview;
@@ -1140,8 +1111,6 @@ namespace Warrior_and_Wealth
             BackgroundImage = Properties.Resources.Sfondo_Gioco;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1031, 592);
-            Controls.Add(btn_Mappa);
-            Controls.Add(ico_Notifiche);
             Controls.Add(banner_6);
             Controls.Add(banner_5);
             Controls.Add(banner_10);
@@ -1257,7 +1226,5 @@ namespace Warrior_and_Wealth
         private Label lbl_Catapulte_Max;
         private Label lbl_Arceri_Max;
         private Label lbl_Lanceri_Max;
-        private Button btn_Mappa;
-        private DoubleBufferedPanel ico_Notifiche;
     }
 }

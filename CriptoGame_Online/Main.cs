@@ -21,7 +21,6 @@ namespace Warrior_and_Wealth
         public static bool quest_Completata = false;
         static int quest_Id = 0;
 
-
         public static void ScaleAllControls(Form target)
         {
             target.WindowState = FormWindowState.Maximized;
@@ -357,34 +356,34 @@ namespace Warrior_and_Wealth
                         {
                             double valore = Convert.ToDouble(Variabili_Client.Utente_Risorse.Cibo_s) - Convert.ToDouble(Variabili_Client.Utente_Risorse.Strutture_Cibo) - Convert.ToDouble(Variabili_Client.Utente_Risorse.Mantenimento_Cibo);
                             toolTip1.SetToolTip(this.ico_Cibo, $"{Variabili_Client.Cibo_Desc}" +
-                                $"Produzione: [icon:cibo][arancione]{valore.ToString("0.00")}[black]/[verde]{Variabili_Client.Utente_Risorse.Cibo_s}[/verde][black]s\r\n" +
-                                $"Edifici: [icon:cibo][rosso]{Variabili_Client.Utente_Risorse.Strutture_Cibo}[/rosso][black]s\r\n" +
-                                $"Esercito: [icon:cibo][rosso]{Variabili_Client.Utente_Risorse.Mantenimento_Cibo}[/rosso][black]s\r\n" +
-                                $"Limite: [icon:cibo][ferroScuro]{Variabili_Client.Utente_Risorse.Cibo_Limite}\n");
+                                $"Produzione: [icon:cibo][arancione]{valore.ToString("0.00")}[black]/[verde]{Variabili_Client.Utente_Risorse.Cibo_s}[/verde][black]s\n" +
+                                $"Edifici: [icon:cibo][rosso]{Variabili_Client.Utente_Risorse.Strutture_Cibo}[/rosso][black]s\n" +
+                                $"Esercito: [icon:cibo][rosso]{Variabili_Client.Utente_Risorse.Mantenimento_Cibo}[/rosso][black]s\n" +
+                                $"Limite: [icon:cibo][ferroScuro]{Variabili_Client.Utente_Risorse.Cibo_Limite}");
 
                             toolTip1.SetToolTip(this.ico_Legno, $"{Variabili_Client.Legno_Desc}" +
                                 $"Produzione: [icon:legno][arancione]{(Convert.ToDouble(Variabili_Client.Utente_Risorse.Legna_s) - Convert.ToDouble(Variabili_Client.Utente_Risorse.Strutture_Legna)).ToString("0.00")}[black]/[verde]{Variabili_Client.Utente_Risorse.Legna_s}[/verde][black]s\r\n" +
-                                $"Edifici: [icon:legno][rosso]{Variabili_Client.Utente_Risorse.Strutture_Legna}[/rosso][black]s\r\n" +
-                                $"Limite: [icon:legno][ferroScuro]{Variabili_Client.Utente_Risorse.Legna_Limite}\n");
+                                $"Edifici: [icon:legno][rosso]{Variabili_Client.Utente_Risorse.Strutture_Legna}[/rosso][black]s\n" +
+                                $"Limite: [icon:legno][ferroScuro]{Variabili_Client.Utente_Risorse.Legna_Limite}");
 
                             toolTip1.SetToolTip(this.ico_Pietra, $"{Variabili_Client.Pietra_Desc}" +
                                 $"Produzione: [icon:pietra][arancione]{(Convert.ToDouble(Variabili_Client.Utente_Risorse.Pietra_s) - Convert.ToDouble(Variabili_Client.Utente_Risorse.Strutture_Pietra)).ToString("0.00")}[black]/[verde]{Variabili_Client.Utente_Risorse.Pietra_s}[/verde][black]s\r\n" +
-                                $"Edifici: [icon:pietra][rosso]{Variabili_Client.Utente_Risorse.Strutture_Pietra}[/rosso][black]s\r\n" +
-                                $"Limite: [icon:pietra][ferroScuro]{Variabili_Client.Utente_Risorse.Pietra_Limite}");
+                                $"Edifici: [icon:pietra][rosso]{Variabili_Client.Utente_Risorse.Strutture_Pietra}[/rosso][black]s\n" +
+                                $"Limite: [icon:pietra][ferroScuro]{Variabili_Client.Utente_Risorse.Pietra_Limite}\n");
 
                             toolTip1.SetToolTip(this.ico_Ferro, $"{Variabili_Client.Ferro_Desc}" +
                                 $"Produzione: [icon:ferro][arancione]{(Convert.ToDouble(Variabili_Client.Utente_Risorse.Ferro_s) - Convert.ToDouble(Variabili_Client.Utente_Risorse.Strutture_Ferro)).ToString("0.00")}[black]/[verde]{Variabili_Client.Utente_Risorse.Ferro_s}[/verde][black]s\n" +
-                                $"Edifici: [icon:ferro][rosso]{Variabili_Client.Utente_Risorse.Strutture_Ferro}[/rosso][black]s\r\n" +
+                                $"Edifici: [icon:ferro][rosso]{Variabili_Client.Utente_Risorse.Strutture_Ferro}[/rosso][black]s\n" +
                                 $"Limite: [icon:ferro][ferroScuro]{Variabili_Client.Utente_Risorse.Ferro_Limite}");
 
                             toolTip1.SetToolTip(this.ico_Oro, $"{Variabili_Client.Oro_Desc}" +
                                 $"Produzione: [icon:oro][arancione]{(Convert.ToDouble(Variabili_Client.Utente_Risorse.Oro_s) - Convert.ToDouble(Variabili_Client.Utente_Risorse.Strutture_Oro) - Convert.ToDouble(Variabili_Client.Utente_Risorse.Mantenimento_Oro)).ToString("0.00")}[black]/[verde]{Variabili_Client.Utente_Risorse.Oro_s}[/verde][black]s\r\n" +
-                                $"Edifici: [icon:oro][rosso]{Variabili_Client.Utente_Risorse.Strutture_Oro}[/rosso][black]s\r\n" +
-                                $"Esercito: [icon:oro][rosso]{Variabili_Client.Utente_Risorse.Mantenimento_Oro}[/rosso][black]s\r\n" +
+                                $"Edifici: [icon:oro][rosso]{Variabili_Client.Utente_Risorse.Strutture_Oro}[/rosso][black]s\n" +
+                                $"Esercito: [icon:oro][rosso]{Variabili_Client.Utente_Risorse.Mantenimento_Oro}[/rosso][black]s\n" +
                                 $"Limite: [icon:oro][ferroScuro]{Variabili_Client.Utente_Risorse.Oro_Limite}");
 
                             toolTip1.SetToolTip(this.ico_Popolazione, $"{Variabili_Client.Popolazione_Desc}" +
-                                $"Produzione: [icon:popolazione][verde]{Variabili_Client.Utente_Risorse.Popolazione_s}[/verde][black]s\r\n" +
+                                $"Produzione: [icon:popolazione][verde]{Variabili_Client.Utente_Risorse.Popolazione_s}[/verde][black]s\n" +
                                 $"Limite: [icon:popolazione][ferroScuro]{Variabili_Client.Utente_Risorse.Popolazione_Limite}\n");
 
                             txt_Risorsa1.Text = Variabili_Client.Utente_Risorse.Cibo;
@@ -572,6 +571,23 @@ namespace Warrior_and_Wealth
             ico_Ferro.BackgroundImage = Properties.Resources.Scudi_V2;
             ico_Oro.BackgroundImage = Properties.Resources.Armature_V2;
             ico_Popolazione.BackgroundImage = Properties.Resources.Frecce_V2;
+        }
+
+        private void ico_Notifiche_MouseClick(object sender, MouseEventArgs e)
+        {
+            CaricaForm(new Notifiche(), sender, e);
+        }
+
+        private void btn_Mappa_Click(object sender, EventArgs e)
+        {
+            CaricaForm(new Mappa(), sender, e);
+        }
+
+        private void ico_Tributi_MouseClick(object sender, MouseEventArgs e)
+        {
+            Scambia_Diamanti.nome_Form = "Scambia_Tributi";
+            Scambia_Diamanti form_Gioco = new Scambia_Diamanti();
+            form_Gioco.ShowDialog();
         }
     }
 }
