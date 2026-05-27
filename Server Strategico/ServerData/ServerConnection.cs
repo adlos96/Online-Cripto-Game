@@ -59,7 +59,6 @@ namespace Server_Strategico.Server
                         QuestManager.QuestUpdate(player);
                         QuestManager.QuestRewardUpdate(player);
                         AggiornaVillaggiClient(player);
-                        Server.servers_.AggiornaListaPVP();
                         Tutorial(player);
                         player.SetupCaserme();
                         GamePass_Premi_Send(player);
@@ -200,7 +199,6 @@ namespace Server_Strategico.Server
                         if (result.Struttura == "Castello" && result.Victory == true) 
                             BattaglieV2.Battaglia_PvP(player, difensore, clientGuid, difensore.guid_Player, result.AttaccantePerdite.Guerrieri, result.AttaccantePerdite.Lancieri, result.AttaccantePerdite.Arcieri, result.AttaccantePerdite.Catapulte);
 
-                        Server.servers_.AggiornaListaPVP();
                         Server.GameServer.GuerrieriCitta(player);
                     }
                     

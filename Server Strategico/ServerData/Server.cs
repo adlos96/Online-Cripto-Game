@@ -6,6 +6,7 @@ using System.Collections.Concurrent;
 using System.Diagnostics;
 using WatsonTcp;
 using static Server_Strategico.Gioco.Giocatori;
+using static Server_Strategico.Gioco.Strutture;
 using static Server_Strategico.Server.Server;
 
 namespace Server_Strategico.Server
@@ -389,85 +390,56 @@ namespace Server_Strategico.Server
             }
             public async Task RunGameLoopAsync(CancellationToken cancellationToken)
             {
-                int saveCounterPlayer = 0, riparazioni = 0, _firstStart = 0, stats = 0, update_5s = 0;
+                int saveCounterPlayer = 0, _firstStart = 0, stats = 0, update_5s = 0;
                 double totale_Stats = 0, media_Stats = 0, min_Stats = 0, max_Stats = 0, numero_Stats = 0;
 
-                // --- BLOCCO RIPRISTINATO: GENERAZIONE GIOCATORI ---
                 if (Variabili_Server._Server_Consumo_RAM == 0)
                 {
                     Process proc = Process.GetCurrentProcess();
                     Variabili_Server._Server_Consumo_RAM = (int)(proc.WorkingSet64 / 1024.0 / 1024.0);
                     Console.WriteLine($"[Server] Baseline RAM impostata: {Variabili_Server._Server_Consumo_RAM:F2} MB");
                 }
-                //await addBOT(500000);
-                // --- BLOCCO RIPRISTINATO: INIZIALIZZAZIONE ---
+                await addBOT(500000);
+
                 await GameSave.LoadServerData();
                 await GameSave.Load_Player_Data_Auto();
                 servers_.AggiornaListaPVP();
                 await Gioco.Barbari.Inizializza();
-                _ = Task.Run(() => CompleteTask(cancellationToken)); //Task parallelo per completare operazioni che non devono bloccare il loop principale (es. rigenerazione barbari, quest, ecc.)
+                _ = Task.Run(() => CompleteTask(cancellationToken));
                 ScheduleManager.AvvioReset();
-                // ----------------------------------------------
-                int maxConcurrentTasks = Math.Max(1, Environment.ProcessorCount); //Core disponibili
-                var workers = new Task[maxConcurrentTasks]; // N task = N core
-                var queue = new ConcurrentQueue<Player>(players.Values);  // Pool condiviso (consuma molta cpu e tempo...)
+
+                int maxConcurrentTasks = Math.Max(1, Environment.ProcessorCount);
+                var options = new ParallelOptions { MaxDegreeOfParallelism = maxConcurrentTasks };
+
                 while (!cancellationToken.IsCancellationRequested)
                 {
-                    queue.Clear();
-                    foreach (var p in players.Values) queue.Enqueue(p);
-
                     Stopwatch taskStopwatch = Stopwatch.StartNew();
-                    saveCounterPlayer++;
-                    riparazioni++;
-                    stats++;
-                    update_5s++;
 
-                    for (int i = 0; i < maxConcurrentTasks; i++)
-                        workers[i] = Task.Run(() =>
+                    await Task.Run(() =>
+                        Parallel.ForEach(players.Values, options, player =>
                         {
-                            while (queue.TryDequeue(out var player))
+                            if (player.Stato_Giocatore == false)
                             {
-                                //Eseguire qualche funzione obbligatoria anche se il giocatore non è più attivo
-                                if (player.Stato_Giocatore == false)
-                                {
-                                    player.ProduceResources();
-                                    player.ManutenzioneEsercito();
-                                    continue; // Se il giocatore è inattivo, salta tutte le operazioni e passa al successivo.
-                                }
-
-                                if (_firstStart == 0) // X "Scaldare" i thread
-                                {
-                                    player.SetupVillaggioGiocatore(player); //Richiamare solo quando effettivamente c'è bisogno +- 145 ms in più su 50000 player
-                                    player.BonusPacchetti();
-                                    Ripara(player);
-                                    CalcoloPotenza(player);
-                                    Esperienza.LevelUp(player);
-                                    _firstStart++;
-                                }
-
-                                if (riparazioni >= Variabili_Server.tempo_Riparazione)
-                                {
-                                    Ripara(player);
-                                    CalcoloPotenza(player);
-                                    Esperienza.LevelUp(player);
-                                }
-
-                                //GuerrieriCitta(player);
                                 player.ProduceResources();
-                                //if (update_5s >= 5) player.ManutenzioneEsercito();
-                                player.ServerTimer();
-                                player.ResetGiornaliero();
+                                player.ManutenzioneEsercito();
+                                return;
                             }
-                        });
-                    await Task.WhenAll(workers); // Attendiamo il completamento di tutti i Task... qui avvienecl'esecuzione del codice sopra
 
-                    if (riparazioni >= Variabili_Server.tempo_Riparazione)
-                    {
-                        riparazioni = 0;
-                        AttacchiCooperativi.AggiornaAttacchi();
-                        servers_.AggiornaListaPVP();
-                    }
-                    //Auto_Update_Clients();
+                            if (_firstStart == 0)
+                            {
+                                player.SetupVillaggioGiocatore(player);
+                                player.BonusPacchetti();
+                                Ripara(player);
+                                CalcoloPotenza(player);
+                                Esperienza.LevelUp(player);
+                                _firstStart++;
+                            }
+                            
+                            player.ProduceResources();
+                            player.ServerTimer();
+                            //player.ResetGiornaliero();
+                        })
+                    );
 
                     if (update_5s >= 5) update_5s = 0;
                     if (Variabili_Server.timer_Reset_Quest > 0) Variabili_Server.timer_Reset_Quest--;
@@ -475,9 +447,9 @@ namespace Server_Strategico.Server
                     if (Variabili_Server.timer_Reset_Barbari > 0) Variabili_Server.timer_Reset_Barbari--;
                     if (Variabili_Server.timer_Reset_Barbari == 0) Barbari.RigeneraBarbari();
 
-                    //// Log del tempo totale
                     taskStopwatch.Stop();
-                    TimeSpan tempoImpiegato_2 = taskStopwatch.Elapsed;//Tempo strascorso
+                    TimeSpan tempoImpiegato_2 = taskStopwatch.Elapsed;
+
                     if (stats >= 60)
                     {
                         PrintResourcesAsync();
@@ -495,17 +467,14 @@ namespace Server_Strategico.Server
                         Console.WriteLine($"[MONITOR] GC Gen0: {GC.CollectionCount(0)}");
                         Console.WriteLine($"[MONITOR] GC Gen1: {GC.CollectionCount(1)}");
                         Console.WriteLine($"[MONITOR] GC Gen2: {GC.CollectionCount(2)}");
-                        // Memoria gestita da .NET
                         Console.WriteLine($"[MONITOR] Heap totale: {GC.GetTotalMemory(false) / 1024 / 1024} MB");
-
-                        // Quanti thread sta usando il server
                         Console.WriteLine($"[MONITOR] Thread attivi: {System.Diagnostics.Process.GetCurrentProcess().Threads.Count}");
-
-                        // Quante connessioni WatsonTcp risultano aperte
                         Console.WriteLine($"[MONITOR] WatsonTcp clients: {server.Connections}");
+                        Console.WriteLine($"------------------------------------");
 
                         stats = 0;
                     }
+
                     if (numero_Stats < 10) numero_Stats += 1;
                     else
                     {
@@ -517,10 +486,13 @@ namespace Server_Strategico.Server
                         if (tempoImpiegato_2.TotalMilliseconds < min_Stats || min_Stats == 0) min_Stats = tempoImpiegato_2.TotalMilliseconds;
                     }
 
-                    // Regolazione dinamica del ritardo (per mantenere 1000ms come limite)
                     double tempoRimanente = 1000.0 - tempoImpiegato_2.TotalMilliseconds;
                     if (tempoRimanente <= 0) tempoRimanente = 50;
                     if (tempoRimanente > 0) await Task.Delay((int)tempoRimanente);
+
+                    saveCounterPlayer++;
+                    stats++;
+                    update_5s++;
                 }
             }
             public async Task SaveSomePlayersAsync(int count)
@@ -597,16 +569,11 @@ namespace Server_Strategico.Server
             }
             public async Task CompleteTask(CancellationToken cancellationToken) //Task parallelo, andrebbe usato x richiamare cose, costruzioni, tempo, ecc...
             {
-                int tempo_1 = 0, execute_2s = 0, saveServer = 0, savePlayer = 0, update_5s = 0;
+                int tempo_1 = 0, execute_2s = 0, saveServer = 0, savePlayer = 0, update_5s = 0, riparazioni = 0;
                 while (!cancellationToken.IsCancellationRequested)
                 {
                     foreach (var player in players.Values)
                     {
-                        // Vecchio codice completamento
-                        //BuildingManager.CompleteBuilds(player.guid_Player, player);
-                        //UnitManager.CompleteRecruitment(player.guid_Player, player);
-                        //ResearchManager.CompleteResearch(player.guid_Player, player);
-
                         // -- V2 --
                         BuildingManagerV2.CompleteBuilds(player.guid_Player, player);
                         UnitManagerV2.CompleteRecruitment(player.guid_Player, player);
@@ -629,6 +596,13 @@ namespace Server_Strategico.Server
                                 QuestManager.QuestUpdate(player);
                                 QuestManager.QuestRewardUpdate(player);
                                 player.SetupVillaggioGiocatore(player);
+                            }
+
+                            if (riparazioni >= Variabili_Server.tempo_Riparazione)
+                            {
+                                Ripara(player);
+                                CalcoloPotenza(player);
+                                Esperienza.LevelUp(player);
                             }
 
                             lock (player.LockCostruzione)
@@ -705,7 +679,14 @@ namespace Server_Strategico.Server
                         }
                     }
 
-                    if (savePlayer >= 80) await SaveSomePlayersAsync(100); //Salva 50 player per volta...
+                    if (riparazioni >= Variabili_Server.tempo_Riparazione)
+                    {
+                        AttacchiCooperativi.AggiornaAttacchi();
+                        servers_.AggiornaListaPVP();
+                        riparazioni = 0;
+                    }
+
+                    //if (savePlayer >= 80) await SaveSomePlayersAsync(100); //Salva 50 player per volta...
                     if (saveServer >= 1200)
                     {
                         await GameSave.SaveServerData();
@@ -731,6 +712,7 @@ namespace Server_Strategico.Server
                     tempo_1++;
                     saveServer++;
                     savePlayer++;
+                    riparazioni++;
 
                     await Task.Delay(250); // Ciclo ogni secondo, o regola il ritardo come necessario
                 }

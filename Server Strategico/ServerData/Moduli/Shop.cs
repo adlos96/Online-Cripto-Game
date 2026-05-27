@@ -39,7 +39,6 @@ namespace Server_Strategico.ServerData.Moduli
                     player.Diamanti_Viola -= (int)Variabili_Server.Shop.Vip_1.Costo;
                     OnEvent(player, QuestEventType.Risorse, "Diamanti Viola", (int)Variabili_Server.Shop.Vip_1.Costo);
                     player.Vip_Tempo += Variabili_Server.Shop.Vip_1.Reward;
-                    //player.Vip_Tempo += 2 * 60; //Test
                     player.Vip = true;
                     Server.Server.Send(player.guid_Player, $"Log_Server|[Shop] Hai usato [warning][icon:diamanteViola]{Variabili_Server.Shop.Vip_1.Costo} [viola]Diamanti Viola[/viola] per l'acquisto del [highlight]VIP 24H[/highlight], Tempo disponibile: {player.FormatTime(player.Vip_Tempo)}");
                     player.SetupVillaggioGiocatore(player);
