@@ -41,6 +41,7 @@ namespace Server_Strategico.ServerData.Localization
         string Label_Salute();
         string Label_Difesa();
         string Label_Attacco();
+        public string Label_Guarnigione();
 
         string Label_Limite_Magazzino();
         string Label_Limite();

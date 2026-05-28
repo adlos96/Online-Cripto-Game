@@ -441,6 +441,7 @@ namespace Server_Strategico.ServerData.Localization
         public string Label_Salute() => "Salute";
         public string Label_Difesa() => "Difesa";
         public string Label_Attacco() => "Attacco";
+        public string Label_Guarnigione() => "Guarnigione";
         public string Label_Limite_Magazzino() => "Limite magazzino";
         public string Label_Limite() => "Limite";
 
@@ -624,12 +625,12 @@ namespace Server_Strategico.ServerData.Localization
             $"Inoltre possono essere richiesti in alcune quest, velocizzare i tempi d'attesa per strutture e unità militari.\n";
 
         public string Desc_DiamantiViola() =>
-            $"I [viola]Diamanti Viola[/viola][black][icon:diamanteViola] fondamentali per l'acquisto di [warning]feudi[warning][black], sono alla base dell'economia.\n\nPossono essere scambiati per [blu]Diamanti Blu[/blu][black][icon:diamanteBlu] ed utilizzati " +
+            $"I [viola]Diamanti Viola[/viola][black][icon:diamanteViola] fondamentali per l'acquisto di [cuoioScuro]feudi[cuoioScuro][black], sono alla base dell'economia.\n\nPossono essere scambiati per [blu]Diamanti Blu[/blu][black][icon:diamanteBlu] ed utilizzati " +
             $"all'interno dello shop per l'acquisto di pacchetti o per una migliore gestione della città.\n\n" +
             $"Oltre ad essere richiesti in alcune quest, dovrebbero essere sempre presenti nelle casse della città.";
 
         public string Desc_DollariVirtuali() =>
-            $"I [icon:dollariVirtuali]Tributi dei feudi vengono generati tramite i feudi posseduti dal giocatore.\n\nPossono essere prelevati raggiunta la soglia di [icon:dollariVirtuali][black][verde]{Variabili_Server.prelievo_Minimo} " +
+            $"I [icon:dollariVirtuali]Tributi dei feudi vengono generati tramite i feudi posseduti dal giocatore.\n\nPossono essere prelevati raggiunta la soglia di [icon:dollariVirtuali][verde]{Variabili_Server.prelievo_Minimo}[black] " +
             $"oppure utilizzati all'interno dello shop per l'acquisto di pacchetti.\nAttualmente [icon:dollariVirtuali] 1 tributo equivale ad [icon:usdt] 1 USDT";
 
         public string Desc_Cibo() =>
@@ -698,21 +699,21 @@ namespace Server_Strategico.ServerData.Localization
 
         //Villaggio
         public string Desc_SaluteMura() =>
-            $"Descrizione|Mura Salute|[black]Ripara la [verdeF]salute[black] delle [porporaReale]mura[black] al massimo.\nCosto riparazioni per [verdeF]1 HP[/verdeF][black] per ogni ciclo.\n\n";
+            $"[black]Ripara la [verdeF]salute[black] delle [porporaReale]mura[black] al massimo.\nCosto riparazioni per [verdeF]1 HP[/verdeF][black] per ogni ciclo.\n\n";
         public string Desc_DifesaMura() =>
-            $"Descrizione|Mura Difesa|[black]Ripara la [blu]difesa[black] delle [porporaReale]mura[black] al massimo.\nCosto riparazioni per [blu]1 DEF[/blu][black] per ogni ciclo.\n\n";
+            $"[black]Ripara la [blu]difesa[black] delle [porporaReale]mura[black] al massimo.\nCosto riparazioni per [blu]1 DEF[/blu][black] per ogni ciclo.\n\n";
         public string Desc_SaluteCancello() =>
-            $"Descrizione|Cancello Salute|[black]Ripara la [verdeF]salute[black] del [porporaReale]cancello[black] al massimo.\nCosto riparazioni per [verdeF]1 HP[/verdeF][black] per ogni ciclo.\n\n";
+            $"[black]Ripara la [verdeF]salute[black] del [porporaReale]cancello[black] al massimo.\nCosto riparazioni per [verdeF]1 HP[/verdeF][black] per ogni ciclo.\n\n";
         public string Desc_DifesaCancello() =>
-            $"Descrizione|Cancello Difesa|[black]Ripara la [blu]difesa[black] del [porporaReale]cancello[black] al massimo.\nCosto riparazioni per [blu]1 DEF[/blu][black] per ogni ciclo.\n\n";
+            $"[black]Ripara la [blu]difesa[black] del [porporaReale]cancello[black] al massimo.\nCosto riparazioni per [blu]1 DEF[/blu][black] per ogni ciclo.\n\n";
         public string Desc_SaluteTorri() =>
-            $"Descrizione|Torri Salute|[black]Ripara la [verdeF]salute[black] delle [porporaReale]torri[black] al massimo.\nCosto riparazioni per [verdeF]1 HP[/verdeF][black] per ogni ciclo.\n\n";
+            $"[black]Ripara la [verdeF]salute[black] delle [porporaReale]torri[black] al massimo.\nCosto riparazioni per [verdeF]1 HP[/verdeF][black] per ogni ciclo.\n\n";
         public string Desc_DifesaTorri() =>
-            $"Descrizione|Torri Difesa|[black]Ripara la [blu]difesa[black] delle [porporaReale]torri[black]al massimo.\nCosto riparazioni per [blu]1 DEF[/blu][black] per ogni ciclo.\n\n";
+            $"[black]Ripara la [blu]difesa[black] delle [porporaReale]torri[black]al massimo.\nCosto riparazioni per [blu]1 DEF[/blu][black] per ogni ciclo.\n\n";
         public string Desc_CastelloSalute() =>
-            $"Descrizione|Castello Salute|[black]Ripara la [verdeF]salute[black] del [porporaReale]castello[black]al massimo.\nCosto riparazioni per [verdeF]1 HP[/verdeF][black] per ogni ciclo.\n\n";
+            $"[black]Ripara la [verdeF]salute[black] del [porporaReale]castello[black]al massimo.\nCosto riparazioni per [verdeF]1 HP[/verdeF][black] per ogni ciclo.\n\n";
         public string Desc_CastelloDifesa() =>
-            $"Descrizione|Castello Difesa|[black]Ripara la [blu]difesa[black] del [porporaReale]castello[black]al massimo.\nCosto riparazioni per [blu]1 DEF[/blu][black] per ogni ciclo.\n\n";
+            $"[black]Ripara la [blu]difesa[black] del [porporaReale]castello[black]al massimo.\nCosto riparazioni per [blu]1 DEF[/blu][black] per ogni ciclo.\n\n";
 
         //Ricerca
         public string Desc_RicercaAddestramento(int livello) =>
@@ -798,19 +799,19 @@ namespace Server_Strategico.ServerData.Localization
 
         //Descrizioni form, se presente
         public string Desc_Città_Testo() =>
-            $"[black]Questa è panoramica del tuo villaggio, fortifica ogni settore, dall'Ingresso alle imponenti Mura del Castello.\n" +
+            $"Questa è panoramica del tuo villaggio, fortifica ogni settore, dall'Ingresso alle imponenti Mura del Castello.\n" +
             $"Ogni struttura, possiede caratteristiche specifiche come salute, difesa e guarnigione, che dovrai monitorare costantemente.\n" +
             $"Assicurati che ogni edificio sia in ottima efficienza per proteggere al meglio i tuoi domini dagli attacchi nemici.";
         public string Desc_Ricerca_Testo() =>
-            $"[black]La Ricerca rappresenta il progresso delle conoscenze del tuo regno. Investendo tempo e risorse potrai sbloccare nuove possibilità, migliorare strutture, eserciti e strategie. " +
+            $"La Ricerca rappresenta il progresso delle conoscenze del tuo regno. Investendo tempo e risorse potrai sbloccare nuove possibilità, migliorare strutture, eserciti e strategie. " +
             $"Un regno che non ricerca è destinato a restare indietro.";
         public string Desc_Scambia_DV_T_DB_Testo() =>
-           $"[black]La Ricerca rappresenta il progresso delle conoscenze del tuo regno.";
+           $"Vuoi scambiare 1[icon:diamanteBlu] per {Variabili_Server.D_Viola_To_Blu} [icon:diamanteViola]? Inserisci la quantità di [viola]diamanti viola[black] che desideri scambiare.";
         public string Desc_Scambia_Tributi_T_DB_Testo() =>
-           $"[black]La Ricerca rappresenta il progresso delle conoscenze del tuo regno.";
+           $"Vuoi scambiare 1 [icon:dollariVirtuali] per {Variabili_Server.Tributi_To_D_Viola} [icon:diamanteViola]? Inserisci la quantità di tributi che desideri scambiare.";
 
         public string Desc_Feudi_Testo() =>
-            $"[black]Acquista il tuo feudo e diventa proprietario di una porzione di terra. Ogni terreno genera una rendita giornaliera automatica. L’ammontare della rendita dipende dalla rarità.";
+            $"Acquista il tuo feudo e diventa signore di queste terre. Ogni dominio raccoglie tributi dai suoi villaggi, versati fedelmente dai contadini giorno dopo giorno. L'abbondanza dei [icon:dollariVirtuali]tributi dipende dalla rarità del feudo.";
         public string Label_Comune() =>
             $"Comune";
         public string Label_NonComune() =>

@@ -433,6 +433,7 @@ namespace Server_Strategico.ServerData.Localization
         public string Label_Salute() => "Health";
         public string Label_Difesa() => "Defense";
         public string Label_Attacco() => "Attack";
+        public string Label_Guarnigione() => "Garrison";
         public string Label_Guerrieri() => "Warriors";
         public string Label_Lancieri() => "Spearmen";
         public string Label_Arcieri() => "Archers";

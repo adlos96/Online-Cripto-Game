@@ -237,8 +237,8 @@ namespace Server_Strategico.ServerData.Moduli
             _currentState["ricerca_popolazione"] = player.Ricerca_Popolazione.ToString();
             _currentState["ricerca_riparazione"] = player.Ricerca_Riparazione.ToString();
             _currentState["ricerca_trasporto"] = player.Ricerca_Trasporto.ToString();
-            _currentState["ricerca_Spionaggio"] = player.Ricerca_Riparazione.ToString();
-            _currentState["ricerca_Contro_Spionaggio"] = player.Ricerca_Trasporto.ToString();
+            _currentState["ricerca_Spionaggio"] = player.Ricerca_Spionaggio.ToString();
+            _currentState["ricerca_Contro_Spionaggio"] = player.Ricerca_Contro_Spionaggio.ToString();
 
             _currentState["guerriero_salute"] = player.Guerriero_Salute.ToString();
             _currentState["guerriero_difesa"] = player.Guerriero_Difesa.ToString();

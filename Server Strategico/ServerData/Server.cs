@@ -2,12 +2,9 @@
 using Server_Strategico.Manager;
 using Server_Strategico.ServerData.Moduli;
 using Server_Strategico.ServerData.Moduli.Battaglie;
-using System.Collections.Concurrent;
 using System.Diagnostics;
 using WatsonTcp;
 using static Server_Strategico.Gioco.Giocatori;
-using static Server_Strategico.Gioco.Strutture;
-using static Server_Strategico.Server.Server;
 
 namespace Server_Strategico.Server
 {
@@ -399,7 +396,7 @@ namespace Server_Strategico.Server
                     Variabili_Server._Server_Consumo_RAM = (int)(proc.WorkingSet64 / 1024.0 / 1024.0);
                     Console.WriteLine($"[Server] Baseline RAM impostata: {Variabili_Server._Server_Consumo_RAM:F2} MB");
                 }
-                await addBOT(500000);
+                //await addBOT(500000);
 
                 await GameSave.LoadServerData();
                 await GameSave.Load_Player_Data_Auto();
@@ -686,7 +683,7 @@ namespace Server_Strategico.Server
                         riparazioni = 0;
                     }
 
-                    //if (savePlayer >= 80) await SaveSomePlayersAsync(100); //Salva 50 player per volta...
+                    if (savePlayer >= 80) await SaveSomePlayersAsync(100); //Salva 50 player per volta...
                     if (saveServer >= 1200)
                     {
                         await GameSave.SaveServerData();

@@ -845,7 +845,7 @@ namespace Server_Strategico.ServerData.Moduli
                 $"{L.Label_Pietra()}: [icon:pietra]{Ricerca.Tipi.Addestramento.Pietra * (player.Ricerca_Addestramento + 1):#,0}\n" +
                 $"{L.Label_Ferro()}: [icon:ferro]{Ricerca.Tipi.Addestramento.Ferro * (player.Ricerca_Addestramento + 1):#,0}\n" +
                 $"{L.Label_Oro()}: [icon:oro]{Ricerca.Tipi.Addestramento.Oro * (player.Ricerca_Addestramento + 1):#,0}\n" +
-                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Tipi.Addestramento.TempoRicerca * (player.Ricerca_Addestramento + 1))}\n");
+                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Tipi.Addestramento.TempoRicerca * (player.Ricerca_Addestramento + 1))}");
 
             Send(player.guid_Player, $"Descrizione|Ricerca Costruzione|{L.Desc_RicercaCostruzione(player.Ricerca_Costruzione + 1)}" +
                 $"{L.Label_Cibo()} [icon:cibo]{Ricerca.Tipi.Costruzione.Cibo * (player.Ricerca_Costruzione + 1):#,0}\n" +
@@ -853,7 +853,7 @@ namespace Server_Strategico.ServerData.Moduli
                 $"{L.Label_Pietra()}: [icon:pietra]{Ricerca.Tipi.Costruzione.Pietra * (player.Ricerca_Costruzione + 1):#,0}\n" +
                 $"{L.Label_Ferro()}: [icon:ferro]{Ricerca.Tipi.Costruzione.Ferro * (player.Ricerca_Costruzione + 1):#,0}\n" +
                 $"{L.Label_Oro()}: [icon:oro]{Ricerca.Tipi.Costruzione.Oro * (player.Ricerca_Costruzione + 1):#,0}\n" +
-                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Tipi.Costruzione.TempoRicerca * (player.Ricerca_Costruzione + 1))}\n");
+                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Tipi.Costruzione.TempoRicerca * (player.Ricerca_Costruzione + 1))}");
 
             Send(player.guid_Player, $"Descrizione|Ricerca Produzione|{L.Desc_RicercaProduzione(player.Ricerca_Produzione + 1)}" +
                 $"{L.Label_Cibo()} [icon:cibo]{Ricerca.Tipi.Produzione.Cibo * (player.Ricerca_Produzione + 1):#,0}\n" +
@@ -885,7 +885,7 @@ namespace Server_Strategico.ServerData.Moduli
                 $"{L.Label_Pietra()}: [icon:pietra]{Ricerca.Tipi.Riparazione.Pietra * (player.Ricerca_Riparazione + 1):#,0}\n" +
                 $"{L.Label_Ferro()}: [icon:ferro]{Ricerca.Tipi.Riparazione.Ferro * (player.Ricerca_Riparazione + 1):#,0}\n" +
                 $"{L.Label_Oro()}: [icon:oro]{Ricerca.Tipi.Riparazione.Oro * (player.Ricerca_Riparazione + 1):#,0}\n" +
-                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Tipi.Riparazione.TempoRicerca * (player.Ricerca_Riparazione + 1))}\n");
+                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Tipi.Riparazione.TempoRicerca * (player.Ricerca_Riparazione + 1))}");
 
             Send(player.guid_Player, $"Descrizione|Ricerca Guerriero Livello|{L.Desc_RicercaGuerrieroLivello(player.Guerriero_Livello + 1)}" +
                 $"{L.Label_Cibo()} [icon:cibo]{Ricerca.Soldati.Livello.Cibo * (player.Guerriero_Livello + 1):#,0}\n" +
@@ -893,7 +893,7 @@ namespace Server_Strategico.ServerData.Moduli
                 $"{L.Label_Pietra()}: [icon:pietra]{Ricerca.Soldati.Livello.Pietra * (player.Guerriero_Livello + 1):#,0}\n" +
                 $"{L.Label_Ferro()}: [icon:ferro]{Ricerca.Soldati.Livello.Ferro * (player.Guerriero_Livello + 1):#,0}\n" +
                 $"{L.Label_Oro()}: [icon:oro]{Ricerca.Soldati.Livello.Oro * (player.Guerriero_Livello + 1):#,0}\n" +
-                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Soldati.Livello.TempoRicerca * (player.Guerriero_Livello + 1))}\n\n");
+                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Soldati.Livello.TempoRicerca * (player.Guerriero_Livello + 1))}\n");
             Send(player.guid_Player, $"Descrizione|Ricerca Guerriero Salute|{L.Desc_RicercaGuerrieroSalute(player.Guerriero_Salute + 1)}" +
                 $"{L.Label_Cibo()} [icon:cibo]{Ricerca.Soldati.Salute.Cibo * (player.Guerriero_Salute + 1):#,0}\n" +
                 $"{L.Label_Legno()}: [icon:legno]{Ricerca.Soldati.Salute.Legno * (player.Guerriero_Salute + 1):#,0}\n" +
@@ -965,7 +965,7 @@ namespace Server_Strategico.ServerData.Moduli
                 $"{L.Label_Pietra()}: [icon:pietra]{Ricerca.Soldati.Attacco.Pietra * (player.Arcere_Attacco + 1):#,0}\n" +
                 $"{L.Label_Ferro()}: [icon:ferro]{Ricerca.Soldati.Attacco.Ferro * (player.Arcere_Attacco + 1):#,0}\n" +
                 $"{L.Label_Oro()}: [icon:oro]{Ricerca.Soldati.Attacco.Oro * (player.Arcere_Attacco + 1):#,0}\n" +
-                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Soldati.Attacco.TempoRicerca * (player.Arcere_Attacco + 1))}\n");
+                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Soldati.Attacco.TempoRicerca * (player.Arcere_Attacco + 1))}\n\n");
             Send(player.guid_Player, $"Descrizione|Ricerca Arcere Difesa|{L.Desc_RicercaArcereDifesa(player.Arcere_Difesa + 1)}" +
                 $"{L.Label_Cibo()} [icon:cibo]{Ricerca.Soldati.Difesa.Cibo * (player.Arcere_Difesa + 1):#,0}\n" +
                 $"{L.Label_Legno()}: [icon:legno]{Ricerca.Soldati.Difesa.Legno * (player.Arcere_Difesa + 1):#,0}\n" +
@@ -994,7 +994,7 @@ namespace Server_Strategico.ServerData.Moduli
                 $"{L.Label_Pietra()}: [icon:pietra]{Ricerca.Soldati.Attacco.Pietra * (player.Catapulta_Attacco + 1):#,0}\n" +
                 $"{L.Label_Ferro()}: [icon:ferro]{Ricerca.Soldati.Attacco.Ferro * (player.Catapulta_Attacco + 1):#,0}\n" +
                 $"{L.Label_Oro()}: [icon:oro]{Ricerca.Soldati.Attacco.Oro * (player.Catapulta_Attacco + 1):#,0}\n" +
-                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Soldati.Attacco.TempoRicerca * (player.Catapulta_Attacco + 1))}\n");
+                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Soldati.Attacco.TempoRicerca * (player.Catapulta_Attacco + 1))}\n\n");
             Send(player.guid_Player, $"Descrizione|Ricerca Catapulta Difesa|{L.Desc_RicercaCatapultaDifesa(player.Catapulta_Difesa + 1)}" +
                 $"{L.Label_Cibo()} [icon:cibo]{Ricerca.Soldati.Difesa.Cibo * (player.Catapulta_Difesa + 1):#,0}\n" +
                 $"{L.Label_Legno()}: [icon:legno]{Ricerca.Soldati.Difesa.Legno * (player.Catapulta_Difesa + 1):#,0}\n" +
@@ -1010,7 +1010,8 @@ namespace Server_Strategico.ServerData.Moduli
                 $"{L.Label_Ferro()}: [icon:ferro]{Ricerca.Citta.Ingresso.Ferro * (player.Ricerca_Ingresso_Guarnigione + 1):#,0}\n" +
                 $"{L.Label_Oro()}: [icon:oro]{Ricerca.Citta.Ingresso.Oro * (player.Ricerca_Ingresso_Guarnigione + 1):#,0}\n" +
                 $"{L.Label_Popolazione()}: [icon:popolazione]{Ricerca.Citta.Ingresso.Popolazione * (player.Ricerca_Ingresso_Guarnigione + 1):#,0}\n" +
-                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Ingresso.TempoRicerca * (player.Ricerca_Ingresso_Guarnigione + 1))}");
+                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Ingresso.TempoRicerca * (player.Ricerca_Ingresso_Guarnigione + 1))}" +
+                $"{L.Label_Guarnigione()}: +{Strutture.Edifici.Ingresso.Guarnigione}");
             Send(player.guid_Player, $"Descrizione|Ricerca Citta Guarnigione|{L.Desc_RicercaCittaGuarnigione(player.Ricerca_Citta_Guarnigione + 1)}" +
                 $"{L.Label_Cibo()} [icon:cibo]{Ricerca.Citta.Città.Cibo * (player.Ricerca_Citta_Guarnigione + 1):#,0}\n" +
                 $"{L.Label_Legno()}: [icon:legno]{Ricerca.Citta.Città.Legno * (player.Ricerca_Citta_Guarnigione + 1):#,0}\n" +
@@ -1018,7 +1019,8 @@ namespace Server_Strategico.ServerData.Moduli
                 $"{L.Label_Ferro()}: [icon:ferro]{Ricerca.Citta.Città.Ferro * (player.Ricerca_Citta_Guarnigione + 1):#,0}\n" +
                 $"{L.Label_Oro()}: [icon:oro]{Ricerca.Citta.Città.Oro * (player.Ricerca_Citta_Guarnigione + 1):#,0}\n" +
                 $"{L.Label_Popolazione()}: [icon:popolazione]{Ricerca.Citta.Città.Popolazione * (player.Ricerca_Citta_Guarnigione + 1):#,0}\n" +
-                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Città.TempoRicerca * (player.Ricerca_Citta_Guarnigione + 1))}");
+                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Città.TempoRicerca * (player.Ricerca_Citta_Guarnigione + 1))}" +
+                $"{L.Label_Guarnigione()}: +{Strutture.Edifici.Citta.Guarnigione}");
 
             Send(player.guid_Player, $"Descrizione|Ricerca Mura Livello|{L.Desc_RicercaMuraLivello(player.Ricerca_Mura_Livello + 1)}" +
                 $"{L.Label_Cibo()} [icon:cibo]{Ricerca.Citta.Mura_Livello.Cibo * (player.Ricerca_Mura_Livello + 1):#,0}\n" +
@@ -1027,7 +1029,7 @@ namespace Server_Strategico.ServerData.Moduli
                 $"{L.Label_Ferro()}: [icon:ferro]{Ricerca.Citta.Mura_Livello.Ferro * (player.Ricerca_Mura_Livello + 1):#,0}\n" +
                 $"{L.Label_Oro()}: [icon:oro]{Ricerca.Citta.Mura_Livello.Oro * (player.Ricerca_Mura_Livello + 1):#,0}\n" +
                 $"{L.Label_Popolazione()}: [icon:popolazione]{Ricerca.Citta.Mura_Livello.Popolazione * (player.Ricerca_Mura_Difesa + 1):#,0}\n" +
-                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Mura_Livello.TempoRicerca * (player.Ricerca_Mura_Livello + 1))}");
+                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Mura_Livello.TempoRicerca * (player.Ricerca_Mura_Livello + 1))}\n");
             Send(player.guid_Player, $"Descrizione|Ricerca Mura Guarnigione|{L.Desc_RicercaMuraGuarnigione(player.Ricerca_Mura_Guarnigione + 1)}" +
                 $"{L.Label_Cibo()} [icon:cibo]{Ricerca.Citta.Mura_Guarnigione.Cibo * (player.Ricerca_Mura_Guarnigione + 1):#,0}\n" +
                 $"{L.Label_Legno()}: [icon:legno]{Ricerca.Citta.Mura_Guarnigione.Legno * (player.Ricerca_Mura_Guarnigione + 1):#,0}\n" +
@@ -1035,7 +1037,8 @@ namespace Server_Strategico.ServerData.Moduli
                 $"{L.Label_Ferro()}: [icon:ferro]{Ricerca.Citta.Mura_Guarnigione.Ferro * (player.Ricerca_Mura_Guarnigione + 1):#,0}\n" +
                 $"{L.Label_Oro()}: [icon:oro]{Ricerca.Citta.Mura_Guarnigione.Oro * (player.Ricerca_Mura_Guarnigione + 1):#,0}\n" +
                 $"{L.Label_Popolazione()}: [icon:popolazione]{Ricerca.Citta.Mura_Guarnigione.Popolazione * (player.Ricerca_Mura_Difesa + 1):#,0}\n" +
-                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Mura_Guarnigione.TempoRicerca * (player.Ricerca_Mura_Guarnigione + 1))}");
+                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Mura_Guarnigione.TempoRicerca * (player.Ricerca_Mura_Guarnigione + 1))}" +
+                $"{L.Label_Guarnigione()}: +{Strutture.Edifici.Mura.Guarnigione}");
             Send(player.guid_Player, $"Descrizione|Ricerca Mura Salute|{L.Desc_RicercaMuraSalute(player.Ricerca_Mura_Salute + 1)}" +
                 $"{L.Label_Cibo()} [icon:cibo]{Ricerca.Citta.Mura_Salute.Cibo * (player.Ricerca_Mura_Salute + 1):#,0}\n" +
                 $"{L.Label_Legno()}: [icon:legno]{Ricerca.Citta.Mura_Salute.Legno * (player.Ricerca_Mura_Salute + 1):#,0}\n" +
@@ -1043,7 +1046,8 @@ namespace Server_Strategico.ServerData.Moduli
                 $"{L.Label_Ferro()}: [icon:ferro]{Ricerca.Citta.Mura_Salute.Ferro * (player.Ricerca_Mura_Salute + 1):#,0}\n" +
                 $"{L.Label_Oro()}: [icon:oro]{Ricerca.Citta.Mura_Salute.Oro * (player.Ricerca_Mura_Salute + 1):#,0}\n" +
                 $"{L.Label_Popolazione()}: [icon:popolazione]{Ricerca.Citta.Mura_Salute.Popolazione * (player.Ricerca_Mura_Difesa + 1):#,0}\n" +
-                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Mura_Salute.TempoRicerca * (player.Ricerca_Mura_Salute + 1))}\n");
+                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Mura_Salute.TempoRicerca * (player.Ricerca_Mura_Salute + 1))}" +
+                $"{L.Label_Salute()}: +{Strutture.Edifici.Mura.Salute}");
             Send(player.guid_Player, $"Descrizione|Ricerca Mura Difesa|{L.Desc_RicercaMuraDifesa(player.Ricerca_Mura_Difesa + 1)}" +
                 $"{L.Label_Cibo()} [icon:cibo]{Ricerca.Citta.Mura_Difesa.Cibo * (player.Ricerca_Mura_Difesa + 1):#,0}\n" +
                 $"{L.Label_Legno()}: [icon:legno]{Ricerca.Citta.Mura_Difesa.Legno * (player.Ricerca_Mura_Difesa + 1):#,0}\n" +
@@ -1051,7 +1055,8 @@ namespace Server_Strategico.ServerData.Moduli
                 $"{L.Label_Ferro()}: [icon:ferro]{Ricerca.Citta.Mura_Difesa.Ferro * (player.Ricerca_Mura_Difesa + 1):#,0}\n" +
                 $"{L.Label_Oro()}: [icon:oro]{Ricerca.Citta.Mura_Difesa.Oro * (player.Ricerca_Mura_Difesa + 1):#,0}\n" +
                 $"{L.Label_Popolazione()}: [icon:popolazione]{Ricerca.Citta.Mura_Difesa.Popolazione * (player.Ricerca_Mura_Difesa + 1):#,0}\n" +
-                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Mura_Difesa.TempoRicerca * (player.Ricerca_Mura_Difesa + 1))}\n");
+                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Mura_Difesa.TempoRicerca * (player.Ricerca_Mura_Difesa + 1))}" +
+                $"{L.Label_Salute()}: +{Strutture.Edifici.Mura.Salute}");
 
             Send(player.guid_Player, $"Descrizione|Ricerca Cancello Livello|{L.Desc_RicercaCancelloLivello(player.Ricerca_Cancello_Guarnigione + 1)}" +
                 $"{L.Label_Cibo()} [icon:cibo]{Ricerca.Citta.Cancello_Livello.Cibo * (player.Ricerca_Cancello_Guarnigione + 1):#,0}\n" +
@@ -1068,7 +1073,8 @@ namespace Server_Strategico.ServerData.Moduli
                 $"{L.Label_Ferro()}: [icon:ferro]{Ricerca.Citta.Cancello_Guarnigione.Ferro * (player.Ricerca_Cancello_Guarnigione + 1):#,0}\n" +
                 $"{L.Label_Oro()}: [icon:oro]{Ricerca.Citta.Cancello_Guarnigione.Oro * (player.Ricerca_Cancello_Guarnigione + 1):#,0}\n" +
                 $"{L.Label_Popolazione()}: [icon:popolazione]{Ricerca.Citta.Cancello_Guarnigione.Popolazione * (player.Ricerca_Mura_Difesa + 1):#,0}\n" +
-                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Cancello_Guarnigione.TempoRicerca * (player.Ricerca_Cancello_Guarnigione + 1))}");
+                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Cancello_Guarnigione.TempoRicerca * (player.Ricerca_Cancello_Guarnigione + 1))}" +
+                $"{L.Label_Guarnigione()}: +{Strutture.Edifici.Cancello.Guarnigione}");
             Send(player.guid_Player, $"Descrizione|Ricerca Cancello Salute|{L.Desc_RicercaCancelloSalute(player.Ricerca_Cancello_Salute + 1)}" +
                 $"{L.Label_Cibo()} [icon:cibo]{Ricerca.Citta.Cancello_Salute.Cibo * (player.Ricerca_Cancello_Salute + 1):#,0}\n" +
                 $"{L.Label_Legno()}: [icon:legno]{Ricerca.Citta.Cancello_Salute.Legno * (player.Ricerca_Cancello_Salute + 1):#,0}\n" +
@@ -1076,7 +1082,8 @@ namespace Server_Strategico.ServerData.Moduli
                 $"{L.Label_Ferro()}: [icon:ferro]{Ricerca.Citta.Cancello_Salute.Ferro * (player.Ricerca_Cancello_Salute + 1):#,0}\n" +
                 $"{L.Label_Oro()}: [icon:oro]{Ricerca.Citta.Cancello_Salute.Oro * (player.Ricerca_Cancello_Salute + 1):#,0}\n" +
                 $"{L.Label_Popolazione()}: [icon:popolazione]{Ricerca.Citta.Cancello_Salute.Popolazione * (player.Ricerca_Mura_Difesa + 1):#,0}\n" +
-                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Cancello_Salute.TempoRicerca * (player.Ricerca_Cancello_Salute + 1))}\n");
+                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Cancello_Salute.TempoRicerca * (player.Ricerca_Cancello_Salute + 1))}" +
+                $"{L.Label_Salute()}: +{Strutture.Edifici.Cancello.Salute}");
             Send(player.guid_Player, $"Descrizione|Ricerca Cancello Difesa|{L.Desc_RicercaCancelloDifesa(player.Ricerca_Cancello_Difesa + 1)}" +
                 $"{L.Label_Cibo()} [icon:cibo]{Ricerca.Citta.Cancello_Difesa.Cibo * (player.Ricerca_Cancello_Difesa + 1):#,0}\n" +
                 $"{L.Label_Legno()}: [icon:legno]{Ricerca.Citta.Cancello_Difesa.Legno * (player.Ricerca_Cancello_Difesa + 1):#,0}\n" +
@@ -1084,7 +1091,8 @@ namespace Server_Strategico.ServerData.Moduli
                 $"{L.Label_Ferro()}: [icon:ferro]{Ricerca.Citta.Cancello_Difesa.Ferro * (player.Ricerca_Cancello_Difesa + 1):#,0}\n" +
                 $"{L.Label_Oro()}: [icon:oro]{Ricerca.Citta.Cancello_Difesa.Oro * (player.Ricerca_Cancello_Difesa + 1):#,0}\n" +
                 $"{L.Label_Popolazione()}: [icon:popolazione]{Ricerca.Citta.Cancello_Difesa.Popolazione * (player.Ricerca_Mura_Difesa + 1):#,0}\n" +
-                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Cancello_Difesa.TempoRicerca * (player.Ricerca_Cancello_Difesa + 1))}\n");
+                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Cancello_Difesa.TempoRicerca * (player.Ricerca_Cancello_Difesa + 1))}" +
+                $"{L.Label_Salute()}: +{Strutture.Edifici.Cancello.Salute}");
 
             Send(player.guid_Player, $"Descrizione|Ricerca Torri Livello|{L.Desc_RicercaTorriLivello(player.Ricerca_Torri_Guarnigione + 1)}" +
                 $"{L.Label_Cibo()} [icon:cibo]{Ricerca.Citta.Torri_Livello.Cibo * (player.Ricerca_Torri_Guarnigione + 1):#,0}\n" +
@@ -1099,21 +1107,24 @@ namespace Server_Strategico.ServerData.Moduli
                 $"{L.Label_Pietra()}: [icon:pietra]{Ricerca.Citta.Torri_Guarnigione.Pietra * (player.Ricerca_Torri_Guarnigione + 1):#,0}\n" +
                 $"{L.Label_Ferro()}: [icon:ferro]{Ricerca.Citta.Torri_Guarnigione.Ferro * (player.Ricerca_Torri_Guarnigione + 1):#,0}\n" +
                 $"{L.Label_Oro()}: [icon:oro]{Ricerca.Citta.Torri_Guarnigione.Oro * (player.Ricerca_Torri_Guarnigione + 1):#,0}\n" +
-                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Torri_Guarnigione.TempoRicerca * (player.Ricerca_Torri_Guarnigione + 1))}");
+                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Torri_Guarnigione.TempoRicerca * (player.Ricerca_Torri_Guarnigione + 1))}" +
+                $"{L.Label_Guarnigione()}: +{Strutture.Edifici.Torri.Guarnigione}");
             Send(player.guid_Player, $"Descrizione|Ricerca Torri Salute|{L.Desc_RicercaTorriSalute(player.Ricerca_Torri_Salute + 1)}" +
                 $"{L.Label_Cibo()} [icon:cibo]{Ricerca.Citta.Torri_Salute.Cibo * (player.Ricerca_Torri_Salute + 1):#,0}\n" +
                 $"{L.Label_Legno()}: [icon:legno]{Ricerca.Citta.Torri_Salute.Legno * (player.Ricerca_Torri_Salute + 1):#,0}\n" +
                 $"{L.Label_Pietra()}: [icon:pietra]{Ricerca.Citta.Torri_Salute.Pietra * (player.Ricerca_Torri_Salute + 1):#,0}\n" +
                 $"{L.Label_Ferro()}: [icon:ferro]{Ricerca.Citta.Torri_Salute.Ferro * (player.Ricerca_Torri_Salute + 1):#,0}\n" +
                 $"{L.Label_Oro()}: [icon:oro]{Ricerca.Citta.Torri_Salute.Oro * (player.Ricerca_Torri_Salute + 1):#,0}\n" +
-                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Torri_Salute.TempoRicerca * (player.Ricerca_Torri_Salute + 1))}\n");
+                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Torri_Salute.TempoRicerca * (player.Ricerca_Torri_Salute + 1))}" +
+                $"{L.Label_Salute()}: +{Strutture.Edifici.Torri.Salute}");
             Send(player.guid_Player, $"Descrizione|Ricerca Torri Difesa|{L.Desc_RicercaTorriDifesa(player.Ricerca_Torri_Difesa + 1)}" +
                 $"{L.Label_Cibo()} [icon:cibo]{Ricerca.Citta.Torri_Difesa.Cibo * (player.Ricerca_Torri_Difesa + 1):#,0}\n" +
                 $"{L.Label_Legno()}: [icon:legno]{Ricerca.Citta.Torri_Difesa.Legno * (player.Ricerca_Torri_Difesa + 1):#,0}\n" +
                 $"{L.Label_Pietra()}: [icon:pietra]{Ricerca.Citta.Torri_Difesa.Pietra * (player.Ricerca_Torri_Difesa + 1):#,0}\n" +
                 $"{L.Label_Ferro()}: [icon:ferro]{Ricerca.Citta.Torri_Difesa.Ferro * (player.Ricerca_Torri_Difesa + 1):#,0}\n" +
                 $"{L.Label_Oro()}: [icon:oro]{Ricerca.Citta.Torri_Difesa.Oro * (player.Ricerca_Torri_Difesa + 1):#,0}\n" +
-                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Torri_Difesa.TempoRicerca * (player.Ricerca_Torri_Difesa + 1))}\n");
+                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Torri_Difesa.TempoRicerca * (player.Ricerca_Torri_Difesa + 1))}" +
+                $"{L.Label_Salute()}: +{Strutture.Edifici.Torri.Salute}");
 
             Send(player.guid_Player, $"Descrizione|Ricerca Castello Livello|{L.Desc_RicercaCastelloLivello(player.Ricerca_Castello_Guarnigione + 1)}" +
                 $"{L.Label_Cibo()} [icon:cibo]{Ricerca.Citta.Castello_Livello.Cibo * (player.Ricerca_Castello_Guarnigione + 1):#,0}\n" +
@@ -1128,21 +1139,24 @@ namespace Server_Strategico.ServerData.Moduli
                 $"{L.Label_Pietra()}: [icon:pietra]{Ricerca.Citta.Castello_Guarnigione.Pietra * (player.Ricerca_Castello_Guarnigione + 1):#,0}\n" +
                 $"{L.Label_Ferro()}: [icon:ferro]{Ricerca.Citta.Castello_Guarnigione.Ferro * (player.Ricerca_Castello_Guarnigione + 1):#,0}\n" +
                 $"{L.Label_Oro()}: [icon:oro]{Ricerca.Citta.Castello_Guarnigione.Oro * (player.Ricerca_Castello_Guarnigione + 1):#,0}\n" +
-                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Castello_Guarnigione.TempoRicerca * (player.Ricerca_Castello_Guarnigione + 1))}");
+                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Castello_Guarnigione.TempoRicerca * (player.Ricerca_Castello_Guarnigione + 1))}" +
+                $"{L.Label_Guarnigione()}: +{Strutture.Edifici.Castello.Guarnigione}");
             Send(player.guid_Player, $"Descrizione|Ricerca Castello Salute|{L.Desc_RicercaCastelloSalute(player.Ricerca_Castello_Salute + 1)}" +
                 $"{L.Label_Cibo()} [icon:cibo]{Ricerca.Citta.Castello_Salute.Cibo * (player.Ricerca_Castello_Salute + 1):#,0}\n" +
                 $"{L.Label_Legno()}: [icon:legno]{Ricerca.Citta.Castello_Salute.Legno * (player.Ricerca_Castello_Salute + 1):#,0}\n" +
                 $"{L.Label_Pietra()}: [icon:pietra]{Ricerca.Citta.Castello_Salute.Pietra * (player.Ricerca_Castello_Salute + 1):#,0}\n" +
                 $"{L.Label_Ferro()}: [icon:ferro]{Ricerca.Citta.Castello_Salute.Ferro * (player.Ricerca_Castello_Salute + 1):#,0}\n" +
                 $"{L.Label_Oro()}: [icon:oro]{Ricerca.Citta.Castello_Salute.Oro * (player.Ricerca_Castello_Salute + 1):#,0}\n" +
-                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Castello_Salute.TempoRicerca * (player.Ricerca_Castello_Salute + 1))}\n");
+                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Castello_Salute.TempoRicerca * (player.Ricerca_Castello_Salute + 1))}" +
+                $"{L.Label_Salute()}: +{Strutture.Edifici.Castello.Salute}");
             Send(player.guid_Player, $"Descrizione|Ricerca Castello Difesa|{L.Desc_RicercaCastelloDifesa(player.Ricerca_Castello_Difesa + 1)}" +
                 $"{L.Label_Cibo()} [icon:cibo]{Ricerca.Citta.Castello_Difesa.Cibo * (player.Ricerca_Castello_Difesa + 1):#,0}\n" +
                 $"{L.Label_Legno()}: [icon:legno]{Ricerca.Citta.Castello_Difesa.Legno * (player.Ricerca_Castello_Difesa + 1):#,0}\n" +
                 $"{L.Label_Pietra()}: [icon:pietra]{Ricerca.Citta.Castello_Difesa.Pietra * (player.Ricerca_Castello_Difesa + 1):#,0}\n" +
                 $"{L.Label_Ferro()}: [icon:ferro]{Ricerca.Citta.Castello_Difesa.Ferro * (player.Ricerca_Castello_Difesa + 1):#,0}\n" +
                 $"{L.Label_Oro()}: [icon:oro]{Ricerca.Citta.Castello_Difesa.Oro * (player.Ricerca_Castello_Difesa + 1):#,0}\n" +
-                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Castello_Difesa.TempoRicerca * (player.Ricerca_Castello_Difesa + 1))}\n");
+                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Castello_Difesa.TempoRicerca * (player.Ricerca_Castello_Difesa + 1))}" +
+                $"{L.Label_Difesa()}: +{Strutture.Edifici.Castello.Difesa}");
 
             //Shop Descrizioni
             Send(player.guid_Player, $"Descrizione|Shop GamePass Base|{L.Desc_Shop_GamePassBase()}");
