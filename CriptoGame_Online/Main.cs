@@ -318,11 +318,14 @@ namespace Warrior_and_Wealth
         #endregion
         async void Gui_Update()
         {
-            toolTip1 = new CustomToolTip();
+            if (toolTip1 == null)
+            {
+                toolTip1 = new CustomToolTip();
 
-            // Imposta qualche proprietà opzionale
-            toolTip1.InitialDelay = 150;
-            toolTip1.AutoPopDelay = 15000;
+                // Imposta qualche proprietà opzionale
+                toolTip1.InitialDelay = 150;
+                toolTip1.AutoPopDelay = 15000;
+            }
 
             while (true)
             {

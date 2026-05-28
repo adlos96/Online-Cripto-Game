@@ -1,10 +1,6 @@
 ﻿using Server_Strategico.Manager;
 using Server_Strategico.ServerData.Moduli;
 using Server_Strategico.ServerData.Moduli.Battaglie;
-using static Server_Strategico.Gioco.Giocatori;
-using static Server_Strategico.Gioco.Variabili_Server;
-using static Server_Strategico.Manager.QuestManager;
-using static Server_Strategico.Server.Server;
 
 namespace Server_Strategico.Gioco
 {

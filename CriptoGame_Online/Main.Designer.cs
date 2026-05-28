@@ -71,8 +71,10 @@
             panel1 = new Panel();
             panel_Gioco = new Panel();
             panel_Tutorial = new Panel();
+            customScrollPanel1 = new Warrior_and_Wealth.Strumenti.CustomScrollPanel();
             panel_Risorse_1.SuspendLayout();
             doubleBufferedPanel1.SuspendLayout();
+            panel_Gioco.SuspendLayout();
             SuspendLayout();
             // 
             // panel_Risorse_1
@@ -632,6 +634,7 @@
             // 
             // panel_Gioco
             // 
+            panel_Gioco.Controls.Add(customScrollPanel1);
             panel_Gioco.Dock = DockStyle.Left;
             panel_Gioco.Location = new Point(0, 58);
             panel_Gioco.Name = "panel_Gioco";
@@ -645,6 +648,13 @@
             panel_Tutorial.Name = "panel_Tutorial";
             panel_Tutorial.Size = new Size(361, 530);
             panel_Tutorial.TabIndex = 11;
+            // 
+            // customScrollPanel1
+            // 
+            customScrollPanel1.Location = new Point(344, 96);
+            customScrollPanel1.Name = "customScrollPanel1";
+            customScrollPanel1.Size = new Size(277, 177);
+            customScrollPanel1.TabIndex = 0;
             // 
             // Main
             // 
@@ -663,6 +673,7 @@
             panel_Risorse_1.PerformLayout();
             doubleBufferedPanel1.ResumeLayout(false);
             doubleBufferedPanel1.PerformLayout();
+            panel_Gioco.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -710,5 +721,6 @@
         private Panel panel_Tutorial;
         private Button btn_Mappa;
         private Strumenti.DoubleBufferedPanel ico_Notifiche;
+        private Strumenti.CustomScrollPanel customScrollPanel1;
     }
 }

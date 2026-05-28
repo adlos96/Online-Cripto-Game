@@ -194,10 +194,10 @@ namespace Warrior_and_Wealth
             // 
             panel_Image_3.BackgroundImage = Properties.Resources.DiamanteViola_V2;
             panel_Image_3.BackgroundImageLayout = ImageLayout.Stretch;
-            panel_Image_3.Location = new Point(83, 322);
+            panel_Image_3.Location = new Point(81, 324);
             panel_Image_3.Margin = new Padding(2, 3, 2, 3);
             panel_Image_3.Name = "panel_Image_3";
-            panel_Image_3.Size = new Size(26, 28);
+            panel_Image_3.Size = new Size(26, 24);
             panel_Image_3.TabIndex = 43;
             // 
             // panel3
@@ -360,10 +360,10 @@ namespace Warrior_and_Wealth
             // 
             panel_Image_2.BackgroundImage = Properties.Resources.DiamanteViola_V2;
             panel_Image_2.BackgroundImageLayout = ImageLayout.Stretch;
-            panel_Image_2.Location = new Point(99, 288);
+            panel_Image_2.Location = new Point(97, 290);
             panel_Image_2.Margin = new Padding(2, 3, 2, 3);
             panel_Image_2.Name = "panel_Image_2";
-            panel_Image_2.Size = new Size(24, 28);
+            panel_Image_2.Size = new Size(24, 24);
             panel_Image_2.TabIndex = 29;
             // 
             // btn_Acquista_Terreni

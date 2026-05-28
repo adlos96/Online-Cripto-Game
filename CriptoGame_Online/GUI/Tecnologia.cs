@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Warrior_and_Wealth
 {
-    public partial class Ricerca : Form
+    public partial class Tecnologia : Form
     {
-        public Ricerca()
+        public Tecnologia()
         {
             InitializeComponent();
 

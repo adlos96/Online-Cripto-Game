@@ -16,7 +16,7 @@ namespace Warrior_and_Wealth
 
         // Buffer per i messaggi arrivati prima che il form fosse pronto
         public static readonly Queue<string> _logBuffer = new Queue<string>();
-
+        public static readonly List<string> _logStorico = new List<string>();
         private CancellationTokenSource cts = new CancellationTokenSource();
 
         public Gioco()
@@ -33,32 +33,29 @@ namespace Warrior_and_Wealth
         }
 
         // Salva il messaggio nel buffer (da chiamare sempre, o come fallback)
-        public static void Log_Bufferizza(string messaggio)
+        public static void Log_Update(string messaggio)
         {
             lock (_logBuffer)
             {
-                _logBuffer.Enqueue(messaggio);
+                _logStorico.Add(messaggio);   // salva sempre nello storico
+                _logBuffer.Enqueue(messaggio); // mette in coda per il rendering
             }
-        }
-
-        // Mostra tutti i messaggi bufferizzati + aggiorna in tempo reale
-        public static void Log_Update(string messaggio)
-        {
-            Log_Bufferizza(messaggio);
         }
 
         // Da chiamare quando il form "Gioco" diventa attivo
         public static void Log_FlushBuffer()
         {
-            if (logBox == null || Instance.Name != "Gioco") return;
+            if (logBox == null || logBox.IsDisposed) return;
 
             lock (_logBuffer)
             {
-                while (_logBuffer.Count > 0)
+                logBox.Invoke(new Action(() =>
                 {
-                    string msg = _logBuffer.Dequeue();
-                    logBox.Invoke(new Action(() => logBox.AddLineFromServer(msg)));
-                }
+                    logBox.Clear();
+                    foreach (var msg in _logStorico)
+                        logBox.AddLineFromServer(msg);
+                }));
+                _logBuffer.Clear();
             }
         }
 
@@ -86,13 +83,12 @@ namespace Warrior_and_Wealth
             Localizzazione();
 
             Task.Run(() => Gui_Update(cts.Token), cts.Token);
-            Log_Update($"[info]Benvenuto[/info] giocatore: [title]{Variabili_Client.Utente.Username}");
             Tutorial_Start();
         }
         void Localizzazione()
         {
             groupBox_Terreni.Text = LocalizationManager.Current.Label_Feudi();
-            btn_Acquista_Terreni.Text = LocalizationManager.Current.Label_Acquista();
+            btn_Acquista_Terreni.Text = LocalizationManager.Current.Label_Acquista() + Variabili_Client.Utente.Costo_terreni_Virtuali;
             btn_Scambia.Text = LocalizationManager.Current.Label_Scambia();
 
             if (Caserme == "Caserme") groupBox_Esercito.Text = LocalizationManager.Current.Label_Caserme();
@@ -135,7 +131,7 @@ namespace Warrior_and_Wealth
                 {
                     panel2.BeginInvoke((Action)(async () =>
                     {
-                        if (_logBuffer.Count != 0) Log_FlushBuffer();
+                        if (_logBuffer.Count != 0 || _logStorico.Count != 0) Log_FlushBuffer();
 
                         //Tutorial
                         if (Variabili_Client.tutorial_Attivo)

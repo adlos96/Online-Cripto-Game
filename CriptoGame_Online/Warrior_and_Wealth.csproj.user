@@ -41,7 +41,7 @@
     <Compile Update="GUI\Statistiche.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="GUI\Ricerca.cs">
+    <Compile Update="GUI\Tecnologia.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="GUI\MontlyQuest.cs">
@@ -61,6 +61,9 @@
     </Compile>
     <Compile Update="Main.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Strumenti\CustomScrollPanel.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Update="Strumenti\DoubleBufferedPanel.cs">
       <SubType>Component</SubType>

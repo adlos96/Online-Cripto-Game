@@ -4,8 +4,10 @@ using Warrior_and_Wealth.Strumenti;
 public class CustomToolTip
 {
     private readonly Dictionary<Control, string> _tips = new();
+    private readonly Dictionary<Control, string> _displayedTips = new(); // ← testo attualmente mostrato
+    private CancellationTokenSource _showCts = new();
     private TooltipForm? _activeTip;
-    private int _currentTooltipId;
+    private Control? _activeControl; // ← aggiungi questo campo
 
     public int InitialDelay { get; set; } = 300;
     public int AutoPopDelay { get; set; } = 5000;
@@ -15,42 +17,74 @@ public class CustomToolTip
         if (!_tips.ContainsKey(control))
         {
             _tips[control] = text;
-
+            _displayedTips[control] = text;
             control.MouseEnter += async (s, e) => await ShowTooltipAsync(control);
             control.MouseLeave += (s, e) => HideTooltip();
             control.MouseMove += (s, e) => MoveTooltip();
+            return;
         }
-        else
+
+        _tips[control] = text; // aggiorna sempre il testo "desiderato"
+
+        // Aggiorna il tooltip visibile solo se il testo mostrato è diverso
+        if (_activeTip != null && _activeControl == control && _displayedTips[control] != text)
         {
-            _tips[control] = text;
+            _displayedTips[control] = text;
+            RefreshActive();
         }
     }
 
+    private void RefreshActive()
+    {
+        if (_activeTip == null || _activeControl == null) return;
+
+        var oldTip = _activeTip;
+        var loc = oldTip.Location;
+
+        _activeTip = new TooltipForm(_tips[_activeControl]);
+        _activeTip.Location = loc;
+        _activeTip.Show();
+
+        _ = oldTip.FadeOutAndCloseAsync();
+    }
     private async Task ShowTooltipAsync(Control ctl)
     {
-        var tooltipId = ++_currentTooltipId;
+        // Cancella qualsiasi show precedente
+        _showCts.Cancel();
+        _showCts = new CancellationTokenSource();
+        var token = _showCts.Token;
 
-        await Task.Delay(InitialDelay);
+        try
+        {
+            await Task.Delay(InitialDelay, token);
+        }
+        catch (TaskCanceledException) { return; }
 
-        if (tooltipId != _currentTooltipId || !ctl.ClientRectangle.Contains(ctl.PointToClient(Cursor.Position)))
-            return;
+        if (token.IsCancellationRequested) return;
+        if (!ctl.ClientRectangle.Contains(ctl.PointToClient(Cursor.Position))) return;
 
         HideTooltip();
 
+        _activeControl = ctl;
+        _displayedTips[ctl] = _tips[ctl]; // ← salva cosa stiamo mostrando
         _activeTip = new TooltipForm(_tips[ctl]);
-
         _activeTip.Location = new Point(-9999, -9999);
         _activeTip.Show();
         _activeTip.Location = GetSafeLocation(Cursor.Position, _activeTip);
 
-        _ = AutoHideAsync(tooltipId);
+        _ = AutoHideAsync(token);
     }
 
-    private async Task AutoHideAsync(int tooltipId)
-    {
-        await Task.Delay(AutoPopDelay);
 
-        if (tooltipId == _currentTooltipId)
+    private async Task AutoHideAsync(CancellationToken token)
+    {
+        try
+        {
+            await Task.Delay(AutoPopDelay, token);
+        }
+        catch (TaskCanceledException) { return; }
+
+        if (!token.IsCancellationRequested)
             HideTooltip();
     }
 
@@ -62,13 +96,13 @@ public class CustomToolTip
 
     private void HideTooltip()
     {
-        _currentTooltipId++;
+        _showCts.Cancel(); // cancella anche eventuali show in corso
+        _activeControl = null;
 
         if (_activeTip != null)
         {
             var tipToClose = _activeTip;
-            _activeTip = null; // Subito null così non blocca nuovi tooltip
-
+            _activeTip = null;
             _ = tipToClose.FadeOutAndCloseAsync();
         }
     }
