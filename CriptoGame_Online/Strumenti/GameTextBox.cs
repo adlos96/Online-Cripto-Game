@@ -241,15 +241,15 @@
             }
 
             // --- FADE BOTTOM ---
-            Rectangle fadeBot = new(0, ClientSize.Height - fadeHeight, ClientSize.Width - scrollBarWidth - 4, fadeHeight);
-            using (LinearGradientBrush fadeBrush = new(
-                fadeBot,
-                Color.FromArgb(0, BackColor),
-                Color.FromArgb(255, BackColor),
-                90f))
-            {
-                g.FillRectangle(fadeBrush, fadeBot);
-            }
+            //Rectangle fadeBot = new(0, ClientSize.Height - fadeHeight, ClientSize.Width - scrollBarWidth - 4, fadeHeight);
+            //using (LinearGradientBrush fadeBrush = new(
+            //    fadeBot,
+            //    Color.FromArgb(0, BackColor),
+            //    Color.FromArgb(255, BackColor),
+            //    90f))
+            //{
+            //    g.FillRectangle(fadeBrush, fadeBot);
+            //}
 
             // --- SCROLLBAR TRACK ---
             Rectangle track = new(

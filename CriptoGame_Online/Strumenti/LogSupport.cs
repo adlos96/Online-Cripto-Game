@@ -90,10 +90,10 @@ namespace Warrior_and_Wealth.Strumenti
             ["minieraOro"] = Properties.Resources.MinieraOro_V2,
             ["case"] = Properties.Resources.Abitazioni_V2,
 
-            ["guerriero"] = Properties.Resources.Guerriero_V2,
-            ["lancere"] = Properties.Resources.Lanciere_V2,
-            ["arcere"] = Properties.Resources.Arciere_V2,
-            ["catapulta"] = Properties.Resources.Catapulta_V2,
+            ["guerrieri"] = Properties.Resources.Guerriero_V2,
+            ["lanceri"] = Properties.Resources.Lanciere_V2,
+            ["arceri"] = Properties.Resources.Arciere_V2,
+            ["catapulte"] = Properties.Resources.Catapulta_V2,
 
             ["workshopSpade"] = Properties.Resources.Workshop_Spade_V2,
             ["workshopLance"] = Properties.Resources.Workshop_Lance_V2,

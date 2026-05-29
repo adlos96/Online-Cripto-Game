@@ -681,16 +681,16 @@ namespace Server_Strategico.ServerData.Localization
             "[black]By purchasing this 'Vip 2' pack, your VIP time will be increased. Once the transaction is confirmed on the blockchain, the diamonds will be credited immediately.\n A maximum of [ferroScuro]2 [black]days can be accumulated by purchasing multiple packs.";
 
         public string Desc_Shop_Costruttore(string durata) =>
-            $"[black]By purchasing this 'Builder {durata}' pack, you can request an additional builder.\n" +
+            $"[black]By purchasing this 'Builder {durata.Replace("0h 0m 0s", "")}' pack, you can request an additional builder.\n" +
             "Construction time will be increased.\n A maximum of [ferroScuro]3 [black]days can be accumulated by purchasing multiple packs.";
 
         public string Desc_Shop_Reclutatore(string durata) =>
-            $"[black]By purchasing this 'Recruiter {durata}' pack, you can request an additional recruiter.\n" +
+            $"[black]By purchasing this 'Recruiter {durata.Replace("0h 0m 0s", "")}' pack, you can request an additional recruiter.\n" +
             "Recruitment time will be increased.\n A maximum of [ferroScuro]2 [black]days can be accumulated by purchasing multiple packs.";
 
         public string Desc_Shop_ScudoPace(string durata) =>
-            $"[black]By purchasing this 'Peace Shield {durata}' pack, you will obtain protection from other players' attacks.\n" +
-            "The shield duration will be added to your current shield time.\n A maximum of [ferroScuro]7 [black]days can be accumulated by purchasing multiple packs.";
+            $"[black]By purchasing this 'Peace Shield {durata.Replace("0h 0m 0s", "")}' package, you will be protected from attacks by other players.\n" +
+            "If a Peace Shield is already active, the purchased time will be added to the time already available.\n A maximum of [ferroScuro]7 [black]days can be accumulated by purchasing multiple packages\n";
 
         //Ricerca
         public string Desc_RicercaCostruzione(int livello) =>

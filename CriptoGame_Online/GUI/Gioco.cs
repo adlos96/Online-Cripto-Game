@@ -10,9 +10,9 @@ namespace Warrior_and_Wealth
         public static GameTextBox? logBox;
         public static CustomToolTip toolTip1;
         static string strutture = "Civile";
-        static string tipo_Risorse = "Civile";
         static string Caserme = "Esercito";
         static int livello_Esercito = 1;
+        static bool log_Vuoto = false;
 
         // Buffer per i messaggi arrivati prima che il form fosse pronto
         public static readonly Queue<string> _logBuffer = new Queue<string>();
@@ -30,6 +30,15 @@ namespace Warrior_and_Wealth
                 Dock = DockStyle.Fill
             };
             panel_Log.Controls.Add(logBox);// texbox personallizata
+
+            if (toolTip1 == null)
+            {
+                toolTip1 = new CustomToolTip();
+
+                // Imposta qualche proprietà opzionale
+                toolTip1.InitialDelay = 150;
+                toolTip1.AutoPopDelay = 15000;
+            }
         }
 
         // Salva il messaggio nel buffer (da chiamare sempre, o come fallback)
@@ -118,12 +127,6 @@ namespace Warrior_and_Wealth
         }
         async void Gui_Update(CancellationToken token)
         {
-            toolTip1 = new CustomToolTip();
-
-            // Imposta qualche proprietà opzionale
-            toolTip1.InitialDelay = 150;
-            toolTip1.AutoPopDelay = 15000;
-
             while (!token.IsCancellationRequested)
             {
                 Thread.Sleep(250); // poco piu di 30 fps
@@ -131,7 +134,11 @@ namespace Warrior_and_Wealth
                 {
                     panel2.BeginInvoke((Action)(async () =>
                     {
-                        if (_logBuffer.Count != 0 || _logStorico.Count != 0) Log_FlushBuffer();
+                        if (_logBuffer.Count != 0 || (_logStorico.Count != 0 && log_Vuoto == false))
+                        {
+                            Log_FlushBuffer();
+                            log_Vuoto = true;
+                        }
 
                         //Tutorial
                         if (Variabili_Client.tutorial_Attivo)
@@ -362,7 +369,6 @@ namespace Warrior_and_Wealth
                             lbl_Coda_Reclutamento.Text = $"{LocalizationManager.Current.Label_Code_Disponibili()}: {Convert.ToInt32(Variabili_Client.Utente.Code_Reclutamento) - Convert.ToInt32(Variabili_Client.Utente.Code_Reclutamento_Disponibili)}/{Variabili_Client.Utente.Code_Reclutamento}";
                         }
                     }));
-
                 }
             }
         }
@@ -696,6 +702,7 @@ namespace Warrior_and_Wealth
 
         private void Gioco_FormClosing(object sender, FormClosingEventArgs e)
         {
+            log_Vuoto = false;
             cts.Cancel();
         }
     }

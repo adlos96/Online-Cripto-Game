@@ -39,7 +39,7 @@ namespace Server_Strategico.ServerData.Moduli
                $"{L.Label_Popolazione()}: [icon:popolazione]{Strutture.Edifici.Segheria.Popolazione.ToString("#,0")}\n" +
                $"{L.Label_Costruzione()}: [icon:tempo]{player.FormatTime(tempoCalcolato)}{(tempoCalcolato == tempoBase ? "" : $" ({player.FormatTime(tempoBase)})")}\n" +
                $"{L.Label_Produzione()}: [icon:legno]{(Strutture.Edifici.Segheria.Produzione + player.Ricerca_Produzione * Ricerca.Tipi.Incremento.Legno * (1 + player.Bonus_Produzione_Risorse)).ToString("0.00")} s\n" +
-               $"{L.Label_Limite_Magazzino()}: [icon:legno][ferroScuro]{Strutture.Edifici.Segheria.Limite.ToString()}\n");
+               $"{L.Label_Limite_Magazzino()}: [icon:legno][ferroScuro]{Strutture.Edifici.Segheria.Limite.ToString()}");
 
             tempoCalcolato = Strutture.Edifici.CavaPietra.TempoCostruzione - player.Ricerca_Costruzione - (Strutture.Edifici.CavaPietra.TempoCostruzione * player.Bonus_Costruzione);
             tempoBase = Strutture.Edifici.CavaPietra.TempoCostruzione;
@@ -54,7 +54,7 @@ namespace Server_Strategico.ServerData.Moduli
                 $"{L.Label_Popolazione()}: [icon:popolazione]{Strutture.Edifici.CavaPietra.Popolazione.ToString("#,0")}\n" +
                 $"{L.Label_Costruzione()}: [icon:tempo]{player.FormatTime(tempoCalcolato)}{(tempoCalcolato == tempoBase ? "" : $" ({player.FormatTime(tempoBase)})")}\n" +
                 $"{L.Label_Produzione()}: [icon:pietra]{(Strutture.Edifici.CavaPietra.Produzione + player.Ricerca_Produzione * Ricerca.Tipi.Incremento.Pietra * (1 + player.Bonus_Produzione_Risorse)).ToString("0.00")} s\n" +
-                $"{L.Label_Limite_Magazzino()}: [icon:pietra][ferroScuro]{Strutture.Edifici.CavaPietra.Limite.ToString()}\n");
+                $"{L.Label_Limite_Magazzino()}: [icon:pietra][ferroScuro]{Strutture.Edifici.CavaPietra.Limite.ToString()}");
 
             tempoCalcolato = Strutture.Edifici.MinieraFerro.TempoCostruzione - player.Ricerca_Costruzione - (Strutture.Edifici.MinieraFerro.TempoCostruzione * player.Bonus_Costruzione);
             tempoBase = Strutture.Edifici.MinieraFerro.TempoCostruzione;
@@ -69,7 +69,7 @@ namespace Server_Strategico.ServerData.Moduli
                 $"{L.Label_Popolazione()}: [icon:popolazione]{Strutture.Edifici.MinieraFerro.Popolazione.ToString("#,0")}\n" +
                 $"{L.Label_Costruzione()}: [icon:tempo]{player.FormatTime(tempoCalcolato)}{(tempoCalcolato == tempoBase ? "" : $" ({player.FormatTime(tempoBase)})")}\n" +
                 $"{L.Label_Produzione()}: [icon:ferro]{(Strutture.Edifici.MinieraFerro.Produzione + player.Ricerca_Produzione * Ricerca.Tipi.Incremento.Ferro * (1 + player.Bonus_Produzione_Risorse)).ToString("0.00")} s\n" +
-                $"{L.Label_Limite_Magazzino()}: [icon:ferro][ferroScuro]{Strutture.Edifici.MinieraFerro.Limite.ToString()}\n");
+                $"{L.Label_Limite_Magazzino()}: [icon:ferro][ferroScuro]{Strutture.Edifici.MinieraFerro.Limite.ToString()}");
 
             tempoCalcolato = Strutture.Edifici.MinieraOro.TempoCostruzione - player.Ricerca_Costruzione - (Strutture.Edifici.MinieraOro.TempoCostruzione * player.Bonus_Costruzione);
             tempoBase = Strutture.Edifici.MinieraOro.TempoCostruzione;
@@ -84,7 +84,7 @@ namespace Server_Strategico.ServerData.Moduli
                 $"{L.Label_Popolazione()}: [icon:popolazione]{Strutture.Edifici.MinieraOro.Popolazione.ToString("#,0")}\n" +
                 $"{L.Label_Costruzione()}: [icon:tempo]{player.FormatTime(tempoCalcolato)}{(tempoCalcolato == tempoBase ? "" : $" ({player.FormatTime(tempoBase)})")}\n" +
                 $"{L.Label_Produzione()}: [icon:oro]{(Strutture.Edifici.MinieraOro.Produzione + player.Ricerca_Produzione * Ricerca.Tipi.Incremento.Oro * (1 + player.Bonus_Produzione_Risorse)).ToString("0.00")} s\n" +
-                $"{L.Label_Limite_Magazzino()}: [icon:oro][ferroScuro]{Strutture.Edifici.MinieraOro.Limite.ToString()}\n");
+                $"{L.Label_Limite_Magazzino()}: [icon:oro][ferroScuro]{Strutture.Edifici.MinieraOro.Limite.ToString()}");
 
             tempoCalcolato = Strutture.Edifici.Case.TempoCostruzione - player.Ricerca_Costruzione - (Strutture.Edifici.Case.TempoCostruzione * player.Bonus_Costruzione);
             tempoBase = Strutture.Edifici.Case.TempoCostruzione;
@@ -116,7 +116,7 @@ namespace Server_Strategico.ServerData.Moduli
                 $"{L.Label_Limite()} {L.Label_Spade()} [icon:spade][ferroScuro]{Strutture.Edifici.ProduzioneSpade.Limite.ToString()}[black]\n" +
                 $"{L.Label_Mantenimento_Legno()}: [icon:legno][rosso]-{Strutture.Edifici.ProduzioneSpade.Consumo_Legno}[black] s\n" +
                 $"{L.Label_Mantenimento_Ferro()}: [icon:ferro][rosso]-{Strutture.Edifici.ProduzioneSpade.Consumo_Ferro}[black] s\n" +
-                $"{L.Label_Mantenimento_Oro()}: [icon:oro][rosso]-{Strutture.Edifici.ProduzioneSpade.Consumo_Oro}[black] s\n");
+                $"{L.Label_Mantenimento_Oro()}: [icon:oro][rosso]-{Strutture.Edifici.ProduzioneSpade.Consumo_Oro}[black] s");
 
             tempoCalcolato = Strutture.Edifici.ProduzioneLance.TempoCostruzione - player.Ricerca_Costruzione - (Strutture.Edifici.ProduzioneLance.TempoCostruzione * player.Bonus_Costruzione);
             tempoBase = Strutture.Edifici.ProduzioneLance.TempoCostruzione;
@@ -134,7 +134,7 @@ namespace Server_Strategico.ServerData.Moduli
                 $"{L.Label_Limite()} {L.Label_Lancie()} [icon:lance][ferroScuro]{Strutture.Edifici.ProduzioneLance.Limite.ToString()}[black]\n" +
                 $"{L.Label_Mantenimento_Legno()}: [icon:legno][rosso]-{Strutture.Edifici.ProduzioneLance.Consumo_Legno}[black] s\n" +
                 $"{L.Label_Mantenimento_Ferro()}: [icon:ferro][rosso]-{Strutture.Edifici.ProduzioneLance.Consumo_Ferro}[black] s\n" +
-                $"{L.Label_Mantenimento_Oro()}: [icon:oro][rosso]-{Strutture.Edifici.ProduzioneLance.Consumo_Oro}[black] s\n");
+                $"{L.Label_Mantenimento_Oro()}: [icon:oro][rosso]-{Strutture.Edifici.ProduzioneLance.Consumo_Oro}[black] s");
 
             tempoCalcolato = Strutture.Edifici.ProduzioneArchi.TempoCostruzione - player.Ricerca_Costruzione - (Strutture.Edifici.ProduzioneArchi.TempoCostruzione * player.Bonus_Costruzione);
             tempoBase = Strutture.Edifici.ProduzioneArchi.TempoCostruzione;
@@ -151,7 +151,7 @@ namespace Server_Strategico.ServerData.Moduli
                 $"{L.Label_Produzione()}: [icon:archi]{(Strutture.Edifici.ProduzioneArchi.Produzione + player.Ricerca_Produzione * Ricerca.Tipi.Incremento.Archi).ToString("0.00")} s\n" +
                 $"{L.Label_Limite()} {L.Label_Archi()} [icon:archi][ferroScuro]{Strutture.Edifici.ProduzioneArchi.Limite.ToString()}[black]\n" +
                 $"{L.Label_Mantenimento_Legno()}: [icon:legno][rosso]-{Strutture.Edifici.ProduzioneArchi.Consumo_Legno}[black] s\n" +
-                $"{L.Label_Mantenimento_Oro()}: [icon:oro][rosso]-{Strutture.Edifici.ProduzioneArchi.Consumo_Oro}[black] s\n");
+                $"{L.Label_Mantenimento_Oro()}: [icon:oro][rosso]-{Strutture.Edifici.ProduzioneArchi.Consumo_Oro}[black] s");
 
             tempoCalcolato = Strutture.Edifici.ProduzioneScudi.TempoCostruzione - player.Ricerca_Costruzione - (Strutture.Edifici.ProduzioneScudi.TempoCostruzione * player.Bonus_Costruzione);
             tempoBase = Strutture.Edifici.ProduzioneScudi.TempoCostruzione;
@@ -169,7 +169,7 @@ namespace Server_Strategico.ServerData.Moduli
                 $"{L.Label_Limite()} {L.Label_Scudi()} [icon:scudi][ferroScuro]{Strutture.Edifici.ProduzioneScudi.Limite.ToString()}[black]\n" +
                 $"{L.Label_Mantenimento_Legno()}: [icon:legno][rosso]-{Strutture.Edifici.ProduzioneScudi.Consumo_Legno}[black] s\n" +
                 $"{L.Label_Mantenimento_Ferro()}: [icon:ferro][rosso]-{Strutture.Edifici.ProduzioneScudi.Consumo_Ferro}[black] s\n" +
-                $"{L.Label_Mantenimento_Oro()}: [icon:oro][rosso]-{Strutture.Edifici.ProduzioneScudi.Consumo_Oro}[black] s\n");
+                $"{L.Label_Mantenimento_Oro()}: [icon:oro][rosso]-{Strutture.Edifici.ProduzioneScudi.Consumo_Oro}[black] s");
 
             tempoCalcolato = Strutture.Edifici.ProduzioneArmature.TempoCostruzione - player.Ricerca_Costruzione - (Strutture.Edifici.ProduzioneArmature.TempoCostruzione * player.Bonus_Costruzione);
             tempoBase = Strutture.Edifici.ProduzioneArmature.TempoCostruzione;
@@ -205,7 +205,7 @@ namespace Server_Strategico.ServerData.Moduli
                 $"{L.Label_Mantenimento_Legno()}: [icon:legno][rosso]-{Strutture.Edifici.ProduzioneFrecce.Consumo_Legno.ToString()}[black] s\n" +
                 $"{L.Label_Mantenimento_Pietra()}: [icon:pietra][rosso]-{Strutture.Edifici.ProduzioneFrecce.Consumo_Pietra.ToString()}[black] s\n" +
                 $"{L.Label_Mantenimento_Ferro()}: [icon:ferro][rosso]-{Strutture.Edifici.ProduzioneFrecce.Consumo_Ferro.ToString()}[black] s\n" +
-                $"{L.Label_Mantenimento_Oro()}: [icon:oro][rosso]-{Strutture.Edifici.ProduzioneFrecce.Consumo_Ferro.ToString()}[black] s\n");
+                $"{L.Label_Mantenimento_Oro()}: [icon:oro][rosso]-{Strutture.Edifici.ProduzioneFrecce.Consumo_Ferro.ToString()}[black] s");
 
             //Caserme
             tempoCalcolato = Strutture.Edifici.CasermaGuerrieri.TempoCostruzione - player.Ricerca_Costruzione - (Strutture.Edifici.CasermaGuerrieri.TempoCostruzione * player.Bonus_Costruzione);
@@ -222,7 +222,7 @@ namespace Server_Strategico.ServerData.Moduli
                  $"{L.Label_Costruzione()}: [icon:tempo]{player.FormatTime(tempoCalcolato)}{(tempoCalcolato == tempoBase ? "" : $" ({player.FormatTime(tempoBase)})")}\n" +
                  $"{L.Label_Limite()} {L.Label_Guerrieri()}: [icon:guerrieri]{Strutture.Edifici.CasermaGuerrieri.Limite.ToString("#,0")}\n" +
                  $"{L.Label_Mantenimento_Cibo()} [icon:cibo][rosso]-{Strutture.Edifici.CasermaGuerrieri.Consumo_Cibo}[black] s\n" +
-                 $"{L.Label_Mantenimento_Oro()}: [icon:oro][rosso]-{Strutture.Edifici.CasermaGuerrieri.Consumo_Oro}[black] s\n\n");
+                 $"{L.Label_Mantenimento_Oro()}: [icon:oro][rosso]-{Strutture.Edifici.CasermaGuerrieri.Consumo_Oro}[black] s\n");
 
             tempoCalcolato = Strutture.Edifici.CasermaLanceri.TempoCostruzione - player.Ricerca_Costruzione - (Strutture.Edifici.CasermaLanceri.TempoCostruzione * player.Bonus_Costruzione);
             tempoBase = Strutture.Edifici.CasermaLanceri.TempoCostruzione;
@@ -238,7 +238,7 @@ namespace Server_Strategico.ServerData.Moduli
                  $"{L.Label_Costruzione()}: [icon:tempo]{player.FormatTime(tempoCalcolato)}{(tempoCalcolato == tempoBase ? "" : $" ({player.FormatTime(tempoBase)})")}\n" +
                  $"{L.Label_Limite()} {L.Label_Lancieri()}: [icon:lanceri]{Strutture.Edifici.CasermaLanceri.Limite.ToString("#,0")}\n" +
                  $"{L.Label_Mantenimento_Cibo()} [icon:cibo][rosso]-{Strutture.Edifici.CasermaLanceri.Consumo_Cibo}[black] s\n" +
-                 $"{L.Label_Mantenimento_Oro()}: [icon:oro][rosso]-{Strutture.Edifici.CasermaLanceri.Consumo_Oro}[black] s\n\n");
+                 $"{L.Label_Mantenimento_Oro()}: [icon:oro][rosso]-{Strutture.Edifici.CasermaLanceri.Consumo_Oro}[black] s\n");
 
             tempoCalcolato = Strutture.Edifici.CasermaArceri.TempoCostruzione - player.Ricerca_Costruzione - (Strutture.Edifici.CasermaArceri.TempoCostruzione * player.Bonus_Costruzione);
             tempoBase = Strutture.Edifici.CasermaArceri.TempoCostruzione;
@@ -270,7 +270,7 @@ namespace Server_Strategico.ServerData.Moduli
                  $"{L.Label_Costruzione()}: [icon:tempo]{player.FormatTime(tempoCalcolato)}{(tempoCalcolato == tempoBase ? "" : $" ({player.FormatTime(tempoBase)})")}\n" +
                  $"{L.Label_Limite()} {L.Label_Catapulte()}: [icon:catapulte]{Strutture.Edifici.CasermaCatapulte.Limite.ToString("#,0")}\n" +
                  $"{L.Label_Mantenimento_Cibo()} [icon:cibo][rosso]-{Strutture.Edifici.CasermaCatapulte.Consumo_Cibo}[black] s\n" +
-                 $"{L.Label_Mantenimento_Oro()}: [icon:oro][rosso]-{Strutture.Edifici.CasermaCatapulte.Consumo_Oro}[black] s\n\n");
+                 $"{L.Label_Mantenimento_Oro()}: [icon:oro][rosso]-{Strutture.Edifici.CasermaCatapulte.Consumo_Oro}[black] s\n");
 
             //Esercito
             tempoCalcolato = Esercito.CostoReclutamento.Guerriero_1.TempoReclutamento - player.Ricerca_Addestramento * Ricerca.Guerrieri_Riduzione * (player.Bonus_Addestramento + 1);
@@ -416,7 +416,7 @@ namespace Server_Strategico.ServerData.Moduli
                 $"{L.Label_Livello()}: [arancione]{player.Lancere_Livello.ToString("#,0")}[black]\n" +
                 $"{L.Label_Salute()}: [verde]{Esercito.Unità.Lancere_1.Salute.ToString("#,0")}[black]{(player.Lancere_Salute == 0 ? "" : $" [black]+ [verde]{player.Lancere_Salute}[black]")}\n" +
                 $"{L.Label_Difesa()}: [bluGotico]{Esercito.Unità.Lancere_1.Difesa.ToString("#,0")}[black]{(player.Lancere_Difesa == 0 ? "" : $" [black]+ [bluGotico]{player.Lancere_Difesa}[black]")}\n" +
-                $"{L.Label_Attacco()}: [rosso]{Esercito.Unità.Lancere_1.Attacco.ToString("#,0")}[black]{(player.Lancere_Attacco == 0 ? "" : $" [black]+ [rosso]{player.Lancere_Attacco}[black]")}");
+                $"{L.Label_Attacco()}: [rosso]{Esercito.Unità.Lancere_1.Attacco.ToString("#,0")}[black]{(player.Lancere_Attacco == 0 ? "" : $" [black]+ [rosso]{player.Lancere_Attacco}[black]")}\n");
 
             tempoCalcolato = Esercito.CostoReclutamento.Lancere_2.TempoReclutamento - player.Ricerca_Addestramento * Ricerca.Lanceri_Riduzione * (player.Bonus_Addestramento + 1);
             tempoBase = Esercito.CostoReclutamento.Lancere_2.TempoReclutamento;
@@ -441,7 +441,7 @@ namespace Server_Strategico.ServerData.Moduli
                 $"{L.Label_Livello()}: [arancione]{player.Lancere_Livello.ToString("#,0")}[black]\n" +
                 $"{L.Label_Salute()}: [verde]{Esercito.Unità.Lancere_2.Salute.ToString("#,0")}[black]{(player.Lancere_Salute == 0 ? "" : $" [black]+ [verde]{player.Lancere_Salute}[black]")}\n" +
                 $"{L.Label_Difesa()}: [bluGotico]{Esercito.Unità.Lancere_2.Difesa.ToString("#,0")}[black]{(player.Lancere_Difesa == 0 ? "" : $" [black]+ [bluGotico]{player.Lancere_Difesa}[black]")}\n" +
-                $"{L.Label_Attacco()}: [rosso]{Esercito.Unità.Lancere_2.Attacco.ToString("#,0")}[black]{(player.Lancere_Attacco == 0 ? "" : $" [black]+ [rosso]{player.Lancere_Attacco}[black]")}");
+                $"{L.Label_Attacco()}: [rosso]{Esercito.Unità.Lancere_2.Attacco.ToString("#,0")}[black]{(player.Lancere_Attacco == 0 ? "" : $" [black]+ [rosso]{player.Lancere_Attacco}[black]")}\n");
 
             tempoCalcolato = Esercito.CostoReclutamento.Lancere_3.TempoReclutamento - player.Ricerca_Addestramento * Ricerca.Lanceri_Riduzione * (player.Bonus_Addestramento + 1);
             tempoBase = Esercito.CostoReclutamento.Lancere_3.TempoReclutamento;
@@ -466,7 +466,7 @@ namespace Server_Strategico.ServerData.Moduli
                 $"{L.Label_Livello()}: [arancione]{player.Lancere_Livello.ToString("#,0")}[black]\n" +
                 $"{L.Label_Salute()}: [verde]{Esercito.Unità.Lancere_3.Salute.ToString("#,0")}[black]{(player.Lancere_Salute == 0 ? "" : $" [black]+ [verde]{player.Lancere_Salute}[black]")}\n" +
                 $"{L.Label_Difesa()}: [bluGotico]{Esercito.Unità.Lancere_3.Difesa.ToString("#,0")}[black]{(player.Lancere_Difesa == 0 ? "" : $" [black]+ [bluGotico]{player.Lancere_Difesa}[black]")}\n" +
-                $"{L.Label_Attacco()}: [rosso]{Esercito.Unità.Lancere_3.Attacco.ToString("#,0")}[black]{(player.Lancere_Attacco == 0 ? "" : $" [black]+ [rosso]{player.Lancere_Attacco}[black]")}");
+                $"{L.Label_Attacco()}: [rosso]{Esercito.Unità.Lancere_3.Attacco.ToString("#,0")}[black]{(player.Lancere_Attacco == 0 ? "" : $" [black]+ [rosso]{player.Lancere_Attacco}[black]")}\n");
 
             tempoCalcolato = Esercito.CostoReclutamento.Lancere_4.TempoReclutamento - player.Ricerca_Addestramento * Ricerca.Lanceri_Riduzione * (player.Bonus_Addestramento + 1);
             tempoBase = Esercito.CostoReclutamento.Lancere_4.TempoReclutamento;
@@ -491,7 +491,7 @@ namespace Server_Strategico.ServerData.Moduli
                 $"{L.Label_Livello()}: [arancione]{player.Lancere_Livello.ToString("#,0")}[black]\n" +
                 $"{L.Label_Salute()}: [verde]{Esercito.Unità.Lancere_4.Salute.ToString("#,0")}[black]{(player.Lancere_Salute == 0 ? "" : $" [black]+ [verde]{player.Lancere_Salute}[black]")}\n" +
                 $"{L.Label_Difesa()}: [bluGotico]{Esercito.Unità.Lancere_4.Difesa.ToString("#,0")}[black]{(player.Lancere_Difesa == 0 ? "" : $" [black]+ [bluGotico]{player.Lancere_Difesa}[black]")}\n" +
-                $"{L.Label_Attacco()}: [rosso]{Esercito.Unità.Lancere_4.Attacco.ToString("#,0")}[black]{(player.Lancere_Attacco == 0 ? "" : $" [black]+ [rosso]{player.Lancere_Attacco}[black]")}");
+                $"{L.Label_Attacco()}: [rosso]{Esercito.Unità.Lancere_4.Attacco.ToString("#,0")}[black]{(player.Lancere_Attacco == 0 ? "" : $" [black]+ [rosso]{player.Lancere_Attacco}[black]")}\n");
 
             tempoCalcolato = Esercito.CostoReclutamento.Lancere_5.TempoReclutamento - player.Ricerca_Addestramento * Ricerca.Lanceri_Riduzione * (player.Bonus_Addestramento + 1);
             tempoBase = Esercito.CostoReclutamento.Lancere_5.TempoReclutamento;
@@ -516,7 +516,7 @@ namespace Server_Strategico.ServerData.Moduli
                 $"{L.Label_Livello()}: [arancione]{player.Lancere_Livello.ToString("#,0")}[black]\n" +
                 $"{L.Label_Salute()}: [verde]{Esercito.Unità.Lancere_5.Salute.ToString("#,0")}[black]{(player.Lancere_Salute == 0 ? "" : $" [black]+ [verde]{player.Lancere_Salute}[black]")}\n" +
                 $"{L.Label_Difesa()}: [bluGotico]{Esercito.Unità.Lancere_5.Difesa.ToString("#,0")}[black]{(player.Lancere_Difesa == 0 ? "" : $" [black]+ [bluGotico]{player.Lancere_Difesa}[black]")}\n" +
-                $"{L.Label_Attacco()}: [rosso]{Esercito.Unità.Lancere_5.Attacco.ToString("#,0")}[black]{(player.Lancere_Attacco == 0 ? "" : $" [black]+ [rosso]{player.Lancere_Attacco}[black]")}");
+                $"{L.Label_Attacco()}: [rosso]{Esercito.Unità.Lancere_5.Attacco.ToString("#,0")}[black]{(player.Lancere_Attacco == 0 ? "" : $" [black]+ [rosso]{player.Lancere_Attacco}[black]")}\n");
 
             tempoCalcolato = Esercito.CostoReclutamento.Arcere_1.TempoReclutamento - player.Ricerca_Addestramento * Ricerca.Arceri_Riduzione * (player.Bonus_Addestramento + 1);
             tempoBase = Esercito.CostoReclutamento.Arcere_1.TempoReclutamento;
@@ -1010,7 +1010,7 @@ namespace Server_Strategico.ServerData.Moduli
                 $"{L.Label_Ferro()}: [icon:ferro]{Ricerca.Citta.Ingresso.Ferro * (player.Ricerca_Ingresso_Guarnigione + 1):#,0}\n" +
                 $"{L.Label_Oro()}: [icon:oro]{Ricerca.Citta.Ingresso.Oro * (player.Ricerca_Ingresso_Guarnigione + 1):#,0}\n" +
                 $"{L.Label_Popolazione()}: [icon:popolazione]{Ricerca.Citta.Ingresso.Popolazione * (player.Ricerca_Ingresso_Guarnigione + 1):#,0}\n" +
-                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Ingresso.TempoRicerca * (player.Ricerca_Ingresso_Guarnigione + 1))}" +
+                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Ingresso.TempoRicerca * (player.Ricerca_Ingresso_Guarnigione + 1))}\n" +
                 $"{L.Label_Guarnigione()}: +{Strutture.Edifici.Ingresso.Guarnigione}");
             Send(player.guid_Player, $"Descrizione|Ricerca Citta Guarnigione|{L.Desc_RicercaCittaGuarnigione(player.Ricerca_Citta_Guarnigione + 1)}" +
                 $"{L.Label_Cibo()} [icon:cibo]{Ricerca.Citta.Città.Cibo * (player.Ricerca_Citta_Guarnigione + 1):#,0}\n" +
@@ -1019,7 +1019,7 @@ namespace Server_Strategico.ServerData.Moduli
                 $"{L.Label_Ferro()}: [icon:ferro]{Ricerca.Citta.Città.Ferro * (player.Ricerca_Citta_Guarnigione + 1):#,0}\n" +
                 $"{L.Label_Oro()}: [icon:oro]{Ricerca.Citta.Città.Oro * (player.Ricerca_Citta_Guarnigione + 1):#,0}\n" +
                 $"{L.Label_Popolazione()}: [icon:popolazione]{Ricerca.Citta.Città.Popolazione * (player.Ricerca_Citta_Guarnigione + 1):#,0}\n" +
-                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Città.TempoRicerca * (player.Ricerca_Citta_Guarnigione + 1))}" +
+                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Città.TempoRicerca * (player.Ricerca_Citta_Guarnigione + 1))}\n" +
                 $"{L.Label_Guarnigione()}: +{Strutture.Edifici.Citta.Guarnigione}");
 
             Send(player.guid_Player, $"Descrizione|Ricerca Mura Livello|{L.Desc_RicercaMuraLivello(player.Ricerca_Mura_Livello + 1)}" +
@@ -1037,7 +1037,7 @@ namespace Server_Strategico.ServerData.Moduli
                 $"{L.Label_Ferro()}: [icon:ferro]{Ricerca.Citta.Mura_Guarnigione.Ferro * (player.Ricerca_Mura_Guarnigione + 1):#,0}\n" +
                 $"{L.Label_Oro()}: [icon:oro]{Ricerca.Citta.Mura_Guarnigione.Oro * (player.Ricerca_Mura_Guarnigione + 1):#,0}\n" +
                 $"{L.Label_Popolazione()}: [icon:popolazione]{Ricerca.Citta.Mura_Guarnigione.Popolazione * (player.Ricerca_Mura_Difesa + 1):#,0}\n" +
-                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Mura_Guarnigione.TempoRicerca * (player.Ricerca_Mura_Guarnigione + 1))}" +
+                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Mura_Guarnigione.TempoRicerca * (player.Ricerca_Mura_Guarnigione + 1))}\n" +
                 $"{L.Label_Guarnigione()}: +{Strutture.Edifici.Mura.Guarnigione}");
             Send(player.guid_Player, $"Descrizione|Ricerca Mura Salute|{L.Desc_RicercaMuraSalute(player.Ricerca_Mura_Salute + 1)}" +
                 $"{L.Label_Cibo()} [icon:cibo]{Ricerca.Citta.Mura_Salute.Cibo * (player.Ricerca_Mura_Salute + 1):#,0}\n" +
@@ -1046,7 +1046,7 @@ namespace Server_Strategico.ServerData.Moduli
                 $"{L.Label_Ferro()}: [icon:ferro]{Ricerca.Citta.Mura_Salute.Ferro * (player.Ricerca_Mura_Salute + 1):#,0}\n" +
                 $"{L.Label_Oro()}: [icon:oro]{Ricerca.Citta.Mura_Salute.Oro * (player.Ricerca_Mura_Salute + 1):#,0}\n" +
                 $"{L.Label_Popolazione()}: [icon:popolazione]{Ricerca.Citta.Mura_Salute.Popolazione * (player.Ricerca_Mura_Difesa + 1):#,0}\n" +
-                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Mura_Salute.TempoRicerca * (player.Ricerca_Mura_Salute + 1))}" +
+                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Mura_Salute.TempoRicerca * (player.Ricerca_Mura_Salute + 1))}\n" +
                 $"{L.Label_Salute()}: +{Strutture.Edifici.Mura.Salute}");
             Send(player.guid_Player, $"Descrizione|Ricerca Mura Difesa|{L.Desc_RicercaMuraDifesa(player.Ricerca_Mura_Difesa + 1)}" +
                 $"{L.Label_Cibo()} [icon:cibo]{Ricerca.Citta.Mura_Difesa.Cibo * (player.Ricerca_Mura_Difesa + 1):#,0}\n" +
@@ -1055,7 +1055,7 @@ namespace Server_Strategico.ServerData.Moduli
                 $"{L.Label_Ferro()}: [icon:ferro]{Ricerca.Citta.Mura_Difesa.Ferro * (player.Ricerca_Mura_Difesa + 1):#,0}\n" +
                 $"{L.Label_Oro()}: [icon:oro]{Ricerca.Citta.Mura_Difesa.Oro * (player.Ricerca_Mura_Difesa + 1):#,0}\n" +
                 $"{L.Label_Popolazione()}: [icon:popolazione]{Ricerca.Citta.Mura_Difesa.Popolazione * (player.Ricerca_Mura_Difesa + 1):#,0}\n" +
-                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Mura_Difesa.TempoRicerca * (player.Ricerca_Mura_Difesa + 1))}" +
+                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Mura_Difesa.TempoRicerca * (player.Ricerca_Mura_Difesa + 1))}\n" +
                 $"{L.Label_Salute()}: +{Strutture.Edifici.Mura.Salute}");
 
             Send(player.guid_Player, $"Descrizione|Ricerca Cancello Livello|{L.Desc_RicercaCancelloLivello(player.Ricerca_Cancello_Guarnigione + 1)}" +
@@ -1073,7 +1073,7 @@ namespace Server_Strategico.ServerData.Moduli
                 $"{L.Label_Ferro()}: [icon:ferro]{Ricerca.Citta.Cancello_Guarnigione.Ferro * (player.Ricerca_Cancello_Guarnigione + 1):#,0}\n" +
                 $"{L.Label_Oro()}: [icon:oro]{Ricerca.Citta.Cancello_Guarnigione.Oro * (player.Ricerca_Cancello_Guarnigione + 1):#,0}\n" +
                 $"{L.Label_Popolazione()}: [icon:popolazione]{Ricerca.Citta.Cancello_Guarnigione.Popolazione * (player.Ricerca_Mura_Difesa + 1):#,0}\n" +
-                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Cancello_Guarnigione.TempoRicerca * (player.Ricerca_Cancello_Guarnigione + 1))}" +
+                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Cancello_Guarnigione.TempoRicerca * (player.Ricerca_Cancello_Guarnigione + 1))}\n" +
                 $"{L.Label_Guarnigione()}: +{Strutture.Edifici.Cancello.Guarnigione}");
             Send(player.guid_Player, $"Descrizione|Ricerca Cancello Salute|{L.Desc_RicercaCancelloSalute(player.Ricerca_Cancello_Salute + 1)}" +
                 $"{L.Label_Cibo()} [icon:cibo]{Ricerca.Citta.Cancello_Salute.Cibo * (player.Ricerca_Cancello_Salute + 1):#,0}\n" +
@@ -1082,7 +1082,7 @@ namespace Server_Strategico.ServerData.Moduli
                 $"{L.Label_Ferro()}: [icon:ferro]{Ricerca.Citta.Cancello_Salute.Ferro * (player.Ricerca_Cancello_Salute + 1):#,0}\n" +
                 $"{L.Label_Oro()}: [icon:oro]{Ricerca.Citta.Cancello_Salute.Oro * (player.Ricerca_Cancello_Salute + 1):#,0}\n" +
                 $"{L.Label_Popolazione()}: [icon:popolazione]{Ricerca.Citta.Cancello_Salute.Popolazione * (player.Ricerca_Mura_Difesa + 1):#,0}\n" +
-                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Cancello_Salute.TempoRicerca * (player.Ricerca_Cancello_Salute + 1))}" +
+                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Cancello_Salute.TempoRicerca * (player.Ricerca_Cancello_Salute + 1))}\n" +
                 $"{L.Label_Salute()}: +{Strutture.Edifici.Cancello.Salute}");
             Send(player.guid_Player, $"Descrizione|Ricerca Cancello Difesa|{L.Desc_RicercaCancelloDifesa(player.Ricerca_Cancello_Difesa + 1)}" +
                 $"{L.Label_Cibo()} [icon:cibo]{Ricerca.Citta.Cancello_Difesa.Cibo * (player.Ricerca_Cancello_Difesa + 1):#,0}\n" +
@@ -1091,7 +1091,7 @@ namespace Server_Strategico.ServerData.Moduli
                 $"{L.Label_Ferro()}: [icon:ferro]{Ricerca.Citta.Cancello_Difesa.Ferro * (player.Ricerca_Cancello_Difesa + 1):#,0}\n" +
                 $"{L.Label_Oro()}: [icon:oro]{Ricerca.Citta.Cancello_Difesa.Oro * (player.Ricerca_Cancello_Difesa + 1):#,0}\n" +
                 $"{L.Label_Popolazione()}: [icon:popolazione]{Ricerca.Citta.Cancello_Difesa.Popolazione * (player.Ricerca_Mura_Difesa + 1):#,0}\n" +
-                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Cancello_Difesa.TempoRicerca * (player.Ricerca_Cancello_Difesa + 1))}" +
+                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Cancello_Difesa.TempoRicerca * (player.Ricerca_Cancello_Difesa + 1))}\n" +
                 $"{L.Label_Salute()}: +{Strutture.Edifici.Cancello.Salute}");
 
             Send(player.guid_Player, $"Descrizione|Ricerca Torri Livello|{L.Desc_RicercaTorriLivello(player.Ricerca_Torri_Guarnigione + 1)}" +
@@ -1107,7 +1107,7 @@ namespace Server_Strategico.ServerData.Moduli
                 $"{L.Label_Pietra()}: [icon:pietra]{Ricerca.Citta.Torri_Guarnigione.Pietra * (player.Ricerca_Torri_Guarnigione + 1):#,0}\n" +
                 $"{L.Label_Ferro()}: [icon:ferro]{Ricerca.Citta.Torri_Guarnigione.Ferro * (player.Ricerca_Torri_Guarnigione + 1):#,0}\n" +
                 $"{L.Label_Oro()}: [icon:oro]{Ricerca.Citta.Torri_Guarnigione.Oro * (player.Ricerca_Torri_Guarnigione + 1):#,0}\n" +
-                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Torri_Guarnigione.TempoRicerca * (player.Ricerca_Torri_Guarnigione + 1))}" +
+                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Torri_Guarnigione.TempoRicerca * (player.Ricerca_Torri_Guarnigione + 1))}\n" +
                 $"{L.Label_Guarnigione()}: +{Strutture.Edifici.Torri.Guarnigione}");
             Send(player.guid_Player, $"Descrizione|Ricerca Torri Salute|{L.Desc_RicercaTorriSalute(player.Ricerca_Torri_Salute + 1)}" +
                 $"{L.Label_Cibo()} [icon:cibo]{Ricerca.Citta.Torri_Salute.Cibo * (player.Ricerca_Torri_Salute + 1):#,0}\n" +
@@ -1115,7 +1115,7 @@ namespace Server_Strategico.ServerData.Moduli
                 $"{L.Label_Pietra()}: [icon:pietra]{Ricerca.Citta.Torri_Salute.Pietra * (player.Ricerca_Torri_Salute + 1):#,0}\n" +
                 $"{L.Label_Ferro()}: [icon:ferro]{Ricerca.Citta.Torri_Salute.Ferro * (player.Ricerca_Torri_Salute + 1):#,0}\n" +
                 $"{L.Label_Oro()}: [icon:oro]{Ricerca.Citta.Torri_Salute.Oro * (player.Ricerca_Torri_Salute + 1):#,0}\n" +
-                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Torri_Salute.TempoRicerca * (player.Ricerca_Torri_Salute + 1))}" +
+                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Torri_Salute.TempoRicerca * (player.Ricerca_Torri_Salute + 1))}\n" +
                 $"{L.Label_Salute()}: +{Strutture.Edifici.Torri.Salute}");
             Send(player.guid_Player, $"Descrizione|Ricerca Torri Difesa|{L.Desc_RicercaTorriDifesa(player.Ricerca_Torri_Difesa + 1)}" +
                 $"{L.Label_Cibo()} [icon:cibo]{Ricerca.Citta.Torri_Difesa.Cibo * (player.Ricerca_Torri_Difesa + 1):#,0}\n" +
@@ -1123,7 +1123,7 @@ namespace Server_Strategico.ServerData.Moduli
                 $"{L.Label_Pietra()}: [icon:pietra]{Ricerca.Citta.Torri_Difesa.Pietra * (player.Ricerca_Torri_Difesa + 1):#,0}\n" +
                 $"{L.Label_Ferro()}: [icon:ferro]{Ricerca.Citta.Torri_Difesa.Ferro * (player.Ricerca_Torri_Difesa + 1):#,0}\n" +
                 $"{L.Label_Oro()}: [icon:oro]{Ricerca.Citta.Torri_Difesa.Oro * (player.Ricerca_Torri_Difesa + 1):#,0}\n" +
-                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Torri_Difesa.TempoRicerca * (player.Ricerca_Torri_Difesa + 1))}" +
+                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Torri_Difesa.TempoRicerca * (player.Ricerca_Torri_Difesa + 1))}\n" +
                 $"{L.Label_Salute()}: +{Strutture.Edifici.Torri.Salute}");
 
             Send(player.guid_Player, $"Descrizione|Ricerca Castello Livello|{L.Desc_RicercaCastelloLivello(player.Ricerca_Castello_Guarnigione + 1)}" +
@@ -1139,7 +1139,7 @@ namespace Server_Strategico.ServerData.Moduli
                 $"{L.Label_Pietra()}: [icon:pietra]{Ricerca.Citta.Castello_Guarnigione.Pietra * (player.Ricerca_Castello_Guarnigione + 1):#,0}\n" +
                 $"{L.Label_Ferro()}: [icon:ferro]{Ricerca.Citta.Castello_Guarnigione.Ferro * (player.Ricerca_Castello_Guarnigione + 1):#,0}\n" +
                 $"{L.Label_Oro()}: [icon:oro]{Ricerca.Citta.Castello_Guarnigione.Oro * (player.Ricerca_Castello_Guarnigione + 1):#,0}\n" +
-                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Castello_Guarnigione.TempoRicerca * (player.Ricerca_Castello_Guarnigione + 1))}" +
+                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Castello_Guarnigione.TempoRicerca * (player.Ricerca_Castello_Guarnigione + 1))}\n" +
                 $"{L.Label_Guarnigione()}: +{Strutture.Edifici.Castello.Guarnigione}");
             Send(player.guid_Player, $"Descrizione|Ricerca Castello Salute|{L.Desc_RicercaCastelloSalute(player.Ricerca_Castello_Salute + 1)}" +
                 $"{L.Label_Cibo()} [icon:cibo]{Ricerca.Citta.Castello_Salute.Cibo * (player.Ricerca_Castello_Salute + 1):#,0}\n" +
@@ -1147,7 +1147,7 @@ namespace Server_Strategico.ServerData.Moduli
                 $"{L.Label_Pietra()}: [icon:pietra]{Ricerca.Citta.Castello_Salute.Pietra * (player.Ricerca_Castello_Salute + 1):#,0}\n" +
                 $"{L.Label_Ferro()}: [icon:ferro]{Ricerca.Citta.Castello_Salute.Ferro * (player.Ricerca_Castello_Salute + 1):#,0}\n" +
                 $"{L.Label_Oro()}: [icon:oro]{Ricerca.Citta.Castello_Salute.Oro * (player.Ricerca_Castello_Salute + 1):#,0}\n" +
-                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Castello_Salute.TempoRicerca * (player.Ricerca_Castello_Salute + 1))}" +
+                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Castello_Salute.TempoRicerca * (player.Ricerca_Castello_Salute + 1))}\n" +
                 $"{L.Label_Salute()}: +{Strutture.Edifici.Castello.Salute}");
             Send(player.guid_Player, $"Descrizione|Ricerca Castello Difesa|{L.Desc_RicercaCastelloDifesa(player.Ricerca_Castello_Difesa + 1)}" +
                 $"{L.Label_Cibo()} [icon:cibo]{Ricerca.Citta.Castello_Difesa.Cibo * (player.Ricerca_Castello_Difesa + 1):#,0}\n" +
@@ -1155,7 +1155,7 @@ namespace Server_Strategico.ServerData.Moduli
                 $"{L.Label_Pietra()}: [icon:pietra]{Ricerca.Citta.Castello_Difesa.Pietra * (player.Ricerca_Castello_Difesa + 1):#,0}\n" +
                 $"{L.Label_Ferro()}: [icon:ferro]{Ricerca.Citta.Castello_Difesa.Ferro * (player.Ricerca_Castello_Difesa + 1):#,0}\n" +
                 $"{L.Label_Oro()}: [icon:oro]{Ricerca.Citta.Castello_Difesa.Oro * (player.Ricerca_Castello_Difesa + 1):#,0}\n" +
-                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Castello_Difesa.TempoRicerca * (player.Ricerca_Castello_Difesa + 1))}" +
+                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Castello_Difesa.TempoRicerca * (player.Ricerca_Castello_Difesa + 1))}\n" +
                 $"{L.Label_Difesa()}: +{Strutture.Edifici.Castello.Difesa}");
 
             //Shop Descrizioni
@@ -1163,7 +1163,7 @@ namespace Server_Strategico.ServerData.Moduli
             Send(player.guid_Player, $"Descrizione|Shop GamePass Avanzato|{L.Desc_Shop_GamePassAvanzato()}");
             Send(player.guid_Player, $"Descrizione|Shop Vip 1|{L.Desc_Shop_Vip1()}");
             Send(player.guid_Player, $"Descrizione|Shop Vip 2|{L.Desc_Shop_Vip2()}");
-            Send(player.guid_Player, $"Descrizione|Shop Costruttore 24h|{L.Desc_Shop_Costruttore(player.FormatTime(Variabili_Server.Shop.Costruttore_48h.Reward))}");
+            Send(player.guid_Player, $"Descrizione|Shop Costruttore 24h|{L.Desc_Shop_Costruttore(player.FormatTime(Variabili_Server.Shop.Costruttore_24h.Reward))}");
             Send(player.guid_Player, $"Descrizione|Shop Costruttore 48h|{L.Desc_Shop_Costruttore(player.FormatTime(Variabili_Server.Shop.Costruttore_48h.Reward))}");
             Send(player.guid_Player, $"Descrizione|Shop Reclutatore 24h|{L.Desc_Shop_Reclutatore(player.FormatTime(Variabili_Server.Shop.Reclutatore_24h.Reward))}");
             Send(player.guid_Player, $"Descrizione|Shop Reclutatore 48h|{L.Desc_Shop_Reclutatore(player.FormatTime(Variabili_Server.Shop.Reclutatore_48h.Reward))}");

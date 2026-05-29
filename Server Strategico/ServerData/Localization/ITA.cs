@@ -686,16 +686,16 @@ namespace Server_Strategico.ServerData.Localization
             "[black]Tramite l'acquito di questo pacchetto 'Vip 2', il tempo del vip verrà incrementato.\n Un massimo di [ferroScuro]2 [black]giorni può essere accumulato, acquistando più pacchetti";
 
         public string Desc_Shop_Costruttore(string durata) =>
-            $"[black]Tramite l'acquito di questo pacchetto 'Costruttore {durata}' è possibile richiedere un costruttore aggiuntivo.\n" +
+            $"[black]Tramite l'acquito di questo pacchetto 'Costruttore {durata.Replace("0h 0m 0s", "")}' è possibile richiedere un costruttore aggiuntivo.\n" +
             "Il tempo di costruzione verrà incrementato.\n Un massimo di [ferroScuro]3 [black]giorni può essere accumulato, acquistando più pacchetti\n";
 
         public string Desc_Shop_Reclutatore(string durata) =>
-            $"[black]Tramite l'acquito di questo pacchetto 'Reclutatore {durata}' è possibile richiedere un reclutatore aggiuntivo.\n" +
+            $"[black]Tramite l'acquito di questo pacchetto 'Reclutatore {durata.Replace("0h 0m 0s", "")}' è possibile richiedere un reclutatore aggiuntivo.\n" +
             "Il tempo di reclutamento verrà incrementato.\n Un massimo di [ferroScuro]2 [black]giorni può essere accumulato, acquistando più pacchetti\n";
 
         public string Desc_Shop_ScudoPace(string durata) =>
-            $"[black]Tramite l'acquito di questo pacchetto 'scudo della pace {durata}', si otterrà una protezione dagli attacchi degli altri giocatori.\n" +
-            "Il tempo dello scudo verrà incrementato al tempo disponibile dello scudo.\n Un massimo di [ferroScuro]7 [black]giorni può essere accumulato, acquistando più pacchetti\n";
+            $"[black]Tramite l'acquito di questo pacchetto 'scudo della pace {durata.Replace("0h 0m 0s", "")}', si otterrà una protezione dagli attacchi degli altri giocatori.\n" +
+            "Se uno scudo della pace è già attivo, il tempo acquistato verrà aggiunto a quello già disponibile.\n Un massimo di [ferroScuro]7 [black]giorni può essere accumulato acquistando più pacchetti\n";
 
         //Villaggio
         public string Desc_SaluteMura() =>
@@ -811,7 +811,7 @@ namespace Server_Strategico.ServerData.Localization
            $"Vuoi scambiare 1 [icon:dollariVirtuali] per {Variabili_Server.Tributi_To_D_Viola} [icon:diamanteViola]? Inserisci la quantità di tributi che desideri scambiare.";
 
         public string Desc_Feudi_Testo() =>
-            $"Acquista il tuo feudo e diventa signore di queste terre. Ogni dominio raccoglie tributi dai suoi villaggi, versati fedelmente dai contadini giorno dopo giorno. L'abbondanza dei [icon:dollariVirtuali]tributi dipende dalla rarità del feudo.";
+            $"Acquista il tuo feudo e diventa signore di queste terre. Ogni dominio raccoglie tributi dai suoi villaggi, versati fedelmente dai contadini giorno dopo giorno. L'abbondanza dei tributi dipende dalla rarità del feudo.";
         public string Label_Comune() =>
             $"Comune";
         public string Label_NonComune() =>
