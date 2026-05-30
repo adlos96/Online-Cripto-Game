@@ -39,6 +39,7 @@ namespace Warrior_and_Wealth
                 toolTip1.InitialDelay = 150;
                 toolTip1.AutoPopDelay = 15000;
             }
+            
         }
 
         // Salva il messaggio nel buffer (da chiamare sempre, o come fallback)

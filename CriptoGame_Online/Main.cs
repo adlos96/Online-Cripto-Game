@@ -74,25 +74,27 @@ namespace Warrior_and_Wealth
         }
         private void CaricaForm(Form form, object sender, EventArgs e)
         {
+            // Rimuovi e distruggi solo il form precedente, NON TUTTO
             if (_formCorrente != null)
             {
-                _formCorrente.FormClosing += (s, args) => _formCorrente.Dispose();
-                _formCorrente.Close();
+                panel_Gioco.Controls.Remove(_formCorrente);  // 👈 Rimuovi solo quel controllo
                 _formCorrente.Dispose();
             }
 
             form.FormBorderStyle = FormBorderStyle.None;
             form.TopLevel = false;
-            //form.Dock = DockStyle.Fill;
 
-            panel_Gioco.BackColor = Color.Gray;
-            panel_Gioco.Controls.Clear();
-            panel_Gioco.Controls.Add(form);
-
+            panel_Gioco.Controls.Add(form);   // Ora aggiungi il nuovo form
             form.Show();
+
+            // Facoltativo: forzare dimensioni superiori al pannello per test
+            // form.Size = new Size(panel_Gioco.Width + 50, panel_Gioco.Height + 50);
 
             _formCorrente = form;
             Main_Load(sender, e);
+
+            // Forza un ricalcolo del layout (che chiama UpdateScrollAndLayout)
+            panel_Gioco.PerformLayout();
         }
         public Main()
         {

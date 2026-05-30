@@ -90,7 +90,7 @@
             dataGridView1.RowTemplate.Resizable = DataGridViewTriState.False;
             dataGridView1.ScrollBars = ScrollBars.Vertical;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.CellSelect;
-            dataGridView1.Size = new Size(539, 221);
+            dataGridView1.Size = new Size(756, 573);
             dataGridView1.TabIndex = 0;
             dataGridView1.CellClick += dataGridView1_CellClick;
             dataGridView1.CellPainting += dataGridView1_CellPainting;
@@ -141,10 +141,9 @@
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
             AutoScaleMode = AutoScaleMode.Dpi;
-            AutoSize = true;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             BackColor = SystemColors.Control;
-            ClientSize = new Size(539, 221);
+            ClientSize = new Size(756, 573);
             Controls.Add(dataGridView1);
             Margin = new Padding(2, 3, 2, 3);
             Name = "Notifiche";
