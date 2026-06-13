@@ -32,6 +32,13 @@ namespace Warrior_and_Wealth
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Ricerca_1));
             panel_Sfondo = new DoubleBufferedPanel();
+            panel_Guarnigione_Città = new DoubleBufferedPanel();
+            btn_Guarnigione_Centro = new Button();
+            button24 = new Button();
+            button25 = new Button();
+            panel_Livello_Ingresso = new DoubleBufferedPanel();
+            btn_Livello_Ingresso = new Button();
+            button22 = new Button();
             label3 = new Label();
             panel_Livello_Cancello = new DoubleBufferedPanel();
             btn_Livello_Cancello = new Button();
@@ -46,8 +53,9 @@ namespace Warrior_and_Wealth
             btn_Livello_Castello = new Button();
             button18 = new Button();
             panel_Contro_Spionaggio = new DoubleBufferedPanel();
-            button17 = new Button();
+            btn_Contro_Spionaggio = new Button();
             panel_Spionaggio = new DoubleBufferedPanel();
+            btn_Spionaggio = new Button();
             button16 = new Button();
             panel_Riparazione = new DoubleBufferedPanel();
             btn_Riparazione = new Button();
@@ -95,8 +103,8 @@ namespace Warrior_and_Wealth
             panel_Attacco_Lanceri = new DoubleBufferedPanel();
             btn_Attacco_Lanceri = new Button();
             button5 = new Button();
-            panel_Guarnigione_Città = new DoubleBufferedPanel();
-            btn_Guarnigione_Citta = new Button();
+            panel_Livello_Città = new DoubleBufferedPanel();
+            btn_Livello_Centro = new Button();
             button1 = new Button();
             label15 = new Label();
             label14 = new Label();
@@ -158,6 +166,8 @@ namespace Warrior_and_Wealth
             label5 = new Label();
             txt_Testo = new TextBox();
             panel_Sfondo.SuspendLayout();
+            panel_Guarnigione_Città.SuspendLayout();
+            panel_Livello_Ingresso.SuspendLayout();
             panel_Livello_Cancello.SuspendLayout();
             panel_Livello_Mura.SuspendLayout();
             panel_Livello_Torri.SuspendLayout();
@@ -179,7 +189,7 @@ namespace Warrior_and_Wealth
             panel_Livello_Lanceri.SuspendLayout();
             panel_Difesa_Lanceri.SuspendLayout();
             panel_Attacco_Lanceri.SuspendLayout();
-            panel_Guarnigione_Città.SuspendLayout();
+            panel_Livello_Città.SuspendLayout();
             panel_Guarnigione_Ingresso.SuspendLayout();
             panel_Difesa_Cancello.SuspendLayout();
             panel_Guarnigione_Cancello.SuspendLayout();
@@ -209,6 +219,8 @@ namespace Warrior_and_Wealth
             panel_Sfondo.AutoScroll = true;
             panel_Sfondo.BackgroundImage = Properties.Resources._11111111111;
             panel_Sfondo.BackgroundImageLayout = ImageLayout.Stretch;
+            panel_Sfondo.Controls.Add(panel_Guarnigione_Città);
+            panel_Sfondo.Controls.Add(panel_Livello_Ingresso);
             panel_Sfondo.Controls.Add(label3);
             panel_Sfondo.Controls.Add(panel_Livello_Cancello);
             panel_Sfondo.Controls.Add(panel_Livello_Mura);
@@ -234,7 +246,7 @@ namespace Warrior_and_Wealth
             panel_Sfondo.Controls.Add(panel_Livello_Lanceri);
             panel_Sfondo.Controls.Add(panel_Difesa_Lanceri);
             panel_Sfondo.Controls.Add(panel_Attacco_Lanceri);
-            panel_Sfondo.Controls.Add(panel_Guarnigione_Città);
+            panel_Sfondo.Controls.Add(panel_Livello_Città);
             panel_Sfondo.Controls.Add(label15);
             panel_Sfondo.Controls.Add(label14);
             panel_Sfondo.Controls.Add(label13);
@@ -279,6 +291,113 @@ namespace Warrior_and_Wealth
             panel_Sfondo.TabIndex = 0;
             panel_Sfondo.Scroll += panel_Sfondo_Scroll;
             // 
+            // panel_Guarnigione_Città
+            // 
+            panel_Guarnigione_Città.BackColor = Color.Transparent;
+            panel_Guarnigione_Città.BackgroundImage = (Image)resources.GetObject("panel_Guarnigione_Città.BackgroundImage");
+            panel_Guarnigione_Città.BackgroundImageLayout = ImageLayout.Stretch;
+            panel_Guarnigione_Città.Controls.Add(btn_Guarnigione_Centro);
+            panel_Guarnigione_Città.Controls.Add(button24);
+            panel_Guarnigione_Città.Controls.Add(button25);
+            panel_Guarnigione_Città.Location = new Point(705, 789);
+            panel_Guarnigione_Città.Margin = new Padding(2, 3, 2, 3);
+            panel_Guarnigione_Città.Name = "panel_Guarnigione_Città";
+            panel_Guarnigione_Città.Size = new Size(145, 54);
+            panel_Guarnigione_Città.TabIndex = 107;
+            // 
+            // btn_Guarnigione_Centro
+            // 
+            btn_Guarnigione_Centro.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btn_Guarnigione_Centro.BackColor = Color.FromArgb(99, 52, 24);
+            btn_Guarnigione_Centro.FlatAppearance.BorderSize = 0;
+            btn_Guarnigione_Centro.FlatStyle = FlatStyle.Flat;
+            btn_Guarnigione_Centro.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
+            btn_Guarnigione_Centro.ForeColor = Color.Silver;
+            btn_Guarnigione_Centro.Location = new Point(25, 14);
+            btn_Guarnigione_Centro.Margin = new Padding(2, 3, 2, 3);
+            btn_Guarnigione_Centro.Name = "btn_Guarnigione_Centro";
+            btn_Guarnigione_Centro.Size = new Size(96, 25);
+            btn_Guarnigione_Centro.TabIndex = 37;
+            btn_Guarnigione_Centro.Text = "Guarnigione I";
+            btn_Guarnigione_Centro.UseVisualStyleBackColor = false;
+            // 
+            // button24
+            // 
+            button24.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            button24.BackColor = Color.FromArgb(99, 52, 24);
+            button24.FlatAppearance.BorderSize = 0;
+            button24.FlatStyle = FlatStyle.Flat;
+            button24.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
+            button24.ForeColor = Color.Silver;
+            button24.Location = new Point(27, 14);
+            button24.Margin = new Padding(2, 3, 2, 3);
+            button24.Name = "button24";
+            button24.Size = new Size(40, 0);
+            button24.TabIndex = 36;
+            button24.Text = "Guarnigione I";
+            button24.UseVisualStyleBackColor = false;
+            // 
+            // button25
+            // 
+            button25.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            button25.BackColor = Color.FromArgb(99, 52, 24);
+            button25.FlatAppearance.BorderSize = 0;
+            button25.FlatStyle = FlatStyle.Flat;
+            button25.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
+            button25.ForeColor = Color.Silver;
+            button25.Location = new Point(30, 19);
+            button25.Margin = new Padding(2, 3, 2, 3);
+            button25.Name = "button25";
+            button25.Size = new Size(17, 0);
+            button25.TabIndex = 35;
+            button25.Text = "Guarnigione I";
+            button25.UseVisualStyleBackColor = false;
+            // 
+            // panel_Livello_Ingresso
+            // 
+            panel_Livello_Ingresso.BackColor = Color.Transparent;
+            panel_Livello_Ingresso.BackgroundImage = (Image)resources.GetObject("panel_Livello_Ingresso.BackgroundImage");
+            panel_Livello_Ingresso.BackgroundImageLayout = ImageLayout.Stretch;
+            panel_Livello_Ingresso.Controls.Add(btn_Livello_Ingresso);
+            panel_Livello_Ingresso.Controls.Add(button22);
+            panel_Livello_Ingresso.Location = new Point(252, 789);
+            panel_Livello_Ingresso.Margin = new Padding(2, 3, 2, 3);
+            panel_Livello_Ingresso.Name = "panel_Livello_Ingresso";
+            panel_Livello_Ingresso.Size = new Size(145, 54);
+            panel_Livello_Ingresso.TabIndex = 98;
+            // 
+            // btn_Livello_Ingresso
+            // 
+            btn_Livello_Ingresso.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btn_Livello_Ingresso.BackColor = Color.FromArgb(99, 52, 24);
+            btn_Livello_Ingresso.FlatAppearance.BorderSize = 0;
+            btn_Livello_Ingresso.FlatStyle = FlatStyle.Flat;
+            btn_Livello_Ingresso.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
+            btn_Livello_Ingresso.ForeColor = Color.Silver;
+            btn_Livello_Ingresso.Location = new Point(22, 14);
+            btn_Livello_Ingresso.Margin = new Padding(2, 3, 2, 3);
+            btn_Livello_Ingresso.Name = "btn_Livello_Ingresso";
+            btn_Livello_Ingresso.Size = new Size(98, 25);
+            btn_Livello_Ingresso.TabIndex = 36;
+            btn_Livello_Ingresso.Text = "Livello I";
+            btn_Livello_Ingresso.UseVisualStyleBackColor = false;
+            // 
+            // button22
+            // 
+            button22.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            button22.BackColor = Color.FromArgb(99, 52, 24);
+            button22.FlatAppearance.BorderSize = 0;
+            button22.FlatStyle = FlatStyle.Flat;
+            button22.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
+            button22.ForeColor = Color.Silver;
+            button22.Location = new Point(22, 14);
+            button22.Margin = new Padding(2, 3, 2, 3);
+            button22.Name = "button22";
+            button22.Size = new Size(43, 0);
+            button22.TabIndex = 35;
+            button22.Text = "Guarnigione I";
+            button22.UseVisualStyleBackColor = false;
+            // 
             // label3
             // 
             label3.AutoSize = true;
@@ -313,10 +432,10 @@ namespace Warrior_and_Wealth
             btn_Livello_Cancello.FlatStyle = FlatStyle.Flat;
             btn_Livello_Cancello.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
             btn_Livello_Cancello.ForeColor = Color.Silver;
-            btn_Livello_Cancello.Location = new Point(25, 13);
+            btn_Livello_Cancello.Location = new Point(24, 13);
             btn_Livello_Cancello.Margin = new Padding(2, 3, 2, 3);
             btn_Livello_Cancello.Name = "btn_Livello_Cancello";
-            btn_Livello_Cancello.Size = new Size(95, 25);
+            btn_Livello_Cancello.Size = new Size(96, 25);
             btn_Livello_Cancello.TabIndex = 36;
             btn_Livello_Cancello.Text = "Livello I";
             btn_Livello_Cancello.UseVisualStyleBackColor = false;
@@ -359,10 +478,10 @@ namespace Warrior_and_Wealth
             btn_Livello_Mura.FlatStyle = FlatStyle.Flat;
             btn_Livello_Mura.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
             btn_Livello_Mura.ForeColor = Color.Silver;
-            btn_Livello_Mura.Location = new Point(25, 13);
+            btn_Livello_Mura.Location = new Point(24, 13);
             btn_Livello_Mura.Margin = new Padding(2, 3, 2, 3);
             btn_Livello_Mura.Name = "btn_Livello_Mura";
-            btn_Livello_Mura.Size = new Size(95, 25);
+            btn_Livello_Mura.Size = new Size(96, 25);
             btn_Livello_Mura.TabIndex = 36;
             btn_Livello_Mura.Text = "Livello I";
             btn_Livello_Mura.UseVisualStyleBackColor = false;
@@ -405,10 +524,10 @@ namespace Warrior_and_Wealth
             btn_Livello_Torri.FlatStyle = FlatStyle.Flat;
             btn_Livello_Torri.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
             btn_Livello_Torri.ForeColor = Color.Silver;
-            btn_Livello_Torri.Location = new Point(25, 13);
+            btn_Livello_Torri.Location = new Point(24, 13);
             btn_Livello_Torri.Margin = new Padding(2, 3, 2, 3);
             btn_Livello_Torri.Name = "btn_Livello_Torri";
-            btn_Livello_Torri.Size = new Size(95, 25);
+            btn_Livello_Torri.Size = new Size(96, 25);
             btn_Livello_Torri.TabIndex = 36;
             btn_Livello_Torri.Text = "Livello I";
             btn_Livello_Torri.UseVisualStyleBackColor = false;
@@ -481,42 +600,59 @@ namespace Warrior_and_Wealth
             panel_Contro_Spionaggio.BackColor = Color.Transparent;
             panel_Contro_Spionaggio.BackgroundImage = (Image)resources.GetObject("panel_Contro_Spionaggio.BackgroundImage");
             panel_Contro_Spionaggio.BackgroundImageLayout = ImageLayout.Stretch;
-            panel_Contro_Spionaggio.Controls.Add(button17);
+            panel_Contro_Spionaggio.Controls.Add(btn_Contro_Spionaggio);
             panel_Contro_Spionaggio.ForeColor = SystemColors.ControlText;
             panel_Contro_Spionaggio.Location = new Point(11, 486);
             panel_Contro_Spionaggio.Margin = new Padding(2, 3, 2, 3);
             panel_Contro_Spionaggio.Name = "panel_Contro_Spionaggio";
-            panel_Contro_Spionaggio.Size = new Size(166, 54);
+            panel_Contro_Spionaggio.Size = new Size(207, 54);
             panel_Contro_Spionaggio.TabIndex = 63;
             // 
-            // button17
+            // btn_Contro_Spionaggio
             // 
-            button17.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            button17.BackColor = Color.FromArgb(99, 52, 24);
-            button17.FlatAppearance.BorderSize = 0;
-            button17.FlatStyle = FlatStyle.Flat;
-            button17.Font = new Font("Segoe UI", 7.5F, FontStyle.Bold);
-            button17.ForeColor = Color.Silver;
-            button17.Location = new Point(22, 14);
-            button17.Margin = new Padding(2, 3, 2, 3);
-            button17.Name = "button17";
-            button17.Size = new Size(82, 0);
-            button17.TabIndex = 35;
-            button17.Text = "Popolazione VI";
-            button17.UseVisualStyleBackColor = false;
+            btn_Contro_Spionaggio.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btn_Contro_Spionaggio.BackColor = Color.FromArgb(99, 52, 24);
+            btn_Contro_Spionaggio.FlatAppearance.BorderSize = 0;
+            btn_Contro_Spionaggio.FlatStyle = FlatStyle.Flat;
+            btn_Contro_Spionaggio.Font = new Font("Segoe UI", 7.5F, FontStyle.Bold);
+            btn_Contro_Spionaggio.ForeColor = Color.Silver;
+            btn_Contro_Spionaggio.Location = new Point(34, 16);
+            btn_Contro_Spionaggio.Margin = new Padding(2, 3, 2, 3);
+            btn_Contro_Spionaggio.Name = "btn_Contro_Spionaggio";
+            btn_Contro_Spionaggio.Size = new Size(139, 23);
+            btn_Contro_Spionaggio.TabIndex = 38;
+            btn_Contro_Spionaggio.Text = "Contro-Spionaggio VI";
+            btn_Contro_Spionaggio.UseVisualStyleBackColor = false;
             // 
             // panel_Spionaggio
             // 
             panel_Spionaggio.BackColor = Color.Transparent;
             panel_Spionaggio.BackgroundImage = (Image)resources.GetObject("panel_Spionaggio.BackgroundImage");
             panel_Spionaggio.BackgroundImageLayout = ImageLayout.Stretch;
+            panel_Spionaggio.Controls.Add(btn_Spionaggio);
             panel_Spionaggio.Controls.Add(button16);
             panel_Spionaggio.ForeColor = SystemColors.ControlText;
             panel_Spionaggio.Location = new Point(11, 426);
             panel_Spionaggio.Margin = new Padding(2, 3, 2, 3);
             panel_Spionaggio.Name = "panel_Spionaggio";
-            panel_Spionaggio.Size = new Size(166, 54);
+            panel_Spionaggio.Size = new Size(207, 54);
             panel_Spionaggio.TabIndex = 63;
+            // 
+            // btn_Spionaggio
+            // 
+            btn_Spionaggio.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btn_Spionaggio.BackColor = Color.FromArgb(99, 52, 24);
+            btn_Spionaggio.FlatAppearance.BorderSize = 0;
+            btn_Spionaggio.FlatStyle = FlatStyle.Flat;
+            btn_Spionaggio.Font = new Font("Segoe UI", 7.5F, FontStyle.Bold);
+            btn_Spionaggio.ForeColor = Color.Silver;
+            btn_Spionaggio.Location = new Point(33, 14);
+            btn_Spionaggio.Margin = new Padding(2, 3, 2, 3);
+            btn_Spionaggio.Name = "btn_Spionaggio";
+            btn_Spionaggio.Size = new Size(139, 23);
+            btn_Spionaggio.TabIndex = 37;
+            btn_Spionaggio.Text = "Spionaggio VI";
+            btn_Spionaggio.UseVisualStyleBackColor = false;
             // 
             // button16
             // 
@@ -529,7 +665,7 @@ namespace Warrior_and_Wealth
             button16.Location = new Point(22, 14);
             button16.Margin = new Padding(2, 3, 2, 3);
             button16.Name = "button16";
-            button16.Size = new Size(82, 0);
+            button16.Size = new Size(123, 0);
             button16.TabIndex = 35;
             button16.Text = "Popolazione VI";
             button16.UseVisualStyleBackColor = false;
@@ -545,7 +681,7 @@ namespace Warrior_and_Wealth
             panel_Riparazione.Location = new Point(11, 366);
             panel_Riparazione.Margin = new Padding(2, 3, 2, 3);
             panel_Riparazione.Name = "panel_Riparazione";
-            panel_Riparazione.Size = new Size(166, 54);
+            panel_Riparazione.Size = new Size(207, 54);
             panel_Riparazione.TabIndex = 63;
             // 
             // btn_Riparazione
@@ -556,10 +692,10 @@ namespace Warrior_and_Wealth
             btn_Riparazione.FlatStyle = FlatStyle.Flat;
             btn_Riparazione.Font = new Font("Segoe UI", 7.5F, FontStyle.Bold);
             btn_Riparazione.ForeColor = Color.Silver;
-            btn_Riparazione.Location = new Point(21, 14);
+            btn_Riparazione.Location = new Point(31, 14);
             btn_Riparazione.Margin = new Padding(2, 3, 2, 3);
             btn_Riparazione.Name = "btn_Riparazione";
-            btn_Riparazione.Size = new Size(122, 23);
+            btn_Riparazione.Size = new Size(142, 23);
             btn_Riparazione.TabIndex = 36;
             btn_Riparazione.Text = "Riparazione VI";
             btn_Riparazione.UseVisualStyleBackColor = false;
@@ -576,7 +712,7 @@ namespace Warrior_and_Wealth
             button15.Location = new Point(22, 14);
             button15.Margin = new Padding(2, 3, 2, 3);
             button15.Name = "button15";
-            button15.Size = new Size(82, 0);
+            button15.Size = new Size(123, 0);
             button15.TabIndex = 35;
             button15.Text = "Popolazione VI";
             button15.UseVisualStyleBackColor = false;
@@ -592,7 +728,7 @@ namespace Warrior_and_Wealth
             panel_Trasporto.Location = new Point(11, 306);
             panel_Trasporto.Margin = new Padding(2, 3, 2, 3);
             panel_Trasporto.Name = "panel_Trasporto";
-            panel_Trasporto.Size = new Size(166, 54);
+            panel_Trasporto.Size = new Size(207, 54);
             panel_Trasporto.TabIndex = 123;
             // 
             // btn_Trasporto
@@ -603,10 +739,10 @@ namespace Warrior_and_Wealth
             btn_Trasporto.FlatStyle = FlatStyle.Flat;
             btn_Trasporto.Font = new Font("Segoe UI", 7.5F, FontStyle.Bold);
             btn_Trasporto.ForeColor = Color.Silver;
-            btn_Trasporto.Location = new Point(21, 14);
+            btn_Trasporto.Location = new Point(31, 14);
             btn_Trasporto.Margin = new Padding(2, 3, 2, 3);
             btn_Trasporto.Name = "btn_Trasporto";
-            btn_Trasporto.Size = new Size(122, 23);
+            btn_Trasporto.Size = new Size(142, 23);
             btn_Trasporto.TabIndex = 36;
             btn_Trasporto.Text = "Trasporto VI";
             btn_Trasporto.UseVisualStyleBackColor = false;
@@ -623,7 +759,7 @@ namespace Warrior_and_Wealth
             button14.Location = new Point(22, 14);
             button14.Margin = new Padding(2, 3, 2, 3);
             button14.Name = "button14";
-            button14.Size = new Size(82, 0);
+            button14.Size = new Size(123, 0);
             button14.TabIndex = 35;
             button14.Text = "Popolazione VI";
             button14.UseVisualStyleBackColor = false;
@@ -1245,35 +1381,35 @@ namespace Warrior_and_Wealth
             button5.Text = "Attacco I";
             button5.UseVisualStyleBackColor = false;
             // 
-            // panel_Guarnigione_Città
+            // panel_Livello_Città
             // 
-            panel_Guarnigione_Città.BackColor = Color.Transparent;
-            panel_Guarnigione_Città.BackgroundImage = (Image)resources.GetObject("panel_Guarnigione_Città.BackgroundImage");
-            panel_Guarnigione_Città.BackgroundImageLayout = ImageLayout.Stretch;
-            panel_Guarnigione_Città.Controls.Add(btn_Guarnigione_Citta);
-            panel_Guarnigione_Città.Controls.Add(button1);
-            panel_Guarnigione_Città.Location = new Point(624, 789);
-            panel_Guarnigione_Città.Margin = new Padding(2, 3, 2, 3);
-            panel_Guarnigione_Città.Name = "panel_Guarnigione_Città";
-            panel_Guarnigione_Città.Size = new Size(145, 54);
-            panel_Guarnigione_Città.TabIndex = 106;
+            panel_Livello_Città.BackColor = Color.Transparent;
+            panel_Livello_Città.BackgroundImage = (Image)resources.GetObject("panel_Livello_Città.BackgroundImage");
+            panel_Livello_Città.BackgroundImageLayout = ImageLayout.Stretch;
+            panel_Livello_Città.Controls.Add(btn_Livello_Centro);
+            panel_Livello_Città.Controls.Add(button1);
+            panel_Livello_Città.Location = new Point(556, 789);
+            panel_Livello_Città.Margin = new Padding(2, 3, 2, 3);
+            panel_Livello_Città.Name = "panel_Livello_Città";
+            panel_Livello_Città.Size = new Size(145, 54);
+            panel_Livello_Città.TabIndex = 106;
             // 
-            // btn_Guarnigione_Citta
+            // btn_Livello_Centro
             // 
-            btn_Guarnigione_Citta.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            btn_Guarnigione_Citta.BackColor = Color.FromArgb(99, 52, 24);
-            btn_Guarnigione_Citta.FlatAppearance.BorderSize = 0;
-            btn_Guarnigione_Citta.FlatStyle = FlatStyle.Flat;
-            btn_Guarnigione_Citta.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
-            btn_Guarnigione_Citta.ForeColor = Color.Silver;
-            btn_Guarnigione_Citta.Location = new Point(27, 14);
-            btn_Guarnigione_Citta.Margin = new Padding(2, 3, 2, 3);
-            btn_Guarnigione_Citta.Name = "btn_Guarnigione_Citta";
-            btn_Guarnigione_Citta.Size = new Size(95, 25);
-            btn_Guarnigione_Citta.TabIndex = 36;
-            btn_Guarnigione_Citta.Text = "Guarnigione I";
-            btn_Guarnigione_Citta.UseVisualStyleBackColor = false;
-            btn_Guarnigione_Citta.Click += btn_Guarnigione_Citta_Click;
+            btn_Livello_Centro.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btn_Livello_Centro.BackColor = Color.FromArgb(99, 52, 24);
+            btn_Livello_Centro.FlatAppearance.BorderSize = 0;
+            btn_Livello_Centro.FlatStyle = FlatStyle.Flat;
+            btn_Livello_Centro.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
+            btn_Livello_Centro.ForeColor = Color.Silver;
+            btn_Livello_Centro.Location = new Point(27, 14);
+            btn_Livello_Centro.Margin = new Padding(2, 3, 2, 3);
+            btn_Livello_Centro.Name = "btn_Livello_Centro";
+            btn_Livello_Centro.Size = new Size(95, 25);
+            btn_Livello_Centro.TabIndex = 36;
+            btn_Livello_Centro.Text = "Livello I";
+            btn_Livello_Centro.UseVisualStyleBackColor = false;
+            btn_Livello_Centro.Click += btn_Guarnigione_Citta_Click;
             // 
             // button1
             // 
@@ -1297,7 +1433,7 @@ namespace Warrior_and_Wealth
             label15.BackColor = Color.Transparent;
             label15.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label15.ForeColor = Color.Black;
-            label15.Location = new Point(628, 768);
+            label15.Location = new Point(560, 763);
             label15.Margin = new Padding(2, 0, 2, 0);
             label15.Name = "label15";
             label15.Size = new Size(49, 17);
@@ -1354,7 +1490,7 @@ namespace Warrior_and_Wealth
             panel_Guarnigione_Ingresso.BackgroundImage = (Image)resources.GetObject("panel_Guarnigione_Ingresso.BackgroundImage");
             panel_Guarnigione_Ingresso.BackgroundImageLayout = ImageLayout.Stretch;
             panel_Guarnigione_Ingresso.Controls.Add(btn_Guarnigione_Ingresso);
-            panel_Guarnigione_Ingresso.Location = new Point(321, 789);
+            panel_Guarnigione_Ingresso.Location = new Point(401, 789);
             panel_Guarnigione_Ingresso.Margin = new Padding(2, 3, 2, 3);
             panel_Guarnigione_Ingresso.Name = "panel_Guarnigione_Ingresso";
             panel_Guarnigione_Ingresso.Size = new Size(145, 54);
@@ -1542,7 +1678,7 @@ namespace Warrior_and_Wealth
             panel_Addestramento.Location = new Point(11, 186);
             panel_Addestramento.Margin = new Padding(2, 3, 2, 3);
             panel_Addestramento.Name = "panel_Addestramento";
-            panel_Addestramento.Size = new Size(166, 54);
+            panel_Addestramento.Size = new Size(207, 54);
             panel_Addestramento.TabIndex = 61;
             // 
             // btn_Addestramento
@@ -1553,10 +1689,10 @@ namespace Warrior_and_Wealth
             btn_Addestramento.FlatStyle = FlatStyle.Flat;
             btn_Addestramento.Font = new Font("Segoe UI", 7.5F, FontStyle.Bold);
             btn_Addestramento.ForeColor = Color.Silver;
-            btn_Addestramento.Location = new Point(22, 14);
+            btn_Addestramento.Location = new Point(32, 14);
             btn_Addestramento.Margin = new Padding(2, 3, 2, 3);
             btn_Addestramento.Name = "btn_Addestramento";
-            btn_Addestramento.Size = new Size(122, 22);
+            btn_Addestramento.Size = new Size(142, 22);
             btn_Addestramento.TabIndex = 35;
             btn_Addestramento.Text = "Addestramento IV";
             btn_Addestramento.UseVisualStyleBackColor = false;
@@ -1601,7 +1737,7 @@ namespace Warrior_and_Wealth
             panel_Popolazione.Location = new Point(11, 246);
             panel_Popolazione.Margin = new Padding(2, 3, 2, 3);
             panel_Popolazione.Name = "panel_Popolazione";
-            panel_Popolazione.Size = new Size(166, 54);
+            panel_Popolazione.Size = new Size(207, 54);
             panel_Popolazione.TabIndex = 62;
             // 
             // btn_Popolazione
@@ -1612,10 +1748,10 @@ namespace Warrior_and_Wealth
             btn_Popolazione.FlatStyle = FlatStyle.Flat;
             btn_Popolazione.Font = new Font("Segoe UI", 7.5F, FontStyle.Bold);
             btn_Popolazione.ForeColor = Color.Silver;
-            btn_Popolazione.Location = new Point(22, 14);
+            btn_Popolazione.Location = new Point(32, 14);
             btn_Popolazione.Margin = new Padding(2, 3, 2, 3);
             btn_Popolazione.Name = "btn_Popolazione";
-            btn_Popolazione.Size = new Size(122, 23);
+            btn_Popolazione.Size = new Size(142, 23);
             btn_Popolazione.TabIndex = 35;
             btn_Popolazione.Text = "Popolazione VI";
             btn_Popolazione.UseVisualStyleBackColor = false;
@@ -1778,7 +1914,7 @@ namespace Warrior_and_Wealth
             panel_Risorse.Location = new Point(11, 126);
             panel_Risorse.Margin = new Padding(2, 3, 2, 3);
             panel_Risorse.Name = "panel_Risorse";
-            panel_Risorse.Size = new Size(166, 54);
+            panel_Risorse.Size = new Size(207, 54);
             panel_Risorse.TabIndex = 60;
             // 
             // btn_Risorse
@@ -1789,10 +1925,10 @@ namespace Warrior_and_Wealth
             btn_Risorse.FlatStyle = FlatStyle.Flat;
             btn_Risorse.Font = new Font("Segoe UI", 7.5F, FontStyle.Bold);
             btn_Risorse.ForeColor = Color.Silver;
-            btn_Risorse.Location = new Point(22, 14);
+            btn_Risorse.Location = new Point(32, 14);
             btn_Risorse.Margin = new Padding(2, 3, 2, 3);
             btn_Risorse.Name = "btn_Risorse";
-            btn_Risorse.Size = new Size(120, 23);
+            btn_Risorse.Size = new Size(140, 23);
             btn_Risorse.TabIndex = 35;
             btn_Risorse.Text = "Risorse I";
             btn_Risorse.UseVisualStyleBackColor = false;
@@ -1896,7 +2032,7 @@ namespace Warrior_and_Wealth
             panel_Costruzione.Location = new Point(11, 66);
             panel_Costruzione.Margin = new Padding(2, 3, 2, 3);
             panel_Costruzione.Name = "panel_Costruzione";
-            panel_Costruzione.Size = new Size(166, 54);
+            panel_Costruzione.Size = new Size(207, 54);
             panel_Costruzione.TabIndex = 59;
             // 
             // btn_Costruzione
@@ -1907,10 +2043,10 @@ namespace Warrior_and_Wealth
             btn_Costruzione.FlatStyle = FlatStyle.Flat;
             btn_Costruzione.Font = new Font("Segoe UI", 7.5F, FontStyle.Bold);
             btn_Costruzione.ForeColor = Color.Silver;
-            btn_Costruzione.Location = new Point(23, 13);
+            btn_Costruzione.Location = new Point(32, 13);
             btn_Costruzione.Margin = new Padding(2, 3, 2, 3);
             btn_Costruzione.Name = "btn_Costruzione";
-            btn_Costruzione.Size = new Size(119, 23);
+            btn_Costruzione.Size = new Size(140, 23);
             btn_Costruzione.TabIndex = 0;
             btn_Costruzione.Text = "Costruzione I";
             btn_Costruzione.UseVisualStyleBackColor = false;
@@ -1922,7 +2058,7 @@ namespace Warrior_and_Wealth
             label2.BackColor = Color.Transparent;
             label2.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.Black;
-            label2.Location = new Point(325, 768);
+            label2.Location = new Point(282, 763);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
             label2.Size = new Size(60, 17);
@@ -2136,6 +2272,8 @@ namespace Warrior_and_Wealth
             Load += Ricerca_1_Load;
             panel_Sfondo.ResumeLayout(false);
             panel_Sfondo.PerformLayout();
+            panel_Guarnigione_Città.ResumeLayout(false);
+            panel_Livello_Ingresso.ResumeLayout(false);
             panel_Livello_Cancello.ResumeLayout(false);
             panel_Livello_Mura.ResumeLayout(false);
             panel_Livello_Torri.ResumeLayout(false);
@@ -2157,7 +2295,7 @@ namespace Warrior_and_Wealth
             panel_Livello_Lanceri.ResumeLayout(false);
             panel_Difesa_Lanceri.ResumeLayout(false);
             panel_Attacco_Lanceri.ResumeLayout(false);
-            panel_Guarnigione_Città.ResumeLayout(false);
+            panel_Livello_Città.ResumeLayout(false);
             panel_Guarnigione_Ingresso.ResumeLayout(false);
             panel_Difesa_Cancello.ResumeLayout(false);
             panel_Guarnigione_Cancello.ResumeLayout(false);
@@ -2244,8 +2382,8 @@ namespace Warrior_and_Wealth
         private Label label6;
         private Label label4;
         private Label label5;
-        private DoubleBufferedPanel panel_Guarnigione_Città;
-        private Button btn_Guarnigione_Citta;
+        private DoubleBufferedPanel panel_Livello_Città;
+        private Button btn_Livello_Centro;
         private Button button1;
         private Label label15;
         private Label label19;
@@ -2311,5 +2449,15 @@ namespace Warrior_and_Wealth
         private Button btn_Livello_Mura;
         private Button btn_Livello_Torri;
         private Button btn_Livello_Castello;
+        private DoubleBufferedPanel panel_Guarnigione_Città;
+        private Button btn_Guarnigione_Centro;
+        private Button button24;
+        private Button button25;
+        private DoubleBufferedPanel panel_Livello_Ingresso;
+        private Button btn_Livello_Ingresso;
+        private Button button22;
+        private Button button26;
+        private Button btn_Spionaggio;
+        private Button btn_Contro_Spionaggio;
     }
 }

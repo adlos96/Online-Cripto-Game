@@ -58,6 +58,7 @@ namespace Warrior_and_Wealth
             txt_Ip.BackColor = Color.FromArgb(229, 208, 181);
             txt_Ip.Text = "IP: AUTO";
             txt_Ip.Font = new Font("Cinzel Decorative", 9, FontStyle.Regular);
+            txt_Ip.ReadOnly = true;
 
             //Log
             txt_Log.BackColor = Color.FromArgb(229, 208, 181);
@@ -101,6 +102,7 @@ namespace Warrior_and_Wealth
 
         private void txt_Ip_MouseClick(object sender, MouseEventArgs e)
         {
+            if (txt_Ip.ReadOnly) return;
             txt_Ip.Text = "";
             txt_Ip.ForeColor = Color.Black;
         }
@@ -201,7 +203,7 @@ namespace Warrior_and_Wealth
                         float scaleFactor = g.DpiX / 96f; // Se lo zoom è 125%, scaleFactor sarà 1.25
 
                         int newWidth = (int)(251 * scaleFactor);
-                        int newHeight = (int)(377 * scaleFactor);
+                        int newHeight = (int)(446 * scaleFactor);
 
                         this.Size = new Size(newWidth, newHeight);
                     }
@@ -218,8 +220,8 @@ namespace Warrior_and_Wealth
                     {
                         float scaleFactor = g.DpiX / 96f; // Se lo zoom è 125%, scaleFactor sarà 1.25
 
-                        int newWidth = (int)(251 * scaleFactor);
-                        int newHeight = (int)(377 * scaleFactor);
+                        int newWidth = (int)(322 * scaleFactor);
+                        int newHeight = (int)(446 * scaleFactor);
 
                         this.Size = new Size(newWidth, newHeight);
                     }
@@ -347,6 +349,19 @@ namespace Warrior_and_Wealth
         private void comboBox_Lingua_TextChanged(object sender, EventArgs e)
         {
             lingua_Selezionata = comboBox_Lingua.Text;
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked) txt_Password_Login.UseSystemPasswordChar = true;
+            else txt_Password_Login.UseSystemPasswordChar = false;
+
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox2.Checked) txt_Ip.ReadOnly = true;
+            else txt_Ip.ReadOnly = false;
         }
     }
 }

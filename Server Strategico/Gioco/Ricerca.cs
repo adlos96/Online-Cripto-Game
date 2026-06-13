@@ -87,6 +87,26 @@ namespace Server_Strategico.Gioco
                 Popolazione = 60,
                 TempoRicerca = 345600
             };
+            public static dati Spionaggio = new dati
+            {
+                Cibo = 23000,
+                Legno = 21501,
+                Pietra = 18842,
+                Ferro = 15512,
+                Oro = 12911,
+                Popolazione = 10,
+                TempoRicerca = 28800
+            };
+            public static dati Contro_Spionaggio = new dati
+            {
+                Cibo = 25000,
+                Legno = 23501,
+                Pietra = 20842,
+                Ferro = 17512,
+                Oro = 14911,
+                Popolazione = 15,
+                TempoRicerca = 43200
+            };
 
             public static CostoReclutamento Incremento = new CostoReclutamento
             {
@@ -160,26 +180,47 @@ namespace Server_Strategico.Gioco
         }
         public class Citta
         {
-            public static dati Ingresso = new dati
+            public static dati Ingresso_Livello = new dati
+            {
+                Cibo = 17000,
+                Legno = 16231,
+                Pietra = 15720,
+                Ferro = 15394,
+                Oro = 14751,
+                TempoRicerca = 7200,
+                Popolazione = 20
+
+            };
+            public static dati Ingresso_Guarnigione = new dati
             {
                 Cibo = 13000,
                 Legno = 12231,
                 Pietra = 11720,
                 Ferro = 11394,
                 Oro = 10751,
-                TempoRicerca = 7200,
-                Popolazione = 25
+                TempoRicerca = 10800,
+                Popolazione = 30
 
             };
-            public static dati Città = new dati
+            public static dati Città_Livello = new dati
             {
-                Cibo = 13000,
-                Legno = 12750,
-                Pietra = 12500,
-                Ferro = 12500,
-                Oro = 12250,
-                TempoRicerca = 18000,
+                Cibo = 21000,
+                Legno = 20231,
+                Pietra = 19720,
+                Ferro = 19394,
+                Oro = 18751,
+                TempoRicerca = 10800,
                 Popolazione = 45
+            };
+            public static dati Città_Guarnigione = new dati
+            {
+                Cibo = 17000,
+                Legno = 16231,
+                Pietra = 15720,
+                Ferro = 15394,
+                Oro = 14751,
+                TempoRicerca = 14400,
+                Popolazione = 55
             };
 
             public static dati Mura_Livello = new dati

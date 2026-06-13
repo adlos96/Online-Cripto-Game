@@ -887,6 +887,22 @@ namespace Server_Strategico.ServerData.Moduli
                 $"{L.Label_Oro()}: [icon:oro]{Ricerca.Tipi.Riparazione.Oro * (player.Ricerca_Riparazione + 1):#,0}\n" +
                 $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Tipi.Riparazione.TempoRicerca * (player.Ricerca_Riparazione + 1))}");
 
+            Send(player.guid_Player, $"Descrizione|Ricerca Spionaggio|{L.Desc_RicercaSpionaggio(player.Ricerca_Spionaggio + 1)}" +
+                $"{L.Label_Cibo()} [icon:cibo]{Ricerca.Tipi.Spionaggio.Cibo * (player.Ricerca_Spionaggio + 1):#,0}\n" +
+                $"{L.Label_Legno()}: [icon:legno]{Ricerca.Tipi.Spionaggio.Legno * (player.Ricerca_Spionaggio + 1):#,0}\n" +
+                $"{L.Label_Pietra()}: [icon:pietra]{Ricerca.Tipi.Spionaggio.Pietra * (player.Ricerca_Spionaggio + 1):#,0}\n" +
+                $"{L.Label_Ferro()}: [icon:ferro]{Ricerca.Tipi.Spionaggio.Ferro * (player.Ricerca_Spionaggio + 1):#,0}\n" +
+                $"{L.Label_Oro()}: [icon:oro]{Ricerca.Tipi.Spionaggio.Oro * (player.Ricerca_Spionaggio + 1):#,0}\n" +
+                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Tipi.Spionaggio.TempoRicerca * (player.Ricerca_Spionaggio + 1))}");
+
+            Send(player.guid_Player, $"Descrizione|Ricerca Contro-Spionaggio|{L.Desc_RicercaControSpionaggio(player.Ricerca_Contro_Spionaggio + 1)}" +
+                $"{L.Label_Cibo()} [icon:cibo]{Ricerca.Tipi.Contro_Spionaggio.Cibo * (player.Ricerca_Contro_Spionaggio + 1):#,0}\n" +
+                $"{L.Label_Legno()}: [icon:legno]{Ricerca.Tipi.Contro_Spionaggio.Legno * (player.Ricerca_Contro_Spionaggio + 1):#,0}\n" +
+                $"{L.Label_Pietra()}: [icon:pietra]{Ricerca.Tipi.Contro_Spionaggio.Pietra * (player.Ricerca_Contro_Spionaggio + 1):#,0}\n" +
+                $"{L.Label_Ferro()}: [icon:ferro]{Ricerca.Tipi.Contro_Spionaggio.Ferro * (player.Ricerca_Contro_Spionaggio + 1):#,0}\n" +
+                $"{L.Label_Oro()}: [icon:oro]{Ricerca.Tipi.Contro_Spionaggio.Oro * (player.Ricerca_Contro_Spionaggio + 1):#,0}\n" +
+                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Tipi.Contro_Spionaggio.TempoRicerca * (player.Ricerca_Contro_Spionaggio + 1))}");
+
             Send(player.guid_Player, $"Descrizione|Ricerca Guerriero Livello|{L.Desc_RicercaGuerrieroLivello(player.Guerriero_Livello + 1)}" +
                 $"{L.Label_Cibo()} [icon:cibo]{Ricerca.Soldati.Livello.Cibo * (player.Guerriero_Livello + 1):#,0}\n" +
                 $"{L.Label_Legno()}: [icon:legno]{Ricerca.Soldati.Livello.Legno * (player.Guerriero_Livello + 1):#,0}\n" +
@@ -945,7 +961,7 @@ namespace Server_Strategico.ServerData.Moduli
                 $"{L.Label_Oro()}: [icon:oro]{Ricerca.Soldati.Difesa.Oro * (player.Lancere_Difesa + 1):#,0}\n" +
                 $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Soldati.Difesa.TempoRicerca * (player.Lancere_Difesa + 1))}\n\n");
 
-            Send(player.guid_Player, $"Descrizione|Ricerca Arcere Livello|{L.Desc_RicercaArcereLivelloe(player.Arcere_Livello + 1)}" +
+            Send(player.guid_Player, $"Descrizione|Ricerca Arcere Livello|{L.Desc_RicercaArcereLivello(player.Arcere_Livello + 1)}" +
                 $"{L.Label_Cibo()} [icon:cibo]{Ricerca.Soldati.Livello.Cibo * (player.Arcere_Livello + 1):#,0}\n" +
                 $"{L.Label_Legno()}: [icon:legno]{Ricerca.Soldati.Livello.Legno * (player.Arcere_Livello + 1):#,0}\n" +
                 $"{L.Label_Pietra()}: [icon:pietra]{Ricerca.Soldati.Livello.Pietra * (player.Arcere_Livello + 1):#,0}\n" +
@@ -1003,23 +1019,40 @@ namespace Server_Strategico.ServerData.Moduli
                 $"{L.Label_Oro()}: [icon:oro]{Ricerca.Soldati.Difesa.Oro * (player.Catapulta_Difesa + 1):#,0}\n" +
                 $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Soldati.Difesa.TempoRicerca * (player.Catapulta_Difesa + 1))}\n\n");
 
+            Send(player.guid_Player, $"Descrizione|Ricerca Ingresso Livello|{L.Desc_RicercaIngressoLivello(player.Ricerca_Ingresso_Livello + 1)}" +
+                $"{L.Label_Cibo()} [icon:cibo]{Ricerca.Citta.Ingresso_Livello.Cibo * (player.Ricerca_Ingresso_Livello + 1):#,0}\n" +
+                $"{L.Label_Legno()}: [icon:legno]{Ricerca.Citta.Ingresso_Livello.Legno * (player.Ricerca_Ingresso_Livello + 1):#,0}\n" +
+                $"{L.Label_Pietra()}: [icon:pietra]{Ricerca.Citta.Ingresso_Livello.Pietra * (player.Ricerca_Ingresso_Livello + 1):#,0}\n" +
+                $"{L.Label_Ferro()}: [icon:ferro]{Ricerca.Citta.Ingresso_Livello.Ferro * (player.Ricerca_Ingresso_Livello + 1):#,0}\n" +
+                $"{L.Label_Oro()}: [icon:oro]{Ricerca.Citta.Ingresso_Livello.Oro * (player.Ricerca_Ingresso_Livello + 1):#,0}\n" +
+                $"{L.Label_Popolazione()}: [icon:popolazione]{Ricerca.Citta.Ingresso_Livello.Popolazione * (player.Ricerca_Ingresso_Livello + 1):#,0}\n" +
+                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Ingresso_Livello.TempoRicerca * (player.Ricerca_Ingresso_Livello + 1))}\n");
             Send(player.guid_Player, $"Descrizione|Ricerca Ingresso Guarnigione|{L.Desc_RicercaIngressoGuarnigione(player.Ricerca_Ingresso_Guarnigione + 1)}" +
-                $"{L.Label_Cibo()} [icon:cibo]{Ricerca.Citta.Ingresso.Cibo * (player.Ricerca_Ingresso_Guarnigione + 1):#,0}\n" +
-                $"{L.Label_Legno()}: [icon:legno]{Ricerca.Citta.Ingresso.Legno * (player.Ricerca_Ingresso_Guarnigione + 1):#,0}\n" +
-                $"{L.Label_Pietra()}: [icon:pietra]{Ricerca.Citta.Ingresso.Pietra * (player.Ricerca_Ingresso_Guarnigione + 1):#,0}\n" +
-                $"{L.Label_Ferro()}: [icon:ferro]{Ricerca.Citta.Ingresso.Ferro * (player.Ricerca_Ingresso_Guarnigione + 1):#,0}\n" +
-                $"{L.Label_Oro()}: [icon:oro]{Ricerca.Citta.Ingresso.Oro * (player.Ricerca_Ingresso_Guarnigione + 1):#,0}\n" +
-                $"{L.Label_Popolazione()}: [icon:popolazione]{Ricerca.Citta.Ingresso.Popolazione * (player.Ricerca_Ingresso_Guarnigione + 1):#,0}\n" +
-                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Ingresso.TempoRicerca * (player.Ricerca_Ingresso_Guarnigione + 1))}\n" +
+                $"{L.Label_Cibo()} [icon:cibo]{Ricerca.Citta.Ingresso_Guarnigione.Cibo * (player.Ricerca_Ingresso_Guarnigione + 1):#,0}\n" +
+                $"{L.Label_Legno()}: [icon:legno]{Ricerca.Citta.Ingresso_Guarnigione.Legno * (player.Ricerca_Ingresso_Guarnigione + 1):#,0}\n" +
+                $"{L.Label_Pietra()}: [icon:pietra]{Ricerca.Citta.Ingresso_Guarnigione.Pietra * (player.Ricerca_Ingresso_Guarnigione + 1):#,0}\n" +
+                $"{L.Label_Ferro()}: [icon:ferro]{Ricerca.Citta.Ingresso_Guarnigione.Ferro * (player.Ricerca_Ingresso_Guarnigione + 1):#,0}\n" +
+                $"{L.Label_Oro()}: [icon:oro]{Ricerca.Citta.Ingresso_Guarnigione.Oro * (player.Ricerca_Ingresso_Guarnigione + 1):#,0}\n" +
+                $"{L.Label_Popolazione()}: [icon:popolazione]{Ricerca.Citta.Ingresso_Guarnigione.Popolazione * (player.Ricerca_Ingresso_Guarnigione + 1):#,0}\n" +
+                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Ingresso_Guarnigione.TempoRicerca * (player.Ricerca_Ingresso_Guarnigione + 1))}\n" +
                 $"{L.Label_Guarnigione()}: +{Strutture.Edifici.Ingresso.Guarnigione}");
+
+            Send(player.guid_Player, $"Descrizione|Ricerca Citta Livello|{L.Desc_RicercaCittaLivello(player.Ricerca_Citta_Livello + 1)}" +
+                $"{L.Label_Cibo()} [icon:cibo]{Ricerca.Citta.Città_Livello.Cibo * (player.Ricerca_Citta_Livello + 1):#,0}\n" +
+                $"{L.Label_Legno()}: [icon:legno]{Ricerca.Citta.Città_Livello.Legno * (player.Ricerca_Citta_Livello + 1):#,0}\n" +
+                $"{L.Label_Pietra()}: [icon:pietra]{Ricerca.Citta.Città_Livello.Pietra * (player.Ricerca_Citta_Livello + 1):#,0}\n" +
+                $"{L.Label_Ferro()}: [icon:ferro]{Ricerca.Citta.Città_Livello.Ferro * (player.Ricerca_Citta_Livello + 1):#,0}\n" +
+                $"{L.Label_Oro()}: [icon:oro]{Ricerca.Citta.Città_Livello.Oro * (player.Ricerca_Citta_Livello + 1):#,0}\n" +
+                $"{L.Label_Popolazione()}: [icon:popolazione]{Ricerca.Citta.Città_Livello.Popolazione * (player.Ricerca_Citta_Livello + 1):#,0}\n" +
+                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Città_Livello.TempoRicerca * (player.Ricerca_Citta_Livello + 1))}\n");
             Send(player.guid_Player, $"Descrizione|Ricerca Citta Guarnigione|{L.Desc_RicercaCittaGuarnigione(player.Ricerca_Citta_Guarnigione + 1)}" +
-                $"{L.Label_Cibo()} [icon:cibo]{Ricerca.Citta.Città.Cibo * (player.Ricerca_Citta_Guarnigione + 1):#,0}\n" +
-                $"{L.Label_Legno()}: [icon:legno]{Ricerca.Citta.Città.Legno * (player.Ricerca_Citta_Guarnigione + 1):#,0}\n" +
-                $"{L.Label_Pietra()}: [icon:pietra]{Ricerca.Citta.Città.Pietra * (player.Ricerca_Citta_Guarnigione + 1):#,0}\n" +
-                $"{L.Label_Ferro()}: [icon:ferro]{Ricerca.Citta.Città.Ferro * (player.Ricerca_Citta_Guarnigione + 1):#,0}\n" +
-                $"{L.Label_Oro()}: [icon:oro]{Ricerca.Citta.Città.Oro * (player.Ricerca_Citta_Guarnigione + 1):#,0}\n" +
-                $"{L.Label_Popolazione()}: [icon:popolazione]{Ricerca.Citta.Città.Popolazione * (player.Ricerca_Citta_Guarnigione + 1):#,0}\n" +
-                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Città.TempoRicerca * (player.Ricerca_Citta_Guarnigione + 1))}\n" +
+                $"{L.Label_Cibo()} [icon:cibo]{Ricerca.Citta.Città_Guarnigione.Cibo * (player.Ricerca_Citta_Guarnigione + 1):#,0}\n" +
+                $"{L.Label_Legno()}: [icon:legno]{Ricerca.Citta.Città_Guarnigione.Legno * (player.Ricerca_Citta_Guarnigione + 1):#,0}\n" +
+                $"{L.Label_Pietra()}: [icon:pietra]{Ricerca.Citta.Città_Guarnigione.Pietra * (player.Ricerca_Citta_Guarnigione + 1):#,0}\n" +
+                $"{L.Label_Ferro()}: [icon:ferro]{Ricerca.Citta.Città_Guarnigione.Ferro * (player.Ricerca_Citta_Guarnigione + 1):#,0}\n" +
+                $"{L.Label_Oro()}: [icon:oro]{Ricerca.Citta.Città_Guarnigione.Oro * (player.Ricerca_Citta_Guarnigione + 1):#,0}\n" +
+                $"{L.Label_Popolazione()}: [icon:popolazione]{Ricerca.Citta.Città_Guarnigione.Popolazione * (player.Ricerca_Citta_Guarnigione + 1):#,0}\n" +
+                $"{L.Label_Ricerca()}: [icon:tempo]{player.FormatTime(Ricerca.Citta.Città_Guarnigione.TempoRicerca * (player.Ricerca_Citta_Guarnigione + 1))}\n" +
                 $"{L.Label_Guarnigione()}: +{Strutture.Edifici.Citta.Guarnigione}");
 
             Send(player.guid_Player, $"Descrizione|Ricerca Mura Livello|{L.Desc_RicercaMuraLivello(player.Ricerca_Mura_Livello + 1)}" +

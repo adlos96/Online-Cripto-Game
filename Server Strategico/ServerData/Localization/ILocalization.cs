@@ -150,30 +150,41 @@ namespace Server_Strategico.ServerData.Localization
         string Desc_DifesaTorri();
         string Desc_CastelloSalute();
         string Desc_CastelloDifesa();
+
         string Desc_RicercaAddestramento(int livello);
         string Desc_RicercaCostruzione(int livello);
         string Desc_RicercaProduzione(int livello);
         string Desc_RicercaPopolazione(int livello);
         string Desc_RicercaTrasporto(int livello);
         string Desc_RicercaRiparazione(int livello);
+        string Desc_RicercaSpionaggio(int livello);
+        string Desc_RicercaControSpionaggio(int livello);
+
         string Desc_RicercaGuerrieroLivello(int livello);
         string Desc_RicercaGuerrieroSalute(int livello);
         string Desc_RicercaGuerrieroAttacco(int livello);
         string Desc_RicercaGuerrieroDifesa(int livello);
+
         string Desc_RicercaLancereLivello(int livello);
         string Desc_RicercaLancereSalute(int livello);
         string Desc_RicercaLancereAttacco(int livello);
         string Desc_RicercaLancereDifesa(int livello);
-        string Desc_RicercaArcereLivelloe(int livello);
+
+        string Desc_RicercaArcereLivello(int livello);
         string Desc_RicercaArcereSalute(int livello);
         string Desc_RicercaArcereAttacco(int livello);
         string Desc_RicercaArcereDifesa(int livello);
+
         string Desc_RicercaCatapultaLivello(int livello);
         string Desc_RicercaCatapultaSalute(int livello);
         string Desc_RicercaCatapultaAttacco(int livello);
         string Desc_RicercaCatapultaDifesa(int livello);
+
+        string Desc_RicercaIngressoLivello(int livello);
         string Desc_RicercaIngressoGuarnigione(int livello);
         string Desc_RicercaCittaGuarnigione(int livello);
+        string Desc_RicercaCittaLivello(int livello);
+
         string Desc_RicercaMuraLivello(int livello);
         string Desc_RicercaMuraGuarnigione(int livello);
         string Desc_RicercaMuraSalute(int livello);
@@ -183,10 +194,12 @@ namespace Server_Strategico.ServerData.Localization
         string Desc_RicercaCancelloGuarnigione(int livello);
         string Desc_RicercaCancelloSalute(int livello);
         string Desc_RicercaCancelloDifesa(int livello);
+
         string Desc_RicercaTorriLivello(int livello);
         string Desc_RicercaTorriGuarnigione(int livello);
         string Desc_RicercaTorriSalute(int livello);
         string Desc_RicercaTorriDifesa(int livello);
+
         string Desc_RicercaCastelloLivello(int livello);
         string Desc_RicercaCastelloGuarnigione(int livello);
         string Desc_RicercaCastelloSalute(int livello);

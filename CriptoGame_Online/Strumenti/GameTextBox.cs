@@ -230,14 +230,17 @@
             }
 
             // --- FADE TOP ---
-            Rectangle fadeTop = new(0, 0, ClientSize.Width - scrollBarWidth - 4, fadeHeight);
-            using (LinearGradientBrush fadeT = new(
-                fadeTop,
-                Color.FromArgb(255, BackColor),
-                Color.FromArgb(0, BackColor),
-                90f))
+            if (lines.Count > 5)
             {
-                g.FillRectangle(fadeT, fadeTop);
+                Rectangle fadeTop = new(0, 0, ClientSize.Width - scrollBarWidth - 4, fadeHeight);
+                using (LinearGradientBrush fadeT = new(
+                    fadeTop,
+                    Color.FromArgb(255, BackColor),
+                    Color.FromArgb(0, BackColor),
+                    90f))
+                {
+                    g.FillRectangle(fadeT, fadeTop);
+                }
             }
 
             // --- FADE BOTTOM ---

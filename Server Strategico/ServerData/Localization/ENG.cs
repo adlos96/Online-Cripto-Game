@@ -705,6 +705,10 @@ namespace Server_Strategico.ServerData.Localization
             $"[black]Increases the transport capacity of individual military units.\nTransport research cost lv {livello}\n\n";
         public string Desc_RicercaRiparazione(int livello) =>
             $"[black]Improves the repair efficiency of individual structures.\nRepair research cost lv {livello}\n\n";
+        public string Desc_RicercaSpionaggio(int livello) =>
+            $"[black]Permette di spiare cose... aggiornare la descrizione Spionaggio.\nCosto ricerca Spionaggio lv {livello}\n\n";
+        public string Desc_RicercaControSpionaggio(int livello) =>
+            $"[black]Permette di spiare cose... aggiornare la descrizione Contro-Spionaggio.\nCosto ricerca Contro-Spionaggio lv {livello}\n\n";
 
         public string Desc_SaluteMura() =>
             $"[black]Restores the [verdeF]health[black] of the [porporaReale]walls[black] to maximum.\nRepair cost: [verdeF]1 HP[/verdeF][black] per cycle.\n\n";
@@ -732,55 +736,47 @@ namespace Server_Strategico.ServerData.Localization
 
         public string Desc_RicercaGuerrieroLivello(int livello) =>
             $"[black]Increases the level of Warriors.\nWarrior level research cost lv {livello}\n\n";
-
         public string Desc_RicercaGuerrieroSalute(int livello) =>
             $"[black]Increases the health of Warriors.\nWarrior health research cost lv {livello}\n\n";
-
         public string Desc_RicercaGuerrieroAttacco(int livello) =>
             $"[black]Increases the attack power of Warriors.\nWarrior attack research cost lv {livello}\n\n";
-
         public string Desc_RicercaGuerrieroDifesa(int livello) =>
             $"[black]Increases the defense of Warriors.\nWarrior defense research cost lv {livello}\n\n";
 
         public string Desc_RicercaLancereLivello(int livello) =>
             $"[black]Increases the level of Spearmen.\nSpearman level research cost lv {livello}\n\n";
-
         public string Desc_RicercaLancereSalute(int livello) =>
             $"[black]Increases the health of Spearmen.\nSpearman health research cost lv {livello}\n\n";
-
         public string Desc_RicercaLancereAttacco(int livello) =>
             $"[black]Increases the attack power of Spearmen.\nSpearman attack research cost lv {livello}\n\n";
-
         public string Desc_RicercaLancereDifesa(int livello) =>
             $"[black]Increases the defense of Spearmen.\nSpearman defense research cost lv {livello}\n\n";
 
-        public string Desc_RicercaArcereLivelloe(int livello) =>
+        public string Desc_RicercaArcereLivello(int livello) =>
             $"[black]Increases the level of Archers.\nArcher level research cost lv {livello}\n\n";
-
         public string Desc_RicercaArcereSalute(int livello) =>
             $"[black]Increases the health of Archers.\nArcher health research cost lv {livello}\n\n";
-
         public string Desc_RicercaArcereAttacco(int livello) =>
             $"[black]Increases the attack power of Archers.\nArcher attack research cost lv {livello}\n\n";
-
         public string Desc_RicercaArcereDifesa(int livello) =>
             $"[black]Increases the defense of Archers.\nArcher defense research cost lv {livello}\n\n";
 
         public string Desc_RicercaCatapultaLivello(int livello) =>
             $"[black]Increases the level of Catapults.\nCatapult level research cost lv {livello}\n\n";
-
         public string Desc_RicercaCatapultaSalute(int livello) =>
             $"[black]Increases the health of Catapults.\nCatapult health research cost lv {livello}\n\n";
-
         public string Desc_RicercaCatapultaAttacco(int livello) =>
             $"[black]Increases the attack power of Catapults.\nCatapult attack research cost lv {livello}\n\n";
-
         public string Desc_RicercaCatapultaDifesa(int livello) =>
             $"[black]Increases the defense of Catapults.\nCatapult defense research cost lv {livello}\n\n";
 
+        public string Desc_RicercaIngressoLivello(int livello) =>
+            $"[black]Increases the maximum number of units the structure can hold.\nEntrance garrison research cost lv {livello}\n\n";
         public string Desc_RicercaIngressoGuarnigione(int livello) =>
             $"[black]Increases the maximum number of units the structure can hold.\nEntrance garrison research cost lv {livello}\n\n";
 
+        public string Desc_RicercaCittaLivello(int livello) =>
+            $"[black]Increases the maximum number of units the structure can hold.\nCity garrison research cost lv {livello}\n\n";
         public string Desc_RicercaCittaGuarnigione(int livello) =>
             $"[black]Increases the maximum number of units the structure can hold.\nCity garrison research cost lv {livello}\n\n";
 

@@ -154,12 +154,12 @@ namespace Server_Strategico.Server
 
             //Tutorial off + risorse per test
             player1.Tutorial = false;
-            player1.Cibo = 20000;
-            player1.Legno = 20000;
-            player1.Pietra = 20000;
-            player1.Ferro = 20000;
-            player1.Oro = 20000;
-            player1.Popolazione = 1000;
+            player1.Cibo = 30000;
+            player1.Legno = 30000;
+            player1.Pietra = 30000;
+            player1.Ferro = 30000;
+            player1.Oro = 30000;
+            player1.Popolazione = 1200;
 
             player1.Spade = 2000;
             player1.Lance = 2000;
@@ -168,8 +168,8 @@ namespace Server_Strategico.Server
             player1.Armature = 2000;
             player1.Frecce = 200;
 
-            player1.Diamanti_Blu = 15000;
-            player1.Diamanti_Viola = 30000;
+            player1.Diamanti_Blu = 60000;
+            player1.Diamanti_Viola = 45000;
 
             Gioco.Barbari.GeneraVillaggiPerGiocatore(player1);
         }

@@ -134,7 +134,6 @@ namespace Server_Strategico.ServerData.Moduli
                     Arceri_Ingresso = player.Arceri_Ingresso,
                     Catapulte_Ingresso = player.Catapulte_Ingresso,
 
-
                     Guerrieri_Cancello = player.Guerrieri_Cancello,
                     Lanceri_Cancello = player.Lanceri_Cancello,
                     Arceri_Cancello = player.Arceri_Cancello,
@@ -145,7 +144,6 @@ namespace Server_Strategico.ServerData.Moduli
                     Difesa_Cancello = player.Difesa_Cancello,
                     Difesa_CancelloMax = player.Difesa_CancelloMax,
 
-
                     Guerrieri_Mura = player.Guerrieri_Mura,
                     Lanceri_Mura = player.Lanceri_Mura,
                     Arceri_Mura = player.Arceri_Mura,
@@ -155,7 +153,6 @@ namespace Server_Strategico.ServerData.Moduli
                     Salute_MuraMax = player.Salute_MuraMax,
                     Difesa_Mura = player.Difesa_Mura,
                     Difesa_MuraMax = player.Difesa_MuraMax,
-
 
                     Guerrieri_Torri = player.Guerrieri_Torri,
                     Lanceri_Torri = player.Lanceri_Torri,
@@ -177,7 +174,6 @@ namespace Server_Strategico.ServerData.Moduli
                     Difesa_Castello = player.Difesa_Castello,
                     Difesa_CastelloMax = player.Difesa_CastelloMax,
 
-
                     Guerrieri_Citta = player.Guerrieri_Citta,
                     Lanceri_Citta = player.Lanceri_Citta,
                     Arceri_Citta = player.Arceri_Citta,
@@ -191,8 +187,12 @@ namespace Server_Strategico.ServerData.Moduli
                     Ricerca_Popolazione = player.Ricerca_Popolazione,
                     Ricerca_Trasporto = player.Ricerca_Trasporto,
                     Ricerca_Riparazione = player.Ricerca_Riparazione,
+                    Ricerca_Spionaggio = player.Ricerca_Spionaggio,
+                    Ricerca_Contro_Spionaggio = player.Ricerca_Contro_Spionaggio,
 
+                    Ricerca_Ingresso_Livello = player.Ricerca_Ingresso_Livello,
                     Ricerca_Ingresso_Guarnigione = player.Ricerca_Ingresso_Guarnigione,
+                    Ricerca_Citta_Livello = player.Ricerca_Citta_Livello,
                     Ricerca_Citta_Guarnigione = player.Ricerca_Citta_Guarnigione,
 
                     Ricerca_Cancello_Livello = player.Ricerca_Cancello_Livello,
@@ -503,6 +503,8 @@ namespace Server_Strategico.ServerData.Moduli
                     player.Ricerca_Popolazione = playerData.Ricerca_Popolazione;
                     player.Ricerca_Trasporto = playerData.Ricerca_Trasporto;
                     player.Ricerca_Riparazione = playerData.Ricerca_Riparazione;
+                    player.Ricerca_Spionaggio = playerData.Ricerca_Spionaggio;
+                    player.Ricerca_Contro_Spionaggio = playerData.Ricerca_Contro_Spionaggio;
 
                     player.Guerriero_Livello = playerData.Guerriero_Livello;
                     player.Guerriero_Salute = playerData.Guerriero_Salute;
@@ -524,7 +526,9 @@ namespace Server_Strategico.ServerData.Moduli
                     player.Catapulta_Difesa = playerData.Catapulta_Difesa;
                     player.Catapulta_Attacco = playerData.Catapulta_Attacco;
 
+                    player.Ricerca_Ingresso_Livello = playerData.Ricerca_Ingresso_Livello;
                     player.Ricerca_Ingresso_Guarnigione = playerData.Ricerca_Ingresso_Guarnigione;
+                    player.Ricerca_Citta_Livello = playerData.Ricerca_Citta_Livello;
                     player.Ricerca_Citta_Guarnigione = playerData.Ricerca_Citta_Guarnigione;
 
                     player.Ricerca_Cancello_Livello = playerData.Ricerca_Cancello_Livello;
@@ -1192,10 +1196,13 @@ namespace Server_Strategico.ServerData.Moduli
             public int Ricerca_Popolazione { get; set; }
             public int Ricerca_Trasporto { get; set; }
             public int Ricerca_Riparazione { get; set; }
-
+            public int Ricerca_Spionaggio { get; set; }
+            public int Ricerca_Contro_Spionaggio { get; set; }
 
             //Ricerca Città
+            public int Ricerca_Ingresso_Livello { get; set; }
             public int Ricerca_Ingresso_Guarnigione { get; set; }
+            public int Ricerca_Citta_Livello { get; set; }
             public int Ricerca_Citta_Guarnigione { get; set; }
 
             public int Ricerca_Cancello_Livello {get; set;}

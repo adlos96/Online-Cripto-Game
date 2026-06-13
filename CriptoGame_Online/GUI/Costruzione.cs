@@ -202,6 +202,11 @@ namespace Warrior_and_Wealth
 
             Btn_Costruzione.Text = LocalizationManager.Current.Label_Costruzione();
             btn_Reclutamento.Text = LocalizationManager.Current.Label_Reclutamento();
+            lbl_Unlock_Troops.Text = $"Sblocco Unità:\n\n" +
+                                     $"II:   --> {Variabili_Client.truppe_II}\n" +
+                                     $"III:  --> {Variabili_Client.truppe_III}\n" +
+                                     $"IV:   --> {Variabili_Client.truppe_IV}\n" +
+                                     $"V:    --> {Variabili_Client.truppe_V}\n";
         }
         void Tutorial_Start()
         {

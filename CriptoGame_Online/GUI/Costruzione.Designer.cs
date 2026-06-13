@@ -173,6 +173,11 @@ namespace Warrior_and_Wealth
             label23 = new Label();
             txt_Caserme_Guerrieri_Costruzione = new TextBox();
             ico_Caserma_2 = new DoubleBufferedPanel();
+            lbl_Unlock_Troops = new TransparentLabel();
+            ico_Livello = new DoubleBufferedPanel();
+            doubleBufferedPanel1 = new DoubleBufferedPanel();
+            doubleBufferedPanel2 = new DoubleBufferedPanel();
+            doubleBufferedPanel3 = new DoubleBufferedPanel();
             groupBox_Strutture_Civili.SuspendLayout();
             panel_6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)Set_0_Case).BeginInit();
@@ -2074,6 +2079,65 @@ namespace Warrior_and_Wealth
             ico_Caserma_2.Size = new Size(34, 41);
             ico_Caserma_2.TabIndex = 16;
             // 
+            // lbl_Unlock_Troops
+            // 
+            lbl_Unlock_Troops.BackColor = Color.Transparent;
+            lbl_Unlock_Troops.Location = new Point(313, 317);
+            lbl_Unlock_Troops.Multiline = false;
+            lbl_Unlock_Troops.Name = "lbl_Unlock_Troops";
+            lbl_Unlock_Troops.Size = new Size(140, 114);
+            lbl_Unlock_Troops.TabIndex = 33;
+            lbl_Unlock_Troops.Text = "aaaa";
+            lbl_Unlock_Troops.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // ico_Livello
+            // 
+            ico_Livello.Anchor = AnchorStyles.Top;
+            ico_Livello.BackColor = Color.Transparent;
+            ico_Livello.BackgroundImage = Properties.Resources.level_up_1_;
+            ico_Livello.BackgroundImageLayout = ImageLayout.Stretch;
+            ico_Livello.Location = new Point(458, 350);
+            ico_Livello.Margin = new Padding(2, 3, 2, 3);
+            ico_Livello.Name = "ico_Livello";
+            ico_Livello.Size = new Size(18, 18);
+            ico_Livello.TabIndex = 34;
+            // 
+            // doubleBufferedPanel1
+            // 
+            doubleBufferedPanel1.Anchor = AnchorStyles.Top;
+            doubleBufferedPanel1.BackColor = Color.Transparent;
+            doubleBufferedPanel1.BackgroundImage = Properties.Resources.level_up_1_;
+            doubleBufferedPanel1.BackgroundImageLayout = ImageLayout.Stretch;
+            doubleBufferedPanel1.Location = new Point(458, 369);
+            doubleBufferedPanel1.Margin = new Padding(2, 3, 2, 3);
+            doubleBufferedPanel1.Name = "doubleBufferedPanel1";
+            doubleBufferedPanel1.Size = new Size(18, 18);
+            doubleBufferedPanel1.TabIndex = 35;
+            // 
+            // doubleBufferedPanel2
+            // 
+            doubleBufferedPanel2.Anchor = AnchorStyles.Top;
+            doubleBufferedPanel2.BackColor = Color.Transparent;
+            doubleBufferedPanel2.BackgroundImage = Properties.Resources.level_up_1_;
+            doubleBufferedPanel2.BackgroundImageLayout = ImageLayout.Stretch;
+            doubleBufferedPanel2.Location = new Point(458, 407);
+            doubleBufferedPanel2.Margin = new Padding(2, 3, 2, 3);
+            doubleBufferedPanel2.Name = "doubleBufferedPanel2";
+            doubleBufferedPanel2.Size = new Size(18, 18);
+            doubleBufferedPanel2.TabIndex = 37;
+            // 
+            // doubleBufferedPanel3
+            // 
+            doubleBufferedPanel3.Anchor = AnchorStyles.Top;
+            doubleBufferedPanel3.BackColor = Color.Transparent;
+            doubleBufferedPanel3.BackgroundImage = Properties.Resources.level_up_1_;
+            doubleBufferedPanel3.BackgroundImageLayout = ImageLayout.Stretch;
+            doubleBufferedPanel3.Location = new Point(458, 388);
+            doubleBufferedPanel3.Margin = new Padding(2, 3, 2, 3);
+            doubleBufferedPanel3.Name = "doubleBufferedPanel3";
+            doubleBufferedPanel3.Size = new Size(18, 18);
+            doubleBufferedPanel3.TabIndex = 36;
+            // 
             // Costruzione
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
@@ -2081,6 +2145,11 @@ namespace Warrior_and_Wealth
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             BackgroundImage = Properties.Resources.Texture_Wood_2;
             ClientSize = new Size(493, 508);
+            Controls.Add(doubleBufferedPanel2);
+            Controls.Add(doubleBufferedPanel3);
+            Controls.Add(doubleBufferedPanel1);
+            Controls.Add(ico_Livello);
+            Controls.Add(lbl_Unlock_Troops);
             Controls.Add(groupBox_Caserme);
             Controls.Add(groupBox_Recluta);
             Controls.Add(groupBox_Reclutamento);
@@ -2333,5 +2402,10 @@ namespace Warrior_and_Wealth
         private Label label23;
         private TextBox txt_Caserme_Guerrieri_Costruzione;
         private DoubleBufferedPanel ico_Caserma_2;
+        private TransparentLabel lbl_Unlock_Troops;
+        private DoubleBufferedPanel ico_Livello;
+        private DoubleBufferedPanel doubleBufferedPanel1;
+        private DoubleBufferedPanel doubleBufferedPanel2;
+        private DoubleBufferedPanel doubleBufferedPanel3;
     }
 }

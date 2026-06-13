@@ -30,14 +30,16 @@
         {
             lbl_Username_Login = new Label();
             panel1 = new Panel();
+            checkBox2 = new CheckBox();
+            lbl_Titolo = new Warrior_and_Wealth.Strumenti.TransparentLabel();
+            checkBox1 = new CheckBox();
             comboBox_Lingua = new ComboBox();
             panel_Connessione = new Panel();
-            txt_Stato_Server = new TextBox();
             txt_Versione_Attuale = new TextBox();
+            txt_Stato_Server = new TextBox();
             txt_Log = new TextBox();
             txt_Ip = new TextBox();
             label1 = new Label();
-            lbl_Titolo = new Label();
             Btn_Login = new Button();
             Btn_New_Game = new Button();
             txt_Password_Login = new TextBox();
@@ -54,7 +56,7 @@
             // 
             lbl_Username_Login.AutoSize = true;
             lbl_Username_Login.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold);
-            lbl_Username_Login.Location = new Point(66, 73);
+            lbl_Username_Login.Location = new Point(100, 98);
             lbl_Username_Login.Name = "lbl_Username_Login";
             lbl_Username_Login.Size = new Size(59, 13);
             lbl_Username_Login.TabIndex = 1;
@@ -62,14 +64,16 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(checkBox2);
+            panel1.Controls.Add(lbl_Titolo);
+            panel1.Controls.Add(checkBox1);
             panel1.Controls.Add(comboBox_Lingua);
             panel1.Controls.Add(panel_Connessione);
-            panel1.Controls.Add(txt_Stato_Server);
             panel1.Controls.Add(txt_Versione_Attuale);
+            panel1.Controls.Add(txt_Stato_Server);
             panel1.Controls.Add(txt_Log);
             panel1.Controls.Add(txt_Ip);
             panel1.Controls.Add(label1);
-            panel1.Controls.Add(lbl_Titolo);
             panel1.Controls.Add(Btn_Login);
             panel1.Controls.Add(Btn_New_Game);
             panel1.Controls.Add(txt_Password_Login);
@@ -78,15 +82,51 @@
             panel1.Controls.Add(lbl_Username_Login);
             panel1.Location = new Point(20, 12);
             panel1.Name = "panel1";
-            panel1.Size = new Size(193, 276);
+            panel1.Size = new Size(268, 342);
             panel1.TabIndex = 1;
+            // 
+            // checkBox2
+            // 
+            checkBox2.AutoSize = true;
+            checkBox2.Checked = true;
+            checkBox2.CheckState = CheckState.Checked;
+            checkBox2.Location = new Point(210, 203);
+            checkBox2.Name = "checkBox2";
+            checkBox2.Size = new Size(46, 19);
+            checkBox2.TabIndex = 21;
+            checkBox2.Text = "Edit";
+            checkBox2.UseVisualStyleBackColor = true;
+            checkBox2.CheckedChanged += checkBox2_CheckedChanged;
+            // 
+            // lbl_Titolo
+            // 
+            lbl_Titolo.BackColor = Color.Transparent;
+            lbl_Titolo.Font = new Font("Segoe UI", 8.5F);
+            lbl_Titolo.Location = new Point(3, -4);
+            lbl_Titolo.Multiline = false;
+            lbl_Titolo.Name = "lbl_Titolo";
+            lbl_Titolo.Size = new Size(262, 28);
+            lbl_Titolo.TabIndex = 20;
+            lbl_Titolo.Text = "Warrior & Wealth";
+            lbl_Titolo.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // checkBox1
+            // 
+            checkBox1.AutoSize = true;
+            checkBox1.Location = new Point(210, 161);
+            checkBox1.Name = "checkBox1";
+            checkBox1.Size = new Size(51, 19);
+            checkBox1.TabIndex = 19;
+            checkBox1.Text = "Hide";
+            checkBox1.UseVisualStyleBackColor = true;
+            checkBox1.CheckedChanged += checkBox1_CheckedChanged;
             // 
             // comboBox_Lingua
             // 
             comboBox_Lingua.FormattingEnabled = true;
-            comboBox_Lingua.Location = new Point(127, 46);
+            comboBox_Lingua.Location = new Point(150, 34);
             comboBox_Lingua.Name = "comboBox_Lingua";
-            comboBox_Lingua.Size = new Size(56, 23);
+            comboBox_Lingua.Size = new Size(62, 23);
             comboBox_Lingua.TabIndex = 19;
             comboBox_Lingua.TextChanged += comboBox_Lingua_TextChanged;
             // 
@@ -95,16 +135,27 @@
             panel_Connessione.BackColor = Color.Transparent;
             panel_Connessione.BackgroundImage = Properties.Resources.Disconnesso_2_V2;
             panel_Connessione.BackgroundImageLayout = ImageLayout.Stretch;
-            panel_Connessione.Location = new Point(97, 48);
+            panel_Connessione.Location = new Point(126, 36);
             panel_Connessione.Name = "panel_Connessione";
             panel_Connessione.Size = new Size(18, 18);
             panel_Connessione.TabIndex = 18;
+            // 
+            // txt_Versione_Attuale
+            // 
+            txt_Versione_Attuale.BackColor = Color.White;
+            txt_Versione_Attuale.BorderStyle = BorderStyle.None;
+            txt_Versione_Attuale.Location = new Point(42, 63);
+            txt_Versione_Attuale.Name = "txt_Versione_Attuale";
+            txt_Versione_Attuale.ReadOnly = true;
+            txt_Versione_Attuale.Size = new Size(170, 16);
+            txt_Versione_Attuale.TabIndex = 11;
+            txt_Versione_Attuale.Text = "Versione Attuale: 0.1.11.0";
             // 
             // txt_Stato_Server
             // 
             txt_Stato_Server.BackColor = Color.White;
             txt_Stato_Server.BorderStyle = BorderStyle.None;
-            txt_Stato_Server.Location = new Point(13, 50);
+            txt_Stato_Server.Location = new Point(42, 38);
             txt_Stato_Server.Name = "txt_Stato_Server";
             txt_Stato_Server.ReadOnly = true;
             txt_Stato_Server.Size = new Size(102, 16);
@@ -112,33 +163,22 @@
             txt_Stato_Server.Text = "Stato Server:";
             txt_Stato_Server.TextAlign = HorizontalAlignment.Center;
             // 
-            // txt_Versione_Attuale
-            // 
-            txt_Versione_Attuale.BackColor = Color.White;
-            txt_Versione_Attuale.BorderStyle = BorderStyle.None;
-            txt_Versione_Attuale.Location = new Point(21, 25);
-            txt_Versione_Attuale.Name = "txt_Versione_Attuale";
-            txt_Versione_Attuale.Size = new Size(151, 16);
-            txt_Versione_Attuale.TabIndex = 11;
-            txt_Versione_Attuale.Text = "Versione Attuale: 0.1.11.0";
-            txt_Versione_Attuale.TextAlign = HorizontalAlignment.Center;
-            // 
             // txt_Log
             // 
-            txt_Log.BorderStyle = BorderStyle.None;
-            txt_Log.Location = new Point(3, 193);
+            txt_Log.BorderStyle = BorderStyle.FixedSingle;
+            txt_Log.Location = new Point(3, 230);
             txt_Log.Multiline = true;
             txt_Log.Name = "txt_Log";
             txt_Log.ReadOnly = true;
-            txt_Log.Size = new Size(187, 38);
+            txt_Log.Size = new Size(262, 60);
             txt_Log.TabIndex = 9;
             // 
             // txt_Ip
             // 
-            txt_Ip.BorderStyle = BorderStyle.None;
-            txt_Ip.Location = new Point(22, 171);
+            txt_Ip.Location = new Point(56, 201);
             txt_Ip.Name = "txt_Ip";
-            txt_Ip.Size = new Size(152, 16);
+            txt_Ip.ReadOnly = true;
+            txt_Ip.Size = new Size(152, 23);
             txt_Ip.TabIndex = 7;
             txt_Ip.Text = "AUTO";
             txt_Ip.TextAlign = HorizontalAlignment.Center;
@@ -148,28 +188,18 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold);
-            label1.Location = new Point(85, 155);
+            label1.Location = new Point(119, 184);
             label1.Name = "label1";
             label1.Size = new Size(17, 13);
             label1.TabIndex = 8;
             label1.Text = "IP";
-            // 
-            // lbl_Titolo
-            // 
-            lbl_Titolo.AutoSize = true;
-            lbl_Titolo.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lbl_Titolo.Location = new Point(28, 0);
-            lbl_Titolo.Name = "lbl_Titolo";
-            lbl_Titolo.Size = new Size(93, 13);
-            lbl_Titolo.TabIndex = 6;
-            lbl_Titolo.Text = "Warrior - Wealth";
             // 
             // Btn_Login
             // 
             Btn_Login.FlatAppearance.BorderSize = 0;
             Btn_Login.FlatStyle = FlatStyle.Flat;
             Btn_Login.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Btn_Login.Location = new Point(98, 236);
+            Btn_Login.Location = new Point(134, 296);
             Btn_Login.Name = "Btn_Login";
             Btn_Login.Size = new Size(92, 32);
             Btn_Login.TabIndex = 5;
@@ -182,7 +212,7 @@
             Btn_New_Game.FlatAppearance.BorderSize = 0;
             Btn_New_Game.FlatStyle = FlatStyle.Flat;
             Btn_New_Game.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Btn_New_Game.Location = new Point(3, 236);
+            Btn_New_Game.Location = new Point(39, 296);
             Btn_New_Game.Name = "Btn_New_Game";
             Btn_New_Game.Size = new Size(89, 32);
             Btn_New_Game.TabIndex = 4;
@@ -192,10 +222,9 @@
             // 
             // txt_Password_Login
             // 
-            txt_Password_Login.BorderStyle = BorderStyle.None;
-            txt_Password_Login.Location = new Point(22, 131);
+            txt_Password_Login.Location = new Point(56, 159);
             txt_Password_Login.Name = "txt_Password_Login";
-            txt_Password_Login.Size = new Size(152, 16);
+            txt_Password_Login.Size = new Size(152, 23);
             txt_Password_Login.TabIndex = 2;
             txt_Password_Login.TextAlign = HorizontalAlignment.Center;
             txt_Password_Login.MouseClick += txt_Password_Login_MouseClick;
@@ -205,7 +234,7 @@
             // 
             lbl_Password_Login.AutoSize = true;
             lbl_Password_Login.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold);
-            lbl_Password_Login.Location = new Point(68, 115);
+            lbl_Password_Login.Location = new Point(102, 142);
             lbl_Password_Login.Name = "lbl_Password_Login";
             lbl_Password_Login.Size = new Size(57, 13);
             lbl_Password_Login.TabIndex = 3;
@@ -213,10 +242,9 @@
             // 
             // txt_Username_Login
             // 
-            txt_Username_Login.BorderStyle = BorderStyle.None;
-            txt_Username_Login.Location = new Point(21, 89);
+            txt_Username_Login.Location = new Point(55, 115);
             txt_Username_Login.Name = "txt_Username_Login";
-            txt_Username_Login.Size = new Size(152, 16);
+            txt_Username_Login.Size = new Size(152, 23);
             txt_Username_Login.TabIndex = 0;
             txt_Username_Login.TextAlign = HorizontalAlignment.Center;
             txt_Username_Login.MouseClick += txt_Username_Login_MouseClick;
@@ -227,7 +255,7 @@
             lbl_Aggiornamento_Disponibile.AutoSize = true;
             lbl_Aggiornamento_Disponibile.BackColor = Color.Transparent;
             lbl_Aggiornamento_Disponibile.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lbl_Aggiornamento_Disponibile.Location = new Point(32, 291);
+            lbl_Aggiornamento_Disponibile.Location = new Point(23, 357);
             lbl_Aggiornamento_Disponibile.Name = "lbl_Aggiornamento_Disponibile";
             lbl_Aggiornamento_Disponibile.Size = new Size(178, 13);
             lbl_Aggiornamento_Disponibile.TabIndex = 11;
@@ -238,7 +266,7 @@
             // 
             banner_2.BackgroundImage = Properties.Resources.Banner_Blue_removebg_preview;
             banner_2.BackgroundImageLayout = ImageLayout.Stretch;
-            banner_2.Location = new Point(189, 2);
+            banner_2.Location = new Point(264, 2);
             banner_2.Name = "banner_2";
             banner_2.Size = new Size(33, 55);
             banner_2.TabIndex = 17;
@@ -257,9 +285,9 @@
             btn_Aggiorna.FlatAppearance.BorderSize = 0;
             btn_Aggiorna.FlatStyle = FlatStyle.Flat;
             btn_Aggiorna.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btn_Aggiorna.Location = new Point(57, 307);
+            btn_Aggiorna.Location = new Point(59, 373);
             btn_Aggiorna.Name = "btn_Aggiorna";
-            btn_Aggiorna.Size = new Size(114, 27);
+            btn_Aggiorna.Size = new Size(187, 27);
             btn_Aggiorna.TabIndex = 18;
             btn_Aggiorna.Text = "Aggiorna Client";
             btn_Aggiorna.UseVisualStyleBackColor = true;
@@ -274,7 +302,7 @@
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             BackgroundImage = Properties.Resources.freepik__upload__73441_AAA;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(235, 338);
+            ClientSize = new Size(306, 407);
             Controls.Add(lbl_Aggiornamento_Disponibile);
             Controls.Add(btn_Aggiorna);
             Controls.Add(panel1);
@@ -301,7 +329,6 @@
         private TextBox txt_Password_Login;
         private Label lbl_Password_Login;
         private Button Btn_Login;
-        private Label lbl_Titolo;
         private Panel banner_2;
         private Panel banner_1;
         private TextBox txt_Ip;
@@ -313,5 +340,8 @@
         private TextBox txt_Stato_Server;
         private Panel panel_Connessione;
         private ComboBox comboBox_Lingua;
+        private CheckBox checkBox1;
+        private Strumenti.TransparentLabel lbl_Titolo;
+        private CheckBox checkBox2;
     }
 }

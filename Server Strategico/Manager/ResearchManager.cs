@@ -23,6 +23,8 @@ namespace Server_Strategico.Manager
                 "Popolazione" => player.Ricerca_Popolazione + 1,
                 "Trasporto" => player.Ricerca_Trasporto + 1,
                 "Riparazione" => player.Ricerca_Riparazione + 1,
+                "Spionaggio" => player.Ricerca_Spionaggio + 1,
+                "Contro-Spionaggio" => player.Ricerca_Contro_Spionaggio + 1,
 
                 "Guerriero Salute" => player.Guerriero_Salute + 1,
                 "Guerriero Attacco" => player.Guerriero_Attacco + 1,
@@ -143,58 +145,189 @@ namespace Server_Strategico.Manager
             bool returnValue = false;
             int richiesto = 0;
             string msg = "";
-
             int livelloRichiesto = (int)Math.Ceiling((double)livelloRicerca / 3.0) * 2;
 
             if ((ricerca == "Produzione" || ricerca == "Costruzione" || ricerca == "Addestramento" || ricerca == "Popolazione") && player.Livello < livelloRichiesto)
             { returnValue = true; richiesto = livelloRichiesto; msg = "giocatore"; }
-            if ((ricerca == "Trasporto") && player.Livello < livelloRichiesto * 2)
-            { returnValue = true; richiesto = livelloRichiesto; msg = "giocatore"; }
-            if ((ricerca == "Riparazione") && player.Livello < livelloRichiesto * 15)
-            { returnValue = true; richiesto = livelloRichiesto; msg = "giocatore"; }
 
-            if (ricerca == "Guerriero Livello" && player.Livello <= (player.Guerriero_Livello + 1) * 2) {returnValue = true; richiesto = (player.Guerriero_Livello + 1) * 2; msg = "giocatore";}
-            if (ricerca == "Guerriero Salute" && player.Guerriero_Salute >= (player.Guerriero_Livello + 1) * 2) {returnValue = true; richiesto = (player.Guerriero_Livello + 1) * 2; msg = "guerriero";}
-            if (ricerca == "Guerriero Attacco" && player.Guerriero_Attacco >= (player.Guerriero_Livello + 1) * 2) {returnValue = true; richiesto = (player.Guerriero_Livello + 1) * 2;  msg = "guerriero";}
-            if (ricerca == "Guerriero Difesa" && player.Guerriero_Difesa >= (player.Guerriero_Livello + 1) * 2) {returnValue = true; richiesto = (player.Guerriero_Livello + 1) * 2; msg = "guerriero"; }
-                   
-            if (ricerca == "Lancere Livello" && player.Livello <= (player.Lancere_Livello + 1) * 2) {returnValue = true; richiesto = (player.Lancere_Livello + 1) * 2; msg = "giocatore";}
-            if (ricerca == "Lancere Salute" && player.Lancere_Salute >= (player.Lancere_Livello + 1) * 2) {returnValue = true; richiesto = (player.Lancere_Livello + 1) * 2; msg = "lancere";}
-            if (ricerca == "Lancere Attacco" && player.Lancere_Attacco >= (player.Lancere_Livello + 1) * 2) {returnValue = true; richiesto = (player.Lancere_Livello + 1) * 2; msg = "lancere"; }
-            if (ricerca == "Lancere Difesa" && player.Lancere_Difesa >= (player.Lancere_Livello + 1) * 2) {returnValue = true; richiesto = (player.Lancere_Livello + 1) * 2; msg = "lancere"; }
-                   
-            if (ricerca == "Arcere Livello" && player.Livello <= (player.Arcere_Livello + 1) * 2) {returnValue = true; richiesto = (player.Arcere_Livello + 1) * 2; msg = "giocatore";}
-            if (ricerca == "Arcere Salute" && player.Arcere_Salute >= (player.Arcere_Livello + 1) * 2) {returnValue = true; richiesto = (player.Arcere_Livello + 1) * 2; msg = "Arcere";}
-            if (ricerca == "Arcere Attacco" && player.Arcere_Attacco >= (player.Arcere_Livello + 1) * 2) {returnValue = true; richiesto = (player.Arcere_Livello + 1) * 2; msg = "Arcere"; }
-            if (ricerca == "Arcere Difesa" && player.Arcere_Difesa >= (player.Arcere_Livello + 1) * 2) {returnValue = true; richiesto = (player.Arcere_Livello + 1) * 2; msg = "Arcere"; }
-                   
-            if (ricerca == "Catapulta Livello" && player.Livello <= (player.Catapulta_Livello + 1) * 2) {returnValue = true; richiesto = (player.Catapulta_Livello + 1) * 2; msg = "giocatore";}
-            if (ricerca == "Catapulta Salute" && player.Catapulta_Salute >= (player.Catapulta_Livello + 1) * 2) {returnValue = true; richiesto = (player.Catapulta_Livello + 1) * 2; msg = "catapulta";}
-            if (ricerca == "Catapulta Attacco" && player.Catapulta_Attacco >= (player.Catapulta_Livello + 1) * 2) {returnValue = true; richiesto = (player.Catapulta_Livello + 1) * 2; msg = "catapulta"; }
-            if (ricerca == "Catapulta Difesa" && player.Catapulta_Difesa >= (player.Catapulta_Livello + 1) * 2) {returnValue = true; richiesto = (player.Catapulta_Livello + 1) * 2; msg = "catapulta"; }
-                   
-            if (ricerca == "Ingresso Guarnigione" && player.Livello <= (player.Ricerca_Ingresso_Guarnigione + 1) * 4) {returnValue = true; richiesto = (player.Ricerca_Ingresso_Guarnigione + 1) * 4; msg = "giocatore";}
-            if (ricerca == "Citta Guarnigione" && player.Livello <= (player.Ricerca_Citta_Guarnigione + 1) * 4) {returnValue = true; richiesto = (player.Ricerca_Citta_Guarnigione + 1) * 4; msg = "giocatore";}
+            switch (ricerca)
+            {
+                case "Trasporto":
+                    richiesto = livelloRichiesto * 5;
+                    if (player.Livello >= richiesto) { returnValue = true; msg = "giocatore"; }
+                    break;
+                case "Riparazione":
+                    richiesto = livelloRichiesto * 15;
+                    if (player.Livello >= richiesto) { returnValue = true; msg = "giocatore"; }
+                    break;
+                case "Spionaggio":
+                    richiesto = player.Ricerca_Spionaggio;
+                    if (player.Livello >= richiesto) { returnValue = true; msg = "giocatore"; }
+                    break;
+                case "Contro-Spionaggio":
+                    richiesto = player.Ricerca_Contro_Spionaggio;
+                    if (player.Livello >= richiesto) { returnValue = true; msg = "giocatore"; }
+                    break;
 
-            if (ricerca == "Cancello Livello" && player.Livello <= (player.Ricerca_Cancello_Livello + 1) * 4) { returnValue = true; richiesto = (player.Ricerca_Cancello_Livello + 1) * 4; msg = "giocatore"; }
-            if (ricerca == "Cancello Salute" && player.Ricerca_Cancello_Livello * 2 <= player.Ricerca_Cancello_Salute) {returnValue = true; richiesto = (player.Ricerca_Cancello_Salute + 1) * 4; msg = "cancello"; }
-            if (ricerca == "Cancello Difesa" && player.Ricerca_Cancello_Livello * 2 <= player.Ricerca_Cancello_Difesa) {returnValue = true; richiesto = (player.Ricerca_Cancello_Difesa + 1) * 4; msg = "cancello"; }
-            if (ricerca == "Cancello Guarnigione" && player.Ricerca_Cancello_Livello * 2 <= player.Ricerca_Cancello_Guarnigione) {returnValue = true; richiesto = (player.Ricerca_Cancello_Guarnigione + 1) * 4; msg = "cancello"; }
+                case "Guerriero Livello":
+                    richiesto = player.Livello * 2;
+                    if (player.Guerriero_Livello >= richiesto) { returnValue = true; msg = "giocatore"; }
+                    break;
+                case "Guerriero Salute":
+                    richiesto = player.Guerriero_Livello * 2;
+                    if (player.Guerriero_Salute >= richiesto) { returnValue = true; msg = "guerriero"; }
+                    break;
+                case "Guerriero Attacco":
+                    richiesto = player.Guerriero_Livello * 2;
+                    if (player.Guerriero_Attacco >= richiesto) { returnValue = true; msg = "guerriero"; }
+                    break;
+                case "Guerriero Difesa":
+                    richiesto = player.Guerriero_Livello * 2;
+                    if (player.Guerriero_Difesa >= richiesto) { returnValue = true; msg = "guerriero"; }
+                    break;
 
-            if (ricerca == "Mura Livello" && player.Livello <= (player.Ricerca_Mura_Livello + 1) * 4) { returnValue = true; richiesto = (player.Ricerca_Mura_Livello + 1) * 4; msg = "giocatore"; }
-            if (ricerca == "Mura Salute" && player.Ricerca_Mura_Livello * 2 <= player.Ricerca_Mura_Salute) {returnValue = true; richiesto = (player.Ricerca_Mura_Salute + 1) * 4; msg = "mura"; }
-            if (ricerca == "Mura Difesa" && player.Ricerca_Mura_Livello * 2 <= player.Ricerca_Mura_Difesa) {returnValue = true; richiesto = (player.Ricerca_Mura_Difesa + 1) * 4; msg = "mura"; }
-            if (ricerca == "Mura Guarnigione" && player.Ricerca_Mura_Livello * 2 <= player.Ricerca_Mura_Guarnigione) {returnValue = true; richiesto = (player.Ricerca_Mura_Guarnigione + 1) * 4; msg = "mura"; }
+                case "Lancere Livello":
+                    richiesto = player.Livello * 2;
+                    if (player.Lancere_Livello >= richiesto) { returnValue = true; msg = "giocatore"; }
+                    break;
+                case "Lancere Salute":
+                    richiesto = player.Lancere_Livello * 2;
+                    if (player.Lancere_Salute >= richiesto) { returnValue = true; msg = "lanciere"; }
+                    break;
+                case "Lancere Attacco":
+                    richiesto = player.Lancere_Livello * 2;
+                    if (player.Lancere_Attacco >= richiesto) { returnValue = true; msg = "lanciere"; }
+                    break;
+                case "Lancere Difesa":
+                    richiesto = player.Lancere_Livello * 2;
+                    if (player.Lancere_Difesa >= richiesto) { returnValue = true; msg = "lanciere"; }
+                    break;
 
-            if (ricerca == "Torri Livello" && player.Livello <= (player.Ricerca_Torri_Livello + 1) * 4) { returnValue = true; richiesto = (player.Ricerca_Torri_Livello + 1) * 4; msg = "giocatore"; }
-            if (ricerca == "Torri Salute" && player.Ricerca_Torri_Livello * 2 <= player.Ricerca_Torri_Salute) {returnValue = true; richiesto = (player.Ricerca_Torri_Salute + 1) * 4; msg = "torri";}
-            if (ricerca == "Torri Difesa" && player.Ricerca_Torri_Livello * 2 <= player.Ricerca_Torri_Difesa) {returnValue = true; richiesto = (player.Ricerca_Torri_Difesa + 1) * 4; msg = "torri"; }
-            if (ricerca == "Torri Guarnigione" && player.Ricerca_Torri_Livello * 2 <= player.Ricerca_Torri_Guarnigione) {returnValue = true; richiesto = (player.Ricerca_Torri_Guarnigione + 1) * 4; msg = "torri"; }
+                case "Arcere Livello":
+                    richiesto = player.Livello * 2;
+                    if (player.Arcere_Livello >= richiesto) { returnValue = true; msg = "giocatore"; }
+                    break;
+                case "Arcere Salute":
+                    richiesto = player.Arcere_Livello * 2;
+                    if (player.Arcere_Salute >= richiesto) { returnValue = true; msg = "arcere"; }
+                    break;
+                case "Arcere Attacco":
+                    richiesto = player.Arcere_Livello * 2;
+                    if (player.Arcere_Attacco >= richiesto) { returnValue = true; msg = "arcere"; }
+                    break;
+                case "Arcere Difesa":
+                    richiesto = player.Arcere_Livello * 2;
+                    if (player.Arcere_Difesa >= richiesto) { returnValue = true; msg = "arcere"; }
+                    break;
 
-            if (ricerca == "Castello Livello" && player.Livello <= (player.Ricerca_Castello_Livello + 1) * 4) { returnValue = true; richiesto = (player.Ricerca_Castello_Livello + 1) * 4; msg = "giocacatore"; }
-            if (ricerca == "Castello Salute" && player.Ricerca_Castello_Livello * 2 == player.Ricerca_Castello_Salute) {returnValue = true; richiesto = (player.Ricerca_Castello_Livello + 1) * 4; msg = "castello"; }
-            if (ricerca == "Castello Difesa" && player.Ricerca_Castello_Livello * 2 == player.Ricerca_Castello_Difesa) {returnValue = true; richiesto =  (player.Ricerca_Castello_Difesa + 1) * 4; msg = "castello"; }
-            if (ricerca == "Castello Guarnigione" && player.Ricerca_Castello_Livello * 2 == player.Ricerca_Castello_Guarnigione) {returnValue = true; richiesto = (player.Ricerca_Castello_Guarnigione + 1) * 4; msg = "castello"; }
+                case "Catapulta Livello":
+                    richiesto = player.Livello * 2;
+                    if (player.Catapulta_Livello >= richiesto) { returnValue = true; msg = "giocatore"; }
+                    break;
+                case "Catapulta Salute":
+                    richiesto = player.Catapulta_Livello * 2;
+                    if (player.Catapulta_Salute >= richiesto) { returnValue = true; msg = "catapulta"; }
+                    break;
+                case "Catapulta Attacco":
+                    richiesto = player.Catapulta_Livello * 2;
+                    if (player.Catapulta_Attacco >= richiesto) { returnValue = true; msg = "catapulta"; }
+                    break;
+                case "Catapulta Difesa":
+                    richiesto = player.Catapulta_Livello * 2;
+                    if (player.Catapulta_Difesa >= richiesto) { returnValue = true; msg = "catapulta"; }
+                    break;
+
+
+                case "Ingresso Livello":
+                    richiesto = player.Livello * 2;
+                    if (player.Ricerca_Cancello_Livello >= richiesto) { returnValue = true; msg = "giocatore"; }  ///Da implementare
+                    break;
+                case "Ingresso Guarnigione":
+                    richiesto = player.Ricerca_Cancello_Livello * 2;
+                    if (player.Ricerca_Cancello_Salute >= richiesto) { returnValue = true; msg = "cancello"; }
+                    break;
+
+                case "Citta Livello":
+                    richiesto = player.Livello * 2;
+                    if (player.Ricerca_Cancello_Livello >= richiesto) { returnValue = true; msg = "giocatore"; }
+                    break;
+                case "Citta Guarnigione":
+                    richiesto = player.Ricerca_Cancello_Livello * 2;
+                    if (player.Ricerca_Citta_Guarnigione >= richiesto) { returnValue = true; msg = "cancello"; } ///Da implementare
+                    break;
+
+                case "Cancello Livello":
+                    richiesto = player.Livello * 2;
+                    if (player.Ricerca_Cancello_Livello >= richiesto) {returnValue = true; msg = "giocatore";}
+                    break;
+                case "Cancello Salute":
+                    richiesto = player.Ricerca_Cancello_Livello * 2;
+                    if (player.Ricerca_Cancello_Salute >= richiesto) { returnValue = true; msg = "cancello"; }
+                    break;
+                case "Cancello Difesa":
+                    richiesto = player.Ricerca_Cancello_Livello * 2;
+                    if (player.Ricerca_Cancello_Difesa >= richiesto) { returnValue = true; msg = "cancello"; }
+                    break;
+                case "Cancello Guarnigione":
+                    richiesto = player.Ricerca_Cancello_Livello * 2;
+                    if (player.Ricerca_Cancello_Guarnigione >= richiesto) { returnValue = true; msg = "cancello"; }
+                    break;
+
+                case "Mura Livello":
+                    richiesto = player.Livello * 2;
+                    if (player.Ricerca_Mura_Livello >= richiesto) { returnValue = true; msg = "giocatore"; }
+                    break;
+                case "Mura Salute":
+                    richiesto = player.Ricerca_Mura_Livello * 2;
+                    if (player.Ricerca_Mura_Salute >= richiesto) { returnValue = true; msg = "mura"; }
+                    break;
+                case "Mura Difesa":
+                    richiesto = player.Ricerca_Mura_Livello * 2;
+                    if (player.Ricerca_Mura_Difesa >= richiesto) { returnValue = true; msg = "mura"; }
+                    break;
+                case "Mura Guarnigione":
+                    richiesto = player.Ricerca_Mura_Livello * 2;
+                    if (player.Ricerca_Mura_Guarnigione >= richiesto) { returnValue = true; msg = "mura"; }
+                    break;
+
+                case "Torri Livello":
+                    richiesto = player.Livello * 2;
+                    if (player.Ricerca_Torri_Livello >= richiesto) { returnValue = true; msg = "giocatore"; }
+                    break;
+                case "Torri Salute":
+                    richiesto = player.Ricerca_Torri_Livello * 2;
+                    if (player.Ricerca_Torri_Salute >= richiesto) { returnValue = true; msg = "torri"; }
+                    break;
+                case "Torri Difesa":
+                    richiesto = player.Ricerca_Torri_Livello * 2;
+                    if (player.Ricerca_Torri_Difesa >= richiesto) { returnValue = true; msg = "torri"; }
+                    break;
+                case "Torri Guarnigione":
+                    richiesto = player.Ricerca_Torri_Livello * 2;
+                    if (player.Ricerca_Torri_Guarnigione >= richiesto) { returnValue = true; msg = "torri"; }
+                    break;
+
+                case "Castello Livello":
+                    richiesto = player.Livello * 2;
+                    if (player.Ricerca_Castello_Livello >= richiesto) { returnValue = true; msg = "giocatore"; }
+                    break;
+                case "Castello Salute":
+                    richiesto = player.Ricerca_Castello_Livello * 2;
+                    if (player.Ricerca_Castello_Salute >= richiesto) { returnValue = true; msg = "castello"; }
+                    break;
+                case "Castello Difesa":
+                    richiesto = player.Ricerca_Castello_Livello * 2;
+                    if (player.Ricerca_Castello_Difesa >= richiesto) { returnValue = true; msg = "castello"; }
+                    break;
+                case "Castello Guarnigione":
+                    richiesto = player.Ricerca_Castello_Livello * 2;
+                    if (player.Ricerca_Castello_Guarnigione >= richiesto) { returnValue = true; msg = "castello"; }
+                    break;
+
+                //default:
+                //    returnValue = true; msg = "ricerca non esiste";
+                //    break;
+            }
 
             if (returnValue == true)
                 Server.Server.Send(player.guid_Player, LocalizationManager.Get(player).Ricerca_LivelloRichiesto(ricerca, livelloRicerca, msg, richiesto));
@@ -261,6 +394,12 @@ namespace Server_Strategico.Manager
                     break;
                 case "Riparazione":
                     player.Ricerca_Riparazione++;
+                    break;
+                case "Spionaggio":
+                    player.Ricerca_Spionaggio++;
+                    break;
+                case "Contro-Spionaggio":
+                    player.Ricerca_Contro_Spionaggio++;
                     break;
 
                 case "Guerriero Salute":
@@ -397,7 +536,7 @@ namespace Server_Strategico.Manager
                     Pietra = Tipi.Produzione.Pietra * livello,
                     Ferro = Tipi.Produzione.Ferro * livello,
                     Oro = Tipi.Produzione.Oro * livello,
-                    Popolazione = 30,
+                    Popolazione = Tipi.Produzione.Popolazione * livello,
                     TempoRicerca = Tipi.Addestramento.TempoRicerca * livello
                 },
                 "Costruzione" => new ResearchCost
@@ -407,7 +546,7 @@ namespace Server_Strategico.Manager
                     Pietra = Tipi.Costruzione.Pietra * livello,
                     Ferro = Tipi.Costruzione.Ferro * livello,
                     Oro = Tipi.Costruzione.Oro * livello,
-                    Popolazione = 25,
+                    Popolazione = Tipi.Costruzione.Popolazione * livello,
                     TempoRicerca = Tipi.Addestramento.TempoRicerca * livello
                 },
                 "Addestramento" => new ResearchCost
@@ -417,7 +556,7 @@ namespace Server_Strategico.Manager
                     Pietra = Tipi.Addestramento.Pietra * livello,
                     Ferro = Tipi.Addestramento.Ferro * livello,
                     Oro = Tipi.Addestramento.Oro * livello,
-                    Popolazione = 25,
+                    Popolazione = Tipi.Addestramento.Popolazione * livello,
                     TempoRicerca = Tipi.Addestramento.TempoRicerca * livello // o calcola dinamicamente
                 },
                 "Popolazione" => new ResearchCost
@@ -427,7 +566,7 @@ namespace Server_Strategico.Manager
                     Pietra = Tipi.Popolazione.Pietra * livello,
                     Ferro = Tipi.Popolazione.Ferro * livello,
                     Oro = Tipi.Popolazione.Oro * livello,
-                    Popolazione = 50,
+                    Popolazione = Tipi.Popolazione.Popolazione * livello,
                     TempoRicerca = Tipi.Addestramento.TempoRicerca * livello // più tempo per livelli più alti
                 },
                 "Trasporto" => new ResearchCost
@@ -437,7 +576,7 @@ namespace Server_Strategico.Manager
                     Pietra = Tipi.Trasporto.Pietra * livello,
                     Ferro = Tipi.Trasporto.Ferro * livello,
                     Oro = Tipi.Trasporto.Oro * livello,
-                    Popolazione = 40,
+                    Popolazione = Tipi.Trasporto.Popolazione * livello,
                     TempoRicerca = Tipi.Addestramento.TempoRicerca * livello // più tempo per livelli più alti
                 },
                 "Riparazione" => new ResearchCost
@@ -447,7 +586,27 @@ namespace Server_Strategico.Manager
                     Pietra = Tipi.Riparazione.Pietra * livello,
                     Ferro = Tipi.Riparazione.Ferro * livello,
                     Oro = Tipi.Riparazione.Oro * livello,
-                    Popolazione = 60,
+                    Popolazione = Tipi.Riparazione.Popolazione * livello,
+                    TempoRicerca = Tipi.Addestramento.TempoRicerca * livello // più tempo per livelli più alti
+                },
+                "Spionaggio" => new ResearchCost
+                {
+                    Cibo = Tipi.Spionaggio.Cibo * livello,
+                    Legno = Tipi.Spionaggio.Legno * livello,
+                    Pietra = Tipi.Spionaggio.Pietra * livello,
+                    Ferro = Tipi.Spionaggio.Ferro * livello,
+                    Oro = Tipi.Spionaggio.Oro * livello,
+                    Popolazione = Tipi.Spionaggio.Popolazione * livello,
+                    TempoRicerca = Tipi.Addestramento.TempoRicerca * livello // più tempo per livelli più alti
+                },
+                "Contro-Spionaggio" => new ResearchCost
+                {
+                    Cibo = Tipi.Contro_Spionaggio.Cibo * livello,
+                    Legno = Tipi.Contro_Spionaggio.Legno * livello,
+                    Pietra = Tipi.Contro_Spionaggio.Pietra * livello,
+                    Ferro = Tipi.Contro_Spionaggio.Ferro * livello,
+                    Oro = Tipi.Contro_Spionaggio.Oro * livello,
+                    Popolazione = Tipi.Contro_Spionaggio.Popolazione * livello,
                     TempoRicerca = Tipi.Addestramento.TempoRicerca * livello // più tempo per livelli più alti
                 },
 
@@ -615,25 +774,46 @@ namespace Server_Strategico.Manager
                     TempoRicerca = Soldati.Livello.TempoRicerca * livello // più tempo per livelli più alti
                 },
 
+                "Ingresso Livello" => new ResearchCost
+                {
+                    Cibo = Citta.Ingresso_Livello.Cibo * livello,
+                    Legno = Citta.Ingresso_Livello.Legno * livello,
+                    Pietra = Citta.Ingresso_Livello.Pietra * livello,
+                    Ferro = Citta.Ingresso_Livello.Ferro * livello,
+                    Oro = Citta.Ingresso_Livello.Oro * livello,
+                    Popolazione = Citta.Ingresso_Livello.Popolazione * livello,
+                    TempoRicerca = Citta.Ingresso_Livello.TempoRicerca * livello // più tempo per livelli più alti
+                },
                 "Ingresso Guarnigione" => new ResearchCost
                 {
-                    Cibo = Citta.Ingresso.Cibo * livello,
-                    Legno = Citta.Ingresso.Legno * livello,
-                    Pietra = Citta.Ingresso.Pietra * livello,
-                    Ferro = Citta.Ingresso.Ferro * livello,
-                    Oro = Citta.Ingresso.Oro * livello,
-                    Popolazione = Citta.Ingresso.Popolazione * livello,
-                    TempoRicerca = Citta.Ingresso.TempoRicerca * livello // più tempo per livelli più alti
+                    Cibo = Citta.Ingresso_Guarnigione.Cibo * livello,
+                    Legno = Citta.Ingresso_Guarnigione.Legno * livello,
+                    Pietra = Citta.Ingresso_Guarnigione.Pietra * livello,
+                    Ferro = Citta.Ingresso_Guarnigione.Ferro * livello,
+                    Oro = Citta.Ingresso_Guarnigione.Oro * livello,
+                    Popolazione = Citta.Ingresso_Guarnigione.Popolazione * livello,
+                    TempoRicerca = Citta.Ingresso_Guarnigione.TempoRicerca * livello // più tempo per livelli più alti
+                },
+
+                "Citta Livello" => new ResearchCost
+                {
+                    Cibo = Citta.Città_Livello.Cibo * livello,
+                    Legno = Citta.Città_Livello.Legno * livello,
+                    Pietra = Citta.Città_Livello.Pietra * livello,
+                    Ferro = Citta.Città_Livello.Ferro * livello,
+                    Oro = Citta.Città_Livello.Oro * livello,
+                    Popolazione = Citta.Città_Livello.Popolazione * livello,
+                    TempoRicerca = Citta.Città_Livello.TempoRicerca * livello // più tempo per livelli più alti
                 },
                 "Citta Guarnigione" => new ResearchCost
                 {
-                    Cibo = Citta.Città.Cibo * livello,
-                    Legno = Citta.Città.Legno * livello,
-                    Pietra = Citta.Città.Pietra * livello,
-                    Ferro = Citta.Città.Ferro * livello,
-                    Oro = Citta.Città.Oro * livello,
-                    Popolazione = Citta.Città.Popolazione * livello,
-                    TempoRicerca = Citta.Città.TempoRicerca * livello // più tempo per livelli più alti
+                    Cibo = Citta.Città_Guarnigione.Cibo * livello,
+                    Legno = Citta.Città_Guarnigione.Legno * livello,
+                    Pietra = Citta.Città_Guarnigione.Pietra * livello,
+                    Ferro = Citta.Città_Guarnigione.Ferro * livello,
+                    Oro = Citta.Città_Guarnigione.Oro * livello,
+                    Popolazione = Citta.Città_Guarnigione.Popolazione * livello,
+                    TempoRicerca = Citta.Città_Guarnigione.TempoRicerca * livello // più tempo per livelli più alti
                 },
                 "Cancello Salute" => new ResearchCost
                 {

@@ -714,6 +714,8 @@ namespace Strategico_V2
                 SetValue<string>("ricerca_popolazione", v => Variabili_Client.Utente_Ricerca.Ricerca_Popolazione = v);
                 SetValue<string>("ricerca_riparazione", v => Variabili_Client.Utente_Ricerca.Ricerca_Riparazione = v);
                 SetValue<string>("ricerca_trasporto", v => Variabili_Client.Utente_Ricerca.Ricerca_Trasporto = v);
+                SetValue<string>("ricerca_spionaggio", v => Variabili_Client.Utente_Ricerca.Ricerca_Spionaggio = v);
+                SetValue<string>("ricerca_contro_spionaggio", v => Variabili_Client.Utente_Ricerca.Ricerca_ControSpionaggio = v);
 
                 SetValue<string>("guerriero_salute", v => Variabili_Client.Utente_Ricerca.Salute_Spadaccini = v);
                 SetValue<string>("guerriero_difesa", v => Variabili_Client.Utente_Ricerca.Difesa_Spadaccini = v);
@@ -736,7 +738,10 @@ namespace Strategico_V2
                 SetValue<string>("catapulta_livello", v => Variabili_Client.Utente_Ricerca.Livello_Catapulte = v);
 
                 //Ricerca citta
+                SetValue<string>("ricerca_ingresso_livello", v => Variabili_Client.Utente_Ricerca.Ricerca_Ingresso_Livello = v);
                 SetValue<string>("ricerca_ingresso_guarnigione", v => Variabili_Client.Utente_Ricerca.Ricerca_Ingresso_Guarnigione = v);
+
+                SetValue<string>("ricerca_citta_livello", v => Variabili_Client.Utente_Ricerca.Ricerca_Citta_Livello = v);
                 SetValue<string>("ricerca_citta_guarnigione", v => Variabili_Client.Utente_Ricerca.Ricerca_Citta_Guarnigione = v);
 
                 SetValue<string>("ricerca_cancello_livello", v => Variabili_Client.Utente_Ricerca.Ricerca_Cancello_Livello = v);
@@ -1292,6 +1297,12 @@ namespace Strategico_V2
                     case "Ricerca Riparazione":
                         Variabili_Client.Ricerca_Riparazione_Desc = desc;
                         break;
+                    case "Ricerca Spionaggio":
+                        Variabili_Client.Ricerca_Spionaggio_Desc = desc;
+                        break;
+                    case "Ricerca Contro-Spionaggio":
+                        Variabili_Client.Ricerca_Contro_Spionaggio_Desc = desc;
+                        break;
 
                     case "Ricerca Guerriero Livello":
                         Variabili_Client.Ricerca_Guerrieri_Livello_Desc = desc;
@@ -1345,8 +1356,14 @@ namespace Strategico_V2
                         Variabili_Client.Ricerca_Catapulte_Difesa_Desc = desc;
                         break;
 
+                    case "Ricerca Ingresso Livello":
+                        Variabili_Client.Ricerca_Ingresso_Livello_Desc = desc;
+                        break;
                     case "Ricerca Ingresso Guarnigione":
                         Variabili_Client.Ricerca_Ingresso_Guarnigione_Desc = desc;
+                        break;
+                    case "Ricerca Citta Livello":
+                        Variabili_Client.Ricerca_Citta_Livello_Desc = desc;
                         break;
                     case "Ricerca Citta Guarnigione":
                         Variabili_Client.Ricerca_Citta_Guarnigione_Desc = desc;

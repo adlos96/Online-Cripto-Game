@@ -165,7 +165,9 @@ namespace Server_Strategico.Gioco
 
             //Ricerca Città
             #region Ricerca
+            public int Ricerca_Ingresso_Livello { get; set; }
             public int Ricerca_Ingresso_Guarnigione { get; set; }
+            public int Ricerca_Citta_Livello { get; set; }
             public int Ricerca_Citta_Guarnigione { get; set; }
 
             public int Ricerca_Cancello_Livello { get; set; }
@@ -546,7 +548,9 @@ namespace Server_Strategico.Gioco
                 Ricerca_Contro_Spionaggio = 0;
 
                 //Ricerca CIttà
+                Ricerca_Ingresso_Livello = 0;
                 Ricerca_Ingresso_Guarnigione = 0;
+                Ricerca_Citta_Livello = 0;
                 Ricerca_Citta_Guarnigione = 0;
 
                 Ricerca_Cancello_Livello = 0;

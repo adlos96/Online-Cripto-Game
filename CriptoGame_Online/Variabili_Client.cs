@@ -96,6 +96,8 @@ namespace Strategico_V2
         public static string Ricerca_Popolazione_Desc = "";
         public static string Ricerca_Trasporto_Desc = "";
         public static string Ricerca_Riparazione_Desc = "";
+        public static string Ricerca_Spionaggio_Desc = "";
+        public static string Ricerca_Contro_Spionaggio_Desc = "";
 
         public static string Ricerca_Guerrieri_Livello_Desc = "";
         public static string Ricerca_Guerrieri_Salute_Desc = "";
@@ -430,8 +432,10 @@ namespace Strategico_V2
             public string Difesa_Catapulte { get; set; }
             public string Attacco_Catapulte { get; set; }
 
+            public string Ricerca_Ingresso_Livello { get; set; }
             public string Ricerca_Ingresso_Guarnigione { get; set; }
             public string Ricerca_Citta_Guarnigione { get; set; }
+            public string Ricerca_Citta_Livello { get; set; }
 
             public string Ricerca_Cancello_Livello { get; set; }
             public string Ricerca_Cancello_Salute { get; set; }
@@ -571,8 +575,10 @@ namespace Strategico_V2
             Ricerca_Spionaggio = "0",
             Ricerca_ControSpionaggio = "0",
 
+            Ricerca_Ingresso_Livello = "0",
             Ricerca_Ingresso_Guarnigione = "0",
             Ricerca_Citta_Guarnigione = "0",
+            Ricerca_Citta_Livello = "0",
 
             Ricerca_Cancello_Livello = "0",
             Ricerca_Cancello_Salute = "0",

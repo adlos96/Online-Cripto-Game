@@ -46,6 +46,8 @@ namespace Warrior_and_Wealth
             btn_Popolazione.Font = new Font("Cinzel Decorative", 6.75f, FontStyle.Bold);
             btn_Trasporto.Font = new Font("Cinzel Decorative", 6.75f, FontStyle.Bold);
             btn_Riparazione.Font = new Font("Cinzel Decorative", 6.75f, FontStyle.Bold);
+            btn_Spionaggio.Font = new Font("Cinzel Decorative", 6.75f, FontStyle.Bold);
+            btn_Contro_Spionaggio.Font = new Font("Cinzel Decorative", 6.75f, FontStyle.Bold);
 
             btn_Livello_Guerrieri.Font = new Font("Cinzel Decorative", 6.75f, FontStyle.Bold);
             btn_Attacco_Guerrieri.Font = new Font("Cinzel Decorative", 6.75f, FontStyle.Bold);
@@ -91,8 +93,10 @@ namespace Warrior_and_Wealth
             btn_Salute_Cancello.Font = new Font("Cinzel Decorative", 6.75f, FontStyle.Bold);
             btn_Livello_Cancello.Font = new Font("Cinzel Decorative", 6.75f, FontStyle.Bold);
 
+            btn_Livello_Ingresso.Font = new Font("Cinzel Decorative", 6.75f, FontStyle.Bold);
             btn_Guarnigione_Ingresso.Font = new Font("Cinzel Decorative", 6.75f, FontStyle.Bold);
-            btn_Guarnigione_Citta.Font = new Font("Cinzel Decorative", 6.75f, FontStyle.Bold);
+            btn_Livello_Centro.Font = new Font("Cinzel Decorative", 6.75f, FontStyle.Bold);
+            btn_Guarnigione_Centro.Font = new Font("Cinzel Decorative", 6.75f, FontStyle.Bold);
 
             toolTip1.SetToolTip(this.btn_Costruzione, Variabili_Client.Ricerca_Costruzione_Desc);
             toolTip1.SetToolTip(this.btn_Risorse, Variabili_Client.Ricerca_Produzione_Desc);
@@ -100,6 +104,8 @@ namespace Warrior_and_Wealth
             toolTip1.SetToolTip(this.btn_Popolazione, Variabili_Client.Ricerca_Popolazione_Desc);
             toolTip1.SetToolTip(this.btn_Trasporto, Variabili_Client.Ricerca_Trasporto_Desc);
             toolTip1.SetToolTip(this.btn_Riparazione, Variabili_Client.Ricerca_Riparazione_Desc);
+            toolTip1.SetToolTip(this.btn_Spionaggio, Variabili_Client.Ricerca_Spionaggio_Desc);
+            toolTip1.SetToolTip(this.btn_Contro_Spionaggio, Variabili_Client.Ricerca_Contro_Spionaggio_Desc);
 
             toolTip1.SetToolTip(this.btn_Livello_Guerrieri, Variabili_Client.Ricerca_Guerrieri_Livello_Desc);
             toolTip1.SetToolTip(this.btn_Salute_Guerrieri, Variabili_Client.Ricerca_Guerrieri_Salute_Desc);
@@ -121,8 +127,11 @@ namespace Warrior_and_Wealth
             toolTip1.SetToolTip(this.btn_Attacco_Catapulte, Variabili_Client.Ricerca_Catapulte_Attacco_Desc);
             toolTip1.SetToolTip(this.btn_Difesa_Catapulte, Variabili_Client.Ricerca_Catapulte_Difesa_Desc);
 
-            toolTip1.SetToolTip(this.btn_Guarnigione_Citta, Variabili_Client.Ricerca_Citta_Guarnigione_Desc);
+            toolTip1.SetToolTip(this.btn_Livello_Ingresso, Variabili_Client.Ricerca_Ingresso_Livello_Desc);
             toolTip1.SetToolTip(this.btn_Guarnigione_Ingresso, Variabili_Client.Ricerca_Ingresso_Guarnigione_Desc);
+
+            toolTip1.SetToolTip(this.btn_Livello_Centro, Variabili_Client.Ricerca_Citta_Livello_Desc);
+            toolTip1.SetToolTip(this.btn_Guarnigione_Centro, Variabili_Client.Ricerca_Citta_Guarnigione_Desc);
 
             toolTip1.SetToolTip(this.btn_Livello_Mura, Variabili_Client.Ricerca_Mura_Livello_Desc);
             toolTip1.SetToolTip(this.btn_Salute_Mura, Variabili_Client.Ricerca_Mura_Salute_Desc);
@@ -168,6 +177,8 @@ namespace Warrior_and_Wealth
                         btn_Popolazione.Text = $"{LocalizationManager.Current.Label_Popolazione()}: {Variabili_Client.Utente_Ricerca.Ricerca_Popolazione}";
                         btn_Trasporto.Text = $"{LocalizationManager.Current.Label_Trasporto()}: {Variabili_Client.Utente_Ricerca.Ricerca_Trasporto}";
                         btn_Riparazione.Text = $"{LocalizationManager.Current.Label_Riparazione()}: {Variabili_Client.Utente_Ricerca.Ricerca_Riparazione}";
+                        btn_Spionaggio.Text = $"{LocalizationManager.Current.Label_Spionaggio()}: {Variabili_Client.Utente_Ricerca.Ricerca_Spionaggio}";
+                        btn_Contro_Spionaggio.Text = $"{LocalizationManager.Current.Label_Contro_Spionaggio()}: {Variabili_Client.Utente_Ricerca.Ricerca_ControSpionaggio}";
 
                         btn_Livello_Guerrieri.Text = $"{LocalizationManager.Current.Label_Livello()}: {Variabili_Client.Utente_Ricerca.Livello_Spadaccini}";
                         btn_Attacco_Guerrieri.Text = $"{LocalizationManager.Current.Label_Attacco()}: {Variabili_Client.Utente_Ricerca.Attacco_Spadaccini}";
@@ -189,8 +200,10 @@ namespace Warrior_and_Wealth
                         btn_Difesa_Catapulte.Text = $"{LocalizationManager.Current.Label_Difesa()}: {Variabili_Client.Utente_Ricerca.Difesa_Catapulte}";
                         btn_Salute_Catapulte.Text = $"{LocalizationManager.Current.Label_Salute()}: {Variabili_Client.Utente_Ricerca.Salute_Catapulte}";
 
+                        btn_Livello_Ingresso.Text = $"{LocalizationManager.Current.Label_Livello()}: {Variabili_Client.Utente_Ricerca.Ricerca_Ingresso_Livello}";
                         btn_Guarnigione_Ingresso.Text = $"{LocalizationManager.Current.Label_Guarnigione()}: {Variabili_Client.Utente_Ricerca.Ricerca_Ingresso_Guarnigione}";
-                        btn_Guarnigione_Citta.Text = $"{LocalizationManager.Current.Label_Guarnigione()}: {Variabili_Client.Utente_Ricerca.Ricerca_Citta_Guarnigione}";
+                        btn_Livello_Centro.Text = $"{LocalizationManager.Current.Label_Livello()}: {Variabili_Client.Utente_Ricerca.Ricerca_Citta_Livello}";
+                        btn_Guarnigione_Centro.Text = $"{LocalizationManager.Current.Label_Guarnigione()}: {Variabili_Client.Utente_Ricerca.Ricerca_Citta_Guarnigione}";
 
                         btn_Livello_Cancello.Text = $"{LocalizationManager.Current.Label_Livello()}: {Variabili_Client.Utente_Ricerca.Ricerca_Cancello_Livello}";
                         btn_Salute_Cancello.Text = $"{LocalizationManager.Current.Label_Salute()}: {Variabili_Client.Utente_Ricerca.Ricerca_Cancello_Salute}";
@@ -240,8 +253,13 @@ namespace Warrior_and_Wealth
                             btn_Popolazione.Enabled = true;
                             btn_Trasporto.Enabled = true;
                             btn_Riparazione.Enabled = true;
+                            btn_Spionaggio.Enabled = true;
+                            btn_Contro_Spionaggio.Enabled = true;
 
-                            btn_Guarnigione_Citta.Enabled = true;
+                            btn_Livello_Centro.Enabled = true;
+                            btn_Guarnigione_Centro.Enabled = true;
+
+                            btn_Livello_Ingresso.Enabled = true;
                             btn_Guarnigione_Ingresso.Enabled = true;
 
                             btn_Livello_Castello.Enabled = true;
@@ -292,8 +310,13 @@ namespace Warrior_and_Wealth
                             btn_Popolazione.Enabled = false;
                             btn_Trasporto.Enabled = false;
                             btn_Riparazione.Enabled = false;
+                            btn_Spionaggio.Enabled = false;
+                            btn_Contro_Spionaggio.Enabled = false;
 
-                            btn_Guarnigione_Citta.Enabled = false;
+                            btn_Livello_Centro.Enabled = false;
+                            btn_Guarnigione_Centro.Enabled = false;
+
+                            btn_Livello_Ingresso.Enabled = false;
                             btn_Guarnigione_Ingresso.Enabled = false;
 
                             btn_Livello_Cancello.Enabled = false;
@@ -344,6 +367,15 @@ namespace Warrior_and_Wealth
                                 if (Variabili_Client.Utente.Ricerca_Attiva == true) panel_Riparazione.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
                                 if (Variabili_Client.Utente.Ricerca_Attiva == false) panel_Riparazione.BackgroundImage = Properties.Resources.Bottone___Sfondo_1_A_removebg_preview;
                                 break;
+                            case "btn_Spionaggio":
+                                if (Variabili_Client.Utente.Ricerca_Attiva == true) panel_Spionaggio.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
+                                if (Variabili_Client.Utente.Ricerca_Attiva == false) panel_Spionaggio.BackgroundImage = Properties.Resources.Bottone___Sfondo_1_A_removebg_preview;
+                                break;
+                            case "btn_Contro_Spionaggio":
+                                if (Variabili_Client.Utente.Ricerca_Attiva == true) panel_Contro_Spionaggio.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
+                                if (Variabili_Client.Utente.Ricerca_Attiva == false) panel_Contro_Spionaggio.BackgroundImage = Properties.Resources.Bottone___Sfondo_1_A_removebg_preview;
+                                break;
+
                             case "btn_Livello_Guerrieri":
                                 if (Variabili_Client.Utente.Ricerca_Attiva == true) panel_Livello_Guerrieri.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
                                 if (Variabili_Client.Utente.Ricerca_Attiva == false) panel_Livello_Guerrieri.BackgroundImage = Properties.Resources.Bottone___Sfondo_1_A_removebg_preview;
@@ -360,6 +392,7 @@ namespace Warrior_and_Wealth
                                 if (Variabili_Client.Utente.Ricerca_Attiva == true) panel_Attacco_Guerrieri.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
                                 if (Variabili_Client.Utente.Ricerca_Attiva == false) panel_Attacco_Guerrieri.BackgroundImage = Properties.Resources.Bottone___Sfondo_1_A_removebg_preview;
                                 break;
+
                             case "btn_Livello_Lanceri":
                                 if (Variabili_Client.Utente.Ricerca_Attiva == true) panel_Livello_Lanceri.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
                                 if (Variabili_Client.Utente.Ricerca_Attiva == false) panel_Livello_Lanceri.BackgroundImage = Properties.Resources.Bottone___Sfondo_1_A_removebg_preview;
@@ -376,6 +409,7 @@ namespace Warrior_and_Wealth
                                 if (Variabili_Client.Utente.Ricerca_Attiva == true) panel_Attacco_Lanceri.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
                                 if (Variabili_Client.Utente.Ricerca_Attiva == false) panel_Attacco_Lanceri.BackgroundImage = Properties.Resources.Bottone___Sfondo_1_A_removebg_preview;
                                 break;
+
                             case "btn_Livello_Arceri":
                                 if (Variabili_Client.Utente.Ricerca_Attiva == true) panel_Livello_Arceri.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
                                 if (Variabili_Client.Utente.Ricerca_Attiva == false) panel_Livello_Arceri.BackgroundImage = Properties.Resources.Bottone___Sfondo_1_A_removebg_preview;
@@ -392,6 +426,7 @@ namespace Warrior_and_Wealth
                                 if (Variabili_Client.Utente.Ricerca_Attiva == true) panel_Attacco_Arceri.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
                                 if (Variabili_Client.Utente.Ricerca_Attiva == false) panel_Attacco_Arceri.BackgroundImage = Properties.Resources.Bottone___Sfondo_1_A_removebg_preview;
                                 break;
+
                             case "btn_Livello_Catapulte":
                                 if (Variabili_Client.Utente.Ricerca_Attiva == true) panel_Livello_Catapulte.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
                                 if (Variabili_Client.Utente.Ricerca_Attiva == false) panel_Livello_Catapulte.BackgroundImage = Properties.Resources.Bottone___Sfondo_1_A_removebg_preview;
@@ -408,14 +443,24 @@ namespace Warrior_and_Wealth
                                 if (Variabili_Client.Utente.Ricerca_Attiva == true) panel_Attacco_Catapulte.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
                                 if (Variabili_Client.Utente.Ricerca_Attiva == false) panel_Attacco_Catapulte.BackgroundImage = Properties.Resources.Bottone___Sfondo_1_A_removebg_preview;
                                 break;
+
+                            case "btn_Livello_Ingresso":
+                                if (Variabili_Client.Utente.Ricerca_Attiva == true) panel_Livello_Ingresso.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
+                                if (Variabili_Client.Utente.Ricerca_Attiva == false) panel_Livello_Ingresso.BackgroundImage = Properties.Resources.Bottone___Sfondo_1_A_removebg_preview;
+                                break;
                             case "btn_Guarnigione_Ingresso":
                                 if (Variabili_Client.Utente.Ricerca_Attiva == true) panel_Guarnigione_Ingresso.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
                                 if (Variabili_Client.Utente.Ricerca_Attiva == false) panel_Guarnigione_Ingresso.BackgroundImage = Properties.Resources.Bottone___Sfondo_1_A_removebg_preview;
+                                break;
+                            case "btn_Livello_Citta":
+                                if (Variabili_Client.Utente.Ricerca_Attiva == true) panel_Livello_Città.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
+                                if (Variabili_Client.Utente.Ricerca_Attiva == false) panel_Livello_Città.BackgroundImage = Properties.Resources.Bottone___Sfondo_1_A_removebg_preview;
                                 break;
                             case "btn_Guarnigione_Citta":
                                 if (Variabili_Client.Utente.Ricerca_Attiva == true) panel_Guarnigione_Città.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
                                 if (Variabili_Client.Utente.Ricerca_Attiva == false) panel_Guarnigione_Città.BackgroundImage = Properties.Resources.Bottone___Sfondo_1_A_removebg_preview;
                                 break;
+
                             case "btn_Livello_Cancello":
                                 if (Variabili_Client.Utente.Ricerca_Attiva == true) panel_Livello_Cancello.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
                                 if (Variabili_Client.Utente.Ricerca_Attiva == false) panel_Livello_Cancello.BackgroundImage = Properties.Resources.Bottone___Sfondo_1_A_removebg_preview;
@@ -432,6 +477,7 @@ namespace Warrior_and_Wealth
                                 if (Variabili_Client.Utente.Ricerca_Attiva == true) panel_Guarnigione_Cancello.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
                                 if (Variabili_Client.Utente.Ricerca_Attiva == false) panel_Guarnigione_Cancello.BackgroundImage = Properties.Resources.Bottone___Sfondo_1_A_removebg_preview;
                                 break;
+
                             case "btn_Livello_Mura":
                                 if (Variabili_Client.Utente.Ricerca_Attiva == true) panel_Livello_Mura.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
                                 if (Variabili_Client.Utente.Ricerca_Attiva == false) panel_Livello_Mura.BackgroundImage = Properties.Resources.Bottone___Sfondo_1_A_removebg_preview;
@@ -448,6 +494,7 @@ namespace Warrior_and_Wealth
                                 if (Variabili_Client.Utente.Ricerca_Attiva == true) panel_Guarnigione_Mura.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
                                 if (Variabili_Client.Utente.Ricerca_Attiva == false) panel_Guarnigione_Mura.BackgroundImage = Properties.Resources.Bottone___Sfondo_1_A_removebg_preview;
                                 break;
+
                             case "btn_Livello_Torri":
                                 if (Variabili_Client.Utente.Ricerca_Attiva == true) panel_Livello_Torri.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
                                 if (Variabili_Client.Utente.Ricerca_Attiva == false) panel_Livello_Torri.BackgroundImage = Properties.Resources.Bottone___Sfondo_1_A_removebg_preview;
@@ -464,6 +511,7 @@ namespace Warrior_and_Wealth
                                 if (Variabili_Client.Utente.Ricerca_Attiva == true) panel_Guarnigione_Torri.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
                                 if (Variabili_Client.Utente.Ricerca_Attiva == false) panel_Guarnigione_Torri.BackgroundImage = Properties.Resources.Bottone___Sfondo_1_A_removebg_preview;
                                 break;
+
                             case "btn_Livello_Castello":
                                 if (Variabili_Client.Utente.Ricerca_Attiva == true) panel_Livello_Castello.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
                                 if (Variabili_Client.Utente.Ricerca_Attiva == false) panel_Livello_Castello.BackgroundImage = Properties.Resources.Bottone___Sfondo_1_A_removebg_preview;
@@ -672,7 +720,7 @@ namespace Warrior_and_Wealth
         private void btn_Guarnigione_Citta_Click(object sender, EventArgs e)
         {
             this.ActiveControl = lbl_Tempo_Ricerca;
-            panel_Guarnigione_Città.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
+            panel_Livello_Città.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
             ClientConnection.TestClient.Send($"Ricerca|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Citta Guarnigione");
             Variabili_Client.Ricerca_1_Bottone_Cliccato = "btn_Citta_Guarnigione";
         }

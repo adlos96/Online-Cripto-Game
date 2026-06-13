@@ -728,68 +728,85 @@ namespace Server_Strategico.ServerData.Localization
             $"[black]Permette di aumentare la capacità di trasporto delle singole unità militari.\nCosto ricerca trasporto lv {livello}\n\n";
         public string Desc_RicercaRiparazione(int livello) =>
             $"[black]Permette di migliorare la riparazione delle singole strutture.\nCosto ricerca riparazione lv {livello}\n\n";
+        public string Desc_RicercaSpionaggio(int livello) =>
+            $"[black]Permette di spiare cose... aggiornare la descrizione Spionaggio.\nCosto ricerca Spionaggio lv {livello}\n\n";
+        public string Desc_RicercaControSpionaggio(int livello) =>
+            $"[black]Permette di spiare cose... aggiornare la descrizione Contro-Spionaggio.\nCosto ricerca Contro-Spionaggio lv {livello}\n\n";
+
         public string Desc_RicercaGuerrieroLivello(int livello) =>
-            $"[black]Aumenta il livello dei guerrieri.\nCosto ricerca livello guerriero lv {livello}\n\n";
+            $"[black]Aumenta il livello dei guerrieri. Permette di ricercare Salute, Attacco e Difesa.\nCosto ricerca livello guerriero lv {livello}\n\n";
         public string Desc_RicercaGuerrieroSalute(int livello) =>
             $"[black]Aumenta la salute dei guerrieri.\nCosto ricerca salute guerriero lv {livello}\n\n";
         public string Desc_RicercaGuerrieroAttacco(int livello) =>
             $"[black]Aumenta l'attacco dei guerrieri.\nCosto ricerca attacco guerriero lv {livello}\n\n";
         public string Desc_RicercaGuerrieroDifesa(int livello) =>
             $"[black]Aumenta la difesa dei guerrieri.\nCosto ricerca difesa guerriero lv {livello}\n\n";
+
         public string Desc_RicercaLancereLivello(int livello) =>
-            $"[black]Aumenta il livello dei Lancieri.\nCosto ricerca livello Lanciere lv {livello}\n\n";
+            $"[black]Aumenta il livello dei Lancieri. Permette di ricercare Salute, Attacco e Difesa.\nCosto ricerca livello Lanciere lv {livello}\n\n";
         public string Desc_RicercaLancereSalute(int livello) =>
             $"[black]Aumenta la salute dei Lancieri.\nCosto ricerca salute Lanciere lv {livello}\n\n";
         public string Desc_RicercaLancereAttacco(int livello) =>
             $"[black]Aumenta l'attacco dei Lancieri.\nCosto ricerca attacco Lanciere lv {livello}\n\n";
         public string Desc_RicercaLancereDifesa(int livello) =>
             $"[black]Aumenta la difesa dei Lancieri.\nCosto ricerca difesa Lanciere lv {livello}\n\n";
-        public string Desc_RicercaArcereLivelloe(int livello) =>
-            $"[black]Aumenta il livello degli Arcieri.\nCosto ricerca livello Arciere lv {livello}\n\n";
+
+        public string Desc_RicercaArcereLivello(int livello) =>
+            $"[black]Aumenta il livello degli Arcieri. Permette di ricercare Salute, Attacco e Difesa.\nCosto ricerca livello Arciere lv {livello}\n\n";
         public string Desc_RicercaArcereSalute(int livello) =>
             $"[black]Aumenta la salute degli Arcieri.\nCosto ricerca salute Arciere lv {livello}\n\n";
         public string Desc_RicercaArcereAttacco(int livello) =>
             $"[black]Aumenta l'attacco degli Arcieri.\nCosto ricerca attacco Arciere lv {livello}\n\n";
         public string Desc_RicercaArcereDifesa(int livello) =>
             $"[black]Aumenta la difesa degli Arcieri.\nCosto ricerca difesa Arciere lv {livello}\n\n";
+
         public string Desc_RicercaCatapultaLivello(int livello) =>
-            $"[black]Aumenta il livello delle Catapulte.\nCosto ricerca livello catapulte lv {livello}\n\n";
+            $"[black]Aumenta il livello delle Catapulte. Permette di ricercare Salute, Attacco e Difesa.\nCosto ricerca livello catapulte lv {livello}\n\n";
         public string Desc_RicercaCatapultaSalute(int livello) =>
             $"[black]Aumenta la salute delle Catapulte.\nCosto ricerca salute catapulta lv {livello}\n\n";
         public string Desc_RicercaCatapultaAttacco(int livello) =>
             $"[black]Aumenta l'attacco delle Catapulte.\nCosto ricerca attacco catapulta lv {livello}\n\n";
         public string Desc_RicercaCatapultaDifesa(int livello) =>
             $"[black]Aumenta la difesa delle Catapulte.\nCosto ricerca difesa catapulta lv {livello}\n\n";
+
+        public string Desc_RicercaIngressoLivello(int livello) =>
+            $"[black]Aumenta il livello massimo della struttura. Permette di ricercare Salute, Difesa e Guarnigione.\nCosto ricerca livello ingresso lv {livello}\n\n";
         public string Desc_RicercaIngressoGuarnigione(int livello) =>
             $"[black]Aumenta il numero massimo di unità che può ospitare la struttura.\nCosto ricerca ingresso guarnigione lv {livello}\n\n";
+        public string Desc_RicercaCittaLivello(int livello) =>
+            $"[black]Aumenta il livello massimo della struttura. Permette di ricercare Salute, Difesa e Guarnigione.\nCosto ricerca livello citta lv {livello}\n\n";
         public string Desc_RicercaCittaGuarnigione(int livello) =>
             $"[black]Aumenta il numero massimo di unità che può ospitare la struttura.\nCosto ricerca citta guarnigione lv {livello}\n\n";
+
         public string Desc_RicercaMuraLivello(int livello) =>
-            $"[black]Aumenta il livello della struttura.\nCosto ricerca livello mura: {livello}\n\n";
+            $"[black]Aumenta il livello massimo della struttura. Permette di ricercare Salute, Difesa e Guarnigione.\nCosto ricerca livello mura: {livello}\n\n";
         public string Desc_RicercaMuraGuarnigione(int livello) =>
             $"[black]Aumenta il numero massimo di unità che può ospitare la struttura.\nCosto ricerca guarnigione mura lv: {livello}\n\n";
         public string Desc_RicercaMuraSalute(int livello) =>
             $"[black]Aumenta il numero massimo di punti salute della struttura.\nCosto ricerca salute mura lv: {livello}\n\n";
         public string Desc_RicercaMuraDifesa(int livello) =>
             $"[black]Aumenta il numero massimo di punti difesa della struttura.\nCosto ricerca difesa mura lv: {livello}\n\n";
+
         public string Desc_RicercaCancelloLivello(int livello) =>
-            $"[black]Aumenta il numero massimo di unità che può ospitare la struttura.\nCosto ricerca livello cancello: {livello}\n\n";
+            $"[black]Aumenta il livello massimo della struttura. Permette di ricercare Salute, Difesa e Guarnigione.\nCosto ricerca livello cancello: {livello}\n\n";
         public string Desc_RicercaCancelloGuarnigione(int livello) =>
             $"[black]Aumenta il numero massimo di unità che può ospitare la struttura.\nCosto ricerca guarnigione cancello lv: {livello}\n\n";
         public string Desc_RicercaCancelloSalute(int livello) =>
             $"[black]Aumenta il numero massimo di punti salute della struttura.\nCosto ricerca salute cancello lv: {livello}\n\n";
         public string Desc_RicercaCancelloDifesa(int livello) =>
             $"[black]Aumenta il numero massimo di punti difesa della struttura.\nCosto ricerca difesa cancello lv: {livello}\n\n";
+
         public string Desc_RicercaTorriLivello(int livello) =>
-            $"[black]Aumenta il numero massimo di unità che può ospitare la struttura.\nCosto ricerca livello torri: {livello}\n\n";
+            $"[black]Aumenta il livello massimo della struttura. Permette di ricercare Salute, Difesa e Guarnigione.\nCosto ricerca livello torri: {livello}\n\n";
         public string Desc_RicercaTorriGuarnigione(int livello) =>
             $"[black]Aumenta il numero massimo di unità che può ospitare la struttura.\nCosto ricerca guarnigione torri lv: {livello}\n\n";
         public string Desc_RicercaTorriSalute(int livello) =>
             $"[black]Aumenta il numero massimo di punti salute della struttura.\nCosto ricerca salute torri lv: {livello}\n\n";
         public string Desc_RicercaTorriDifesa(int livello) =>
             $"[black]Aumenta il numero massimo di punti difesa della struttura.\nCosto ricerca difesa torri lv: {livello}\n\n";
+
         public string Desc_RicercaCastelloLivello(int livello) =>
-            $"[black]Aumenta il numero massimo di unità che può ospitare la struttura.\nCosto ricerca livello castello: {livello}\n\n";
+            $"[black]Aumenta il livello massimo della struttura. Permette di ricercare Salute, Difesa e Guarnigione.\nCosto ricerca livello castello: {livello}\n\n";
         public string Desc_RicercaCastelloGuarnigione(int livello) =>
             $"[black]Aumenta il numero massimo di unità che può ospitare la struttura.\nCosto ricerca guarnigione castello lv: {livello}\n\n";
         public string Desc_RicercaCastelloSalute(int livello) =>
