@@ -124,39 +124,39 @@
             };
             public static Shop Scudo_Pace_8h = new Shop
             {
-                Costo = 200,
+                Costo = 250,
                 Reward = 28800 //8 ore in secondi
             };
             public static Shop Scudo_Pace_24h = new Shop
             {
-                Costo = 520,
+                Costo = 650,
                 Reward = 86400 //24 ore in secondi
             };
             public static Shop Scudo_Pace_72h = new Shop
             {
-                Costo = 1450,
+                Costo = 1600,
                 Reward = 259200 //72 ore in secondi
             };
 
             public static Shop Costruttore_24h = new Shop
             {
-                Costo = 1200,
+                Costo = 1700,
                 Reward = 86400 //24 ore in secondi
             };
             public static Shop Costruttore_48h = new Shop
             {
-                Costo = 2300,
+                Costo = 3100,
                 Reward = 172800 //48 ore in secondi
             };
 
             public static Shop Reclutatore_24h = new Shop
             {
-                Costo = 1500,
+                Costo = 2200,
                 Reward = 86400 //24 ore in secondi
             };
             public static Shop Reclutatore_48h = new Shop
             {
-                Costo = 2900,
+                Costo = 4100,
                 Reward = 172800 //48 ore in secondi
             };
         }
