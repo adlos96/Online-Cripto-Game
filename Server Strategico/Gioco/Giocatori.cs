@@ -926,11 +926,13 @@ namespace Server_Strategico.Gioco
                 if (Costruttori > 0) Costruttori--;
                 if (Vip == false && Costruttori == 0) Code_Costruzione = 1;
                 if (Vip == true && Costruttori == 0) Code_Costruzione = 2;
+                if (Vip == false && Costruttori > 0) Code_Costruzione = 2;
                 if (Vip == true && Costruttori > 0) Code_Costruzione = 3;
 
                 if (Reclutatori > 0) Reclutatori--;
                 if (GamePass_Base == false && Reclutatori == 0) Code_Reclutamento = 1;
                 if (GamePass_Base == true && Reclutatori == 0) Code_Reclutamento = 2;
+                if (GamePass_Base == false && Reclutatori > 0) Code_Reclutamento = 2;
                 if (GamePass_Base == true && Reclutatori > 0) Code_Reclutamento = 3;
             }
             public async Task BonusPacchetti()
