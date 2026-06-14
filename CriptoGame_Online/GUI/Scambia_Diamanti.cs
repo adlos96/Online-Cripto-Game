@@ -95,13 +95,22 @@ namespace Warrior_and_Wealth.GUI
                 else
                     txt_Diamond_Viola.Text = (Convert.ToInt32(txt_Diamond_Viola.Text) + 1).ToString();
 
-            if (Convert.ToInt32(txt_Diamond_Viola.Text) > Convert.ToInt32(Variabili_Client.Utente_Risorse.Diamond_Viola.Replace(".", "")))
-                txt_Diamond_Viola.Text = Variabili_Client.Utente_Risorse.Diamond_Viola;
-
             if (nome_Form == "Scambia_Diamanti")
+            {
                 txt_Diamond_Blu.Text = (Convert.ToInt32(txt_Diamond_Viola.Text) * Convert.ToInt32(Variabili_Client.D_Viola_D_Blu)).ToString();
+                if (Convert.ToInt32(txt_Diamond_Viola.Text) > Convert.ToInt32(Variabili_Client.Utente_Risorse.Diamond_Viola.Replace(".", "")))
+                    txt_Diamond_Viola.Text = Variabili_Client.Utente_Risorse.Diamond_Viola;
+            }
             if (nome_Form == "Scambia_Tributi")
-                txt_Diamond_Blu.Text = (Convert.ToInt32(txt_Diamond_Viola.Text) * Convert.ToInt32(Variabili_Client.Tributi_D_Viola)).ToString();
+            {
+                txt_Diamond_Viola.Text = (Convert.ToInt32(txt_Diamond_Viola.Text) * Convert.ToInt32(Variabili_Client.Tributi_D_Viola)).ToString();
+                if (Convert.ToInt32(txt_Diamond_Viola.Text) > Convert.ToDouble(Variabili_Client.Utente_Risorse.Virtual_Dolla.Replace(".", "")))
+                {
+                    double virtualDolla = Convert.ToDouble(Variabili_Client.Utente_Risorse.Virtual_Dolla.Replace(".", ""));
+                    int virtualDollaInt = (int)Math.Floor(virtualDolla);
+                    txt_Diamond_Viola.Text = virtualDollaInt.ToString();
+                }
+            }
         }
 
         private void pictureBox_Meno_Click(object sender, EventArgs e)
