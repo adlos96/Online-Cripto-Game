@@ -22,10 +22,15 @@ if ! command -v git &>/dev/null || ! command -v screen &>/dev/null || ! command 
     fi
 fi
 
-# 1. Clone o aggiornamento repository
+17:34Claude ha risposto: Ecco il blocco 1 aggiornato per update-server.Ecco il blocco 1 aggiornato per update-server.sh:
+bash# 1. Clone o aggiornamento repository
 if [ ! -d "$BASE_DIR/.git" ]; then
-    echo "[GIT] Repository non trovato. Clone in corso..."
-    git clone "$REPO_URL" "$BASE_DIR" || fail "git clone fallito"
+    echo "[GIT] Repository non trovato. Clone in corso (solo Server Strategico)..."
+    git clone --no-checkout "$REPO_URL" "$BASE_DIR" || fail "git clone fallito"
+    cd "$BASE_DIR" || fail "Directory non trovata: $BASE_DIR"
+    git sparse-checkout init --cone
+    git sparse-checkout set "Server Strategico"
+    git checkout main || fail "git checkout fallito"
     echo "[GIT] Clone completato."
 else
     echo "[GIT] Aggiornamento repository..."
