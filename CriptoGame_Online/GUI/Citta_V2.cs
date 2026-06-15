@@ -256,8 +256,8 @@ namespace Warrior_and_Wealth.GUI
                 BackColorBar = Color.FromArgb(40, 40, 40),
                 BorderColor = Color.Black,
                 ForeColor = Color.Gainsboro,
-                MaxValue = Variabili_Client.Citta.Città.Guarnigione_Max,
-                Value = Variabili_Client.Citta.Città.Guarnigione,
+                MaxValue = Variabili_Client.Citta.Centro.Guarnigione_Max,
+                Value = Variabili_Client.Citta.Centro.Guarnigione,
                 Radius_Border = 12,  // Raggio bordo esterno
                 Radius_Internal = 10, // Raggio barra interna
                 ShowText = true       // Mostra il testo
@@ -371,8 +371,8 @@ namespace Warrior_and_Wealth.GUI
                         soldierBarIngresso.MaxValue = Variabili_Client.Citta.Ingresso.Guarnigione_Max;
                         soldierBarIngresso.Value = Variabili_Client.Citta.Ingresso.Guarnigione;
 
-                        soldierBarCitta.MaxValue = Variabili_Client.Citta.Città.Guarnigione_Max;
-                        soldierBarCitta.Value = Variabili_Client.Citta.Città.Guarnigione;
+                        soldierBarCitta.MaxValue = Variabili_Client.Citta.Centro.Guarnigione_Max;
+                        soldierBarCitta.Value = Variabili_Client.Citta.Centro.Guarnigione;
 
                         if (Variabili_Client.Citta.Mura.Salute < Variabili_Client.Citta.Mura.Salute_Max)
                         {
@@ -477,11 +477,11 @@ namespace Warrior_and_Wealth.GUI
                             }
                         }
 
-                        lbl_Ingresso.Text = LocalizationManager.Current.Label_Ingresso();
+                        lbl_Ingresso.Text = $"{LocalizationManager.Current.Label_Ingresso()}      [1]      Lv: {Variabili_Client.Citta.Ingresso.Livello}";
                         lbl_Mura.Text = $"{LocalizationManager.Current.Label_Mura()}      [2]      Lv: {Variabili_Client.Citta.Mura.Livello}";
                         lbl_Cancello.Text = $"{LocalizationManager.Current.Label_Cancello()}      [3]      Lv: {Variabili_Client.Citta.Cancello.Livello}";
                         lbl_Torri.Text = $"{LocalizationManager.Current.Label_Torri()}      [4]      Lv: {Variabili_Client.Citta.Torri.Livello}";
-                        lbl_Centro.Text = LocalizationManager.Current.Label_Centro();
+                        lbl_Centro.Text = $"{LocalizationManager.Current.Label_Centro()}      [0]      Lv: {Variabili_Client.Citta.Centro.Livello}";
                         lbl_Castello.Text = $"{LocalizationManager.Current.Label_Castello()}      [5]      Lv: {Variabili_Client.Citta.Castello.Livello}";
                     }));
                 }

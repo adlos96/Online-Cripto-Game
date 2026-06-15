@@ -76,6 +76,31 @@ namespace Warrior_and_Wealth
             txt_Stato_Server.BackColor = Color.FromArgb(229, 208, 181);
             txt_Stato_Server.ForeColor = Color.Black;
             txt_Stato_Server.Font = new Font("Cinzel Decorative", 8, FontStyle.Regular);
+            TentativoConnessione();
+        }
+        async void TentativoConnessione()
+        {
+            //Controlla se siamo in locale... 
+            if (txt_Ip.Text != "IP: AUTO") ClientConnection.TestClient._ServerIp = txt_Ip.Text;
+            else
+            {
+                string subjectName = Environment.MachineName; //Ottine il nome della macchina (hostname)
+                if (subjectName == "DESKTOP-DOBLVTI" || subjectName == "ADLO") ClientConnection.TestClient._ServerIp = "localhost";
+            }
+
+            int tentativi = 1;
+            while (Variabili_Client.Utente.User_Login == false)
+            {
+                if (tentativi >= 3) return;
+                txt_Log.Text = $"Tentativo connessione automatica... [{tentativi}/{2}]";
+                await ClientConnection.TestClient.InitializeClient(); // Connessione server
+                await Sleep(2);
+                if (ClientConnection.client_Connesso) break;
+                tentativi++;
+            }
+            //Check versione necessaria client
+            txt_Log.Text = $"Controllo aggiornamenti disponibili...";
+            if (!await VersioneDisponibile()) return;
         }
 
         private void txt_Username_Login_MouseClick(object sender, MouseEventArgs e)
@@ -123,45 +148,18 @@ namespace Warrior_and_Wealth
                 if (subjectName == "DESKTOP-DOBLVTI" || subjectName == "ADLO") ClientConnection.TestClient._ServerIp = "localhost";
             }
 
-
-            await ClientConnection.TestClient.InitializeClient(); // Connessione server
-            await Sleep(1);
-            if (!await VersioneDisponibile()) return;
-
-            if (txt_Username_Login.Text == "Inserisci Nome utente")
-            {
-                txt_Log.Text = "Inserisci un nome utente valido!";
-                Btn_Login.Enabled = true;
-                Btn_New_Game.Enabled = true;
-                txt_Log.Font = new Font("Cinzel Decorative", 8, FontStyle.Bold);
-                return;
-            }
-            else if (txt_Password_Login.Text == "Inserisci Password")
-            {
-                txt_Log.Text = "Inserisci una password valida!";
-                Btn_Login.Enabled = true;
-                Btn_New_Game.Enabled = true;
-                txt_Log.Font = new Font("Cinzel Decorative", 8, FontStyle.Bold);
-                return;
-            }
-
-            string username = txt_Username_Login.Text;
-            string password = txt_Password_Login.Text;
-
-            //username = "adlos";
-            //password = "123";
-
+            ControlloDati(); //Controlla la validità dei dati inseriti
             await Sleep(2);
             txt_Log.Text = "Login...";
             await Sleep(2);
-            ClientConnection.TestClient.Send($"Login|{username}|{password}|{lingua_Selezionata}");
+            ClientConnection.TestClient.Send($"Login|{txt_Username_Login.Text}|{txt_Password_Login.Text}|{lingua_Selezionata}");
             await Loop_Login(4);
             await Sleep(2);
 
             if (Variabili_Client.Utente.User_Login == true)
             {
-                Variabili_Client.Utente.Username = username;
-                Variabili_Client.Utente.Password = password;
+                Variabili_Client.Utente.Username = txt_Username_Login.Text;
+                Variabili_Client.Utente.Password = txt_Password_Login.Text;
                 this.DialogResult = DialogResult.OK; // Se il login riesce
             }
             else
@@ -171,6 +169,43 @@ namespace Warrior_and_Wealth
             }
             if (login_data != "") txt_Log.Text = login_data;
         }
+        private async void Btn_New_Game_Click(object sender, EventArgs e)
+        {
+            txt_Log.Font = new Font("Cinzel Decorative", 8, FontStyle.Regular);
+            this.ActiveControl = lbl_Titolo;
+            Btn_New_Game.Enabled = false;
+            Btn_Login.Enabled = false;
+            txt_Log.Text = "Connessione...";
+
+            //Controlla se siamo in locale... 
+            if (txt_Ip.Text != "IP: AUTO") ClientConnection.TestClient._ServerIp = txt_Ip.Text;
+            else
+            {
+                string subjectName = Environment.MachineName; //Ottine il nome della macchina (hostname)
+                if (subjectName == "DESKTOP-DOBLVTI" || subjectName == "ADLO") ClientConnection.TestClient._ServerIp = "localhost";
+            }
+
+            ControlloDati(); //Controlla la validità dei dati inseriti
+            await Sleep(2);
+            txt_Log.Text = "Contattando il server...";
+            await Sleep(2);
+            ClientConnection.TestClient.Send($"New Player|{txt_Username_Login.Text}|{txt_Password_Login.Text}|{lingua_Selezionata}");
+            await Sleep(2);
+
+            if (Variabili_Client.Utente.User_Login == true)
+            {
+                Variabili_Client.Utente.Username = txt_Username_Login.Text;
+                Variabili_Client.Utente.Password = txt_Password_Login.Text;
+                this.DialogResult = DialogResult.OK; // Se il login riesce
+            }
+            else
+            {
+                Btn_Login.Enabled = true;
+                Btn_New_Game.Enabled = true;
+            }
+            if (login_data != "") txt_Log.Text = login_data;
+        }
+
         async Task<bool> VersioneDisponibile()
         {
             if (!ClientConnection.client_Connesso) //Controlla l'avvenuta connessione
@@ -198,6 +233,7 @@ namespace Warrior_and_Wealth
                     btn_Aggiorna.Visible = true;
 
                     lbl_Aggiornamento_Disponibile.Text = "Necessario aggiornamento: " + Variabili_Client.versione_Client_Necessario;
+                    txt_Log.Text = $"Devi scaricare l'aggiornamento obbligatorio per continuare a giocare...";
                     using (Graphics g = this.CreateGraphics())
                     {
                         float scaleFactor = g.DpiX / 96f; // Se lo zoom è 125%, scaleFactor sarà 1.25
@@ -216,6 +252,7 @@ namespace Warrior_and_Wealth
                     btn_Aggiorna.Visible = true;
 
                     lbl_Aggiornamento_Disponibile.Text = "Disponibile aggiornamento: " + Variabili_Client.versione_Client_Necessario;
+                    txt_Log.Text = $"Aggiornamento disponibile...";
                     using (Graphics g = this.CreateGraphics())
                     {
                         float scaleFactor = g.DpiX / 96f; // Se lo zoom è 125%, scaleFactor sarà 1.25
@@ -270,27 +307,8 @@ namespace Warrior_and_Wealth
                 i++;
             }
         }
-
-        private async void Btn_New_Game_Click(object sender, EventArgs e)
+        void ControlloDati()
         {
-            txt_Log.Font = new Font("Cinzel Decorative", 8, FontStyle.Regular);
-            this.ActiveControl = lbl_Titolo;
-            Btn_New_Game.Enabled = false;
-            Btn_Login.Enabled = false;
-            txt_Log.Text = "Connessione...";
-
-            //Controlla se siamo in locale... 
-            if (txt_Ip.Text != "IP: AUTO") ClientConnection.TestClient._ServerIp = txt_Ip.Text;
-            else
-            {
-                string subjectName = Environment.MachineName; //Ottine il nome della macchina (hostname)
-                if (subjectName == "DESKTOP-DOBLVTI" || subjectName == "ADLO") ClientConnection.TestClient._ServerIp = "localhost";
-            }
-
-            await ClientConnection.TestClient.InitializeClient(); // Connessione server
-            await Sleep(1);
-            if (!await VersioneDisponibile()) return;
-
             if (txt_Username_Login.Text == "Inserisci Nome utente")
             {
                 txt_Log.Text = "Inserisci un nome utente valido!";
@@ -307,25 +325,6 @@ namespace Warrior_and_Wealth
                 txt_Log.Font = new Font("Cinzel Decorative", 8, FontStyle.Bold);
                 return;
             }
-
-            await Sleep(2);
-            txt_Log.Text = "Contattando il server...";
-            await Sleep(2);
-            ClientConnection.TestClient.Send($"New Player|{txt_Username_Login.Text}|{txt_Password_Login.Text}|{lingua_Selezionata}");
-            await Sleep(2);
-
-            if (Variabili_Client.Utente.User_Login == true)
-            {
-                Variabili_Client.Utente.Username = txt_Username_Login.Text;
-                Variabili_Client.Utente.Password = txt_Password_Login.Text;
-                this.DialogResult = DialogResult.OK; // Se il login riesce
-            }
-            else
-            {
-                Btn_Login.Enabled = true;
-                Btn_New_Game.Enabled = true;
-            }
-            if (login_data != "") txt_Log.Text = login_data;
         }
 
         private void Login_FormClosing(object sender, FormClosingEventArgs e)

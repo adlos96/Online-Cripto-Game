@@ -956,7 +956,7 @@ namespace Strategico_V2
                 Guarnigione_Max = 0,
                 Descrizione = ""
             };
-            public static Dati Città = new Dati
+            public static Dati Centro = new Dati
             {
                 Guerrieri_1 = 0,
                 Guerrieri_2 = 0,
