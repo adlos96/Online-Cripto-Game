@@ -85,7 +85,7 @@ namespace Warrior_and_Wealth
             else
             {
                 string subjectName = Environment.MachineName; //Ottine il nome della macchina (hostname)
-                if (subjectName == "DESKTOP-DOBLVTI" || subjectName == "ADLO") ClientConnection.TestClient._ServerIp = "localhost";
+                //if (subjectName == "DESKTOP-DOBLVTI" || subjectName == "ADLO") ClientConnection.TestClient._ServerIp = "localhost";
             }
 
             int tentativi = 1;
@@ -101,6 +101,7 @@ namespace Warrior_and_Wealth
             //Check versione necessaria client
             txt_Log.Text = $"Controllo aggiornamenti disponibili...";
             if (!await VersioneDisponibile()) return;
+            txt_Log.Text = $"Versione client corretta.\nNessun nuovo aggiornamento diponibile";
         }
 
         private void txt_Username_Login_MouseClick(object sender, MouseEventArgs e)

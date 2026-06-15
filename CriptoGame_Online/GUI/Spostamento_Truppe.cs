@@ -169,13 +169,13 @@ namespace Warrior_and_Wealth.GUI
                         }
                         if (struttura == "Citta")
                         {
-                            lbl_Truppe_Massime.Text = $"Max truppe: {Variabili_Client.Citta.Città.Guarnigione_Max}";
+                            lbl_Truppe_Massime.Text = $"Max truppe: {Variabili_Client.Citta.Centro.Guarnigione_Max}";
                             if (livello_Unità == 1)
                             {
-                                g_Citta = Convert.ToInt32(Variabili_Client.Citta.Città.Guerrieri_1);
-                                l_Citta = Convert.ToInt32(Variabili_Client.Citta.Città.Lanceri_1);
-                                a_Citta = Convert.ToInt32(Variabili_Client.Citta.Città.Arceri_1);
-                                c_Citta = Convert.ToInt32(Variabili_Client.Citta.Città.Catapulte_1);
+                                g_Citta = Convert.ToInt32(Variabili_Client.Citta.Centro.Guerrieri_1);
+                                l_Citta = Convert.ToInt32(Variabili_Client.Citta.Centro.Lanceri_1);
+                                a_Citta = Convert.ToInt32(Variabili_Client.Citta.Centro.Arceri_1);
+                                c_Citta = Convert.ToInt32(Variabili_Client.Citta.Centro.Catapulte_1);
 
                                 g_Esercito = Convert.ToInt32(Variabili_Client.Reclutamento.Guerrieri_1.Quantità);
                                 l_Esercito = Convert.ToInt32(Variabili_Client.Reclutamento.Lanceri_1.Quantità);
@@ -189,18 +189,18 @@ namespace Warrior_and_Wealth.GUI
                                     a_Citta = Convert.ToInt32(Variabili_Client.Reclutamento.Arceri_1.Quantità);
                                     c_Citta = Convert.ToInt32(Variabili_Client.Reclutamento.Catapulte_1.Quantità);
 
-                                    g_Esercito = Convert.ToInt32(Variabili_Client.Citta.Città.Guerrieri_1);
-                                    l_Esercito = Convert.ToInt32(Variabili_Client.Citta.Città.Lanceri_1);
-                                    a_Esercito = Convert.ToInt32(Variabili_Client.Citta.Città.Arceri_1);
-                                    c_Esercito = Convert.ToInt32(Variabili_Client.Citta.Città.Catapulte_1);
+                                    g_Esercito = Convert.ToInt32(Variabili_Client.Citta.Centro.Guerrieri_1);
+                                    l_Esercito = Convert.ToInt32(Variabili_Client.Citta.Centro.Lanceri_1);
+                                    a_Esercito = Convert.ToInt32(Variabili_Client.Citta.Centro.Arceri_1);
+                                    c_Esercito = Convert.ToInt32(Variabili_Client.Citta.Centro.Catapulte_1);
                                 }
                             }
                             if (livello_Unità == 2)
                             {
-                                g_Citta = Convert.ToInt32(Variabili_Client.Citta.Città.Guerrieri_2);
-                                l_Citta = Convert.ToInt32(Variabili_Client.Citta.Città.Lanceri_2);
-                                a_Citta = Convert.ToInt32(Variabili_Client.Citta.Città.Arceri_2);
-                                c_Citta = Convert.ToInt32(Variabili_Client.Citta.Città.Catapulte_2);
+                                g_Citta = Convert.ToInt32(Variabili_Client.Citta.Centro.Guerrieri_2);
+                                l_Citta = Convert.ToInt32(Variabili_Client.Citta.Centro.Lanceri_2);
+                                a_Citta = Convert.ToInt32(Variabili_Client.Citta.Centro.Arceri_2);
+                                c_Citta = Convert.ToInt32(Variabili_Client.Citta.Centro.Catapulte_2);
 
                                 g_Esercito = Convert.ToInt32(Variabili_Client.Reclutamento.Guerrieri_2.Quantità);
                                 l_Esercito = Convert.ToInt32(Variabili_Client.Reclutamento.Lanceri_2.Quantità);
@@ -214,18 +214,18 @@ namespace Warrior_and_Wealth.GUI
                                     a_Citta = Convert.ToInt32(Variabili_Client.Reclutamento.Arceri_2.Quantità);
                                     c_Citta = Convert.ToInt32(Variabili_Client.Reclutamento.Catapulte_2.Quantità);
 
-                                    g_Esercito = Convert.ToInt32(Variabili_Client.Citta.Città.Guerrieri_2);
-                                    l_Esercito = Convert.ToInt32(Variabili_Client.Citta.Città.Lanceri_2);
-                                    a_Esercito = Convert.ToInt32(Variabili_Client.Citta.Città.Arceri_2);
-                                    c_Esercito = Convert.ToInt32(Variabili_Client.Citta.Città.Catapulte_2);
+                                    g_Esercito = Convert.ToInt32(Variabili_Client.Citta.Centro.Guerrieri_2);
+                                    l_Esercito = Convert.ToInt32(Variabili_Client.Citta.Centro.Lanceri_2);
+                                    a_Esercito = Convert.ToInt32(Variabili_Client.Citta.Centro.Arceri_2);
+                                    c_Esercito = Convert.ToInt32(Variabili_Client.Citta.Centro.Catapulte_2);
                                 }
                             }
                             if (livello_Unità == 3)
                             {
-                                g_Citta = Convert.ToInt32(Variabili_Client.Citta.Città.Guerrieri_3);
-                                l_Citta = Convert.ToInt32(Variabili_Client.Citta.Città.Lanceri_3);
-                                a_Citta = Convert.ToInt32(Variabili_Client.Citta.Città.Arceri_3);
-                                c_Citta = Convert.ToInt32(Variabili_Client.Citta.Città.Catapulte_3);
+                                g_Citta = Convert.ToInt32(Variabili_Client.Citta.Centro.Guerrieri_3);
+                                l_Citta = Convert.ToInt32(Variabili_Client.Citta.Centro.Lanceri_3);
+                                a_Citta = Convert.ToInt32(Variabili_Client.Citta.Centro.Arceri_3);
+                                c_Citta = Convert.ToInt32(Variabili_Client.Citta.Centro.Catapulte_3);
 
                                 g_Esercito = Convert.ToInt32(Variabili_Client.Reclutamento.Guerrieri_3.Quantità);
                                 l_Esercito = Convert.ToInt32(Variabili_Client.Reclutamento.Lanceri_3.Quantità);
@@ -238,18 +238,18 @@ namespace Warrior_and_Wealth.GUI
                                     a_Citta = Convert.ToInt32(Variabili_Client.Reclutamento.Arceri_3.Quantità);
                                     c_Citta = Convert.ToInt32(Variabili_Client.Reclutamento.Catapulte_3.Quantità);
 
-                                    g_Esercito = Convert.ToInt32(Variabili_Client.Citta.Città.Guerrieri_3);
-                                    l_Esercito = Convert.ToInt32(Variabili_Client.Citta.Città.Lanceri_3);
-                                    a_Esercito = Convert.ToInt32(Variabili_Client.Citta.Città.Arceri_3);
-                                    c_Esercito = Convert.ToInt32(Variabili_Client.Citta.Città.Catapulte_3);
+                                    g_Esercito = Convert.ToInt32(Variabili_Client.Citta.Centro.Guerrieri_3);
+                                    l_Esercito = Convert.ToInt32(Variabili_Client.Citta.Centro.Lanceri_3);
+                                    a_Esercito = Convert.ToInt32(Variabili_Client.Citta.Centro.Arceri_3);
+                                    c_Esercito = Convert.ToInt32(Variabili_Client.Citta.Centro.Catapulte_3);
                                 }
                             }
                             if (livello_Unità == 4)
                             {
-                                g_Citta = Convert.ToInt32(Variabili_Client.Citta.Città.Guerrieri_4);
-                                l_Citta = Convert.ToInt32(Variabili_Client.Citta.Città.Lanceri_4);
-                                a_Citta = Convert.ToInt32(Variabili_Client.Citta.Città.Arceri_4);
-                                c_Citta = Convert.ToInt32(Variabili_Client.Citta.Città.Catapulte_5);
+                                g_Citta = Convert.ToInt32(Variabili_Client.Citta.Centro.Guerrieri_4);
+                                l_Citta = Convert.ToInt32(Variabili_Client.Citta.Centro.Lanceri_4);
+                                a_Citta = Convert.ToInt32(Variabili_Client.Citta.Centro.Arceri_4);
+                                c_Citta = Convert.ToInt32(Variabili_Client.Citta.Centro.Catapulte_5);
 
                                 g_Esercito = Convert.ToInt32(Variabili_Client.Reclutamento.Guerrieri_4.Quantità);
                                 l_Esercito = Convert.ToInt32(Variabili_Client.Reclutamento.Lanceri_4.Quantità);
@@ -262,18 +262,18 @@ namespace Warrior_and_Wealth.GUI
                                     a_Citta = Convert.ToInt32(Variabili_Client.Reclutamento.Arceri_4.Quantità);
                                     c_Citta = Convert.ToInt32(Variabili_Client.Reclutamento.Catapulte_4.Quantità);
 
-                                    g_Esercito = Convert.ToInt32(Variabili_Client.Citta.Città.Guerrieri_4);
-                                    l_Esercito = Convert.ToInt32(Variabili_Client.Citta.Città.Lanceri_4);
-                                    a_Esercito = Convert.ToInt32(Variabili_Client.Citta.Città.Arceri_4);
-                                    c_Esercito = Convert.ToInt32(Variabili_Client.Citta.Città.Catapulte_5);
+                                    g_Esercito = Convert.ToInt32(Variabili_Client.Citta.Centro.Guerrieri_4);
+                                    l_Esercito = Convert.ToInt32(Variabili_Client.Citta.Centro.Lanceri_4);
+                                    a_Esercito = Convert.ToInt32(Variabili_Client.Citta.Centro.Arceri_4);
+                                    c_Esercito = Convert.ToInt32(Variabili_Client.Citta.Centro.Catapulte_5);
                                 }
                             }
                             if (livello_Unità == 5)
                             {
-                                g_Citta = Convert.ToInt32(Variabili_Client.Citta.Città.Guerrieri_5);
-                                l_Citta = Convert.ToInt32(Variabili_Client.Citta.Città.Lanceri_5);
-                                a_Citta = Convert.ToInt32(Variabili_Client.Citta.Città.Arceri_5);
-                                c_Citta = Convert.ToInt32(Variabili_Client.Citta.Città.Catapulte_5);
+                                g_Citta = Convert.ToInt32(Variabili_Client.Citta.Centro.Guerrieri_5);
+                                l_Citta = Convert.ToInt32(Variabili_Client.Citta.Centro.Lanceri_5);
+                                a_Citta = Convert.ToInt32(Variabili_Client.Citta.Centro.Arceri_5);
+                                c_Citta = Convert.ToInt32(Variabili_Client.Citta.Centro.Catapulte_5);
 
                                 g_Esercito = Convert.ToInt32(Variabili_Client.Reclutamento.Guerrieri_5.Quantità);
                                 l_Esercito = Convert.ToInt32(Variabili_Client.Reclutamento.Lanceri_5.Quantità);
@@ -286,13 +286,13 @@ namespace Warrior_and_Wealth.GUI
                                     a_Citta = Convert.ToInt32(Variabili_Client.Reclutamento.Arceri_5.Quantità);
                                     c_Citta = Convert.ToInt32(Variabili_Client.Reclutamento.Catapulte_5.Quantità);
 
-                                    g_Esercito = Convert.ToInt32(Variabili_Client.Citta.Città.Guerrieri_5);
-                                    l_Esercito = Convert.ToInt32(Variabili_Client.Citta.Città.Lanceri_5);
-                                    a_Esercito = Convert.ToInt32(Variabili_Client.Citta.Città.Arceri_5);
-                                    c_Esercito = Convert.ToInt32(Variabili_Client.Citta.Città.Catapulte_5);
+                                    g_Esercito = Convert.ToInt32(Variabili_Client.Citta.Centro.Guerrieri_5);
+                                    l_Esercito = Convert.ToInt32(Variabili_Client.Citta.Centro.Lanceri_5);
+                                    a_Esercito = Convert.ToInt32(Variabili_Client.Citta.Centro.Arceri_5);
+                                    c_Esercito = Convert.ToInt32(Variabili_Client.Citta.Centro.Catapulte_5);
                                 }
                             }
-                            maxGuarnigione = Variabili_Client.Citta.Città.Guarnigione_Max;
+                            maxGuarnigione = Variabili_Client.Citta.Centro.Guarnigione_Max;
                         }
                         if (struttura == "Cancello")
                         {
@@ -885,7 +885,7 @@ namespace Warrior_and_Wealth.GUI
             int maxGuarnigione = 0; // Ottieni il max della guarnigione
 
             if (struttura == "Ingresso") maxGuarnigione = Variabili_Client.Citta.Ingresso.Guarnigione_Max;
-            else if (struttura == "Citta") maxGuarnigione = Variabili_Client.Citta.Città.Guarnigione_Max;
+            else if (struttura == "Citta") maxGuarnigione = Variabili_Client.Citta.Centro.Guarnigione_Max;
             else if (struttura == "Cancello") maxGuarnigione = Variabili_Client.Citta.Cancello.Guarnigione_Max;
             else if (struttura == "Mura") maxGuarnigione = Variabili_Client.Citta.Mura.Guarnigione_Max;
             else if (struttura == "Torri") maxGuarnigione = Variabili_Client.Citta.Torri.Guarnigione_Max;

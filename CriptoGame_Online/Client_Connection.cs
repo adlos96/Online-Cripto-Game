@@ -793,32 +793,32 @@ namespace Strategico_V2
                 SetValue<int>("Catapulte_5_Ingresso", v => Variabili_Client.Citta.Ingresso.Catapulte_5 = v);
 
                 // Guarnigione Città
-                SetValue<int>("Guarnigione_Citta", v => Variabili_Client.Citta.Città.Guarnigione = v);
-                SetValue<int>("Guarnigione_CittaMax", v => Variabili_Client.Citta.Città.Guarnigione_Max = v);
+                SetValue<int>("Guarnigione_Citta", v => Variabili_Client.Citta.Centro.Guarnigione = v);
+                SetValue<int>("Guarnigione_CittaMax", v => Variabili_Client.Citta.Centro.Guarnigione_Max = v);
 
-                SetValue<int>("Guerrieri_1_Citta", v => Variabili_Client.Citta.Città.Guerrieri_1 = v);
-                SetValue<int>("Guerrieri_2_Citta", v => Variabili_Client.Citta.Città.Guerrieri_2 = v);
-                SetValue<int>("Guerrieri_3_Citta", v => Variabili_Client.Citta.Città.Guerrieri_3 = v);
-                SetValue<int>("Guerrieri_4_Citta", v => Variabili_Client.Citta.Città.Guerrieri_4 = v);
-                SetValue<int>("Guerrieri_5_Citta", v => Variabili_Client.Citta.Città.Guerrieri_5 = v);
+                SetValue<int>("Guerrieri_1_Citta", v => Variabili_Client.Citta.Centro.Guerrieri_1 = v);
+                SetValue<int>("Guerrieri_2_Citta", v => Variabili_Client.Citta.Centro.Guerrieri_2 = v);
+                SetValue<int>("Guerrieri_3_Citta", v => Variabili_Client.Citta.Centro.Guerrieri_3 = v);
+                SetValue<int>("Guerrieri_4_Citta", v => Variabili_Client.Citta.Centro.Guerrieri_4 = v);
+                SetValue<int>("Guerrieri_5_Citta", v => Variabili_Client.Citta.Centro.Guerrieri_5 = v);
 
-                SetValue<int>("Lanceri_1_Citta", v => Variabili_Client.Citta.Città.Lanceri_1 = v);
-                SetValue<int>("Lanceri_2_Citta", v => Variabili_Client.Citta.Città.Lanceri_2 = v);
-                SetValue<int>("Lanceri_3_Citta", v => Variabili_Client.Citta.Città.Lanceri_3 = v);
-                SetValue<int>("Lanceri_4_Citta", v => Variabili_Client.Citta.Città.Lanceri_4 = v);
-                SetValue<int>("Lanceri_5_Citta", v => Variabili_Client.Citta.Città.Lanceri_5 = v);
+                SetValue<int>("Lanceri_1_Citta", v => Variabili_Client.Citta.Centro.Lanceri_1 = v);
+                SetValue<int>("Lanceri_2_Citta", v => Variabili_Client.Citta.Centro.Lanceri_2 = v);
+                SetValue<int>("Lanceri_3_Citta", v => Variabili_Client.Citta.Centro.Lanceri_3 = v);
+                SetValue<int>("Lanceri_4_Citta", v => Variabili_Client.Citta.Centro.Lanceri_4 = v);
+                SetValue<int>("Lanceri_5_Citta", v => Variabili_Client.Citta.Centro.Lanceri_5 = v);
 
-                SetValue<int>("Arceri_1_Citta", v => Variabili_Client.Citta.Città.Arceri_1 = v);
-                SetValue<int>("Arceri_2_Citta", v => Variabili_Client.Citta.Città.Arceri_2 = v);
-                SetValue<int>("Arceri_3_Citta", v => Variabili_Client.Citta.Città.Arceri_3 = v);
-                SetValue<int>("Arceri_4_Citta", v => Variabili_Client.Citta.Città.Arceri_4 = v);
-                SetValue<int>("Arceri_5_Citta", v => Variabili_Client.Citta.Città.Arceri_5 = v);
+                SetValue<int>("Arceri_1_Citta", v => Variabili_Client.Citta.Centro.Arceri_1 = v);
+                SetValue<int>("Arceri_2_Citta", v => Variabili_Client.Citta.Centro.Arceri_2 = v);
+                SetValue<int>("Arceri_3_Citta", v => Variabili_Client.Citta.Centro.Arceri_3 = v);
+                SetValue<int>("Arceri_4_Citta", v => Variabili_Client.Citta.Centro.Arceri_4 = v);
+                SetValue<int>("Arceri_5_Citta", v => Variabili_Client.Citta.Centro.Arceri_5 = v);
 
-                SetValue<int>("Catapulte_1_Citta", v => Variabili_Client.Citta.Città.Catapulte_1 = v);
-                SetValue<int>("Catapulte_2_Citta", v => Variabili_Client.Citta.Città.Catapulte_2 = v);
-                SetValue<int>("Catapulte_3_Citta", v => Variabili_Client.Citta.Città.Catapulte_3 = v);
-                SetValue<int>("Catapulte_4_Citta", v => Variabili_Client.Citta.Città.Catapulte_4 = v);
-                SetValue<int>("Catapulte_5_Citta", v => Variabili_Client.Citta.Città.Catapulte_5 = v);
+                SetValue<int>("Catapulte_1_Citta", v => Variabili_Client.Citta.Centro.Catapulte_1 = v);
+                SetValue<int>("Catapulte_2_Citta", v => Variabili_Client.Citta.Centro.Catapulte_2 = v);
+                SetValue<int>("Catapulte_3_Citta", v => Variabili_Client.Citta.Centro.Catapulte_3 = v);
+                SetValue<int>("Catapulte_4_Citta", v => Variabili_Client.Citta.Centro.Catapulte_4 = v);
+                SetValue<int>("Catapulte_5_Citta", v => Variabili_Client.Citta.Centro.Catapulte_5 = v);
 
                 // Cancello
                 SetValue<int>("Guarnigione_Cancello", v => Variabili_Client.Citta.Cancello.Guarnigione = v);

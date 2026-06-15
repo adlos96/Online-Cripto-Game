@@ -80,7 +80,7 @@
             panel1.Controls.Add(lbl_Password_Login);
             panel1.Controls.Add(txt_Username_Login);
             panel1.Controls.Add(lbl_Username_Login);
-            panel1.Location = new Point(20, 12);
+            panel1.Location = new Point(21, 12);
             panel1.Name = "panel1";
             panel1.Size = new Size(268, 342);
             panel1.TabIndex = 1;
@@ -266,7 +266,7 @@
             // 
             banner_2.BackgroundImage = Properties.Resources.Banner_Blue_removebg_preview;
             banner_2.BackgroundImageLayout = ImageLayout.Stretch;
-            banner_2.Location = new Point(264, 2);
+            banner_2.Location = new Point(265, 2);
             banner_2.Name = "banner_2";
             banner_2.Size = new Size(33, 55);
             banner_2.TabIndex = 17;
@@ -302,7 +302,7 @@
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             BackgroundImage = Properties.Resources.freepik__upload__73441_AAA;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(306, 407);
+            ClientSize = new Size(309, 407);
             Controls.Add(lbl_Aggiornamento_Disponibile);
             Controls.Add(btn_Aggiorna);
             Controls.Add(panel1);
