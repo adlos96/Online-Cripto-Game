@@ -371,7 +371,7 @@ namespace Server_Strategico.Gioco
             }
 
             // Crea un "giocatore virtuale" con array di truppe
-            var playerVirtuale = new Player("Cooperativo", "password", Guid.Empty)
+            var playerVirtuale = new Player("Cooperativo", "password", "email", Guid.Empty)
             {
                 Guerrieri = totaleGuerrieri,
                 Lanceri = totaleLancieri,

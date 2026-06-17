@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            lbl_Username_Login = new Label();
             panel1 = new Panel();
+            txt_Email = new TextBox();
             checkBox2 = new CheckBox();
             lbl_Titolo = new Warrior_and_Wealth.Strumenti.TransparentLabel();
             checkBox1 = new CheckBox();
@@ -43,27 +43,25 @@
             Btn_Login = new Button();
             Btn_New_Game = new Button();
             txt_Password_Login = new TextBox();
-            lbl_Password_Login = new Label();
             txt_Username_Login = new TextBox();
             lbl_Aggiornamento_Disponibile = new Label();
             banner_2 = new Panel();
             banner_1 = new Panel();
             btn_Aggiorna = new Button();
+            lbl_Password_Reset = new Warrior_and_Wealth.Strumenti.TransparentLabel();
+            label2 = new Warrior_and_Wealth.Strumenti.TransparentLabel();
+            lbl_Username_Login = new Warrior_and_Wealth.Strumenti.TransparentLabel();
+            lbl_Password_Login = new Warrior_and_Wealth.Strumenti.TransparentLabel();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
-            // lbl_Username_Login
-            // 
-            lbl_Username_Login.AutoSize = true;
-            lbl_Username_Login.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold);
-            lbl_Username_Login.Location = new Point(100, 98);
-            lbl_Username_Login.Name = "lbl_Username_Login";
-            lbl_Username_Login.Size = new Size(59, 13);
-            lbl_Username_Login.TabIndex = 1;
-            lbl_Username_Login.Text = "Username";
-            // 
             // panel1
             // 
+            panel1.Controls.Add(lbl_Password_Login);
+            panel1.Controls.Add(lbl_Username_Login);
+            panel1.Controls.Add(label2);
+            panel1.Controls.Add(lbl_Password_Reset);
+            panel1.Controls.Add(txt_Email);
             panel1.Controls.Add(checkBox2);
             panel1.Controls.Add(lbl_Titolo);
             panel1.Controls.Add(checkBox1);
@@ -77,20 +75,26 @@
             panel1.Controls.Add(Btn_Login);
             panel1.Controls.Add(Btn_New_Game);
             panel1.Controls.Add(txt_Password_Login);
-            panel1.Controls.Add(lbl_Password_Login);
             panel1.Controls.Add(txt_Username_Login);
-            panel1.Controls.Add(lbl_Username_Login);
             panel1.Location = new Point(21, 12);
             panel1.Name = "panel1";
-            panel1.Size = new Size(268, 342);
+            panel1.Size = new Size(268, 383);
             panel1.TabIndex = 1;
+            // 
+            // txt_Email
+            // 
+            txt_Email.Location = new Point(55, 102);
+            txt_Email.Name = "txt_Email";
+            txt_Email.Size = new Size(152, 23);
+            txt_Email.TabIndex = 22;
+            txt_Email.TextAlign = HorizontalAlignment.Center;
             // 
             // checkBox2
             // 
             checkBox2.AutoSize = true;
             checkBox2.Checked = true;
             checkBox2.CheckState = CheckState.Checked;
-            checkBox2.Location = new Point(210, 203);
+            checkBox2.Location = new Point(210, 248);
             checkBox2.Name = "checkBox2";
             checkBox2.Size = new Size(46, 19);
             checkBox2.TabIndex = 21;
@@ -113,7 +117,7 @@
             // checkBox1
             // 
             checkBox1.AutoSize = true;
-            checkBox1.Location = new Point(210, 161);
+            checkBox1.Location = new Point(210, 192);
             checkBox1.Name = "checkBox1";
             checkBox1.Size = new Size(51, 19);
             checkBox1.TabIndex = 19;
@@ -166,7 +170,7 @@
             // txt_Log
             // 
             txt_Log.BorderStyle = BorderStyle.FixedSingle;
-            txt_Log.Location = new Point(3, 230);
+            txt_Log.Location = new Point(3, 275);
             txt_Log.Multiline = true;
             txt_Log.Name = "txt_Log";
             txt_Log.ReadOnly = true;
@@ -175,7 +179,7 @@
             // 
             // txt_Ip
             // 
-            txt_Ip.Location = new Point(56, 201);
+            txt_Ip.Location = new Point(56, 246);
             txt_Ip.Name = "txt_Ip";
             txt_Ip.ReadOnly = true;
             txt_Ip.Size = new Size(152, 23);
@@ -188,7 +192,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold);
-            label1.Location = new Point(119, 184);
+            label1.Location = new Point(33, 252);
             label1.Name = "label1";
             label1.Size = new Size(17, 13);
             label1.TabIndex = 8;
@@ -199,7 +203,7 @@
             Btn_Login.FlatAppearance.BorderSize = 0;
             Btn_Login.FlatStyle = FlatStyle.Flat;
             Btn_Login.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Btn_Login.Location = new Point(134, 296);
+            Btn_Login.Location = new Point(135, 341);
             Btn_Login.Name = "Btn_Login";
             Btn_Login.Size = new Size(92, 32);
             Btn_Login.TabIndex = 5;
@@ -212,7 +216,7 @@
             Btn_New_Game.FlatAppearance.BorderSize = 0;
             Btn_New_Game.FlatStyle = FlatStyle.Flat;
             Btn_New_Game.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Btn_New_Game.Location = new Point(39, 296);
+            Btn_New_Game.Location = new Point(40, 341);
             Btn_New_Game.Name = "Btn_New_Game";
             Btn_New_Game.Size = new Size(89, 32);
             Btn_New_Game.TabIndex = 4;
@@ -222,7 +226,7 @@
             // 
             // txt_Password_Login
             // 
-            txt_Password_Login.Location = new Point(56, 159);
+            txt_Password_Login.Location = new Point(56, 190);
             txt_Password_Login.Name = "txt_Password_Login";
             txt_Password_Login.Size = new Size(152, 23);
             txt_Password_Login.TabIndex = 2;
@@ -230,19 +234,9 @@
             txt_Password_Login.MouseClick += txt_Password_Login_MouseClick;
             txt_Password_Login.TextChanged += txt_Password_Login_TextChanged;
             // 
-            // lbl_Password_Login
-            // 
-            lbl_Password_Login.AutoSize = true;
-            lbl_Password_Login.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold);
-            lbl_Password_Login.Location = new Point(102, 142);
-            lbl_Password_Login.Name = "lbl_Password_Login";
-            lbl_Password_Login.Size = new Size(57, 13);
-            lbl_Password_Login.TabIndex = 3;
-            lbl_Password_Login.Text = "Password";
-            // 
             // txt_Username_Login
             // 
-            txt_Username_Login.Location = new Point(55, 115);
+            txt_Username_Login.Location = new Point(55, 146);
             txt_Username_Login.Name = "txt_Username_Login";
             txt_Username_Login.Size = new Size(152, 23);
             txt_Username_Login.TabIndex = 0;
@@ -255,7 +249,7 @@
             lbl_Aggiornamento_Disponibile.AutoSize = true;
             lbl_Aggiornamento_Disponibile.BackColor = Color.Transparent;
             lbl_Aggiornamento_Disponibile.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lbl_Aggiornamento_Disponibile.Location = new Point(23, 357);
+            lbl_Aggiornamento_Disponibile.Location = new Point(25, 401);
             lbl_Aggiornamento_Disponibile.Name = "lbl_Aggiornamento_Disponibile";
             lbl_Aggiornamento_Disponibile.Size = new Size(178, 13);
             lbl_Aggiornamento_Disponibile.TabIndex = 11;
@@ -285,14 +279,63 @@
             btn_Aggiorna.FlatAppearance.BorderSize = 0;
             btn_Aggiorna.FlatStyle = FlatStyle.Flat;
             btn_Aggiorna.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btn_Aggiorna.Location = new Point(59, 373);
+            btn_Aggiorna.Location = new Point(61, 422);
             btn_Aggiorna.Name = "btn_Aggiorna";
             btn_Aggiorna.Size = new Size(187, 27);
             btn_Aggiorna.TabIndex = 18;
-            btn_Aggiorna.Text = "Aggiorna Client";
+            btn_Aggiorna.Text = "Update Client";
             btn_Aggiorna.UseVisualStyleBackColor = true;
             btn_Aggiorna.Visible = false;
             btn_Aggiorna.Click += btn_Aggiorna_Click;
+            // 
+            // lbl_Password_Reset
+            // 
+            lbl_Password_Reset.BackColor = Color.Transparent;
+            lbl_Password_Reset.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lbl_Password_Reset.Location = new Point(3, 217);
+            lbl_Password_Reset.Multiline = false;
+            lbl_Password_Reset.Name = "lbl_Password_Reset";
+            lbl_Password_Reset.Size = new Size(262, 12);
+            lbl_Password_Reset.TabIndex = 24;
+            lbl_Password_Reset.Text = "Hai perso la password?";
+            lbl_Password_Reset.TextAlign = ContentAlignment.MiddleCenter;
+            lbl_Password_Reset.MouseClick += lbl_Password_Reset_MouseClick;
+            // 
+            // label2
+            // 
+            label2.BackColor = Color.Transparent;
+            label2.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Location = new Point(3, 85);
+            label2.Multiline = false;
+            label2.Name = "label2";
+            label2.Size = new Size(262, 12);
+            label2.TabIndex = 25;
+            label2.Text = "Email";
+            label2.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // lbl_Username_Login
+            // 
+            lbl_Username_Login.BackColor = Color.Transparent;
+            lbl_Username_Login.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lbl_Username_Login.Location = new Point(3, 128);
+            lbl_Username_Login.Multiline = false;
+            lbl_Username_Login.Name = "lbl_Username_Login";
+            lbl_Username_Login.Size = new Size(262, 12);
+            lbl_Username_Login.TabIndex = 26;
+            lbl_Username_Login.Text = "Nome Utente";
+            lbl_Username_Login.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // lbl_Password_Login
+            // 
+            lbl_Password_Login.BackColor = Color.Transparent;
+            lbl_Password_Login.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lbl_Password_Login.Location = new Point(3, 172);
+            lbl_Password_Login.Multiline = false;
+            lbl_Password_Login.Name = "lbl_Password_Login";
+            lbl_Password_Login.Size = new Size(262, 12);
+            lbl_Password_Login.TabIndex = 27;
+            lbl_Password_Login.Text = "Password";
+            lbl_Password_Login.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // Login
             // 
@@ -302,7 +345,7 @@
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             BackgroundImage = Properties.Resources.freepik__upload__73441_AAA;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(309, 407);
+            ClientSize = new Size(309, 458);
             Controls.Add(lbl_Aggiornamento_Disponibile);
             Controls.Add(btn_Aggiorna);
             Controls.Add(panel1);
@@ -321,13 +364,10 @@
         }
 
         #endregion
-
-        private Label lbl_Username_Login;
         private Panel panel1;
         private TextBox txt_Username_Login;
         private Button Btn_New_Game;
         private TextBox txt_Password_Login;
-        private Label lbl_Password_Login;
         private Button Btn_Login;
         private Panel banner_2;
         private Panel banner_1;
@@ -343,5 +383,10 @@
         private CheckBox checkBox1;
         private Strumenti.TransparentLabel lbl_Titolo;
         private CheckBox checkBox2;
+        private TextBox txt_Email;
+        private Strumenti.TransparentLabel lbl_Password_Reset;
+        private Strumenti.TransparentLabel lbl_Password_Login;
+        private Strumenti.TransparentLabel lbl_Username_Login;
+        private Strumenti.TransparentLabel label2;
     }
 }

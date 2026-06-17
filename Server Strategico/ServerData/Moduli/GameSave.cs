@@ -1,7 +1,6 @@
 ﻿using Server_Strategico.Gioco;
 using Server_Strategico.Manager;
 using Server_Strategico.Server;
-using System.Linq;
 using System.Text.Json;
 using static Server_Strategico.Gioco.Barbari;
 using static Server_Strategico.Gioco.Giocatori;
@@ -44,6 +43,8 @@ namespace Server_Strategico.ServerData.Moduli
                     //Dati Giocatore
                     Username = player.Username,
                     Password = player.Password,
+                    Email = player.Email,
+                    conferma_Codice_Email = player.conferma_Codice_Email,
                     guid_Player = player.guid_Player,
                     ScudoDellaPace = player.ScudoDellaPace,
                     Costruttori = player.Costruttori,
@@ -406,6 +407,8 @@ namespace Server_Strategico.ServerData.Moduli
 
                     player.Username = playerData.Username;
                     player.Password = playerData.Password;
+                    player.Email = playerData.Email;
+                    player.conferma_Codice_Email = playerData.conferma_Codice_Email;
                     player.Livello = playerData.Livello;
                     player.Esperienza = playerData.Esperienza;
                     player.Vip = playerData.Vip;
@@ -935,7 +938,7 @@ namespace Server_Strategico.ServerData.Moduli
                         Console.WriteLine($"[autoGameLoad] Password estratta per {username}");
 
                         // Carica i dati del giocatore con la password estratta dal file
-                        bool success = await ServerConnection.Load_User_Auto(username, password);
+                        bool success = await ServerConnection.Load_User_Auto(username, password, playerData.Email);
                         if (success) Console.WriteLine($"[autoGameLoad] Caricamento automatico completato per {username}");
                         else Console.WriteLine($"[autoGameLoad] Caricamento automatico fallito per {username}");
                     }
@@ -1049,8 +1052,10 @@ namespace Server_Strategico.ServerData.Moduli
 
             #region Variabili giocatore
             // Giocatori
+            public string Email { get; set; }
             public string Username { get; set; }
             public string Password { get; set; }
+            public bool conferma_Codice_Email { get; set; }
             public Guid guid_Player { get; set; }
 
             // Esperienza e VIP

@@ -10,10 +10,12 @@ namespace Server_Strategico.Gioco
         {
             #region Variabili giocatore
             // Giocatori
+            public string Email { get; set; }
             public string Username { get; set; }
             public string Password { get; set; }
             public string Lingua { get; set; }
             public Guid guid_Player { get; set; }
+            public bool conferma_Codice_Email { get; set; }
             public bool Tutorial { get; set; }
             public bool Stato_Giocatore { get; set; } //Giocatore attivo?
             public bool Banned_Giocatore { get; set; } //Giocatore bannato?
@@ -21,6 +23,8 @@ namespace Server_Strategico.Gioco
             public bool[] Tutorial_Premi { get; set; } = new bool[20];
             public bool[] GamePass_Premi { get; set; } = new bool[90];
             public Int16 GamePass_Accessi_Consecutivi { get; set; }
+            public int Email_Code { get; set; }
+            public int Email_Code_Time { get; set; }
 
 
             // Esperienza e VIP
@@ -347,7 +351,7 @@ namespace Server_Strategico.Gioco
             public readonly object LockCostruzione = new object();
             public readonly object LockReclutamento = new object();
 
-            public Player(string username, string password, Guid guid_Client)
+            public Player(string username, string password, string email, Guid guid_Client)
             {
                 // Inizializza lista villaggi barbarici
                 VillaggiPersonali = new List<Gioco.Barbari.VillaggioBarbaro>();
@@ -355,14 +359,19 @@ namespace Server_Strategico.Gioco
                 Riparazioni = new bool[8];
                 PremiNormali = new bool[20];
                 PremiVIP = new bool[20];
-                Tutorial = true;
                 Banned_Giocatore = false;
                 Stato_Giocatore = true;
+                Tutorial = true;
                 Tutorial_Stato = new bool[32];
                 Tutorial_Premi = new bool[32];
                 GamePass_Premi = new bool[90];
                 GamePass_Accessi_Consecutivi = 0;
                 Last_Login = DateTime.Now.Date;
+
+                //Password Change
+                Email_Code = 0;
+                Email_Code_Time = 0;
+                conferma_Codice_Email = false;
 
                 //Limiti giocatore [DD]
                 Diamanti_Viola_PVP_Ottenuti = 0;
@@ -371,6 +380,7 @@ namespace Server_Strategico.Gioco
                 Diamanti_Blu_PVP_Persi = 0;
 
                 //Dati Giocatore
+                Email = email;
                 Username = username;
                 Password = password;
                 guid_Player = guid_Client;

@@ -1036,10 +1036,10 @@ namespace Server_Strategico.ServerData.Moduli.Battaglie
         public static async void TestBattaglia()
         {
             //Aggiungere giocatore x test
-            bool test2 = await Server.ServerConnection.New_Player("TEST", "123", Guid.Empty);
+            bool test2 = await Server.ServerConnection.New_Player("TEST", "123", "test@example.com", Guid.Empty);
             var attaccante = Server.Server.servers_.GetPlayer_Data("TEST");
 
-            bool test1 = await Server.ServerConnection.New_Player("adly", "123", Guid.Empty);
+            bool test1 = await Server.ServerConnection.New_Player("adly", "123", "adly@example.com", Guid.Empty);
             var difensore = Server.Server.servers_.GetPlayer_Data("adly");
 
             int[] guerrieri = new int[] { 60, 0, 0, 0, 0 };

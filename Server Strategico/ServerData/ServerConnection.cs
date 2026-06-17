@@ -44,7 +44,7 @@ namespace Server_Strategico.Server
             {
                 case "New Player":
                     Console.WriteLine($"[Server] Richiesta nuovo utente ID: {clientGuid}");
-                    if (await New_Player(msgArgs[1], msgArgs[2], clientGuid))
+                    if (await New_Player(msgArgs[1], msgArgs[2], msgArgs[4], clientGuid))
                     {
                         player = Server.servers_.GetPlayer(msgArgs[1], msgArgs[2]);
                         Server.Send(clientGuid, "Login|true");
@@ -68,7 +68,7 @@ namespace Server_Strategico.Server
                         Server.Send(clientGuid, $"Login|false|Questo nome utente è già presente: [{msgArgs[1]}]");
                     break;
                 case "Login":
-                    if (await Login(msgArgs[1], msgArgs[2], clientGuid))
+                    if (await Login(msgArgs[1], msgArgs[2], msgArgs[4], clientGuid))
                     {
                         Server.Send(clientGuid, "Login|true");
 
@@ -116,6 +116,10 @@ namespace Server_Strategico.Server
                     else
                         Server.Send(clientGuid, $"Login|false|Username o password non corrispondono. User: [{msgArgs[1]}] psw: [{msgArgs[2]}]");
                     break;
+                case "Password change":
+                    Console.WriteLine($"[Server] Richiesta cambio password per l'utente: {msgArgs[1]}");
+                   
+                    break;
                 case "Costruzione":
                     if (Convert.ToInt32(msgArgs[3]) > 0) BuildingManagerV2.Costruzione("Fattoria", Convert.ToInt32(msgArgs[3]), clientGuid, player); // Costruisci fattorie
                     if (Convert.ToInt32(msgArgs[4]) > 0) BuildingManagerV2.Costruzione("Segheria", Convert.ToInt32(msgArgs[4]), clientGuid, player); // Costruisci fattorie
@@ -149,59 +153,7 @@ namespace Server_Strategico.Server
                     Esplora(player, Convert.ToInt32(msgArgs[4]), msgArgs[3]);
                     break;
                 case "Battaglia":
-                    int[] guerrieri = new int[] { 0, 0, 0, 0, 0 };
-                    int[] picchieri = new int[] { 0, 0, 0, 0, 0 };
-                    int[] arcieri = new int[] { 0, 0, 0, 0, 0 };
-                    int[] catapulte = new int[] { 0, 0, 0, 0, 0 };
-
-                    guerrieri[0] = Convert.ToInt32(msgArgs[5]);
-                    guerrieri[1] = Convert.ToInt32(msgArgs[6]);
-                    guerrieri[2] = Convert.ToInt32(msgArgs[7]);
-                    guerrieri[3] = Convert.ToInt32(msgArgs[8]);
-                    guerrieri[4] = Convert.ToInt32(msgArgs[9]);
-
-                    picchieri[0] = Convert.ToInt32(msgArgs[10]);
-                    picchieri[1] = Convert.ToInt32(msgArgs[11]);
-                    picchieri[2] = Convert.ToInt32(msgArgs[12]);
-                    picchieri[3] = Convert.ToInt32(msgArgs[13]);
-                    picchieri[4] = Convert.ToInt32(msgArgs[14]);
-
-                    arcieri[0] = Convert.ToInt32(msgArgs[15]);
-                    arcieri[1] = Convert.ToInt32(msgArgs[16]);
-                    arcieri[2] = Convert.ToInt32(msgArgs[17]);
-                    arcieri[3] = Convert.ToInt32(msgArgs[18]);
-                    arcieri[4] = Convert.ToInt32(msgArgs[19]);
-
-                    catapulte[0] = Convert.ToInt32(msgArgs[20]);
-                    catapulte[1] = Convert.ToInt32(msgArgs[21]);
-                    catapulte[2] = Convert.ToInt32(msgArgs[22]);
-                    catapulte[3] = Convert.ToInt32(msgArgs[23]);
-                    catapulte[4] = Convert.ToInt32(msgArgs[24]);
-
-                    if (msgArgs[3] == "Villaggio Barbaro")
-                        await BattaglieV2.Battaglia_Barbari(player, clientGuid, "Villaggio Barbaro", msgArgs[4], guerrieri, picchieri, arcieri, catapulte);
-                    if (msgArgs[3] == "Città Barbaro")
-                        await BattaglieV2.Battaglia_Barbari(player, clientGuid, "Città Barbaro", msgArgs[4], guerrieri, picchieri, arcieri, catapulte);
-
-                    AggiornaVillaggiClient(player);
-                    if (msgArgs[3] == "PVP")
-                    {
-                        var datisss = msgArgs[4].Split(',');
-                        var difensore = Server.servers_.GetPlayer_Data(datisss[0]);
-                        var attackerUnits = new BattaglieV2.UnitGroup
-                        {
-                            Guerrieri = guerrieri,
-                            Lancieri = picchieri,
-                            Arcieri = arcieri,
-                            Catapulte = catapulte
-                        };
-                        BattaglieV2.BattleResult result = await BattaglieV2.Battaglia_Strutture_PvP(player, difensore, clientGuid, difensore.guid_Player, attackerUnits);
-                        if (result.Struttura == "Castello" && result.Victory == true) 
-                            BattaglieV2.Battaglia_PvP(player, difensore, clientGuid, difensore.guid_Player, result.AttaccantePerdite.Guerrieri, result.AttaccantePerdite.Lancieri, result.AttaccantePerdite.Arcieri, result.AttaccantePerdite.Catapulte);
-
-                        Server.GameServer.GuerrieriCitta(player);
-                    }
-                    
+                    Battaglia(player.guid_Player, player, msgArgs);
                     break;
                 case "Ricerca":
                     ResearchManager.Ricerca(msgArgs[3], clientGuid, player);
@@ -249,6 +201,88 @@ namespace Server_Strategico.Server
                 default: Console.WriteLine($"Messaggio: [{msgArgs}]"); break;
             }
            
+        }
+        public static void Cambia_Password(Guid clientGuid, Player player, string[] msgArgs)
+        {
+            switch (msgArgs[1])
+            {
+                case "mail": //Conferma email
+                    if (player.Email == msgArgs[1])
+                    {
+                        int code = Random.Shared.Next(100000, 999999);
+                        player.Email_Code = code;
+                        player.Email_Code_Time = 15 * 3600;
+                        //Invia il codice via email
+                    }
+                    else Console.WriteLine($"[Server] L'email non corrisponde per l'utente: {msgArgs[1]}");
+                break;
+                case "Change": //Cambio password se codice corrisponde!
+                    if (player.Email_Code == Convert.ToInt32(msgArgs[2]) && player.Email_Code_Time > 0)
+                    {
+                        player.Password = msgArgs[3];
+                        Server.Send(clientGuid, $"Password change|Change|true");
+                    }
+                    else
+                    {
+                        Server.Send(clientGuid, $"Password change|Change|false");
+                    }
+                break;
+            }
+        }
+        public async static void Battaglia(Guid clientGuid, Player player, string[] dati)
+        {
+            int[] guerrieri = new int[] { 0, 0, 0, 0, 0 };
+            int[] picchieri = new int[] { 0, 0, 0, 0, 0 };
+            int[] arcieri = new int[] { 0, 0, 0, 0, 0 };
+            int[] catapulte = new int[] { 0, 0, 0, 0, 0 };
+
+            guerrieri[0] = Convert.ToInt32(dati[5]);
+            guerrieri[1] = Convert.ToInt32(dati[6]);
+            guerrieri[2] = Convert.ToInt32(dati[7]);
+            guerrieri[3] = Convert.ToInt32(dati[8]);
+            guerrieri[4] = Convert.ToInt32(dati[9]);
+
+            picchieri[0] = Convert.ToInt32(dati[10]);
+            picchieri[1] = Convert.ToInt32(dati[11]);
+            picchieri[2] = Convert.ToInt32(dati[12]);
+            picchieri[3] = Convert.ToInt32(dati[13]);
+            picchieri[4] = Convert.ToInt32(dati[14]);
+
+            arcieri[0] = Convert.ToInt32(dati[15]);
+            arcieri[1] = Convert.ToInt32(dati[16]);
+            arcieri[2] = Convert.ToInt32(dati[17]);
+            arcieri[3] = Convert.ToInt32(dati[18]);
+            arcieri[4] = Convert.ToInt32(dati[19]);
+
+            catapulte[0] = Convert.ToInt32(dati[20]);
+            catapulte[1] = Convert.ToInt32(dati[21]);
+            catapulte[2] = Convert.ToInt32(dati[22]);
+            catapulte[3] = Convert.ToInt32(dati[23]);
+            catapulte[4] = Convert.ToInt32(dati[24]);
+
+            if (dati[3] == "Villaggio Barbaro")
+                await BattaglieV2.Battaglia_Barbari(player, clientGuid, "Villaggio Barbaro", dati[4], guerrieri, picchieri, arcieri, catapulte);
+            if (dati[3] == "Città Barbaro")
+                await BattaglieV2.Battaglia_Barbari(player, clientGuid, "Città Barbaro", dati[4], guerrieri, picchieri, arcieri, catapulte);
+
+            AggiornaVillaggiClient(player);
+            if (dati[3] == "PVP")
+            {
+                var datisss = dati[4].Split(',');
+                var difensore = Server.servers_.GetPlayer_Data(datisss[0]);
+                var attackerUnits = new BattaglieV2.UnitGroup
+                {
+                    Guerrieri = guerrieri,
+                    Lancieri = picchieri,
+                    Arcieri = arcieri,
+                    Catapulte = catapulte
+                };
+                BattaglieV2.BattleResult result = await BattaglieV2.Battaglia_Strutture_PvP(player, difensore, clientGuid, difensore.guid_Player, attackerUnits);
+                if (result.Struttura == "Castello" && result.Victory == true)
+                    BattaglieV2.Battaglia_PvP(player, difensore, clientGuid, difensore.guid_Player, result.AttaccantePerdite.Guerrieri, result.AttaccantePerdite.Lancieri, result.AttaccantePerdite.Arcieri, result.AttaccantePerdite.Catapulte);
+
+                Server.GameServer.GuerrieriCitta(player);
+            }
         }
         public static void GamePass_Premi(Player player)
         {
@@ -940,7 +974,7 @@ namespace Server_Strategico.Server
 
             }
         }
-        public static async Task<bool> New_Player(string username, string password, Guid guid)
+        public static async Task<bool> New_Player(string username, string password, string email, Guid guid)
         {
             var existingPlayer = Server.servers_.GetPlayer(username, password);
             if (existingPlayer != null) // Controlla se il giocatore esiste già
@@ -951,13 +985,13 @@ namespace Server_Strategico.Server
             }
             if (await Server.servers_.Check_Username_Player(username)) // Controlla se il nome utente è disponibile
             {
-                await Server.servers_.AddPlayer(username, password, guid);
+                await Server.servers_.AddPlayer(username, password, email, guid);
                 //await GameSave.LoadPlayer(username, password);
                 return true;
             }
             return false;
         }
-        static async Task<bool> Login(string username, string password, Guid guid)
+        static async Task<bool> Login(string username, string password, string email, Guid guid)
         {
             var existingPlayer = Server.servers_.GetPlayer(username, password);
             if (existingPlayer != null) // Controlla se il giocatore esiste già
@@ -971,7 +1005,7 @@ namespace Server_Strategico.Server
             }
             else return false;
         }
-        public static async Task<bool> Load_User_Auto(string username, string password)
+        public static async Task<bool> Load_User_Auto(string username, string password, string email)
         {
             var existingPlayer = Server.servers_.GetPlayer_Data(username);
             if (existingPlayer != null) // Controlla se il giocatore esiste già
@@ -983,7 +1017,7 @@ namespace Server_Strategico.Server
             // Controlla se il nome utente è disponibile
             if (await Server.servers_.Check_Username_Player(username))
             {
-                await Server.servers_.AddPlayer(username, password, Guid.Empty); // Prima crea il nuovo giocatore
+                await Server.servers_.AddPlayer(username, password, email, Guid.Empty); // Prima crea il nuovo giocatore
                 if (await GameSave.LoadPlayer(username, password)) // Poi prova a caricare i dati salvati
                     return true;
             }

@@ -39,6 +39,11 @@ namespace Warrior_and_Wealth
             Btn_New_Game.Font = new Font("Cinzel Decorative", 9, FontStyle.Bold);
             Btn_New_Game.BackColor = Color.FromArgb(100, 229, 208, 181);
 
+            // txt_Email
+            txt_Email.BackColor = Color.FromArgb(229, 208, 181);
+            txt_Email.Text = "Inserisci Email";
+            txt_Email.Font = new Font("Cinzel Decorative", 9, FontStyle.Regular);
+
             // txt_Username
             txt_Username_Login.BackColor = Color.FromArgb(229, 208, 181);
             txt_Username_Login.Text = "Inserisci Nome utente";
@@ -159,6 +164,7 @@ namespace Warrior_and_Wealth
 
             if (Variabili_Client.Utente.User_Login == true)
             {
+                Variabili_Client.Utente.Email = txt_Email.Text;
                 Variabili_Client.Utente.Username = txt_Username_Login.Text;
                 Variabili_Client.Utente.Password = txt_Password_Login.Text;
                 this.DialogResult = DialogResult.OK; // Se il login riesce
@@ -190,11 +196,12 @@ namespace Warrior_and_Wealth
             await Sleep(2);
             txt_Log.Text = "Contattando il server...";
             await Sleep(2);
-            ClientConnection.TestClient.Send($"New Player|{txt_Username_Login.Text}|{txt_Password_Login.Text}|{lingua_Selezionata}");
+            ClientConnection.TestClient.Send($"New Player|{txt_Username_Login.Text}|{txt_Password_Login.Text}|{lingua_Selezionata}|{txt_Email.Text}");
             await Sleep(2);
 
             if (Variabili_Client.Utente.User_Login == true)
             {
+                Variabili_Client.Utente.Email = txt_Email.Text;
                 Variabili_Client.Utente.Username = txt_Username_Login.Text;
                 Variabili_Client.Utente.Password = txt_Password_Login.Text;
                 this.DialogResult = DialogResult.OK; // Se il login riesce
@@ -326,6 +333,14 @@ namespace Warrior_and_Wealth
                 txt_Log.Font = new Font("Cinzel Decorative", 8, FontStyle.Bold);
                 return;
             }
+            else if (txt_Email.Text == "Inserisci Email")
+            {
+                txt_Log.Text = "Inserisci un indirizzo email valido!";
+                Btn_Login.Enabled = true;
+                Btn_New_Game.Enabled = true;
+                txt_Log.Font = new Font("Cinzel Decorative", 8, FontStyle.Bold);
+                return;
+            }
         }
 
         private void Login_FormClosing(object sender, FormClosingEventArgs e)
@@ -362,6 +377,11 @@ namespace Warrior_and_Wealth
         {
             if (checkBox2.Checked) txt_Ip.ReadOnly = true;
             else txt_Ip.ReadOnly = false;
+        }
+
+        private void lbl_Password_Reset_MouseClick(object sender, MouseEventArgs e)
+        {
+
         }
     }
 }

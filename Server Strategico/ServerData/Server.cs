@@ -232,11 +232,11 @@ namespace Server_Strategico.Server
         {
             public Dictionary<string, Player> players = new Dictionary<string, Player>();
             int _saveIndex = 0;
-            public async Task<bool> AddPlayer(string username, string password, Guid guid)
+            public async Task<bool> AddPlayer(string username, string password, string email, Guid guid)
             {
                 if (!players.ContainsKey(username))
                 {
-                    players.Add(username, new Player(username, password, guid));
+                    players.Add(username, new Player(username, password, email, guid));
                     await NewPlayer(username, password);
                     return true;
                 }
@@ -383,7 +383,7 @@ namespace Server_Strategico.Server
             async Task addBOT(int b)
             {
                 for (int i = 0; i < b; i++)
-                    await AddPlayer($"Fake{i}", "123", Guid.Empty);
+                    await AddPlayer($"Fake{i}", "123", "fake@example.com", Guid.Empty);
             }
             public async Task RunGameLoopAsync(CancellationToken cancellationToken)
             {
