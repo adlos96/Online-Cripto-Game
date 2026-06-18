@@ -381,7 +381,36 @@ namespace Warrior_and_Wealth
 
         private void lbl_Password_Reset_MouseClick(object sender, MouseEventArgs e)
         {
+            A();
 
+            //Loop per check lettura cambio stato dal server per reset password
+            B();
         }
-    }
+        void A()
+        {
+            lbl_Username_Login.Text = "Codice Reset Password";
+            txt_Username_Login.Text = "Inserisci Codice";
+            lbl_Password_Login.Visible = false;
+            txt_Password_Login.Visible = false;
+            lbl_Password_Reset.Visible = false;
+            lbl_Ip.Visible = false;
+            txt_Ip.Visible = false;
+            checkBox2.Visible = false;
+            Btn_Login.Enabled = false;
+
+            Btn_New_Game.Text = "Send Code";
+            if (Variabili_Client.change_Password && txt_Email.Text == txt_Username_Login.Text)
+                Btn_Login.Enabled = true;
+            Btn_Login.Text = "Reset Password";
+        }
+        void B()
+        {
+            if (Variabili_Client.change_Password)
+            {
+                lbl_Email.Text = "Nuova Password";
+                txt_Email.Text = "Inserisci Nuova Password";
+                lbl_Username_Login.Text = "Nuova Password";
+                txt_Username_Login.Text = "Ripeti Password";
+            }
+        }
 }

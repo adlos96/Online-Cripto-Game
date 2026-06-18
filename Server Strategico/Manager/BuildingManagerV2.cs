@@ -492,12 +492,12 @@ namespace Server_Strategico.Manager
                 player.Diamanti_Viola_Utilizzati += Strutture.Edifici.Terreni_Virtuali.Diamanti_Viola; //Aggiunge la spesa al totale dei diamanti viola spesi
                 OnEvent(player, QuestEventType.Costruzione, "Terreno", 1); //Aggiungi terreno quest
                 Console.WriteLine($"Diamanti Viola utilizzati per un terreno virtuale...");
-                Server.Server.Send(clientGuid, LocalizationManager.Get(player).Terreni_DiamantiInsufficienti());
+                Server.Server.Send(clientGuid, LocalizationManager.Get(player).Terreni_DiamantiUtilizzati());
             }
             else
             {
                 Console.WriteLine($"Non hai abbastanza Diamanti Viola per un terreno virtuale.");
-                Server.Server.Send(clientGuid, LocalizationManager.Get(player).Terreni_DiamantiUtilizzati());
+                Server.Server.Send(clientGuid, LocalizationManager.Get(player).Terreni_DiamantiInsufficienti());
                 return;
             }
 

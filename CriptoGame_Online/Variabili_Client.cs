@@ -50,6 +50,8 @@ namespace Strategico_V2
         public static string Versione = "0";
         public static string lingua_Selezionata = "ITA";
 
+        public static bool change_Password = false;
+
         public static string Esperienza_Desc = "";
         public static string Livello_Desc = "";
         public static string D_Viola_D_Blu = "";
@@ -461,8 +463,9 @@ namespace Strategico_V2
 
         public static Dati Utente = new Dati
         {
-            Username = "0",
-            Livello = "0",
+            Email = "",
+            Username = "",
+            Livello = "",
             Esperienza = "0",
             Montly_Quest_Point = "0",
             User_Vip = false,
@@ -664,30 +667,30 @@ namespace Strategico_V2
         };
         public static Dati Bonus = new Dati
         {
-        Bonus_Salute_Guerrieri = "0",
-        Bonus_Salute_Lanceri = "0",
-        Bonus_Salute_Arceri = "0",
-        Bonus_Salute_Catapulte = "0",
-        Bonus_Difesa_Guerrieri = "0",
-        Bonus_Difesa_Lanceri = "0",
-        Bonus_Difesa_Arceri = "0",
-        Bonus_Difesa_Catapulte = "0",
-        Bonus_Attacco_Guerrieri = "0",
-        Bonus_Attacco_Lanceri = "0",
-        Bonus_Attacco_Arceri = "0",
-        Bonus_Attacco_Catapulte = "0",
+            Bonus_Salute_Guerrieri = "0",
+            Bonus_Salute_Lanceri = "0",
+            Bonus_Salute_Arceri = "0",
+            Bonus_Salute_Catapulte = "0",
+            Bonus_Difesa_Guerrieri = "0",
+            Bonus_Difesa_Lanceri = "0",
+            Bonus_Difesa_Arceri = "0",
+            Bonus_Difesa_Catapulte = "0",
+            Bonus_Attacco_Guerrieri = "0",
+            Bonus_Attacco_Lanceri = "0",
+            Bonus_Attacco_Arceri = "0",
+            Bonus_Attacco_Catapulte = "0",
 
-        Bonus_Salute_Strutture = "0",
-        Bonus_Difesa_Strutture = "0",
-        Bonus_Guarnigione_Strutture = "0",
+            Bonus_Salute_Strutture = "0",
+            Bonus_Difesa_Strutture = "0",
+            Bonus_Guarnigione_Strutture = "0",
 
-        Bonus_Produzione_Risorse = "0",
-        Bonus_Capacità_Trasporto = "0",
-        Bonus_Costruzione = "0",
-        Bonus_Addestramento = "0",
-        Bonus_Ricerca = "0",
-        Bonus_Riparazione = "0"
-    };
+            Bonus_Produzione_Risorse = "0",
+            Bonus_Capacità_Trasporto = "0",
+            Bonus_Costruzione = "0",
+            Bonus_Addestramento = "0",
+            Bonus_Ricerca = "0",
+            Bonus_Riparazione = "0"
+        };
 
         public class Shop
         {
