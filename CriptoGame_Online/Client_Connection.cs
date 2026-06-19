@@ -38,7 +38,8 @@ namespace Strategico_V2
 
         internal class TestClient
         {
-            public static string _ServerIp = "warriorandwealth.duckdns.org";
+            //public static string _ServerIp = "warriorandwealth.duckdns.org";
+            public static string _ServerIp = "localhost";
             private static int _ServerPort = 8443;
             private static bool _Ssl = false;
             private static string _CertFile = "";

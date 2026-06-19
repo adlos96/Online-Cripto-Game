@@ -137,6 +137,7 @@
             txt_Email.Size = new Size(152, 23);
             txt_Email.TabIndex = 22;
             txt_Email.TextAlign = HorizontalAlignment.Center;
+            txt_Email.Click += txt_Email_Click;
             // 
             // checkBox2
             // 

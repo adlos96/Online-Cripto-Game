@@ -178,6 +178,13 @@ namespace Warrior_and_Wealth
         }
         private async void Btn_New_Game_Click(object sender, EventArgs e)
         {
+            if (Btn_New_Game.Text == "Send Mail")
+            {
+                ClientConnection.TestClient.Send($"Password change|adly96|123|ITA|{txt_Email.Text}|mail");
+                B();
+                return;
+            }
+
             txt_Log.Font = new Font("Cinzel Decorative", 8, FontStyle.Regular);
             this.ActiveControl = lbl_Titolo;
             Btn_New_Game.Enabled = false;
@@ -381,29 +388,45 @@ namespace Warrior_and_Wealth
 
         private void lbl_Password_Reset_MouseClick(object sender, MouseEventArgs e)
         {
+            //Inserisci Email e richied codice
             A();
 
+            //Invia codice letta dalla mail
+
+
             //Loop per check lettura cambio stato dal server per reset password
-            B();
+            C();
         }
         void A()
         {
-            lbl_Username_Login.Text = "Codice Reset Password";
+            lbl_Username_Login.Text = "Codice";
             txt_Username_Login.Text = "Inserisci Codice";
             lbl_Password_Login.Visible = false;
             txt_Password_Login.Visible = false;
             lbl_Password_Reset.Visible = false;
+            lbl_Username_Login.Visible = false;
+            txt_Username_Login.Visible = false;
             lbl_Ip.Visible = false;
             txt_Ip.Visible = false;
             checkBox2.Visible = false;
+            checkBox1.Visible = false;
             Btn_Login.Enabled = false;
+
+            Btn_New_Game.Text = "Send Mail";
+            Btn_Login.Text = "Reset Password";
+        }
+        void B()
+        {
+            lbl_Username_Login.Text = "Codice";
+            txt_Username_Login.Text = "Inserisci Codice";
+            lbl_Username_Login.Visible = true;
+            txt_Username_Login.Visible = true;
 
             Btn_New_Game.Text = "Send Code";
             if (Variabili_Client.change_Password && txt_Email.Text == txt_Username_Login.Text)
                 Btn_Login.Enabled = true;
-            Btn_Login.Text = "Reset Password";
         }
-        void B()
+        void C()
         {
             if (Variabili_Client.change_Password)
             {
@@ -411,6 +434,13 @@ namespace Warrior_and_Wealth
                 txt_Email.Text = "Inserisci Nuova Password";
                 lbl_Username_Login.Text = "Nuova Password";
                 txt_Username_Login.Text = "Ripeti Password";
+                checkBox1.Visible = true;
             }
         }
+
+        private void txt_Email_Click(object sender, EventArgs e)
+        {
+            txt_Email.Text = "";
+        }
+    }
 }

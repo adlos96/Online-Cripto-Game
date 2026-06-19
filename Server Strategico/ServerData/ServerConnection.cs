@@ -2,6 +2,7 @@
 using Server_Strategico.Gioco;
 using Server_Strategico.Manager;
 using Server_Strategico.ServerData.Moduli;
+using Strategico_V2.Manager;
 using System.Text;
 using WatsonTcp;
 using static Server_Strategico.Gioco.Barbari;
@@ -62,7 +63,8 @@ namespace Server_Strategico.Server
                         Tutorial(player);
                         player.SetupCaserme();
                         GamePass_Premi_Send(player);
-                        Update_Data_OneTime(clientGuid,player);
+                        Update_Data_OneTime(clientGuid, player);
+                        await EmailManager.SendWelcomeAsync(player.Email, player.Username);
                     }
                     else
                         Server.Send(clientGuid, $"Login|false|Questo nome utente è già presente: [{msgArgs[1]}]");
@@ -118,7 +120,7 @@ namespace Server_Strategico.Server
                     break;
                 case "Password change":
                     Console.WriteLine($"[Server] Richiesta cambio password per l'utente: {msgArgs[1]}");
-                   
+                    Cambia_Password(clientGuid, player, msgArgs);
                     break;
                 case "Costruzione":
                     if (Convert.ToInt32(msgArgs[3]) > 0) BuildingManagerV2.Costruzione("Fattoria", Convert.ToInt32(msgArgs[3]), clientGuid, player); // Costruisci fattorie
@@ -202,17 +204,19 @@ namespace Server_Strategico.Server
             }
            
         }
-        public static void Cambia_Password(Guid clientGuid, Player player, string[] msgArgs)
+        public async static void Cambia_Password(Guid clientGuid, Player player, string[] msgArgs)
         {
-            switch (msgArgs[1])
+            switch (msgArgs[5])
             {
                 case "mail": //Conferma email
-                    if (player.Email == msgArgs[1])
+                    if (player.Email == msgArgs[4])
                     {
                         int code = Random.Shared.Next(100000, 999999);
                         player.Email_Code = code;
                         player.Email_Code_Time = 15 * 3600;
                         //Invia il codice via email
+                        //await EmailManager.SendPasswordRecoveryAsync(player.Email, player.Username, code.ToString());
+                        //await EmailManager.SendPasswordRecoveryAsync("thechannelofadlos@gmail.com", player.Username, code.ToString());
                     }
                     else Console.WriteLine($"[Server] L'email non corrisponde per l'utente: {msgArgs[1]}");
                 break;
