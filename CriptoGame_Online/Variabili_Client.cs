@@ -50,7 +50,9 @@ namespace Strategico_V2
         public static string Versione = "0";
         public static string lingua_Selezionata = "ITA";
 
-        public static bool change_Password = false;
+        public static bool approve_Mail = false;
+        public static bool approve_Code = false;
+        public static bool approve_Change_Password = false;
 
         public static string Esperienza_Desc = "";
         public static string Livello_Desc = "";
