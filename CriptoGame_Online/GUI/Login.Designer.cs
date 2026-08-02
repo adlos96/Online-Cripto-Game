@@ -135,7 +135,7 @@
             txt_Email.Location = new Point(55, 102);
             txt_Email.Name = "txt_Email";
             txt_Email.Size = new Size(152, 23);
-            txt_Email.TabIndex = 22;
+            txt_Email.TabIndex = 1;
             txt_Email.TextAlign = HorizontalAlignment.Center;
             txt_Email.Click += txt_Email_Click;
             // 
@@ -147,7 +147,7 @@
             checkBox2.Location = new Point(210, 248);
             checkBox2.Name = "checkBox2";
             checkBox2.Size = new Size(46, 19);
-            checkBox2.TabIndex = 21;
+            checkBox2.TabIndex = 7;
             checkBox2.Text = "Edit";
             checkBox2.UseVisualStyleBackColor = true;
             checkBox2.CheckedChanged += checkBox2_CheckedChanged;
@@ -170,7 +170,7 @@
             checkBox1.Location = new Point(210, 192);
             checkBox1.Name = "checkBox1";
             checkBox1.Size = new Size(51, 19);
-            checkBox1.TabIndex = 19;
+            checkBox1.TabIndex = 8;
             checkBox1.Text = "Hide";
             checkBox1.UseVisualStyleBackColor = true;
             checkBox1.CheckedChanged += checkBox1_CheckedChanged;
@@ -181,7 +181,7 @@
             comboBox_Lingua.Location = new Point(150, 34);
             comboBox_Lingua.Name = "comboBox_Lingua";
             comboBox_Lingua.Size = new Size(62, 23);
-            comboBox_Lingua.TabIndex = 19;
+            comboBox_Lingua.TabIndex = 0;
             comboBox_Lingua.TextChanged += comboBox_Lingua_TextChanged;
             // 
             // panel_Connessione
@@ -233,7 +233,7 @@
             txt_Ip.Name = "txt_Ip";
             txt_Ip.ReadOnly = true;
             txt_Ip.Size = new Size(152, 23);
-            txt_Ip.TabIndex = 7;
+            txt_Ip.TabIndex = 4;
             txt_Ip.Text = "AUTO";
             txt_Ip.TextAlign = HorizontalAlignment.Center;
             txt_Ip.MouseClick += txt_Ip_MouseClick;
@@ -255,7 +255,7 @@
             Btn_Login.Location = new Point(13, 379);
             Btn_Login.Name = "Btn_Login";
             Btn_Login.Size = new Size(243, 32);
-            Btn_Login.TabIndex = 5;
+            Btn_Login.TabIndex = 6;
             Btn_Login.Text = "Login";
             Btn_Login.UseVisualStyleBackColor = true;
             Btn_Login.Click += Btn_Login_Click;
@@ -267,7 +267,7 @@
             Btn_New_Game.Location = new Point(13, 341);
             Btn_New_Game.Name = "Btn_New_Game";
             Btn_New_Game.Size = new Size(243, 32);
-            Btn_New_Game.TabIndex = 4;
+            Btn_New_Game.TabIndex = 5;
             Btn_New_Game.Text = "New Game";
             Btn_New_Game.UseVisualStyleBackColor = true;
             Btn_New_Game.Click += Btn_New_Game_Click;
@@ -277,7 +277,7 @@
             txt_Password_Login.Location = new Point(56, 190);
             txt_Password_Login.Name = "txt_Password_Login";
             txt_Password_Login.Size = new Size(152, 23);
-            txt_Password_Login.TabIndex = 2;
+            txt_Password_Login.TabIndex = 3;
             txt_Password_Login.TextAlign = HorizontalAlignment.Center;
             txt_Password_Login.MouseClick += txt_Password_Login_MouseClick;
             txt_Password_Login.TextChanged += txt_Password_Login_TextChanged;
@@ -287,7 +287,7 @@
             txt_Username_Login.Location = new Point(55, 146);
             txt_Username_Login.Name = "txt_Username_Login";
             txt_Username_Login.Size = new Size(152, 23);
-            txt_Username_Login.TabIndex = 0;
+            txt_Username_Login.TabIndex = 2;
             txt_Username_Login.TextAlign = HorizontalAlignment.Center;
             txt_Username_Login.MouseClick += txt_Username_Login_MouseClick;
             txt_Username_Login.TextChanged += txt_Username_Login_TextChanged;
@@ -330,7 +330,7 @@
             btn_Aggiorna.Location = new Point(60, 458);
             btn_Aggiorna.Name = "btn_Aggiorna";
             btn_Aggiorna.Size = new Size(187, 27);
-            btn_Aggiorna.TabIndex = 18;
+            btn_Aggiorna.TabIndex = 7;
             btn_Aggiorna.Text = "Update Client";
             btn_Aggiorna.UseVisualStyleBackColor = true;
             btn_Aggiorna.Visible = false;

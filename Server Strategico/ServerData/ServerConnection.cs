@@ -34,6 +34,11 @@ namespace Server_Strategico.Server
                 return;
             }
             var msgArgs = messaggioRicevuto.Split('|'); // Composto da 3 part1 0|1|2 -> 0 = percorso file
+
+            string email = msgArgs[2];
+            string username = msgArgs[0];
+            string passw = msgArgs[1];
+
             if (msgArgs.Length == 0)
             {
                 Console.WriteLine("[Errore|ServerConnection] >> needed 1 args");
@@ -45,13 +50,13 @@ namespace Server_Strategico.Server
             {
                 case "New Player":
                     Console.WriteLine($"[Server] Richiesta nuovo utente ID: {clientGuid}");
-                    if (await New_Player(msgArgs[1], msgArgs[2], msgArgs[4], clientGuid))
+                    if (await New_Player(msgArgs[1], msgArgs[2], msgArgs[3], clientGuid))
                     {
                         player = Server.servers_.GetPlayer(msgArgs[1], msgArgs[2]);
                         Server.Send(clientGuid, "Login|true");
 
                         Server.Client_Connessi_Map.TryRemove(clientGuid, out _);
-                        Server.Client_Connessi_Map.TryAdd(clientGuid, player.Username);
+                        Server.Client_Connessi_Map.TryAdd(clientGuid, username);
                         if (Variabili_Server.lingue_Supportate.Contains(msgArgs[3])) player.Lingua = msgArgs[3]; //Imposta la lingua preferita del giocatore
                         else player.Lingua = "ITA"; //Default Italiano
                         Console.WriteLine($"[Server] Lingua selezionata: {msgArgs[3]}");
@@ -70,7 +75,7 @@ namespace Server_Strategico.Server
                         Server.Send(clientGuid, $"Login|false|Questo nome utente è già presente: [{msgArgs[1]}]");
                     break;
                 case "Login":
-                    if (await Login(msgArgs[1], msgArgs[2], msgArgs[4], clientGuid))
+                    if (await Login(msgArgs[1], msgArgs[2], msgArgs[3], clientGuid)) //Comando, Username, Password, Lingua
                     {
                         Server.Send(clientGuid, "Login|true");
 
@@ -199,6 +204,7 @@ namespace Server_Strategico.Server
                 case "GamePass DailyReward":
                     GamePass_Premi(player);
                     break;
+                
 
                 default: Console.WriteLine($"Messaggio: [{msgArgs}]"); break;
             }
