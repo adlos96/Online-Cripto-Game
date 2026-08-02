@@ -1,4 +1,6 @@
 ﻿using Strategico_V2;
+using System.Threading;
+using Warrior_and_Wealth.Helper;
 using Warrior_and_Wealth.Strumenti;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
@@ -6,6 +8,7 @@ namespace Warrior_and_Wealth
 {
     public partial class Login : Form
     {
+        private CancellationTokenSource _cts = new CancellationTokenSource();
         public static string login_data = "";
         static bool avviso_Aggiornamento = false;
         string lingua_Selezionata = "ITA";
@@ -294,6 +297,29 @@ namespace Warrior_and_Wealth
             await Task.Delay(1000 * secondi);
             return true;
         }
+        public async void Loop_Change_Password()
+        {
+            bool a = true;
+            while (true)
+            {
+                if (a)
+                {
+                    a = false;
+                    A();
+                }
+                if (Variabili_Client.approve_Mail)
+                    B();
+
+                if (Variabili_Client.approve_Code)
+                    C();
+                if (Variabili_Client.approve_Change_Password)
+                {
+                    txt_Log.Text = "Password cambiata con successo!";
+                    return;
+                }
+                await Task.Delay(1000);
+            }
+        }
         public async Task<bool> Loop_Login(int tentativi_Max)
         {
             int tentativi = 1;
@@ -388,14 +414,13 @@ namespace Warrior_and_Wealth
 
         private void lbl_Password_Reset_MouseClick(object sender, MouseEventArgs e)
         {
-            //Inserisci Email e richied codice
-            A();
-
-            //Invia codice letta dalla mail
-
-
-            //Loop per check lettura cambio stato dal server per reset password
-            C();
+            //Task.Run(() => Loop_Change_Password());
+            Task.Run(() => GuiHelper.UiUpdateLoop(
+                anchor: lbl_Titolo,
+                updateAction: Loop_Change_Password,
+                token: _cts.Token,
+                intervalMs: 1000
+            ));
         }
         void A()
         {
@@ -423,12 +448,10 @@ namespace Warrior_and_Wealth
             txt_Username_Login.Visible = true;
 
             Btn_New_Game.Text = "Send Code";
-            if (Variabili_Client.change_Password && txt_Email.Text == txt_Username_Login.Text)
-                Btn_Login.Enabled = true;
         }
         void C()
         {
-            if (Variabili_Client.change_Password)
+            if (Variabili_Client.approve_Code)
             {
                 lbl_Email.Text = "Nuova Password";
                 txt_Email.Text = "Inserisci Nuova Password";
