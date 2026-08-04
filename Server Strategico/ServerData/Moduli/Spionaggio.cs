@@ -77,11 +77,11 @@ namespace Server_Strategico.ServerData.Moduli
         public async static void EseguiSpionaggio()
         {
             bool test1 = await Server.ServerConnection.New_Player("adly", "123", "adly@example.com", Guid.Empty);
-            var attaccante = Server.Server.servers_.GetPlayer_Data("adly");
+            var attaccante = Server.Server.servers_.GetPlayer("adly");
             attaccante.Ricerca_Spionaggio = 14;
 
             bool test2 = await Server.ServerConnection.New_Player("TEST", "123", "test@example.com", Guid.Empty);
-            var difensore = Server.Server.servers_.GetPlayer_Data("TEST");
+            var difensore = Server.Server.servers_.GetPlayer("TEST");
             difensore.Ricerca_Contro_Spionaggio = 1;
 
             BattagliaPVP.AddTroops(difensore);

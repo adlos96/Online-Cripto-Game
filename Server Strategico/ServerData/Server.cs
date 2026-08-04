@@ -265,7 +265,7 @@ namespace Server_Strategico.Server
                     throw new KeyNotFoundException("Player not found.");
                 }
             }
-            public Player GetPlayer_Data(string username)
+            public Player GetPlayer(string username)
             {
                 if (players.TryGetValue(username, out Player player))
                     return player;
