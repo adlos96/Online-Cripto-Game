@@ -262,7 +262,7 @@ namespace Warrior_and_Wealth
                             btn_Livello_Ingresso.Enabled = true;
                             btn_Guarnigione_Ingresso.Enabled = true;
 
-                            btn_Livello_Castello.Enabled = true;
+                            btn_Livello_Cancello.Enabled = true;
                             btn_Salute_Cancello.Enabled = true;
                             btn_Difesa_Cancello.Enabled = true;
                             btn_Guarnigione_Cancello.Enabled = true;
@@ -344,8 +344,8 @@ namespace Warrior_and_Wealth
                         switch (Variabili_Client.Ricerca_1_Bottone_Cliccato)
                         {
                             case "btn_Costruzione":
-                                if ( Variabili_Client.Utente.Ricerca_Attiva == true) panel_Costruzione.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
-                                if ( Variabili_Client.Utente.Ricerca_Attiva == false) panel_Costruzione.BackgroundImage = Properties.Resources.Bottone___Sfondo_1_A_removebg_preview;
+                                if (Variabili_Client.Utente.Ricerca_Attiva == true) panel_Costruzione.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
+                                if (Variabili_Client.Utente.Ricerca_Attiva == false) panel_Costruzione.BackgroundImage = Properties.Resources.Bottone___Sfondo_1_A_removebg_preview;
                                 break;
                             case "btn_Produzione":
                                 if (Variabili_Client.Utente.Ricerca_Attiva == true) panel_Risorse.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
@@ -555,71 +555,85 @@ namespace Warrior_and_Wealth
         {
             this.ActiveControl = lbl_Tempo_Ricerca;
             panel_Costruzione.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
-            ClientConnection.TestClient.Send($"Ricerca|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Costruzione");
+            ComandiInvio.Ricerca("Costruzione");
             Variabili_Client.Ricerca_1_Bottone_Cliccato = "btn_Costruzione";
         }
         private void btn_Risorse_Click(object sender, EventArgs e)
         {
             this.ActiveControl = lbl_Tempo_Ricerca;
             panel_Risorse.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
-            ClientConnection.TestClient.Send($"Ricerca|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Produzione");
+            ComandiInvio.Ricerca("Produzione");
             Variabili_Client.Ricerca_1_Bottone_Cliccato = "btn_Produzione";
         }
         private void btn_Addestramento_Click(object sender, EventArgs e)
         {
             this.ActiveControl = lbl_Tempo_Ricerca;
             panel_Addestramento.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
-            ClientConnection.TestClient.Send($"Ricerca|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Addestramento");
+            ComandiInvio.Ricerca("Addestramento");
             Variabili_Client.Ricerca_1_Bottone_Cliccato = "btn_Addestramento";
         }
         private void btn_Popolazione_Click(object sender, EventArgs e)
         {
             this.ActiveControl = lbl_Tempo_Ricerca;
             panel_Popolazione.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
-            ClientConnection.TestClient.Send($"Ricerca|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Popolazione");
+            ComandiInvio.Ricerca("Popolazione");
             Variabili_Client.Ricerca_1_Bottone_Cliccato = "btn_Popolazione";
         }
         private void btn_Trasporto_Click(object sender, EventArgs e)
         {
             this.ActiveControl = lbl_Tempo_Ricerca;
             panel_Trasporto.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
-            ClientConnection.TestClient.Send($"Ricerca|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Trasporto");
+            ComandiInvio.Ricerca("Trasporto");
             Variabili_Client.Ricerca_1_Bottone_Cliccato = "btn_Trasporto";
         }
         private void btn_Riparazione_Click(object sender, EventArgs e)
         {
             this.ActiveControl = lbl_Tempo_Ricerca;
             panel_Riparazione.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
-            ClientConnection.TestClient.Send($"Ricerca|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Riparazione");
+            ComandiInvio.Ricerca("Riparazione");
             Variabili_Client.Ricerca_1_Bottone_Cliccato = "btn_Riparazione";
+        }
+        private void btn_Spionaggio_Click(object sender, EventArgs e)
+        {
+            this.ActiveControl = lbl_Tempo_Ricerca;
+            panel_Spionaggio.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
+            ComandiInvio.Ricerca("Spionaggio");
+            Variabili_Client.Ricerca_1_Bottone_Cliccato = "btn_Spionaggio";
+        }
+        private void btn_Contro_Spionaggio_Click(object sender, EventArgs e)
+        {
+            this.ActiveControl = lbl_Tempo_Ricerca;
+            panel_Contro_Spionaggio.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
+            ComandiInvio.Ricerca("Contro-Spionaggio");
+            Variabili_Client.Ricerca_1_Bottone_Cliccato = "btn_Contro_Spionaggio";
         }
 
         private void btn_Livello_Guerrieri_Click(object sender, EventArgs e)
         {
             this.ActiveControl = lbl_Tempo_Ricerca;
             panel_Livello_Guerrieri.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
-            ClientConnection.TestClient.Send($"Ricerca|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Guerriero Livello");
+            ComandiInvio.Ricerca("Guerriero Livello");
             Variabili_Client.Ricerca_1_Bottone_Cliccato = "btn_Livello_Guerrieri";
         }
         private void btn_Attacco_Guerrieri_Click(object sender, EventArgs e)
         {
             this.ActiveControl = lbl_Tempo_Ricerca;
             panel_Attacco_Guerrieri.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
-            ClientConnection.TestClient.Send($"Ricerca|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Guerriero Attacco");
+            ComandiInvio.Ricerca("Guerriero Attacco");
             Variabili_Client.Ricerca_1_Bottone_Cliccato = "btn_Attacco_Guerrieri";
         }
         private void btn_Difesa_Guerrieri_Click(object sender, EventArgs e)
         {
             this.ActiveControl = lbl_Tempo_Ricerca;
             panel_Difesa_Guerrieri.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
-            ClientConnection.TestClient.Send($"Ricerca|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Guerriero Difesa");
+            ComandiInvio.Ricerca("Guerriero Difesa");
             Variabili_Client.Ricerca_1_Bottone_Cliccato = "btn_Difesa_Guerrieri";
         }
         private void btn_Salute_Guerrieri_Click(object sender, EventArgs e)
         {
             this.ActiveControl = lbl_Tempo_Ricerca;
             panel_Salute_Guerrieri.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
-            ClientConnection.TestClient.Send($"Ricerca|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Guerriero Salute");
+            ComandiInvio.Ricerca("Guerriero Salute");
             Variabili_Client.Ricerca_1_Bottone_Cliccato = "btn_Salute_Guerrieri";
         }
 
@@ -627,28 +641,28 @@ namespace Warrior_and_Wealth
         {
             this.ActiveControl = lbl_Tempo_Ricerca;
             panel_Attacco_Lanceri.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
-            ClientConnection.TestClient.Send($"Ricerca|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Lancere Attacco");
+            ComandiInvio.Ricerca("Lancere Attacco");
             Variabili_Client.Ricerca_1_Bottone_Cliccato = "btn_Attacco_Lanceri";
         }
         private void btn_Difesa_Lanceri_Click(object sender, EventArgs e)
         {
             this.ActiveControl = lbl_Tempo_Ricerca;
             panel_Difesa_Lanceri.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
-            ClientConnection.TestClient.Send($"Ricerca|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Lancere Difesa");
+            ComandiInvio.Ricerca("Lancere Difesa");
             Variabili_Client.Ricerca_1_Bottone_Cliccato = "btn_Difesa_Lanceri";
         }
         private void btn_Salute_Lanceri_Click(object sender, EventArgs e)
         {
             this.ActiveControl = lbl_Tempo_Ricerca;
             panel_Salute_Lanceri.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
-            ClientConnection.TestClient.Send($"Ricerca|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Lancere Salute");
+            ComandiInvio.Ricerca("Lancere Salute");
             Variabili_Client.Ricerca_1_Bottone_Cliccato = "btn_Salute_Lanceri";
         }
         private void btn_Livello_Lanceri_Click(object sender, EventArgs e)
         {
             this.ActiveControl = lbl_Tempo_Ricerca;
             panel_Livello_Lanceri.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
-            ClientConnection.TestClient.Send($"Ricerca|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Lancere Livello");
+            ComandiInvio.Ricerca("Lancere Livello");
             Variabili_Client.Ricerca_1_Bottone_Cliccato = "btn_Livello_Lanceri";
         }
 
@@ -656,28 +670,28 @@ namespace Warrior_and_Wealth
         {
             this.ActiveControl = lbl_Tempo_Ricerca;
             panel_Attacco_Arceri.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
-            ClientConnection.TestClient.Send($"Ricerca|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Arcere Attacco");
+            ComandiInvio.Ricerca("Arcere Attacco");
             Variabili_Client.Ricerca_1_Bottone_Cliccato = "btn_Attacco_Arceri";
         }
         private void btn_Difesa_Arceri_Click(object sender, EventArgs e)
         {
             this.ActiveControl = lbl_Tempo_Ricerca;
             panel_Difesa_Arceri.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
-            ClientConnection.TestClient.Send($"Ricerca|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Arcere Difesa");
+            ComandiInvio.Ricerca("Arcere Difesa");
             Variabili_Client.Ricerca_1_Bottone_Cliccato = "btn_Difesa_Arceri";
         }
         private void btn_Salute_Arceri_Click(object sender, EventArgs e)
         {
             this.ActiveControl = lbl_Tempo_Ricerca;
             panel_Salute_Arceri.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
-            ClientConnection.TestClient.Send($"Ricerca|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Arcere Salute");
+            ComandiInvio.Ricerca("Arcere Salute");
             Variabili_Client.Ricerca_1_Bottone_Cliccato = "btn_Salute_Arceri";
         }
         private void btn_Livello_Arceri_Click(object sender, EventArgs e)
         {
             this.ActiveControl = lbl_Tempo_Ricerca;
             panel_Livello_Arceri.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
-            ClientConnection.TestClient.Send($"Ricerca|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Arcere Livello");
+            ComandiInvio.Ricerca("Arcere Livello");
             Variabili_Client.Ricerca_1_Bottone_Cliccato = "btn_Livello_Arceri";
         }
 
@@ -685,28 +699,28 @@ namespace Warrior_and_Wealth
         {
             this.ActiveControl = lbl_Tempo_Ricerca;
             panel_Attacco_Catapulte.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
-            ClientConnection.TestClient.Send($"Ricerca|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Catapulta Attacco");
+            ComandiInvio.Ricerca("Catapulta Attacco");
             Variabili_Client.Ricerca_1_Bottone_Cliccato = "btn_Attacco_Catapulte";
         }
         private void btn_Difesa_Catapulte_Click(object sender, EventArgs e)
         {
             this.ActiveControl = lbl_Tempo_Ricerca;
             panel_Difesa_Catapulte.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
-            ClientConnection.TestClient.Send($"Ricerca|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Catapulta Difesa");
+            ComandiInvio.Ricerca("Catapulta Difesa");
             Variabili_Client.Ricerca_1_Bottone_Cliccato = "btn_Difesa_Catapulte";
         }
         private void btn_Salute_Catapulte_Click(object sender, EventArgs e)
         {
             this.ActiveControl = lbl_Tempo_Ricerca;
             panel_Salute_Catapulte.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
-            ClientConnection.TestClient.Send($"Ricerca|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Catapulta Salute");
+            ComandiInvio.Ricerca("Catapulta Salute");
             Variabili_Client.Ricerca_1_Bottone_Cliccato = "btn_Salute_Catapulte";
         }
         private void btn_Livello_Catapulte_Click(object sender, EventArgs e)
         {
             this.ActiveControl = lbl_Tempo_Ricerca;
             panel_Livello_Catapulte.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
-            ClientConnection.TestClient.Send($"Ricerca|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Catapulta Livello");
+            ComandiInvio.Ricerca("Catapulta Livello");
             Variabili_Client.Ricerca_1_Bottone_Cliccato = "btn_Livello_Catapulte";
         }
 
@@ -714,14 +728,14 @@ namespace Warrior_and_Wealth
         {
             this.ActiveControl = lbl_Tempo_Ricerca;
             panel_Guarnigione_Ingresso.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
-            ClientConnection.TestClient.Send($"Ricerca|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Ingresso Guarnigione");
+            ComandiInvio.Ricerca("Ingresso Guarnigione");
             Variabili_Client.Ricerca_1_Bottone_Cliccato = "btn_Ingresso_Guarnigione";
         }
         private void btn_Guarnigione_Citta_Click(object sender, EventArgs e)
         {
             this.ActiveControl = lbl_Tempo_Ricerca;
             panel_Livello_Città.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
-            ClientConnection.TestClient.Send($"Ricerca|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Citta Guarnigione");
+            ComandiInvio.Ricerca("Citta Guarnigione");
             Variabili_Client.Ricerca_1_Bottone_Cliccato = "btn_Citta_Guarnigione";
         }
 
@@ -729,21 +743,21 @@ namespace Warrior_and_Wealth
         {
             this.ActiveControl = lbl_Tempo_Ricerca;
             panel_Salute_Castello.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
-            ClientConnection.TestClient.Send($"Ricerca|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Castello Salute");
+            ComandiInvio.Ricerca("Castello Salute");
             Variabili_Client.Ricerca_1_Bottone_Cliccato = "btn_Castello_Salute";
         }
         private void btn_Difesa_Castello_Click(object sender, EventArgs e)
         {
             this.ActiveControl = lbl_Tempo_Ricerca;
             panel_Difesa_Castello.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
-            ClientConnection.TestClient.Send($"Ricerca|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Castello Difesa");
+            ComandiInvio.Ricerca("Castello Difesa");
             Variabili_Client.Ricerca_1_Bottone_Cliccato = "btn_Castello_Difesa";
         }
         private void btn_Guarnigione_Castello_Click(object sender, EventArgs e)
         {
             this.ActiveControl = lbl_Tempo_Ricerca;
             panel_Guarnigione_Castello.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
-            ClientConnection.TestClient.Send($"Ricerca|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Castello Guarnigione");
+            ComandiInvio.Ricerca("Castello Guarnigione");
             Variabili_Client.Ricerca_1_Bottone_Cliccato = "btn_Castello_Guarnigione";
         }
 
@@ -751,21 +765,21 @@ namespace Warrior_and_Wealth
         {
             this.ActiveControl = lbl_Tempo_Ricerca;
             panel_Salute_Torri.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
-            ClientConnection.TestClient.Send($"Ricerca|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Torri Salute");
+            ComandiInvio.Ricerca("Torri Salute");
             Variabili_Client.Ricerca_1_Bottone_Cliccato = "btn_Torri_Salute";
         }
         private void btn_Difesa_Torri_Click(object sender, EventArgs e)
         {
             this.ActiveControl = lbl_Tempo_Ricerca;
             panel_Difesa_Torri.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
-            ClientConnection.TestClient.Send($"Ricerca|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Torri Difesa");
+            ComandiInvio.Ricerca("Torri Difesa");
             Variabili_Client.Ricerca_1_Bottone_Cliccato = "btn_Torri_Difesa";
         }
         private void btn_Guarnigione_Torri_Click(object sender, EventArgs e)
         {
             this.ActiveControl = lbl_Tempo_Ricerca;
             panel_Guarnigione_Torri.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
-            ClientConnection.TestClient.Send($"Ricerca|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Torri Guarnigione");
+            ComandiInvio.Ricerca("Torri Guarnigione");
             Variabili_Client.Ricerca_1_Bottone_Cliccato = "btn_Torri_Guarnigione";
         }
 
@@ -773,21 +787,21 @@ namespace Warrior_and_Wealth
         {
             this.ActiveControl = lbl_Tempo_Ricerca;
             panel_Salute_Mura.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
-            ClientConnection.TestClient.Send($"Ricerca|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Mura Salute");
+            ComandiInvio.Ricerca("Mura Salute");
             Variabili_Client.Ricerca_1_Bottone_Cliccato = "btn_Mura_Salute";
         }
         private void btn_Difesa_Mura_Click(object sender, EventArgs e)
         {
             this.ActiveControl = lbl_Tempo_Ricerca;
             panel_Difesa_Mura.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
-            ClientConnection.TestClient.Send($"Ricerca|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Mura Difesa");
+            ComandiInvio.Ricerca("Mura Difesa");
             Variabili_Client.Ricerca_1_Bottone_Cliccato = "btn_Mura_Difesa";
         }
         private void btn_Guarnigione_Mura_Click(object sender, EventArgs e)
         {
             this.ActiveControl = lbl_Tempo_Ricerca;
             panel_Guarnigione_Mura.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
-            ClientConnection.TestClient.Send($"Ricerca|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Mura Guarnigione");
+            ComandiInvio.Ricerca("Mura Guarnigione");
             Variabili_Client.Ricerca_1_Bottone_Cliccato = "btn_Mura_Guarnigione";
         }
 
@@ -795,21 +809,21 @@ namespace Warrior_and_Wealth
         {
             this.ActiveControl = lbl_Tempo_Ricerca;
             panel_Salute_Cancello.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
-            ClientConnection.TestClient.Send($"Ricerca|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Cancello Salute");
+            ComandiInvio.Ricerca("Cancello Salute");
             Variabili_Client.Ricerca_1_Bottone_Cliccato = "btn_Cancello_Salute";
         }
         private void btn_Difesa_Cancello_Click(object sender, EventArgs e)
         {
             this.ActiveControl = lbl_Tempo_Ricerca;
             panel_Difesa_Cancello.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
-            ClientConnection.TestClient.Send($"Ricerca|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Cancello Difesa");
+            ComandiInvio.Ricerca("Cancello Difesa");
             Variabili_Client.Ricerca_1_Bottone_Cliccato = "btn_Cancello_Difesa";
         }
         private void btn_Guarnigione_Cancello_Click(object sender, EventArgs e)
         {
             this.ActiveControl = lbl_Tempo_Ricerca;
             panel_Guarnigione_Castello.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
-            ClientConnection.TestClient.Send($"Ricerca|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Cancello Guarnigione");
+            ComandiInvio.Ricerca("Cancello Guarnigione");
             Variabili_Client.Ricerca_1_Bottone_Cliccato = "btn_Cancello_Guarnigione";
         }
 
@@ -817,7 +831,7 @@ namespace Warrior_and_Wealth
         {
             this.ActiveControl = lbl_Tempo_Ricerca;
             panel_Livello_Castello.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
-            ClientConnection.TestClient.Send($"Ricerca|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Castello Livello");
+            ComandiInvio.Ricerca("Castello Livello");
             Variabili_Client.Ricerca_1_Bottone_Cliccato = "btn_Castello_Livello";
         }
 
@@ -825,7 +839,7 @@ namespace Warrior_and_Wealth
         {
             this.ActiveControl = lbl_Tempo_Ricerca;
             panel_Livello_Torri.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
-            ClientConnection.TestClient.Send($"Ricerca|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Torri Livello");
+            ComandiInvio.Ricerca("Torri Livello");
             Variabili_Client.Ricerca_1_Bottone_Cliccato = "btn_Torri_Livello";
         }
 
@@ -833,7 +847,7 @@ namespace Warrior_and_Wealth
         {
             this.ActiveControl = lbl_Tempo_Ricerca;
             panel_Livello_Mura.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
-            ClientConnection.TestClient.Send($"Ricerca|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Mura Livello");
+            ComandiInvio.Ricerca("Mura Livello");
             Variabili_Client.Ricerca_1_Bottone_Cliccato = "btn_Mura_Livello";
         }
 
@@ -841,7 +855,7 @@ namespace Warrior_and_Wealth
         {
             this.ActiveControl = lbl_Tempo_Ricerca;
             panel_Livello_Cancello.BackgroundImage = Properties.Resources.Bottone___Sfondo_2_A_removebg_preview;
-            ClientConnection.TestClient.Send($"Ricerca|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Cancello Livello");
+            ComandiInvio.Ricerca("Cancello Livello");
             Variabili_Client.Ricerca_1_Bottone_Cliccato = "btn_Cancello_Livello";
         }
     }

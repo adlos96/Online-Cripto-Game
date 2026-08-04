@@ -693,7 +693,8 @@ namespace Warrior_and_Wealth
 
             if (result == DialogResult.Yes) // Esegui l'acquisto
             {
-                ClientConnection.TestClient.Send($"Costruzione_Terreni|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|");
+                ComandiInvio.Acquista_TerrenoVirtuale();
+                
                 if (Variabili_Client.tutorial_Attivo == true && await Main.TutorialPrecedentiCompletati(8))
                     ClientConnection.TestClient.Send($"Tutorial Update|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|{8}");
             }

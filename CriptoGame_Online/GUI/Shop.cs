@@ -127,21 +127,33 @@ namespace Warrior_and_Wealth
         }
         void Update_UI()
         {
+            txt_Pacchetto_Desc_1.Visible = true;
+            txt_Pacchetto_Desc_2.Visible = true;
+            txt_Pacchetto_Desc_3.Visible = true;
+            txt_Pacchetto_Desc_4.Visible = true;
+            txt_Pacchetto_Desc_5.Visible = true;
+            txt_Pacchetto_Desc_6.Visible = true;
+
+            panel_Bottone_1.Enabled = true;
+            panel_Bottone_2.Enabled = true;
+            panel_Bottone_3.Enabled = true;
+            panel_Bottone_4.Enabled = true;
+            panel_Bottone_5.Enabled = true;
+            panel_Bottone_6.Enabled = true;
+
+            panel_Image_1.BackgroundImageLayout = ImageLayout.Zoom;
+            panel_Image_2.BackgroundImageLayout = ImageLayout.Zoom;
+            panel_Image_3.BackgroundImageLayout = ImageLayout.Zoom;
+            panel_Image_4.BackgroundImageLayout = ImageLayout.Zoom;
+            panel_Image_5.BackgroundImageLayout = ImageLayout.Zoom;
+            panel_Image_6.BackgroundImageLayout = ImageLayout.Zoom;
+
             if (pagina == 1)
             {
-                txt_Pacchetto_Desc_1.Visible = true;
-                txt_Pacchetto_Desc_2.Visible = true;
                 txt_Pacchetto_Desc_3.Visible = false;
                 txt_Pacchetto_Desc_4.Visible = false;
                 txt_Pacchetto_Desc_5.Visible = false;
                 txt_Pacchetto_Desc_6.Visible = false;
-
-                panel_Bottone_1.Enabled = true;
-                panel_Bottone_2.Enabled = true;
-                panel_Bottone_3.Enabled = true;
-                panel_Bottone_4.Enabled = true;
-                panel_Bottone_5.Enabled = true;
-                panel_Bottone_6.Enabled = true;
 
                 panel_Image_1.BackgroundImage = Properties.Resources.Vip_Photoroom_1_; //Immagine principale
                 panel_Image_2.BackgroundImage = Properties.Resources.Vip_Photoroom_1_;
@@ -179,33 +191,12 @@ namespace Warrior_and_Wealth
             }
             if (pagina == 2)
             {
-                txt_Pacchetto_Desc_1.Visible = true;
-                txt_Pacchetto_Desc_2.Visible = true;
-                txt_Pacchetto_Desc_3.Visible = true;
-                txt_Pacchetto_Desc_4.Visible = true;
-                txt_Pacchetto_Desc_5.Visible = true;
-                txt_Pacchetto_Desc_6.Visible = true;
-
-                panel_Bottone_1.Enabled = true;
-                panel_Bottone_2.Enabled = true;
-                panel_Bottone_3.Enabled = true;
-                panel_Bottone_4.Enabled = true;
-                panel_Bottone_5.Enabled = true;
-                panel_Bottone_6.Enabled = true;
-
                 panel_Image_1.BackgroundImage = Properties.Resources.Costruttori_24H;
                 panel_Image_2.BackgroundImage = Properties.Resources.Costruttori_48H;
                 panel_Image_3.BackgroundImage = Properties.Resources.Addestratori_24H_removebg_preview;
                 panel_Image_4.BackgroundImage = Properties.Resources.Addestratori_48H_removebg_preview;
                 panel_Image_5.BackgroundImage = Properties.Resources.Scudo_Pace_1;
                 panel_Image_6.BackgroundImage = Properties.Resources.Scudo_Pace_1;
-
-                panel_Image_1.BackgroundImageLayout = ImageLayout.Zoom;
-                panel_Image_2.BackgroundImageLayout = ImageLayout.Zoom;
-                panel_Image_3.BackgroundImageLayout = ImageLayout.Zoom;
-                panel_Image_4.BackgroundImageLayout = ImageLayout.Zoom;
-                panel_Image_5.BackgroundImageLayout = ImageLayout.Zoom;
-                panel_Image_6.BackgroundImageLayout = ImageLayout.Zoom;
 
                 panel_Diamond_Image_1.BackgroundImage = Properties.Resources.DiamanteBlu_V2;
                 panel_Diamond_Image_2.BackgroundImage = Properties.Resources.DiamanteBlu_V2;
@@ -244,15 +235,6 @@ namespace Warrior_and_Wealth
             }
             if (pagina == 3)
             {
-                txt_Pacchetto_Desc_2.Visible = true;
-                txt_Pacchetto_Desc_3.Visible = true;
-                txt_Pacchetto_Desc_4.Visible = true;
-                txt_Pacchetto_Desc_5.Visible = true;
-                txt_Pacchetto_Desc_6.Visible = true;
-
-                panel_Bottone_1.Enabled = true;
-                panel_Bottone_2.Enabled = true;
-                panel_Bottone_3.Enabled = true;
                 panel_Bottone_4.Enabled = false;
                 panel_Bottone_5.Enabled = false;
                 panel_Bottone_6.Enabled = false;
@@ -263,13 +245,6 @@ namespace Warrior_and_Wealth
                 panel_Image_4.BackgroundImage = Properties.Resources.Pacchetto_Risorse;
                 panel_Image_5.BackgroundImage = null;
                 panel_Image_6.BackgroundImage = null;
-
-                panel_Image_1.BackgroundImageLayout = ImageLayout.Zoom;
-                panel_Image_2.BackgroundImageLayout = ImageLayout.Zoom;
-                panel_Image_3.BackgroundImageLayout = ImageLayout.Zoom;
-                panel_Image_4.BackgroundImageLayout = ImageLayout.Zoom;
-                panel_Image_5.BackgroundImageLayout = ImageLayout.Zoom;
-                panel_Image_6.BackgroundImageLayout = ImageLayout.Zoom;
 
                 panel_Diamond_Image_1.BackgroundImage = Properties.Resources.DiamanteBlu_V2;
                 panel_Diamond_Image_2.BackgroundImage = Properties.Resources.USDT_Logo_removebg_preview;
@@ -315,7 +290,7 @@ namespace Warrior_and_Wealth
             );
 
             if (result == DialogResult.Yes && _shopComandi.TryGetValue((pagina, numeroBottone), out var comando))
-                ClientConnection.TestClient.Send($"Shop|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|{comando}");
+                ComandiInvio.Shop(comando);
 
             bottone.Enabled = false;
             await Sleep(2);

@@ -856,7 +856,8 @@ namespace Warrior_and_Wealth.GUI
 
         private void btn_Spostamento_Truppe_Click(object sender, EventArgs e)
         {
-            ClientConnection.TestClient.Send($"SpostamentoTruppe|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|{lbl_Esercito.Text}|{lbl_Struttura.Text}|{lbl_Guerriero.Text}|{lbl_Lanciere.Text}|{lbl_Arciere.Text}|{lbl_Catapulta.Text}|{livello_Unità}");
+            ComandiInvio.Spostamento_Truppe(livello_Unità, lbl_Esercito.Text, lbl_Struttura.Text, lbl_Guerriero.Text, lbl_Lanciere.Text, lbl_Arciere.Text, lbl_Catapulta.Text);
+
             trackBar_Guerriero.Value = 0;
             trackBar_Lanciere.Value = 0;
             trackBar_Arciere.Value = 0;

@@ -373,7 +373,7 @@ namespace Warrior_and_Wealth.GUI
         {
             btn_Crea.Enabled = false;
 
-            ClientConnection.TestClient.Send($"AttaccoCooperativo|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Crea|");
+            ClientConnection.TestClient.Send($"AttaccoCooperativo|{Variabili_Client.access_Token}|Crea|");
             await Login.Sleep(3);
             Load_Guid();
             btn_Crea.Enabled = true;
@@ -385,7 +385,7 @@ namespace Warrior_and_Wealth.GUI
             if (comboBox_Raduni_Creati.Text != null)
             {
                 var dati = comboBox_Raduni_Creati.Text.Replace(" ", "").Split('-');
-                ClientConnection.TestClient.Send($"AttaccoCooperativo|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Partecipa|{dati[1]}|{lbl_Guerriero.Text}|{lbl_Lanciere.Text}|{lbl_Arciere.Text}|{lbl_Catapulta.Text}");
+                ClientConnection.TestClient.Send($"AttaccoCooperativo|{Variabili_Client.access_Token}|Partecipa|{dati[1]}|{lbl_Guerriero.Text}|{lbl_Lanciere.Text}|{lbl_Arciere.Text}|{lbl_Catapulta.Text}");
             }
             await Login.Sleep(2);
             Load_Guid();
@@ -405,7 +405,7 @@ namespace Warrior_and_Wealth.GUI
             if (comboBox_Raduni_InCorso.Text != null)
             {
                 var dati = comboBox_Raduni_InCorso.Text.Replace(" ", "").Split('-');
-                ClientConnection.TestClient.Send($"AttaccoCooperativo|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Abbandona|{dati[1]}");
+                ClientConnection.TestClient.Send($"AttaccoCooperativo|{Variabili_Client.access_Token}|Abbandona|{dati[1]}");
             }
             await Login.Sleep(2);
             Load_Guid();
@@ -415,7 +415,7 @@ namespace Warrior_and_Wealth.GUI
         {
             btn_Inizia.Enabled = false;
             var dati = comboBox_Raduni_Creati.Text.Replace(" ", "").Split('-');
-            ClientConnection.TestClient.Send($"AttaccoCooperativo|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Inizia|{dati[1]}");
+            ClientConnection.TestClient.Send($"AttaccoCooperativo|{Variabili_Client.access_Token}|Inizia|{dati[1]}");
             await Login.Sleep(3);
             Load_Guid();
             UpdateCombobox();
@@ -423,7 +423,7 @@ namespace Warrior_and_Wealth.GUI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ClientConnection.TestClient.Send($"AttaccoCooperativo|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|MieiAttacchi|");
+            ClientConnection.TestClient.Send($"AttaccoCooperativo|{Variabili_Client.access_Token}|MieiAttacchi|");
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -520,13 +520,13 @@ namespace Warrior_and_Wealth.GUI
                 }
                 else
                 {
-                    ClientConnection.TestClient.Send($"Esplora|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Citta Barbaro|{comboBox_Villaggi.Text.Replace("Citta Barbare - Livello: ", "")}");
+                    ClientConnection.TestClient.Send($"Esplora|{Variabili_Client.access_Token}|Citta Barbaro|{comboBox_Villaggi.Text.Replace("Citta Barbare - Livello: ", "")}");
                     await Login.Sleep(5);
                 }
             }
             if (tipo_Barbaro == "Villaggi Barbari")
             {
-                ClientConnection.TestClient.Send($"Esplora|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Villaggio Barbaro|{comboBox_Villaggi.Text.Replace("Villaggio Barbaro - Livello: ", "")}");
+                ClientConnection.TestClient.Send($"Esplora|{Variabili_Client.access_Token}|Villaggio Barbaro|{comboBox_Villaggi.Text.Replace("Villaggio Barbaro - Livello: ", "")}");
                 txt_Guerriero_Spedizione.Text = "0";
                 txt_Lancere_Spedizione.Text = "0";
                 txt_Arcere_Spedizione.Text = "0";
@@ -654,8 +654,7 @@ namespace Warrior_and_Wealth.GUI
             if (tipo_Attacco == "Villaggio Barbaro")
                 ClientConnection.TestClient.Send($"" +
                     $"Battaglia|" +
-                    $"{Variabili_Client.Utente.Username}|" +
-                    $"{Variabili_Client.Utente.Password}|" +
+                    $"{Variabili_Client.access_Token}|" +
                     $"{tipo_Attacco}|" +
                     $"{Dati[1].Replace("Livello:", "")}|" +
                     $"{guerrieri_Temp[0]}|{guerrieri_Temp[1]}|{guerrieri_Temp[2]}|{guerrieri_Temp[3]}|{guerrieri_Temp[4]}|" +
@@ -666,8 +665,7 @@ namespace Warrior_and_Wealth.GUI
             if (tipo_Attacco == "Città Barbaro")
                 ClientConnection.TestClient.Send($"" +
                     $"Battaglia|" +
-                    $"{Variabili_Client.Utente.Username}|" +
-                    $"{Variabili_Client.Utente.Password}|" +
+                    $"{Variabili_Client.access_Token}|" +
                     $"{tipo_Attacco}|" +
                     $"{Dati[1].Replace("Livello:", "")}|" +
                     $"{guerrieri_Temp[0]}|{guerrieri_Temp[1]}|{guerrieri_Temp[2]}|{guerrieri_Temp[3]}|{guerrieri_Temp[4]}|" +
@@ -676,7 +674,7 @@ namespace Warrior_and_Wealth.GUI
                     $"{catapulte_Temp[0]}|{catapulte_Temp[1]}|{catapulte_Temp[2]}|{catapulte_Temp[3]}|{catapulte_Temp[4]}");
 
             if (tipo_Attacco == "PVP")
-                ClientConnection.TestClient.Send($"Battaglia|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|{tipo_Attacco}|{Dati_PVP[0]}|" +
+                ClientConnection.TestClient.Send($"Battaglia|{Variabili_Client.access_Token}|{tipo_Attacco}|{Dati_PVP[0]}|" +
                     $"{guerrieri_Temp[0]}|{guerrieri_Temp[1]}|{guerrieri_Temp[2]}|{guerrieri_Temp[3]}|{guerrieri_Temp[4]}|" +
                     $"{picchieri_Temp[0]}|{picchieri_Temp[1]}|{picchieri_Temp[2]}|{picchieri_Temp[3]}|{picchieri_Temp[4]}|" +
                     $"{arcieri_Temp[0]}|{arcieri_Temp[1]}|{arcieri_Temp[2]}|{arcieri_Temp[3]}|{arcieri_Temp[4]}|" +

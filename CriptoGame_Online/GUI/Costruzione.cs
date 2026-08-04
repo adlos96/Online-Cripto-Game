@@ -368,23 +368,25 @@ namespace Warrior_and_Wealth
         private async void Btn_Costruzione_Click(object sender, EventArgs e)
         {
             this.ActiveControl = groupBox_Costruisci; // assegna il focus al bottone
-            ClientConnection.TestClient.Send($"Costruzione|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|" +
-                $"{txt_Fattoria_Costruzione.Text}|" +
-                $"{txt_Segheria_Costruzione.Text}|" +
-                $"{txt_Cava_Costruzione.Text}|" +
-                $"{txt_MinieraFerro_Costruzione.Text}|" +
-                $"{txt_MinieraOro_Costruzione.Text}|" +
-                $"{txt_Case_Costruzione.Text}|" +
-                $"{txt_Workshop_Spade_Costruzione.Text}|" +
-                $"{txt_Workshop_Lance_Costruzione.Text}|" +
-                $"{txt_Workshop_Archi_Costruzione.Text}|" +
-                $"{txt_Workshop_Scudi_Costruzione.Text}|" +
-                $"{txt_Workshop_Armature_Costruzione.Text}|" +
-                $"{txt_Workshop_Frecce_Costruzione.Text}|" +
-                $"{txt_Caserme_Guerrieri_Costruzione.Text}|" +
-                $"{txt_Caserme_Arceri_Costruzione.Text}|" +
-                $"{txt_Caserme_Lanceri_Costruzione.Text}|" +
-                $"{txt_Caserme_Catapulte_Costruzione.Text}");
+            ComandiInvio.Costruzione(
+                txt_Fattoria_Costruzione.Text,
+                txt_Segheria_Costruzione.Text,
+                txt_Cava_Costruzione.Text,
+                txt_MinieraFerro_Costruzione.Text,
+                txt_MinieraOro_Costruzione.Text,
+                txt_Case_Costruzione.Text,
+
+                txt_Workshop_Spade_Costruzione.Text,
+                txt_Workshop_Lance_Costruzione.Text,
+                txt_Workshop_Archi_Costruzione.Text,
+                txt_Workshop_Scudi_Costruzione.Text,
+                txt_Workshop_Armature_Costruzione.Text,
+                txt_Workshop_Frecce_Costruzione.Text,
+
+                txt_Caserme_Guerrieri_Costruzione.Text,
+                txt_Caserme_Arceri_Costruzione.Text,
+                txt_Caserme_Lanceri_Costruzione.Text,
+                txt_Caserme_Catapulte_Costruzione.Text);
 
             if (Variabili_Client.tutorial_Attivo == true && await Main.TutorialPrecedentiCompletati(12))
                 ClientConnection.TestClient.Send($"Tutorial Update|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|{12}");
@@ -410,12 +412,7 @@ namespace Warrior_and_Wealth
         private void btn_Reclutamento_Click(object sender, EventArgs e)
         {
             this.ActiveControl = btn_Reclutamento; // assegna il focus al bottone
-
-            ClientConnection.TestClient.Send($"Reclutamento|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|{livello_Esercito}|" +
-                $"{txt_Guerriero_Reclutamento.Text}|" +
-                $"{txt_Lancere_Reclutamento.Text}|" +
-                $"{txt_Arcere_Reclutamento.Text}|" +
-                $"{txt_Catapulta_Reclutamento.Text}|");
+            ComandiInvio.Addestramento(livello_Esercito, txt_Guerriero_Reclutamento.Text, txt_Lancere_Reclutamento.Text, txt_Arcere_Reclutamento.Text, txt_Catapulta_Reclutamento.Text);
 
             txt_Guerriero_Reclutamento.Text = "0";
             txt_Lancere_Reclutamento.Text = "0";

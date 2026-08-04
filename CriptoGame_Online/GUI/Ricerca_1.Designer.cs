@@ -623,6 +623,7 @@ namespace Warrior_and_Wealth
             btn_Contro_Spionaggio.TabIndex = 38;
             btn_Contro_Spionaggio.Text = "Contro-Spionaggio VI";
             btn_Contro_Spionaggio.UseVisualStyleBackColor = false;
+            btn_Contro_Spionaggio.Click += btn_Contro_Spionaggio_Click;
             // 
             // panel_Spionaggio
             // 
@@ -653,6 +654,7 @@ namespace Warrior_and_Wealth
             btn_Spionaggio.TabIndex = 37;
             btn_Spionaggio.Text = "Spionaggio VI";
             btn_Spionaggio.UseVisualStyleBackColor = false;
+            btn_Spionaggio.Click += btn_Spionaggio_Click;
             // 
             // button16
             // 

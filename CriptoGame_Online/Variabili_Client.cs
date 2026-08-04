@@ -54,6 +54,9 @@ namespace Strategico_V2
         public static bool approve_Code = false;
         public static bool approve_Change_Password = false;
 
+        public static string access_Token = "";
+        public static string refresh_Token = "";
+
         public static string Esperienza_Desc = "";
         public static string Livello_Desc = "";
         public static string D_Viola_D_Blu = "";

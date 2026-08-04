@@ -73,11 +73,11 @@ namespace Warrior_and_Wealth.GUI
             {
                 // Esegui l'acquisto
                 if (tipo == "Costruzione")
-                    ClientConnection.TestClient.Send($"Velocizza_Diamanti|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Costruzione|{txt_Diamond_Blu.Text}");
+                    ComandiInvio.Velocizza("Costruzione", txt_Diamond_Blu.Text);
                 if (tipo == "Reclutamento")
-                    ClientConnection.TestClient.Send($"Velocizza_Diamanti|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Reclutamento|{txt_Diamond_Blu.Text}");
+                    ComandiInvio.Velocizza("Reclutamento", txt_Diamond_Blu.Text);
                 if (tipo == "Ricerca")
-                    ClientConnection.TestClient.Send($"Velocizza_Diamanti|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Ricerca|{txt_Diamond_Blu.Text}");
+                    ComandiInvio.Velocizza("Ricerca", txt_Diamond_Blu.Text);
                 btn_Velocizza.Enabled = false;
                 await Sleep();
                 btn_Velocizza.Enabled = true;

@@ -364,7 +364,7 @@ namespace Warrior_and_Wealth.GUI
 
         private async void btn_Reward_GamePass_1_Click(object sender, EventArgs e)
         {
-            ClientConnection.TestClient.Send($"GamePass DailyReward|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}");
+            ComandiInvio.GamePass_DailyReward();
             await Login.Sleep(4);
             Update_Guid();
         }

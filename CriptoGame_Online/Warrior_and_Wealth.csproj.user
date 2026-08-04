@@ -20,6 +20,9 @@
     <Compile Update="GUI\Citta_V2.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="GUI\Esplorazione.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="GUI\LogForm\Log_Esplorazione.cs">
       <SubType>Form</SubType>
     </Compile>

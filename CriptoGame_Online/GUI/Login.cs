@@ -85,6 +85,39 @@ namespace Warrior_and_Wealth
             txt_Stato_Server.ForeColor = Color.Black;
             txt_Stato_Server.Font = new Font("Cinzel Decorative", 8, FontStyle.Regular);
             TentativoConnessione();
+            CaricamentoDati();
+        }
+        async void CaricamentoDati()
+        {
+            if (AutoLoginManager.TryCarica(out bool autoLogin, out string accessToken, out string refreshToken))
+                if (autoLogin && !string.IsNullOrEmpty(accessToken) && !string.IsNullOrEmpty(refreshToken))
+                {
+                    Variabili_Client.access_Token = accessToken;
+                    Variabili_Client.refresh_Token = refreshToken;
+                    txt_Log.Text = "Tentativo di auto-login...";
+                    await Sleep(2);
+                    if (ClientConnection.client_Connesso)
+                    {
+                        ComandiInvio.AutoLogin(accessToken, refreshToken);
+                        txt_Log.Text = "Ricezione dati...";
+                        await Loop_Login(4);
+                        if (checkBox_Auto_Login.Checked == true) //Salvataggio dati accesso per auto login
+                        {
+                            if (Variabili_Client.access_Token == "") return;
+                            AutoLoginManager.Salva(true, Variabili_Client.access_Token, Variabili_Client.refresh_Token);
+                        }
+                        txt_Log.Text = "Salvataggio dati ricevuti...";
+                        await Loop_Login(1);
+                        if (Variabili_Client.Utente.User_Login == true)
+                        {
+                            this.DialogResult = DialogResult.OK; // Se il login riesce                        
+                            return;
+                        }
+                    }
+                    txt_Log.Text = "Auto-login fallito. Effettua il login manualmente.";
+                    Btn_Login.Enabled = true;
+                    Btn_New_Game.Enabled = true;
+                }
         }
         async void TentativoConnessione()
         {
@@ -161,9 +194,17 @@ namespace Warrior_and_Wealth
             await Sleep(2);
             txt_Log.Text = "Login...";
             await Sleep(2);
-            ClientConnection.TestClient.Send($"Login|{txt_Username_Login.Text}|{txt_Password_Login.Text}|{lingua_Selezionata}");
+            ComandiInvio.Login(txt_Username_Login.Text, txt_Password_Login.Text, lingua_Selezionata);
             await Loop_Login(4);
             await Sleep(2);
+
+            //Salvataggio dati utente se l'auto login è abilitato
+            //Salvare lo stato della checkbox e le chiavi d'accesso ricevute dal server in un file di configurazione sicuro o nel registro di sistema.
+            if (checkBox_Auto_Login.Checked == true) //Salvataggio dati accesso per auto login
+            {
+                if (Variabili_Client.access_Token == "") return;
+                AutoLoginManager.Salva(true, Variabili_Client.access_Token, Variabili_Client.refresh_Token);
+            }
 
             if (Variabili_Client.Utente.User_Login == true)
             {
@@ -206,8 +247,14 @@ namespace Warrior_and_Wealth
             await Sleep(2);
             txt_Log.Text = "Contattando il server...";
             await Sleep(2);
-            ClientConnection.TestClient.Send($"New Player|{txt_Username_Login.Text}|{txt_Password_Login.Text}|{lingua_Selezionata}|{txt_Email.Text}");
+            ComandiInvio.NewGame(txt_Username_Login.Text, txt_Password_Login.Text, lingua_Selezionata, txt_Email.Text);
             await Sleep(2);
+
+            if (checkBox_Auto_Login.Checked == true) //Salvataggio dati accesso per auto login
+            {
+                if (Variabili_Client.access_Token == "") return;
+                AutoLoginManager.Salva(true, Variabili_Client.access_Token, Variabili_Client.refresh_Token);
+            }
 
             if (Variabili_Client.Utente.User_Login == true)
             {
@@ -401,14 +448,14 @@ namespace Warrior_and_Wealth
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox1.Checked) txt_Password_Login.UseSystemPasswordChar = true;
+            if (checkBox_Hide.Checked) txt_Password_Login.UseSystemPasswordChar = true;
             else txt_Password_Login.UseSystemPasswordChar = false;
 
         }
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox2.Checked) txt_Ip.ReadOnly = true;
+            if (checkBox_Edit.Checked) txt_Ip.ReadOnly = true;
             else txt_Ip.ReadOnly = false;
         }
 
@@ -433,8 +480,8 @@ namespace Warrior_and_Wealth
             txt_Username_Login.Visible = false;
             lbl_Ip.Visible = false;
             txt_Ip.Visible = false;
-            checkBox2.Visible = false;
-            checkBox1.Visible = false;
+            checkBox_Edit.Visible = false;
+            checkBox_Hide.Visible = false;
             Btn_Login.Enabled = false;
 
             Btn_New_Game.Text = "Send Mail";
@@ -457,7 +504,7 @@ namespace Warrior_and_Wealth
                 txt_Email.Text = "Inserisci Nuova Password";
                 lbl_Username_Login.Text = "Nuova Password";
                 txt_Username_Login.Text = "Ripeti Password";
-                checkBox1.Visible = true;
+                checkBox_Hide.Visible = true;
             }
         }
 

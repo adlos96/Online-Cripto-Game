@@ -34,9 +34,9 @@
             lbl_Email = new Warrior_and_Wealth.Strumenti.TransparentLabel();
             lbl_Password_Reset = new Warrior_and_Wealth.Strumenti.TransparentLabel();
             txt_Email = new TextBox();
-            checkBox2 = new CheckBox();
+            checkBox_Edit = new CheckBox();
             lbl_Titolo = new Warrior_and_Wealth.Strumenti.TransparentLabel();
-            checkBox1 = new CheckBox();
+            checkBox_Hide = new CheckBox();
             comboBox_Lingua = new ComboBox();
             panel_Connessione = new Panel();
             txt_Versione_Attuale = new TextBox();
@@ -52,19 +52,21 @@
             banner_2 = new Panel();
             banner_1 = new Panel();
             btn_Aggiorna = new Button();
+            checkBox_Auto_Login = new CheckBox();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
+            panel1.Controls.Add(checkBox_Auto_Login);
             panel1.Controls.Add(lbl_Password_Login);
             panel1.Controls.Add(lbl_Username_Login);
             panel1.Controls.Add(lbl_Email);
             panel1.Controls.Add(lbl_Password_Reset);
             panel1.Controls.Add(txt_Email);
-            panel1.Controls.Add(checkBox2);
+            panel1.Controls.Add(checkBox_Edit);
             panel1.Controls.Add(lbl_Titolo);
-            panel1.Controls.Add(checkBox1);
+            panel1.Controls.Add(checkBox_Hide);
             panel1.Controls.Add(comboBox_Lingua);
             panel1.Controls.Add(panel_Connessione);
             panel1.Controls.Add(txt_Versione_Attuale);
@@ -139,18 +141,18 @@
             txt_Email.TextAlign = HorizontalAlignment.Center;
             txt_Email.Click += txt_Email_Click;
             // 
-            // checkBox2
+            // checkBox_Edit
             // 
-            checkBox2.AutoSize = true;
-            checkBox2.Checked = true;
-            checkBox2.CheckState = CheckState.Checked;
-            checkBox2.Location = new Point(210, 248);
-            checkBox2.Name = "checkBox2";
-            checkBox2.Size = new Size(46, 19);
-            checkBox2.TabIndex = 7;
-            checkBox2.Text = "Edit";
-            checkBox2.UseVisualStyleBackColor = true;
-            checkBox2.CheckedChanged += checkBox2_CheckedChanged;
+            checkBox_Edit.AutoSize = true;
+            checkBox_Edit.Checked = true;
+            checkBox_Edit.CheckState = CheckState.Checked;
+            checkBox_Edit.Location = new Point(210, 248);
+            checkBox_Edit.Name = "checkBox_Edit";
+            checkBox_Edit.Size = new Size(46, 19);
+            checkBox_Edit.TabIndex = 7;
+            checkBox_Edit.Text = "Edit";
+            checkBox_Edit.UseVisualStyleBackColor = true;
+            checkBox_Edit.CheckedChanged += checkBox2_CheckedChanged;
             // 
             // lbl_Titolo
             // 
@@ -164,16 +166,16 @@
             lbl_Titolo.Text = "Warrior & Wealth";
             lbl_Titolo.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // checkBox1
+            // checkBox_Hide
             // 
-            checkBox1.AutoSize = true;
-            checkBox1.Location = new Point(210, 192);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(51, 19);
-            checkBox1.TabIndex = 8;
-            checkBox1.Text = "Hide";
-            checkBox1.UseVisualStyleBackColor = true;
-            checkBox1.CheckedChanged += checkBox1_CheckedChanged;
+            checkBox_Hide.AutoSize = true;
+            checkBox_Hide.Location = new Point(210, 192);
+            checkBox_Hide.Name = "checkBox_Hide";
+            checkBox_Hide.Size = new Size(51, 19);
+            checkBox_Hide.TabIndex = 8;
+            checkBox_Hide.Text = "Hide";
+            checkBox_Hide.UseVisualStyleBackColor = true;
+            checkBox_Hide.CheckedChanged += checkBox1_CheckedChanged;
             // 
             // comboBox_Lingua
             // 
@@ -336,6 +338,16 @@
             btn_Aggiorna.Visible = false;
             btn_Aggiorna.Click += btn_Aggiorna_Click;
             // 
+            // checkBox_Auto_Login
+            // 
+            checkBox_Auto_Login.AutoSize = true;
+            checkBox_Auto_Login.Location = new Point(209, 141);
+            checkBox_Auto_Login.Name = "checkBox_Auto_Login";
+            checkBox_Auto_Login.Size = new Size(56, 34);
+            checkBox_Auto_Login.TabIndex = 28;
+            checkBox_Auto_Login.Text = "Auto\r\nLogin";
+            checkBox_Auto_Login.UseVisualStyleBackColor = true;
+            // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
@@ -379,13 +391,14 @@
         private TextBox txt_Stato_Server;
         private Panel panel_Connessione;
         private ComboBox comboBox_Lingua;
-        private CheckBox checkBox1;
+        private CheckBox checkBox_Hide;
         private Strumenti.TransparentLabel lbl_Titolo;
-        private CheckBox checkBox2;
+        private CheckBox checkBox_Edit;
         private TextBox txt_Email;
         private Strumenti.TransparentLabel lbl_Password_Reset;
         private Strumenti.TransparentLabel lbl_Password_Login;
         private Strumenti.TransparentLabel lbl_Username_Login;
         private Strumenti.TransparentLabel lbl_Email;
+        private CheckBox checkBox_Auto_Login;
     }
 }

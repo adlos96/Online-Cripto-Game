@@ -117,7 +117,7 @@ namespace Server_Strategico.Gioco
                 return false;
             }
             
-            var player = servers_.GetPlayer_Data(username);
+            var player = servers_.GetPlayer(username);
             if (player == null)
             {
                 Send(clientGuid, $"Log_Server|Giocatore non trovato.");
@@ -186,7 +186,7 @@ namespace Server_Strategico.Gioco
 
             foreach (var partecipante in attacco.GiocatoriPartecipanti) // Notifica tutti i partecipanti dell'aggiornamento
             {
-                var giocatore = servers_.GetPlayer_Data(partecipante.Key);
+                var giocatore = servers_.GetPlayer(partecipante.Key);
                 if (giocatore != null && giocatore.guid_Player != Guid.Empty && giocatore.guid_Player != clientGuid)
                 {
                     Send(giocatore.guid_Player, $"Log_Server|{player.Username} ha inviato truppe all'attacco #{idAttacco}: {guerrieri} Guerrieri, {lancieri} Lancieri, {arcieri} Arcieri, {catapulte} Catapulte.");
@@ -220,7 +220,7 @@ namespace Server_Strategico.Gioco
             
             // Recupera le truppe contribuite
             var truppeContribuite = attacco.GiocatoriPartecipanti[username];
-            var player = servers_.GetPlayer_Data(username);
+            var player = servers_.GetPlayer(username);
             
             if (player != null)
             {
@@ -246,7 +246,7 @@ namespace Server_Strategico.Gioco
                 // Notifica gli altri partecipanti
                 foreach (var partecipante in attacco.GiocatoriPartecipanti)
                 {
-                    var giocatore = servers_.GetPlayer_Data(partecipante.Key);
+                    var giocatore = servers_.GetPlayer(partecipante.Key);
                     if (giocatore != null && giocatore.guid_Player != Guid.Empty)
                     {
                         Send(giocatore.guid_Player, $"Log_Server|{player.Username} ha abbandonato l'attacco #{idAttacco}.");
@@ -328,7 +328,7 @@ namespace Server_Strategico.Gioco
             // Notifica tutti i partecipanti che l'attacco sta iniziando
             foreach (var partecipante in attacco.GiocatoriPartecipanti)
             {
-                var giocatore = servers_.GetPlayer_Data(partecipante.Key);
+                var giocatore = servers_.GetPlayer(partecipante.Key);
                 if (giocatore != null && giocatore.guid_Player != Guid.Empty)
                 {
                     Send(giocatore.guid_Player, $"Log_Server|L'attacco cooperativo #{idAttacco} sta iniziando!");
@@ -355,7 +355,7 @@ namespace Server_Strategico.Gioco
 
             foreach (var partecipante in attacco.GiocatoriPartecipanti)
             {
-                var player = servers_.GetPlayer_Data(partecipante.Key);
+                var player = servers_.GetPlayer(partecipante.Key);
                 if (player != null)
                 {
                     for (int i = 0; i < 5; i++)
@@ -545,7 +545,7 @@ namespace Server_Strategico.Gioco
             // Invia i risultati a tutti i partecipanti
             foreach (var partecipante in attacco.GiocatoriPartecipanti)
             {
-                var giocatore = servers_.GetPlayer_Data(partecipante.Key);
+                var giocatore = servers_.GetPlayer(partecipante.Key);
                 if (giocatore != null && giocatore.guid_Player != Guid.Empty)
                 {
                     Send(giocatore.guid_Player, $"Log_Server|Danno subito: {(dannoInflittoDalNemico * tipi_Di_Unità).ToString("0.00")}");
@@ -711,7 +711,7 @@ namespace Server_Strategico.Gioco
                     {
                         foreach (var partecipante in attaccoCooperativo.GiocatoriPartecipanti)
                         {
-                            var giocatore = servers_.GetPlayer_Data(partecipante.Key);
+                            var giocatore = servers_.GetPlayer(partecipante.Key);
                             if (giocatore != null)
                             {
                                 // Restituisci truppe per ogni livello
@@ -749,7 +749,7 @@ namespace Server_Strategico.Gioco
                     {
                         foreach (var partecipante in attaccoCooperativo.GiocatoriPartecipanti)
                         {
-                            var giocatore = servers_.GetPlayer_Data(partecipante.Key);
+                            var giocatore = servers_.GetPlayer(partecipante.Key);
                             if (giocatore != null && giocatore.guid_Player != Guid.Empty)
                             {
                                 Send(giocatore.guid_Player, $"Log_Server|Tempo rimanente per l'attacco cooperativo #{attaccoCooperativo.IdAttacco}: {attaccoCooperativo.TempoRimanente / 60} minuti.");

@@ -619,7 +619,7 @@ namespace Warrior_and_Wealth.GUI
             tutorial[0] = true;
             if (Variabili_Client.tutorial_Attivo == true && await Main.TutorialPrecedentiCompletati(25) && tutorial[0] && tutorial[1])
                 ClientConnection.TestClient.Send($"Tutorial Update|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|{25}");
-            ClientConnection.TestClient.Send($"Ripara|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Mura|Salute");
+            ComandiInvio.Riparazione("Mura", "Salute");
         }
 
         private async void pictureBox_Mura_Difesa_Click(object sender, EventArgs e)
@@ -627,42 +627,42 @@ namespace Warrior_and_Wealth.GUI
             tutorial[1] = true;
             if (Variabili_Client.tutorial_Attivo == true && await Main.TutorialPrecedentiCompletati(25) && tutorial[0] && tutorial[1])
                 ClientConnection.TestClient.Send($"Tutorial Update|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|{25}");
-            ClientConnection.TestClient.Send($"Ripara|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Mura|Difesa");
+            ComandiInvio.Riparazione("Mura", "Difesa");
         }
 
         private void pictureBox_Cancello_Salute_Click(object sender, EventArgs e)
         {
-            ClientConnection.TestClient.Send($"Ripara|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Cancello|Salute");
+            ComandiInvio.Riparazione("Cancello", "Salute");
         }
 
         private void pictureBox_Cancello_Difesa_Click(object sender, EventArgs e)
         {
-            ClientConnection.TestClient.Send($"Ripara|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Cancello|Difesa");
+            ComandiInvio.Riparazione("Cancello", "Difesa");
         }
 
         private void pictureBox_Torri_Salute_Click(object sender, EventArgs e)
         {
-            ClientConnection.TestClient.Send($"Ripara|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Torri|Salute");
+            ComandiInvio.Riparazione("Torri", "Salute");
         }
 
         private void pictureBox_Torri_Difesa_Click(object sender, EventArgs e)
         {
-            ClientConnection.TestClient.Send($"Ripara|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Torri|Difesa");
+            ComandiInvio.Riparazione("Torri", "Difesa");
         }
 
         private void pictureBox_Castello_Salute_Click(object sender, EventArgs e)
         {
-            ClientConnection.TestClient.Send($"Ripara|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Castello|Salute");
+            ComandiInvio.Riparazione("Castello", "Salute");
         }
 
         private void pictureBox_Castello_Difesa_Click(object sender, EventArgs e)
         {
-            ClientConnection.TestClient.Send($"Ripara|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Castello|Difesa");
+            ComandiInvio.Riparazione("Castello", "Difesa");
         }
 
         private void btn_Ripara_Tutto_Click(object sender, EventArgs e)
         {
-            ClientConnection.TestClient.Send($"Ripara|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Ripara Tutto");
+            ComandiInvio.RiparaTutto("Ripara Tutto");
         }
     }
 

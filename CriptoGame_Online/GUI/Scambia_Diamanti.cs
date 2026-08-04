@@ -39,7 +39,7 @@ namespace Warrior_and_Wealth.GUI
                 var result = MessageBox.Show(
                 $"Sei sicuro di voler scambiare i diamanti viola?\n" +
                 $"Diamanti Viola: {txt_Diamond_Viola.Text}\n" +
-                $"Diamanti Blu: {txt_Diamond_Blu.Text}" +
+                $"Diamanti Blu: {txt_Diamond_Blu.Text}\n" +
                 $"Diamanti attuali: {Variabili_Client.Utente_Risorse.Diamond_Viola}",
                 "Conferma scambio",
                 MessageBoxButtons.YesNo,
@@ -48,7 +48,8 @@ namespace Warrior_and_Wealth.GUI
                 if (result == DialogResult.Yes)
                 {
                     // Esegui l'acquisto
-                    ClientConnection.TestClient.Send($"Scambia_Diamanti|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|{txt_Diamond_Viola.Text}");
+                    ComandiInvio.Scambia_DiamantiViola(txt_Diamond_Viola.Text);
+                    
                     btn_Scambia.Enabled = false;
                     await Sleep();
                     btn_Scambia.Enabled = true;
@@ -69,7 +70,8 @@ namespace Warrior_and_Wealth.GUI
                 if (result == DialogResult.Yes)
                 {
                     // Esegui l'acquisto
-                    ClientConnection.TestClient.Send($"Scambia_Tributi|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|{txt_Diamond_Viola.Text}");
+                    ComandiInvio.Scambia_Tributi(txt_Diamond_Viola.Text);
+                    
                     btn_Scambia.Enabled = false;
                     await Sleep();
                     btn_Scambia.Enabled = true;

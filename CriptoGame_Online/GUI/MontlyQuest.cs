@@ -3,6 +3,8 @@ using System.Diagnostics.Eventing.Reader;
 using System.Windows.Forms;
 using static Strategico_V2.ClientConnection;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using Button = System.Windows.Forms.Button;
+using TextBox = System.Windows.Forms.TextBox;
 
 namespace Warrior_and_Wealth
 {
@@ -145,85 +147,18 @@ namespace Warrior_and_Wealth
         {
             if (CurrentRewardPoints.Count == 0) return;
 
-            txt_Punti_Reward_1.Text = CurrentRewardPoints[0].ToString();
-            txt_Reward_1.Text = CurrentRewardsNormali[0].ToString();
-            txt_Reward_Vip_1.Text = CurrentRewardsVip[0].ToString();
+            int n = Math.Min(20, CurrentRewardPoints.Count);
 
-            txt_Punti_Reward_2.Text = CurrentRewardPoints[1].ToString();
-            txt_Reward_2.Text = CurrentRewardsNormali[1].ToString();
-            txt_Reward_Vip_2.Text = CurrentRewardsVip[1].ToString();
+            for (int i = 1; i <= n; i++)
+            {
+                var txtPunti = (TextBox)Controls.Find($"txt_Punti_Reward_{i}", true)[0];
+                var txtNormale = (TextBox)Controls.Find($"txt_Reward_{i}", true)[0];
+                var txtVip = (TextBox)Controls.Find($"txt_Reward_Vip_{i}", true)[0];
 
-            txt_Punti_Reward_3.Text = CurrentRewardPoints[2].ToString();
-            txt_Reward_3.Text = CurrentRewardsNormali[2].ToString();
-            txt_Reward_Vip_3.Text = CurrentRewardsVip[2].ToString();
-
-            txt_Punti_Reward_4.Text = CurrentRewardPoints[3].ToString();
-            txt_Reward_4.Text = CurrentRewardsNormali[3].ToString();
-            txt_Reward_Vip_4.Text = CurrentRewardsVip[3].ToString();
-
-            txt_Punti_Reward_5.Text = CurrentRewardPoints[4].ToString();
-            txt_Reward_5.Text = CurrentRewardsNormali[4].ToString();
-            txt_Reward_Vip_5.Text = CurrentRewardsVip[4].ToString();
-
-            txt_Punti_Reward_6.Text = CurrentRewardPoints[5].ToString();
-            txt_Reward_6.Text = CurrentRewardsNormali[5].ToString();
-            txt_Reward_Vip_6.Text = CurrentRewardsVip[5].ToString();
-
-            txt_Punti_Reward_7.Text = CurrentRewardPoints[6].ToString();
-            txt_Reward_7.Text = CurrentRewardsNormali[6].ToString();
-            txt_Reward_Vip_7.Text = CurrentRewardsVip[6].ToString();
-
-            txt_Punti_Reward_8.Text = CurrentRewardPoints[7].ToString();
-            txt_Reward_8.Text = CurrentRewardsNormali[7].ToString();
-            txt_Reward_Vip_8.Text = CurrentRewardsVip[7].ToString();
-
-            txt_Punti_Reward_9.Text = CurrentRewardPoints[8].ToString();
-            txt_Reward_9.Text = CurrentRewardsNormali[8].ToString();
-            txt_Reward_Vip_9.Text = CurrentRewardsVip[8].ToString();
-
-            txt_Punti_Reward_10.Text = CurrentRewardPoints[9].ToString();
-            txt_Reward_10.Text = CurrentRewardsNormali[9].ToString();
-            txt_Reward_Vip_10.Text = CurrentRewardsVip[9].ToString();
-
-            txt_Punti_Reward_11.Text = CurrentRewardPoints[10].ToString();
-            txt_Reward_11.Text = CurrentRewardsNormali[10].ToString();
-            txt_Reward_Vip_11.Text = CurrentRewardsVip[10].ToString();
-
-            txt_Punti_Reward_12.Text = CurrentRewardPoints[11].ToString();
-            txt_Reward_12.Text = CurrentRewardsNormali[11].ToString();
-            txt_Reward_Vip_12.Text = CurrentRewardsVip[11].ToString();
-
-            txt_Punti_Reward_13.Text = CurrentRewardPoints[12].ToString();
-            txt_Reward_13.Text = CurrentRewardsNormali[12].ToString();
-            txt_Reward_Vip_13.Text = CurrentRewardsVip[12].ToString();
-
-            txt_Punti_Reward_14.Text = CurrentRewardPoints[13].ToString();
-            txt_Reward_14.Text = CurrentRewardsNormali[13].ToString();
-            txt_Reward_Vip_14.Text = CurrentRewardsVip[13].ToString();
-
-            txt_Punti_Reward_15.Text = CurrentRewardPoints[14].ToString();
-            txt_Reward_15.Text = CurrentRewardsNormali[14].ToString();
-            txt_Reward_Vip_15.Text = CurrentRewardsVip[14].ToString();
-
-            txt_Punti_Reward_16.Text = CurrentRewardPoints[15].ToString();
-            txt_Reward_16.Text = CurrentRewardsNormali[15].ToString();
-            txt_Reward_Vip_16.Text = CurrentRewardsVip[15].ToString();
-
-            txt_Punti_Reward_17.Text = CurrentRewardPoints[16].ToString();
-            txt_Reward_17.Text = CurrentRewardsNormali[16].ToString();
-            txt_Reward_Vip_17.Text = CurrentRewardsVip[16].ToString();
-
-            txt_Punti_Reward_18.Text = CurrentRewardPoints[17].ToString();
-            txt_Reward_18.Text = CurrentRewardsNormali[17].ToString();
-            txt_Reward_Vip_18.Text = CurrentRewardsVip[17].ToString();
-
-            txt_Punti_Reward_19.Text = CurrentRewardPoints[18].ToString();
-            txt_Reward_19.Text = CurrentRewardsNormali[18].ToString();
-            txt_Reward_Vip_19.Text = CurrentRewardsVip[18].ToString();
-
-            txt_Punti_Reward_20.Text = CurrentRewardPoints[19].ToString();
-            txt_Reward_20.Text = CurrentRewardsNormali[19].ToString();
-            txt_Reward_Vip_20.Text = CurrentRewardsVip[19].ToString();
+                txtPunti.Text = CurrentRewardPoints[i - 1].ToString();
+                txtNormale.Text = CurrentRewardsNormali[i - 1].ToString();
+                txtVip.Text = CurrentRewardsVip[i - 1].ToString();
+            }
         }
         private void Check_Unlock_Reward()
         {
@@ -675,146 +610,22 @@ namespace Warrior_and_Wealth
         }
         private void Update_Reward()
         {
-            //Reward 1
-            txt_Punti_Reward_1.Text = CurrentRewardPoints[0].ToString();
-            txt_Reward_1.Text = CurrentRewardsNormali[0].ToString();
-            txt_Reward_Vip_1.Text = CurrentRewardsVip[0].ToString();
-            btn_Reward_1.Enabled = false;
-            btn_Reward_Vip_1.Enabled = false;
+            int n = Math.Min(20, CurrentRewardPoints.Count);
 
-            //Reward 2
-            txt_Punti_Reward_2.Text = CurrentRewardPoints[1].ToString();
-            txt_Reward_2.Text = CurrentRewardsNormali[1].ToString();
-            txt_Reward_Vip_2.Text = CurrentRewardsVip[1].ToString();
-            btn_Reward_2.Enabled = false;
-            btn_Reward_Vip_2.Enabled = false;
+            for (int i = 1; i <= n; i++)
+            {
+                var txtPunti = (TextBox)Controls.Find($"txt_Punti_Reward_{i}", true)[0];
+                var txtNormale = (TextBox)Controls.Find($"txt_Reward_{i}", true)[0];
+                var txtVip = (TextBox)Controls.Find($"txt_Reward_Vip_{i}", true)[0];
+                var btnNormale = (Button)Controls.Find($"btn_Reward_{i}", true)[0];
+                var btnVip = (Button)Controls.Find($"btn_Reward_Vip_{i}", true)[0];
 
-
-            //Reward 3
-            txt_Punti_Reward_3.Text = CurrentRewardPoints[2].ToString();
-            txt_Reward_3.Text = CurrentRewardsNormali[2].ToString();
-            txt_Reward_Vip_3.Text = CurrentRewardsVip[2].ToString();
-            btn_Reward_3.Enabled = false;
-            btn_Reward_Vip_3.Enabled = false;
-
-            //Reward 4
-            txt_Punti_Reward_4.Text = CurrentRewardPoints[3].ToString();
-            txt_Reward_4.Text = CurrentRewardsNormali[3].ToString();
-            txt_Reward_Vip_4.Text = CurrentRewardsVip[3].ToString();
-            btn_Reward_4.Enabled = false;
-            btn_Reward_Vip_4.Enabled = false;
-
-            //Reward 5
-            txt_Punti_Reward_5.Text = CurrentRewardPoints[4].ToString();
-            txt_Reward_5.Text = CurrentRewardsNormali[4].ToString();
-            txt_Reward_Vip_5.Text = CurrentRewardsVip[4].ToString();
-            btn_Reward_5.Enabled = false;
-            btn_Reward_Vip_5.Enabled = false;
-
-            //Reward 6
-            txt_Punti_Reward_6.Text = CurrentRewardPoints[5].ToString();
-            txt_Reward_6.Text = CurrentRewardsNormali[5].ToString();
-            txt_Reward_Vip_6.Text = CurrentRewardsVip[5].ToString();
-            btn_Reward_6.Enabled = false;
-            btn_Reward_Vip_6.Enabled = false;
-
-            //Reward 7
-            txt_Punti_Reward_7.Text = CurrentRewardPoints[6].ToString();
-            txt_Reward_7.Text = CurrentRewardsNormali[6].ToString();
-            txt_Reward_Vip_7.Text = CurrentRewardsVip[6].ToString();
-            btn_Reward_7.Enabled = false;
-            btn_Reward_Vip_7.Enabled = false;
-
-            //Reward 8
-            txt_Punti_Reward_8.Text = CurrentRewardPoints[7].ToString();
-            txt_Reward_8.Text = CurrentRewardsNormali[7].ToString();
-            txt_Reward_Vip_8.Text = CurrentRewardsVip[7].ToString();
-            btn_Reward_8.Enabled = false;
-            btn_Reward_Vip_8.Enabled = false;
-
-            //Reward 9
-            txt_Punti_Reward_9.Text = CurrentRewardPoints[8].ToString();
-            txt_Reward_9.Text = CurrentRewardsNormali[8].ToString();
-            txt_Reward_Vip_9.Text = CurrentRewardsVip[8].ToString();
-            btn_Reward_9.Enabled = false;
-            btn_Reward_Vip_9.Enabled = false;
-
-            //Reward 4
-            txt_Punti_Reward_10.Text = CurrentRewardPoints[9].ToString();
-            txt_Reward_10.Text = CurrentRewardsNormali[9].ToString();
-            txt_Reward_Vip_10.Text = CurrentRewardsVip[9].ToString();
-            btn_Reward_10.Enabled = false;
-            btn_Reward_Vip_10.Enabled = false;
-
-            //Reward 11
-            txt_Punti_Reward_11.Text = CurrentRewardPoints[10].ToString();
-            txt_Reward_11.Text = CurrentRewardsNormali[10].ToString();
-            txt_Reward_Vip_11.Text = CurrentRewardsVip[10].ToString();
-            btn_Reward_11.Enabled = false;
-            btn_Reward_Vip_11.Enabled = false;
-
-            //Reward 12
-            txt_Punti_Reward_12.Text = CurrentRewardPoints[11].ToString();
-            txt_Reward_12.Text = CurrentRewardsNormali[11].ToString();
-            txt_Reward_Vip_12.Text = CurrentRewardsVip[11].ToString();
-            btn_Reward_12.Enabled = false;
-            btn_Reward_Vip_12.Enabled = false;
-
-            //Reward 13
-            txt_Punti_Reward_13.Text = CurrentRewardPoints[12].ToString();
-            txt_Reward_13.Text = CurrentRewardsNormali[12].ToString();
-            txt_Reward_Vip_13.Text = CurrentRewardsVip[12].ToString();
-            btn_Reward_13.Enabled = false;
-            btn_Reward_Vip_13.Enabled = false;
-
-            //Reward 14
-            txt_Punti_Reward_14.Text = CurrentRewardPoints[13].ToString();
-            txt_Reward_14.Text = CurrentRewardsNormali[13].ToString();
-            txt_Reward_Vip_14.Text = CurrentRewardsVip[13].ToString();
-            btn_Reward_14.Enabled = false;
-            btn_Reward_Vip_14.Enabled = false;
-
-            //Reward 15
-            txt_Punti_Reward_15.Text = CurrentRewardPoints[14].ToString();
-            txt_Reward_15.Text = CurrentRewardsNormali[14].ToString();
-            txt_Reward_Vip_15.Text = CurrentRewardsVip[14].ToString();
-            btn_Reward_15.Enabled = false;
-            btn_Reward_Vip_15.Enabled = false;
-
-            //Reward 16
-            txt_Punti_Reward_16.Text = CurrentRewardPoints[15].ToString();
-            txt_Reward_16.Text = CurrentRewardsNormali[15].ToString();
-            txt_Reward_Vip_16.Text = CurrentRewardsVip[15].ToString();
-            btn_Reward_16.Enabled = false;
-            btn_Reward_Vip_16.Enabled = false;
-
-            //Reward 17
-            txt_Punti_Reward_17.Text = CurrentRewardPoints[16].ToString();
-            txt_Reward_17.Text = CurrentRewardsNormali[16].ToString();
-            txt_Reward_Vip_17.Text = CurrentRewardsVip[16].ToString();
-            btn_Reward_17.Enabled = false;
-            btn_Reward_Vip_17.Enabled = false;
-
-            //Reward 18
-            txt_Punti_Reward_18.Text = CurrentRewardPoints[17].ToString();
-            txt_Reward_18.Text = CurrentRewardsNormali[17].ToString();
-            txt_Reward_Vip_18.Text = CurrentRewardsVip[17].ToString();
-            btn_Reward_18.Enabled = false;
-            btn_Reward_Vip_18.Enabled = false;
-
-            //Reward 19
-            txt_Punti_Reward_19.Text = CurrentRewardPoints[18].ToString();
-            txt_Reward_19.Text = CurrentRewardsNormali[18].ToString();
-            txt_Reward_Vip_19.Text = CurrentRewardsVip[18].ToString();
-            btn_Reward_19.Enabled = false;
-            btn_Reward_Vip_19.Enabled = false;
-
-            //Reward 20
-            txt_Punti_Reward_20.Text = CurrentRewardPoints[19].ToString();
-            txt_Reward_20.Text = CurrentRewardsNormali[19].ToString();
-            txt_Reward_Vip_20.Text = CurrentRewardsVip[19].ToString();
-            btn_Reward_20.Enabled = false;
-            btn_Reward_Vip_20.Enabled = false;
+                txtPunti.Text = CurrentRewardPoints[i - 1].ToString();
+                txtNormale.Text = CurrentRewardsNormali[i - 1].ToString();
+                txtVip.Text = CurrentRewardsVip[i - 1].ToString();
+                btnNormale.Enabled = false;
+                btnVip.Enabled = false;
+            }
         }
 
         private void Btn_Costruzione_Click(object sender, EventArgs e)
@@ -840,7 +651,7 @@ namespace Warrior_and_Wealth
         private async void btn_Reward_1_Click(object sender, EventArgs e)
         {
             if (CurrentRewardClaimNormal[0] == false)
-                ClientConnection.TestClient.Send($"Quest_Reward|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Normale|1");
+                ComandiInvio.Quest_Reward("Normale", 1);
             else btn_Reward_1.Enabled = false;
 
             Scroll_Panel(0);
@@ -849,7 +660,7 @@ namespace Warrior_and_Wealth
         private void btn_Reward_2_Click(object sender, EventArgs e)
         {
             if (CurrentRewardClaimNormal[1] == false)
-                ClientConnection.TestClient.Send($"Quest_Reward|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Normale|2");
+                ComandiInvio.Quest_Reward("Normale", 2);
             else btn_Reward_2.Enabled = false;
 
             Scroll_Panel(1);
@@ -858,7 +669,7 @@ namespace Warrior_and_Wealth
         private void btn_Reward_3_Click(object sender, EventArgs e)
         {
             if (CurrentRewardClaimNormal[2] == false)
-                ClientConnection.TestClient.Send($"Quest_Reward|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Normale|3");
+                ComandiInvio.Quest_Reward("Normale", 3);
             else btn_Reward_3.Enabled = false;
 
             Scroll_Panel(2);
@@ -867,7 +678,7 @@ namespace Warrior_and_Wealth
         private void btn_Reward_4_Click(object sender, EventArgs e)
         {
             if (CurrentRewardClaimNormal[3] == false)
-                ClientConnection.TestClient.Send($"Quest_Reward|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Normale|4");
+                ComandiInvio.Quest_Reward("Normale", 4);
             else btn_Reward_4.Enabled = false;
 
             Scroll_Panel(3);
@@ -876,7 +687,7 @@ namespace Warrior_and_Wealth
         private void btn_Reward_5_Click(object sender, EventArgs e)
         {
             if (CurrentRewardClaimNormal[4] == false)
-                ClientConnection.TestClient.Send($"Quest_Reward|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Normale|5");
+                ComandiInvio.Quest_Reward("Normale", 5);
             else btn_Reward_5.Enabled = false;
 
             Scroll_Panel(4);
@@ -885,7 +696,7 @@ namespace Warrior_and_Wealth
         private void btn_Reward_6_Click(object sender, EventArgs e)
         {
             if (CurrentRewardClaimNormal[5] == false)
-                ClientConnection.TestClient.Send($"Quest_Reward|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Normale|6");
+                ComandiInvio.Quest_Reward("Normale", 6);
             else btn_Reward_6.Enabled = false;
 
             Scroll_Panel(5);
@@ -894,7 +705,7 @@ namespace Warrior_and_Wealth
         private void btn_Reward_7_Click(object sender, EventArgs e)
         {
             if (CurrentRewardClaimNormal[6] == false)
-                ClientConnection.TestClient.Send($"Quest_Reward|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Normale|7");
+                ComandiInvio.Quest_Reward("Normale", 7);
             else btn_Reward_7.Enabled = false;
 
             Scroll_Panel(6);
@@ -903,7 +714,7 @@ namespace Warrior_and_Wealth
         private void btn_Reward_8_Click(object sender, EventArgs e)
         {
             if (CurrentRewardClaimNormal[7] == false)
-                ClientConnection.TestClient.Send($"Quest_Reward|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Normale|8");
+                ComandiInvio.Quest_Reward("Normale", 8);
             else btn_Reward_8.Enabled = false;
 
             Scroll_Panel(7);
@@ -912,7 +723,7 @@ namespace Warrior_and_Wealth
         private void btn_Reward_9_Click(object sender, EventArgs e)
         {
             if (CurrentRewardClaimNormal[8] == false)
-                ClientConnection.TestClient.Send($"Quest_Reward|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Normale|9");
+                ComandiInvio.Quest_Reward("Normale", 9);
             else btn_Reward_9.Enabled = false;
 
             Scroll_Panel(8);
@@ -921,7 +732,7 @@ namespace Warrior_and_Wealth
         private void btn_Reward_10_Click(object sender, EventArgs e)
         {
             if (CurrentRewardClaimNormal[9] == false)
-                ClientConnection.TestClient.Send($"Quest_Reward|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Normale|10");
+                ComandiInvio.Quest_Reward("Normale", 10);
             else btn_Reward_10.Enabled = false;
 
             Scroll_Panel(9);
@@ -930,7 +741,7 @@ namespace Warrior_and_Wealth
         private void btn_Reward_11_Click(object sender, EventArgs e)
         {
             if (CurrentRewardClaimNormal[10] == false)
-                ClientConnection.TestClient.Send($"Quest_Reward|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Normale|11");
+                ComandiInvio.Quest_Reward("Normale", 11);
             else btn_Reward_11.Enabled = false;
 
             Scroll_Panel(10);
@@ -939,7 +750,7 @@ namespace Warrior_and_Wealth
         private void btn_Reward_12_Click(object sender, EventArgs e)
         {
             if (CurrentRewardClaimNormal[11] == false)
-                ClientConnection.TestClient.Send($"Quest_Reward|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Normale|12");
+                ComandiInvio.Quest_Reward("Normale", 12);
             else btn_Reward_12.Enabled = false;
 
             Scroll_Panel(11);
@@ -948,7 +759,7 @@ namespace Warrior_and_Wealth
         private void btn_Reward_13_Click(object sender, EventArgs e)
         {
             if (CurrentRewardClaimNormal[12] == false)
-                ClientConnection.TestClient.Send($"Quest_Reward|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Normale|13");
+                ComandiInvio.Quest_Reward("Normale", 13);
             else btn_Reward_13.Enabled = false;
 
             Scroll_Panel(12);
@@ -957,7 +768,7 @@ namespace Warrior_and_Wealth
         private void btn_Reward_14_Click(object sender, EventArgs e)
         {
             if (CurrentRewardClaimNormal[13] == false)
-                ClientConnection.TestClient.Send($"Quest_Reward|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Normale|14");
+                ComandiInvio.Quest_Reward("Normale", 14);
             else btn_Reward_14.Enabled = false;
 
             Scroll_Panel(13);
@@ -966,7 +777,7 @@ namespace Warrior_and_Wealth
         private void btn_Reward_15_Click(object sender, EventArgs e)
         {
             if (CurrentRewardClaimNormal[14] == false)
-                ClientConnection.TestClient.Send($"Quest_Reward|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Normale|15");
+                ComandiInvio.Quest_Reward("Normale", 15);
             else btn_Reward_15.Enabled = false;
 
             Scroll_Panel(14);
@@ -975,7 +786,7 @@ namespace Warrior_and_Wealth
         private void btn_Reward_16_Click(object sender, EventArgs e)
         {
             if (CurrentRewardClaimNormal[15] == false)
-                ClientConnection.TestClient.Send($"Quest_Reward|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Normale|16");
+                ComandiInvio.Quest_Reward("Normale", 16);
             else btn_Reward_16.Enabled = false;
 
             Scroll_Panel(15);
@@ -984,7 +795,7 @@ namespace Warrior_and_Wealth
         private void btn_Reward_17_Click(object sender, EventArgs e)
         {
             if (CurrentRewardClaimNormal[16] == false)
-                ClientConnection.TestClient.Send($"Quest_Reward|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Normale|17");
+                ComandiInvio.Quest_Reward("Normale", 17);
             else btn_Reward_17.Enabled = false;
 
             Scroll_Panel(16);
@@ -993,7 +804,7 @@ namespace Warrior_and_Wealth
         private void btn_Reward_18_Click(object sender, EventArgs e)
         {
             if (CurrentRewardClaimNormal[17] == false)
-                ClientConnection.TestClient.Send($"Quest_Reward|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Normale|18");
+                ComandiInvio.Quest_Reward("Normale", 18);
             else btn_Reward_18.Enabled = false;
 
             Scroll_Panel(17);
@@ -1002,7 +813,7 @@ namespace Warrior_and_Wealth
         private void btn_Reward_19_Click(object sender, EventArgs e)
         {
             if (CurrentRewardClaimNormal[18] == false)
-                ClientConnection.TestClient.Send($"Quest_Reward|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Normale|19");
+                ComandiInvio.Quest_Reward("Normale", 19);
             else btn_Reward_19.Enabled = false;
 
             Scroll_Panel(18);
@@ -1011,7 +822,7 @@ namespace Warrior_and_Wealth
         private void btn_Reward_20_Click(object sender, EventArgs e)
         {
             if (CurrentRewardClaimNormal[19] == false)
-                ClientConnection.TestClient.Send($"Quest_Reward|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Normale|20");
+                ComandiInvio.Quest_Reward("Normale", 20);
             else btn_Reward_20.Enabled = false;
 
             Scroll_Panel(19);
@@ -1021,7 +832,7 @@ namespace Warrior_and_Wealth
         private void btn_Reward_Vip_1_Click(object sender, EventArgs e)
         {
             if (CurrentRewardClaimVip[0] == false)
-                ClientConnection.TestClient.Send($"Quest_Reward|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Vip|1");
+                ComandiInvio.Quest_Reward("Vip", 1);
             else btn_Reward_Vip_1.Enabled = false;
 
             Scroll_Panel(0);
@@ -1030,7 +841,7 @@ namespace Warrior_and_Wealth
         private void btn_Reward_Vip_2_Click(object sender, EventArgs e)
         {
             if (CurrentRewardClaimVip[1] == false)
-                ClientConnection.TestClient.Send($"Quest_Reward|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Vip|2");
+                ComandiInvio.Quest_Reward("Vip", 2);
             else btn_Reward_Vip_2.Enabled = false;
 
             Scroll_Panel(1);
@@ -1039,7 +850,7 @@ namespace Warrior_and_Wealth
         private void btn_Reward_Vip_3_Click(object sender, EventArgs e)
         {
             if (CurrentRewardClaimVip[2] == false)
-                ClientConnection.TestClient.Send($"Quest_Reward|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Vip|3");
+                ComandiInvio.Quest_Reward("Vip", 3);
             else btn_Reward_Vip_3.Enabled = false;
 
             Scroll_Panel(2);
@@ -1048,7 +859,7 @@ namespace Warrior_and_Wealth
         private void btn_Reward_Vip_4_Click(object sender, EventArgs e)
         {
             if (CurrentRewardClaimVip[3] == false)
-                ClientConnection.TestClient.Send($"Quest_Reward|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Vip|4");
+                ComandiInvio.Quest_Reward("Vip", 4);
             else btn_Reward_Vip_4.Enabled = false;
 
             Scroll_Panel(3);
@@ -1057,7 +868,7 @@ namespace Warrior_and_Wealth
         private void btn_Reward_Vip_5_Click(object sender, EventArgs e)
         {
             if (CurrentRewardClaimVip[4] == false)
-                ClientConnection.TestClient.Send($"Quest_Reward|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Vip|5");
+                ComandiInvio.Quest_Reward("Vip", 5);
             else btn_Reward_Vip_5.Enabled = false;
 
             Scroll_Panel(4);
@@ -1066,7 +877,7 @@ namespace Warrior_and_Wealth
         private void btn_Reward_Vip_6_Click(object sender, EventArgs e)
         {
             if (CurrentRewardClaimVip[5] == false)
-                ClientConnection.TestClient.Send($"Quest_Reward|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Vip|6");
+                ComandiInvio.Quest_Reward("Vip", 6);
             else btn_Reward_Vip_6.Enabled = false;
 
             Scroll_Panel(5);
@@ -1075,7 +886,7 @@ namespace Warrior_and_Wealth
         private void btn_Reward_Vip_7_Click(object sender, EventArgs e)
         {
             if (CurrentRewardClaimVip[6] == false)
-                ClientConnection.TestClient.Send($"Quest_Reward|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Vip|7");
+                ComandiInvio.Quest_Reward("Vip", 7);
             else btn_Reward_Vip_7.Enabled = false;
 
             Scroll_Panel(6);
@@ -1084,7 +895,7 @@ namespace Warrior_and_Wealth
         private void btn_Reward_Vip_8_Click(object sender, EventArgs e)
         {
             if (CurrentRewardClaimVip[7] == false)
-                ClientConnection.TestClient.Send($"Quest_Reward|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Vip|8");
+                ComandiInvio.Quest_Reward("Vip", 8);
             else btn_Reward_Vip_8.Enabled = false;
 
             Scroll_Panel(7);
@@ -1093,7 +904,7 @@ namespace Warrior_and_Wealth
         private void btn_Reward_Vip_9_Click(object sender, EventArgs e)
         {
             if (CurrentRewardClaimVip[8] == false)
-                ClientConnection.TestClient.Send($"Quest_Reward|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Vip|9");
+                ComandiInvio.Quest_Reward("Vip", 9);
             else btn_Reward_Vip_9.Enabled = false;
 
             Scroll_Panel(8);
@@ -1102,7 +913,7 @@ namespace Warrior_and_Wealth
         private void btn_Reward_Vip_10_Click(object sender, EventArgs e)
         {
             if (CurrentRewardClaimVip[9] == false)
-                ClientConnection.TestClient.Send($"Quest_Reward|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Vip|10");
+                ComandiInvio.Quest_Reward("Vip", 10);
             else btn_Reward_Vip_10.Enabled = false;
 
             Scroll_Panel(9);
@@ -1111,7 +922,7 @@ namespace Warrior_and_Wealth
         private void btn_Reward_Vip_11_Click(object sender, EventArgs e)
         {
             if (CurrentRewardClaimVip[10] == false)
-                ClientConnection.TestClient.Send($"Quest_Reward|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Vip|11");
+                ComandiInvio.Quest_Reward("Vip", 11);
             else btn_Reward_Vip_11.Enabled = false;
 
             Scroll_Panel(10);
@@ -1120,7 +931,7 @@ namespace Warrior_and_Wealth
         private void btn_Reward_Vip_12_Click(object sender, EventArgs e)
         {
             if (CurrentRewardClaimVip[11] == false)
-                ClientConnection.TestClient.Send($"Quest_Reward|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Vip|12");
+                ComandiInvio.Quest_Reward("Vip", 12);
             else btn_Reward_Vip_12.Enabled = false;
 
             Scroll_Panel(11);
@@ -1129,7 +940,7 @@ namespace Warrior_and_Wealth
         private void btn_Reward_Vip_13_Click(object sender, EventArgs e)
         {
             if (CurrentRewardClaimVip[12] == false)
-                ClientConnection.TestClient.Send($"Quest_Reward|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Vip|13");
+                ComandiInvio.Quest_Reward("Vip", 13);
             else btn_Reward_Vip_13.Enabled = false;
 
             Scroll_Panel(12);
@@ -1138,7 +949,7 @@ namespace Warrior_and_Wealth
         private void btn_Reward_Vip_14_Click(object sender, EventArgs e)
         {
             if (CurrentRewardClaimVip[14] == false)
-                ClientConnection.TestClient.Send($"Quest_Reward|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Vip|14");
+                ComandiInvio.Quest_Reward("Vip", 14);
             else btn_Reward_Vip_14.Enabled = false;
 
             Scroll_Panel(13);
@@ -1147,7 +958,7 @@ namespace Warrior_and_Wealth
         private void btn_Reward_Vip_15_Click(object sender, EventArgs e)
         {
             if (CurrentRewardClaimVip[14] == false)
-                ClientConnection.TestClient.Send($"Quest_Reward|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Vip|15");
+                ComandiInvio.Quest_Reward("Vip", 15);
             else btn_Reward_Vip_15.Enabled = false;
 
             Scroll_Panel(14);
@@ -1156,7 +967,7 @@ namespace Warrior_and_Wealth
         private void btn_Reward_Vip_16_Click(object sender, EventArgs e)
         {
             if (CurrentRewardClaimVip[15] == false)
-                ClientConnection.TestClient.Send($"Quest_Reward|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Vip|16");
+                ComandiInvio.Quest_Reward("Vip", 16);
             else btn_Reward_Vip_16.Enabled = false;
 
             Scroll_Panel(15);
@@ -1165,7 +976,7 @@ namespace Warrior_and_Wealth
         private void btn_Reward_Vip_17_Click(object sender, EventArgs e)
         {
             if (CurrentRewardClaimVip[16] == false)
-                ClientConnection.TestClient.Send($"Quest_Reward|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Vip|17");
+                ComandiInvio.Quest_Reward("Vip", 17);
             else btn_Reward_Vip_17.Enabled = false;
 
             Scroll_Panel(16);
@@ -1174,7 +985,7 @@ namespace Warrior_and_Wealth
         private void btn_Reward_Vip_18_Click(object sender, EventArgs e)
         {
             if (CurrentRewardClaimVip[17] == false)
-                ClientConnection.TestClient.Send($"Quest_Reward|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Vip|18");
+                ComandiInvio.Quest_Reward("Vip", 18);
             else btn_Reward_Vip_18.Enabled = false;
 
             Scroll_Panel(17);
@@ -1183,7 +994,7 @@ namespace Warrior_and_Wealth
         private void btn_Reward_Vip_19_Click(object sender, EventArgs e)
         {
             if (CurrentRewardClaimVip[18] == false)
-                ClientConnection.TestClient.Send($"Quest_Reward|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Vip|19");
+                ComandiInvio.Quest_Reward("Vip", 19);
             else btn_Reward_Vip_19.Enabled = false;
 
             Scroll_Panel(18);
@@ -1192,7 +1003,7 @@ namespace Warrior_and_Wealth
         private void btn_Reward_Vip_20_Click(object sender, EventArgs e)
         {
             if (CurrentRewardClaimVip[19] == false)
-                ClientConnection.TestClient.Send($"Quest_Reward|{Variabili_Client.Utente.Username}|{Variabili_Client.Utente.Password}|Vip|20");
+                ComandiInvio.Quest_Reward("Vip", 20);
             else btn_Reward_Vip_20.Enabled = false;
 
             Scroll_Panel(19);
