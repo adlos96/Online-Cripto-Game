@@ -61,45 +61,46 @@ namespace Warrior_and_Wealth
         public static void Spostamento_Truppe(int Livello, string From, string To, string Guerrieri, string Arceri, string Lanceri, string Catapulte)
         {
             ClientConnection.TestClient.Send($"SpostamentoTruppe|{Variabili_Client.access_Token}|" +
-                $"{From}" +
-                $"{To}" +
-                $"{Guerrieri}" +
-                $"{Arceri}" +
-                $"{Lanceri}" +
-                $"{Catapulte}" +
+                $"{From}|" +
+                $"{To}|" +
+                $"{Guerrieri}|" +
+                $"{Arceri}|" +
+                $"{Lanceri}|" +
+                $"{Catapulte}|" +
                 $"{Livello}");
         }
         public static void Velocizza(string Comando, string Quantità)
         {
             ClientConnection.TestClient.Send($"Velocizza_Diamanti|{Variabili_Client.access_Token}|" +
-                $"{Comando}" +
+                $"{Comando}|" +
                 $"{Quantità}");
         }
         public static void Quest_Reward(string Tipo, int Quest)
         {
             ClientConnection.TestClient.Send($"Quest_Reward|{Variabili_Client.access_Token}|" +
-                $"{Tipo}" +
+                $"{Tipo}|" +
                 $"{Quest}");
         }
         public static void AutoLogin(string accessToken, string refreshToken)
         {
             ClientConnection.TestClient.Send($"AutoLogin|{Variabili_Client.access_Token}|" +
-                $"{accessToken}" +
+                $"{accessToken}|" +
                 $"{refreshToken}");
         }
-        public static void Login(string Username, string Pssw, string Lingua)
+        public static void Login(string Email, string Username, string Pssw, string Lingua)
         {
             ClientConnection.TestClient.Send($"Login|{Variabili_Client.access_Token}|" +
-                $"{Username}" +
-                $"{Pssw}" +
-                $"{Lingua}");
+                $"{Username}|" +
+                $"{Pssw}|" +
+                $"{Lingua}|" +
+                $"{Email}");
         }
         public static void NewGame(string Username, string Pssw, string Lingua, string Email)
         {
-            ClientConnection.TestClient.Send($"Login|{Variabili_Client.access_Token}|" +
-                $"{Username}" +
-                $"{Pssw}" +
-                $"{Lingua}" +
+            ClientConnection.TestClient.Send($"New Player|{Variabili_Client.access_Token}|" +
+                $"{Username}|" +
+                $"{Pssw}|" +
+                $"{Lingua}|" +
                 $"{Email}");
         }
         public static void GamePass_DailyReward()
@@ -109,7 +110,7 @@ namespace Warrior_and_Wealth
         public static void Riparazione(string StrutturaDifensiva, string ElementoStatistica)
         {
             ClientConnection.TestClient.Send($"Ripara|{Variabili_Client.access_Token}|" +
-                $"{StrutturaDifensiva}" +
+                $"{StrutturaDifensiva}|" +
                 $"{ElementoStatistica}");
         }
         public static void RiparaTutto(string Dato)

@@ -194,7 +194,7 @@ namespace Warrior_and_Wealth
             await Sleep(2);
             txt_Log.Text = "Login...";
             await Sleep(2);
-            ComandiInvio.Login(txt_Username_Login.Text, txt_Password_Login.Text, lingua_Selezionata);
+            ComandiInvio.Login(txt_Email.Text, txt_Username_Login.Text, txt_Password_Login.Text, lingua_Selezionata);
             await Loop_Login(4);
             await Sleep(2);
 

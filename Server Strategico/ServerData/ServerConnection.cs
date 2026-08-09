@@ -37,30 +37,34 @@ namespace Server_Strategico.Server
             var msgArgsRicevuti = messaggioRicevuto.Split('|');
             string comando = msgArgsRicevuti[0];
 
-            Player player;
+            string user = "", password = "", email = "", lang = "";
             string[] msgArgs;
-            string user = "";
+            Player player = null;
 
             if (comando == "Login" || comando == "New Player")
             {
                 msgArgs = msgArgsRicevuti;
-                player = null; // recuperato dentro i case
+                user = msgArgsRicevuti[2];
+                password = msgArgsRicevuti[3];
+                email = msgArgsRicevuti[4];
+                lang = msgArgsRicevuti[5];
             }
             else
             {
-                // Ogni altro comando: comando|accessToken|dato1|dato2|...
                 string accessToken = msgArgsRicevuti[1];
 
                 if (!TokenManager.ValidateAccessToken(accessToken, out string username))
                 {
                     Server.Send(clientGuid, "TOKEN_NON_VALIDO");
+                    Console.WriteLine("[ServerConnection] >> TOKEN_NON_VALIDO");
                     return;
                 }
 
                 player = Server.servers_.GetPlayer(username);
                 if (player == null)
                 {
-                    Server.Send(clientGuid, "TOKEN_NON_VALIDO");
+                    Server.Send(clientGuid, "TOKEN_NON_VALIDO_PLAYER_NON_TROVATO");
+                    Console.WriteLine("[ServerConnection] >> TOKEN_NON_VALIDO_PLAYER_NON_TROVATO");
                     return;
                 }
 
@@ -69,35 +73,38 @@ namespace Server_Strategico.Server
                     .Concat(msgArgsRicevuti.Skip(2))
                     .ToArray();
             }
-
             if (msgArgs.Length == 0)
             {
                 Console.WriteLine("[Errore|ServerConnection] >> needed 1 args");
                 return;
             }
-            player = Server.servers_.GetPlayer(msgArgs[1], msgArgs[2]);
             var dati = Server.servers_.players;
+            if (player == null) player = Server.servers_.GetPlayer(user, password);
 
             switch (msgArgs[0])
             {
                 case "New Player":
                     Console.WriteLine($"[Server] Richiesta nuovo utente ID: {clientGuid}");
-                    if (await New_Player(msgArgs[1], msgArgs[2], msgArgs[3], clientGuid))
+                    if (await New_Player(user, password, email, clientGuid))
                     {
+                        player = Server.servers_.GetPlayer(user, password);
+                        if (player == null)
+                        {
+                            Console.WriteLine("[AutoLogin] Player risulta null");
+                            return;
+                        }
                         // Pulisce eventuali refresh token residui di sessioni precedenti
-                        TokenManager.RevokeAllRefreshTokensForUser(player.Email);
+                        TokenManager.RevokeAllRefreshTokensForUser(email);
 
                         // Genero i token qui, subito dopo l'auth con username/password
-                        string accessToken = TokenManager.GenerateAccessToken(player.Email, player.Username, TimeSpan.FromHours(8));
-                        string refreshToken = TokenManager.GenerateRefreshToken(player.Email, player.Username, TimeSpan.FromDays(10));
+                        string accessToken = TokenManager.GenerateAccessToken(email, user, TimeSpan.FromHours(8));
+                        string refreshToken = TokenManager.GenerateRefreshToken(email, user, TimeSpan.FromDays(10));
                         Server.Send(clientGuid, $"Login|true|{accessToken}|{refreshToken}");
 
                         Server.Client_Connessi_Map.TryRemove(clientGuid, out _);
                         Server.Client_Connessi_Map.TryAdd(clientGuid, user);
 
-                        if (Variabili_Server.lingue_Supportate.Contains(msgArgs[3])) player.Lingua = msgArgs[3]; //Imposta la lingua preferita del giocatore
-                        else player.Lingua = "ITA"; //Default Italiano
-                        Console.WriteLine($"[Server] Lingua selezionata: {msgArgs[3]}");
+                        Lingua(player, lang);
 
                         Descrizioni.DescUpdate(player);
                         QuestManager.QuestUpdate(player);
@@ -110,11 +117,16 @@ namespace Server_Strategico.Server
                         await EmailManager.SendWelcomeAsync(player.Email, player.Username);
                     }
                     else
-                        Server.Send(clientGuid, $"Login|false|Questo nome utente è già presente: [{msgArgs[1]}]");
+                        Server.Send(clientGuid, $"Login|false|Questo nome utente è già presente: [{user}");
                     break;
                 case "Login":
-                    if (await Login(msgArgs[1], msgArgs[2], msgArgs[3], clientGuid)) //Comando, Username, Password, Lingua
+                    if (await Login(user, password, email, clientGuid)) //Comando, Username, Password, Lingua
                     {
+                        if (player == null)
+                        {
+                            Console.WriteLine("[AutoLogin] Player risulta null");
+                            return;
+                        }
                         // Pulisce eventuali refresh token residui di sessioni precedenti
                         TokenManager.RevokeAllRefreshTokensForUser(player.Email);
 
@@ -127,31 +139,9 @@ namespace Server_Strategico.Server
                         Server.Client_Connessi_Map.TryAdd(clientGuid, player.Username);
 
                         if (player.Stato_Giocatore == false) player.Stato_Giocatore = true; //Riattiva il giocatore se non entra da molto
-                        if (player.Last_Login != DateTime.Now.Date) //Accesso giornaliero - Incremento e controllo accessi consecutivi per GamePass
-                        {
-                            var daysDiff = (DateTime.Now.Date - player.Last_Login.Date).Days;
-                            if (daysDiff == 1 && player.GamePass_Avanzato)
-                            {
-                                player.GamePass_Accessi_Consecutivi += 1;
-                                player.Last_Login = DateTime.Now.Date;
-                                Console.WriteLine("Gamepass: Giorno incrementato");
-                            }
-                            else if (daysDiff > 1)
-                            {
-                                Console.WriteLine("Gamepass: Giorni resettati");
-                                player.GamePass_Accessi_Consecutivi = 0;
-                                player.Last_Login = DateTime.Now.Date;
-                                player.GamePass_Premi = new bool[Variabili_Server.gamePass_DailyReward.Count()]; //Reset premi giornalieri
-                            }
-                            if (!player.GamePass_Avanzato && player.GamePass_Accessi_Consecutivi != 0)
-                            {
-                                player.GamePass_Accessi_Consecutivi = 0;
-                                Console.WriteLine("Gamepass: Gamepass scaduto, reset giorni");
-                            }
-                        } //GamePass Gold
-                        if (Variabili_Server.lingue_Supportate.Contains(msgArgs[3])) player.Lingua = msgArgs[3]; //Imposta la lingua preferita del giocatore
-                        else player.Lingua = "ITA"; //Default Italiano
-                        Console.WriteLine($"[Server] Lingua selezionata: {msgArgs[3]}");
+
+                        Accesso_Giornaliero(player);//GamePass Gold
+                        Lingua(player, lang);
 
                         Descrizioni.DescUpdate(player);
                         QuestManager.QuestUpdate(player);
@@ -162,14 +152,19 @@ namespace Server_Strategico.Server
                         player.SetupCaserme();
                         GamePass_Premi_Send(player);
                         Update_Data_OneTime(clientGuid, player);
-                        player.Snapshot.Reset();
+                        if (player.Snapshot != null) player.Snapshot.Reset();
                     }
                     else
                         Server.Send(clientGuid, $"Login|false|Username o password non corrispondono. User: [{msgArgs[1]}] psw: [{msgArgs[2]}]");
                     break;
                 case "AutoLogin":
-                    if (await Login(msgArgs[1], msgArgs[2], msgArgs[3], clientGuid)) //Comando, Username, Password, Lingua
-                    {                        
+                    if (await Login(user, password, email, clientGuid)) //Comando, Username, Password, Lingua
+                    {
+                        if (player == null)
+                        {
+                            Console.WriteLine("[AutoLogin] Player risulta null");
+                            return;
+                        }
                         // Genero i token qui, subito dopo l'auth con username/password
                         string accessToken = TokenManager.GenerateAccessToken(player.Email, player.Username, TimeSpan.FromHours(8));
                         string refreshToken = TokenManager.GenerateRefreshToken(player.Email, player.Username, TimeSpan.FromDays(10));
@@ -307,6 +302,37 @@ namespace Server_Strategico.Server
                 default: Console.WriteLine($"Messaggio: [{msgArgs}]"); break;
             }
            
+        }
+        async static void Accesso_Giornaliero(Player player)
+        {
+            if (player.Last_Login != DateTime.Now.Date) //Accesso giornaliero - Incremento e controllo accessi consecutivi per GamePass
+            {
+                var daysDiff = (DateTime.Now.Date - player.Last_Login.Date).Days;
+                if (daysDiff == 1 && player.GamePass_Avanzato)
+                {
+                    player.GamePass_Accessi_Consecutivi += 1;
+                    player.Last_Login = DateTime.Now.Date;
+                    Console.WriteLine("Gamepass: Giorno incrementato");
+                }
+                else if (daysDiff > 1)
+                {
+                    Console.WriteLine("Gamepass: Giorni resettati");
+                    player.GamePass_Accessi_Consecutivi = 0;
+                    player.Last_Login = DateTime.Now.Date;
+                    player.GamePass_Premi = new bool[Variabili_Server.gamePass_DailyReward.Count()]; //Reset premi giornalieri
+                }
+                if (!player.GamePass_Avanzato && player.GamePass_Accessi_Consecutivi != 0)
+                {
+                    player.GamePass_Accessi_Consecutivi = 0;
+                    Console.WriteLine("Gamepass: Gamepass scaduto, reset giorni");
+                }
+            }
+        }
+        async static void Lingua(Player player, string lang)
+        {
+            if (Variabili_Server.lingue_Supportate.Contains(lang)) player.Lingua = lang; //Imposta la lingua preferita del giocatore
+            else player.Lingua = "ITA"; //Default Italiano
+            Console.WriteLine($"[Server] Lingua selezionata: {lang}");
         }
         public async static void Cambia_Password(Guid clientGuid, Player player, string[] msgArgs)
         {
