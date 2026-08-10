@@ -182,6 +182,13 @@ namespace Strategico_V2
                     mess = messaggio.Split('|');
                     switch (mess[0])
                     {
+                        case "TOKEN_SCADUTO":
+                            if (Variabili_Client.refresh_Token != null)
+                                ComandiInvio.Refresh_AccessToken();
+                            break;
+                        case "Refresh_Access_Token":
+                            Variabili_Client.access_Token = mess[1];
+                            break;
                         case "Login":
                             if (mess[1] == "true")
                             {

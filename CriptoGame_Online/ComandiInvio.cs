@@ -5,6 +5,10 @@ namespace Warrior_and_Wealth
 {
     internal class ComandiInvio
     {
+        public static void Refresh_AccessToken()
+        {
+            ClientConnection.TestClient.Send($"Refresh_Access_Token|{Variabili_Client.refresh_Token}");
+        }
         public static void Acquista_TerrenoVirtuale()
         {
             ClientConnection.TestClient.Send($"Costruzione_Terreni|{Variabili_Client.access_Token}");

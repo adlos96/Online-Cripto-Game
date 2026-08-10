@@ -53,17 +53,25 @@ namespace Server_Strategico.Server
             {
                 string accessToken = msgArgsRicevuti[1];
 
-                if (!TokenManager.ValidateAccessToken(accessToken, out string username))
+                if (!TokenManager.ValidateAccessToken(accessToken, out string username, out bool isExpired))
                 {
-                    Server.Send(clientGuid, "TOKEN_NON_VALIDO");
-                    Console.WriteLine("[ServerConnection] >> TOKEN_NON_VALIDO");
+                    if (isExpired)
+                    {
+                        Server.Send(clientGuid, "TOKEN_SCADUTO"); //Invio per triggherare il refresh del token da parte del client
+                        Console.WriteLine("[ServerConnection] >> TOKEN_SCADUTO");
+                    }
+                    else
+                    {
+                        Server.Send(clientGuid, "TOKEN_NON_VALIDO"); //Non serve a nulla... il client lo vede ma non c'è il codice
+                        Console.WriteLine("[ServerConnection] >> TOKEN_NON_VALIDO");
+                    }
                     return;
                 }
 
                 player = Server.servers_.GetPlayer(username);
                 if (player == null)
                 {
-                    Server.Send(clientGuid, "TOKEN_NON_VALIDO_PLAYER_NON_TROVATO");
+                    Server.Send(clientGuid, "TOKEN_NON_VALIDO_PLAYER_NON_TROVATO"); //Non serve a nulla... il client lo vede ma non c'è il codice
                     Console.WriteLine("[ServerConnection] >> TOKEN_NON_VALIDO_PLAYER_NON_TROVATO");
                     return;
                 }
@@ -83,6 +91,20 @@ namespace Server_Strategico.Server
 
             switch (msgArgs[0])
             {
+                case "Refresh_Access_Token":
+                    Console.WriteLine($"[Server] Richiesta nuovo Access Token ID: {player.Username}, Guid: {clientGuid}");
+                    if (player == null)
+                    {
+                        Console.WriteLine("[Refresh_Access_Token] Player risulta null");
+                        return;
+                    }
+                    else
+                    {
+                        TokenManager.RevokeRefreshToken(msgArgs[1]);
+                        string accessToken = TokenManager.GenerateAccessToken(email, user, TimeSpan.FromHours(8));
+                        Server.Send(clientGuid, $"Update_AccessToken|{accessToken}");
+                    }
+                    break;
                 case "New Player":
                     Console.WriteLine($"[Server] Richiesta nuovo utente ID: {clientGuid}");
                     if (await New_Player(user, password, email, clientGuid))

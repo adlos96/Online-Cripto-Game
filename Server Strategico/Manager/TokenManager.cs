@@ -35,13 +35,15 @@ namespace Server_Strategico.Manager
             return $"{Convert.ToBase64String(payloadBytes)}.{Convert.ToBase64String(signature)}";
         }
 
-        public static bool ValidateAccessToken(string token, out string username)
+        public static bool ValidateAccessToken(string token, out string username, out bool isExpired)
         {
             username = null;
+            isExpired = false;
+
             if (string.IsNullOrWhiteSpace(token)) return false;
             var parts = token.Split('.');
             if (parts.Length != 2) return false;
-                
+
             try
             {
                 byte[] payloadBytes = Convert.FromBase64String(parts[0]);
@@ -51,14 +53,22 @@ namespace Server_Strategico.Manager
                 byte[] actualSig = hmac.ComputeHash(payloadBytes);
 
                 if (!System.Security.Cryptography.CryptographicOperations.FixedTimeEquals(expectedSig, actualSig))
-                    return false;
+                    return false; // firma errata → invalido
 
                 var fields = Encoding.UTF8.GetString(payloadBytes).Split('|');
-                if (fields.Length != 2 || !long.TryParse(fields[1], out long expiry)) return false;
-                if (DateTimeOffset.UtcNow.ToUnixTimeSeconds() > expiry) return false;
+                if (fields.Length != 2 || !long.TryParse(fields[1], out long expiry))
+                    return false; // payload corrotto → invalido
+
+                // Controllo scadenza
+                if (DateTimeOffset.UtcNow.ToUnixTimeSeconds() > expiry)
+                {
+                    username = fields[0]; // (opzionale) sappiamo chi è scaduto
+                    isExpired = true;
+                    return false; // scaduto
+                }
 
                 username = fields[0];
-                return true;
+                return true; // valido
             }
             catch { return false; }
         }
