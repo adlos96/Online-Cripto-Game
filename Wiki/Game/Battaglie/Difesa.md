@@ -1,5 +1,5 @@
 # Difesa
-
+la difesa del proprio villaggio ha una struttura perticolare in warriors and wealth.
 Alcune strutture influenzano la capacità di combattimento della guarnigione di altre. Di seguito sono elencate le meccaniche e le combinazioni rilevanti.
 
 ### Bonus Ingresso
