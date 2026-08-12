@@ -202,8 +202,8 @@ namespace Server_Strategico.Gioco
                                  arcieri_Temp_Morti[4] * Esercito.EsercitoNemico.Arceri_5.Esperienza +
                                  catapulte_Temp_Morti[4] * Esercito.EsercitoNemico.Arceri_5.Esperienza;
 
-            player.Esperienza += esperienza1;
-            player2.Esperienza += esperienza2;
+            Esperienza.AddExp(player, esperienza1);
+            Esperienza.AddExp(player2, esperienza2);
 
             Send(clientGuid, $"Log_Server|Esperienza ottenuta: [{esperienza1}] exp");
             Send(clientGuid2, $"Log_Server|Esperienza ottenuta: [{esperienza2}] exp");
@@ -419,7 +419,7 @@ namespace Server_Strategico.Gioco
             Send(clientGuid, $"Log_Server|Soldati persi dal nemico:");
             Send(clientGuid, $"Log_Server|Battaglia PVE Completata\r\n");
 
-            player.Esperienza += esperienza;
+            Esperienza.AddExp(player, esperienza);
 
             Console.WriteLine($"Danno inflitto dal nemico: {(dannoInflittoDalNemico * tipi_Di_Unità++).ToString("0.00")}");
             Console.WriteLine($"Danno inflitto dal giocatore: {(dannoInflitto * tipi_Di_Unità_Att++).ToString("0.00")}");
@@ -687,7 +687,7 @@ namespace Server_Strategico.Gioco
             truppeGiocatore.ApplicaPerdite(risultatoAttacco.DanniGiocatore);
 
             // 💰 Esperienza e log
-            player.Esperienza += risultatoAttacco.Esperienza;
+            Esperienza.AddExp(player, risultatoAttacco.Esperienza);
             Send(clientGuid, $"Log_Server|{struttura}: Hai inflitto {risultatoAttacco.DanniNemico.Guerrieri} morti nemici");
             Console.WriteLine($"({struttura}) Danno inflitto: {risultatoAttacco.DanniNemico}");
 
@@ -787,7 +787,7 @@ namespace Server_Strategico.Gioco
                 else
                     picchieri_Enemy -= lancieri_Morti_Att;
 
-                player.Esperienza += guerrieri_Morti_Att * Esercito.Unità.Guerriero_1.Esperienza + lancieri_Morti_Att * Esercito.Unità.Lancere_1.Esperienza;
+                Esperienza.AddExp(player, guerrieri_Morti_Att * Esercito.Unità.Guerriero_1.Esperienza + lancieri_Morti_Att * Esercito.Unità.Lancere_1.Esperienza);
                 int esperienza2 = guerrieri_Morti_Att * Esercito.Unità.Guerriero_1.Esperienza + lancieri_Morti_Att * Esercito.Unità.Lancere_1.Esperienza;
 
                 Send(clientGuid2, $"Log_Server|Guerrieri morti: {guerrieri_Morti}/{player2.Guerrieri} Lancieri morti:  {lancieri_Morti}/{player2.Lanceri}\r\n Esperienza:  {esperienza2}\r\n");

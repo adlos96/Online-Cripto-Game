@@ -53,5 +53,10 @@ namespace Server_Strategico.Gioco
             else if (cosa == 4) moltiplicatore = 0.79;
             cosa = 0;
         }
+        public static void AddExp(Giocatori.Player player, int exp)
+        {
+            player.Esperienza += exp;
+            LevelUp(player);
+        }
     }
 }

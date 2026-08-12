@@ -449,7 +449,7 @@ public class BattaglieV2
             player.Arceri_Persi += result.AttaccantePerdite.Arcieri[i];
             player.Catapulte_Perse += result.AttaccantePerdite.Catapulte[i];
         }
-        player.Esperienza += result.Xp_Attacker;
+        Esperienza.AddExp(player, result.Xp_Attacker);
         int barbari_Vivi = result.DifensoreSopravvisuti.TotalUnits();
 
         if (perdite_Nemico > perdite_Giocatore && barbari_Vivi == 0) // Vittoria del giocatore se le sue perdite sono inferiori a quelle del nemico
@@ -558,7 +558,7 @@ public class BattaglieV2
         player.Pietra += raccolte.Pietra;
         player.Ferro += raccolte.Ferro;
         player.Oro += raccolte.Oro;
-        player.Esperienza += exp;
+        Esperienza.AddExp(player, exp);
         player.Diamanti_Blu += raccolte.Diamanti_Blu;
         player.Diamanti_Viola += raccolte.Diamanti_Viola;
         player.Risorse_Razziate += raccolte.Cibo + raccolte.Legno + raccolte.Pietra + raccolte.Ferro + raccolte.Oro + raccolte.Diamanti_Blu + raccolte.Diamanti_Viola;

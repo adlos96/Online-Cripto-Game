@@ -685,11 +685,10 @@ namespace Server_Strategico.Gioco
                     Diamanti_Blu_PVP_Ottenuti = 0;
                     Diamanti_Viola_PVP_Persi = 0;
                     Diamanti_Blu_PVP_Persi = 0;
-                    for (int i = 0; i == VillaggiPersonali.Count(); i++)
-                        VillaggiPersonali[0].Esplorato = false;
-                    for (int i = 0; i == Barbari.CittaGlobali.Count(); i++)
-                        Barbari.CittaGlobali[0].Esplorato = false;
-                    Variabili_Server.Reset_Gironaliero = false;
+                    for (int i = 0; i < VillaggiPersonali.Count(); i++)
+                        VillaggiPersonali[i].Esplorato = false;
+                    for (int i = 0; i < Barbari.CittaGlobali.Count(); i++)
+                        Barbari.CittaGlobali[i].Esplorato = false;
                 }
             }
 
@@ -948,6 +947,14 @@ namespace Server_Strategico.Gioco
             public async Task BonusPacchetti()
             {
                 double bonusAttack = 0, bonusHealth = 0, bonusDefense = 0;
+
+                //impostiamo i bonus a 0 per default.. se un pacchetto è attivo verranno aggiornati
+                Bonus_Attacco_Guerrieri = Bonus_Attacco_Lanceri = Bonus_Attacco_Arceri = Bonus_Attacco_Catapulte = 0;
+                Bonus_Salute_Guerrieri = Bonus_Salute_Lanceri = Bonus_Salute_Arceri = Bonus_Salute_Catapulte = 0;
+                Bonus_Difesa_Guerrieri = Bonus_Difesa_Lanceri = Bonus_Difesa_Arceri = Bonus_Difesa_Catapulte = 0;
+                Bonus_Salute_Strutture = Bonus_Difesa_Strutture = Bonus_Guarnigione_Strutture = 0;
+                Bonus_Costruzione = Bonus_Addestramento = Bonus_Ricerca = Bonus_Riparazione = 0;
+                Bonus_Produzione_Risorse = Bonus_Capacità_Trasporto = 0;
 
                 if (Vip)
                 {

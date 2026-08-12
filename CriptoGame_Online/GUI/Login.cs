@@ -426,6 +426,7 @@ namespace Warrior_and_Wealth
         private void Login_FormClosing(object sender, FormClosingEventArgs e)
         {
             Variabili_Client.lingua_Selezionata = lingua_Selezionata;
+            ClientConnection.reConnected = false;
             MusicManager.Stop();
         }
 

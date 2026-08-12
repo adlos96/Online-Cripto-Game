@@ -33,6 +33,7 @@ namespace Strategico_V2
         public static string argomento_Invio = "";
         public static string argomento_Ricevuto = "";
         public static bool client_Connesso = false;
+        public static bool reConnected = false;
 
         internal class TestClient
         {

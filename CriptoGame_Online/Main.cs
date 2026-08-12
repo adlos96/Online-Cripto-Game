@@ -337,6 +337,13 @@ namespace Warrior_and_Wealth
                 {
                     panel1.BeginInvoke((Action)(async () =>
                     {
+                        if (!ClientConnection.client_Connesso && !ClientConnection.reConnected)
+                        {
+                            Login form_Gioco = new Login();
+                            ClientConnection.reConnected = true;
+                            form_Gioco.ShowDialog();
+                        }
+
                         toolTip1.SetToolTip(this.ico_Player, $"{Variabili_Client.Giocatore_Desc}");
                         toolTip1.SetToolTip(this.ico_Tributi, $"{Variabili_Client.Dollari_VIrtuali_Desc}");
                         toolTip1.SetToolTip(this.ico_DiamantiB, $"{Variabili_Client.Diamanti_Blu_Desc}");

@@ -10,7 +10,7 @@ namespace Server_Strategico.Server
 {
     internal class Server
     {
-        public static List<Guid> Client_Connessi = new List<Guid>();
+        public static List<Guid> Client_Connessi = new List<Guid>(); // va rimossa, è pericolosa con il multithread
         public static List<string> Utenti_PVP = new List<string>();
 
         public static System.Collections.Concurrent.ConcurrentDictionary<Guid, string> Client_Connessi_Map =
@@ -32,9 +32,12 @@ namespace Server_Strategico.Server
         private Task gameLoopTask;
         static public GameServer servers_ = new GameServer();
 
+        public static double totale_Stats = 0, media_Stats = 0, min_Stats = 0, max_Stats = 0, numero_Stats = 0;
+
         private Server()
         {
             string subjectName = Environment.MachineName; //Ottine il nome della macchina (hostname)
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
 
             if (OperatingSystem.IsWindows())
             {
@@ -93,6 +96,11 @@ namespace Server_Strategico.Server
                         Console.WriteLine("Comando vuoto:                 [client]");                      // 
                         Console.WriteLine("Comando vuoto:                 [battaglia]");                      // 
                         Console.WriteLine("Comando vuoto:                 [spionaggio]");                      // 
+                        Console.WriteLine("Comando vuoto:                 [disconnetti]");                      // 
+
+                        Console.WriteLine(" --------------------- Server Stats ---------------------");                      // 
+                        Console.WriteLine("Comando vuoto:                 [clear stats]");                      // 
+                        Console.WriteLine("Comando vuoto:                 [clear stats max]");                      //
 
                         Console.WriteLine("----------------------------------------------------------------------");
                         break;
@@ -107,6 +115,20 @@ namespace Server_Strategico.Server
                         break;
                     case "spionaggio":
                         Spionaggio.EseguiSpionaggio();
+                        break;
+                    case "disconnetti":
+                        Console.Write("Username del giocatore da disconnettere: ");
+                        string usernameTarget = Console.ReadLine() ?? string.Empty;
+                        _ = DisconnettiGiocatore(usernameTarget); // fire-and-forget, dato che siamo in un metodo sync
+                        break;
+
+                    case "clear stats": max_Stats = 0; break;
+                    case "clear stats max":
+                        totale_Stats = 0;
+                        media_Stats = 0;
+                        min_Stats = 0;
+                        max_Stats = 0;
+                        numero_Stats = 0;
                         break;
 
                     default: Console.WriteLine("[Server] >> Comando sconosciuto"); break;
@@ -206,6 +228,33 @@ namespace Server_Strategico.Server
             }
             catch { }
         }
+        public static async Task<bool> DisconnettiGiocatore(string username)
+        {
+            var player = servers_.GetPlayer(username);
+            if (player == null)
+            {
+                Console.WriteLine($"[SERVER|LOG] > Giocatore '{username}' non trovato.");
+                return false;
+            }
+
+            if (player.guid_Player == Guid.Empty || !Client_Connessi.Contains(player.guid_Player))
+            {
+                Console.WriteLine($"[SERVER|LOG] > Giocatore '{username}' non è attualmente connesso.");
+                return false;
+            }
+
+            try
+            {
+                Console.WriteLine($"[SERVER|LOG] > Disconnessione forzata di '{username}' (GUID: {player.guid_Player})");
+                await server.DisconnectClientAsync(player.guid_Player);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[SERVER|LOG] > Errore durante la disconnessione di '{username}': {ex.Message}");
+                return false;
+            }
+        }
         private static void ExceptionEncountered(object sender, ExceptionEventArgs e)
         {
             Console.WriteLine(server.SerializationHelper.SerializeJson(e.Exception, true));
@@ -234,52 +283,39 @@ namespace Server_Strategico.Server
             int _saveIndex = 0;
             public async Task<bool> AddPlayer(string username, string password, string email, Guid guid)
             {
-                if (!players.ContainsKey(username))
-                {
-                    players.Add(username, new Player(username, password, email, guid));
-                    await NewPlayer(username, password);
-                    return true;
-                }
-                else
-                {
-                    return false;
-                    throw new ArgumentException($"Player già presente con questo username {username} e password {password}.");
-                }
+                var newPlayer = new Player(username, password, email, guid);
+                if (!players.TryAdd(username, newPlayer))
+                    return false; // username già esistente, nessuna eccezione, nessuna race
+
+                await NewPlayer(username, password);
+                return true;
             }
 
             public Player GetPlayer(string username, string password)
             {
-                if (players.TryGetValue(username, out Player player))
-                {
-                    if (player.ValidatePassword(password))
-                        return player;
-                    else
-                    {
-                        return null;
-                        throw new UnauthorizedAccessException("Invalid password.");
-                    }
-                }
-                else
-                {
-                    return null;
-                    throw new KeyNotFoundException("Player not found.");
-                }
+                if (!players.TryGetValue(username, out Player player)) return null;
+                return player.ValidatePassword(password) ? player : null;
             }
+
             public Player GetPlayer(string username)
             {
-                if (players.TryGetValue(username, out Player player))
-                    return player;
-                else
-                {
-                    return null;
-                    throw new KeyNotFoundException("Player not found.");
-                }
+                players.TryGetValue(username, out Player player);
+                return player;
             }
             public void Player_Creati()
             {
                 Console.WriteLine($"Numero Giocatori: {players.Count()}");
                 foreach (var item in players)
-                    Console.WriteLine($"Giocatore: {item.Value.Username} Guid: {item.Value.guid_Player}, Livello: {item.Value.Livello}, Last: {item.Value.Last_Login}");
+                {
+                    var player = item.Value;
+                    bool connesso = player.guid_Player != Guid.Empty && Client_Connessi.Contains(player.guid_Player);
+
+                    Console.ForegroundColor = connesso ? ConsoleColor.Green : ConsoleColor.Red;
+                    Console.Write("● ");
+                    Console.ResetColor();
+
+                    Console.WriteLine($"Giocatore: {player.Username} Guid: {player.guid_Player}, Livello: {player.Livello}, Last: {player.Last_Login}");
+                }
             }
             public void AggiornaListaPVP()
             {
@@ -388,7 +424,6 @@ namespace Server_Strategico.Server
             public async Task RunGameLoopAsync(CancellationToken cancellationToken)
             {
                 int saveCounterPlayer = 0, _firstStart = 0, stats = 0, update_5s = 0;
-                double totale_Stats = 0, media_Stats = 0, min_Stats = 0, max_Stats = 0, numero_Stats = 0;
 
                 if (Variabili_Server._Server_Consumo_RAM == 0)
                 {
@@ -396,7 +431,7 @@ namespace Server_Strategico.Server
                     Variabili_Server._Server_Consumo_RAM = (int)(proc.WorkingSet64 / 1024.0 / 1024.0);
                     Console.WriteLine($"[Server] Baseline RAM impostata: {Variabili_Server._Server_Consumo_RAM:F2} MB");
                 }
-                //await addBOT(500000);
+                await addBOT(500000);
 
                 await GameSave.LoadServerData();
                 await GameSave.Load_Player_Data_Auto();
@@ -599,7 +634,7 @@ namespace Server_Strategico.Server
                             {
                                 Ripara(player);
                                 CalcoloPotenza(player);
-                                Esperienza.LevelUp(player);
+                                //Esperienza.LevelUp(player); //In teoria quando l'esperienza viene aggiunta al giocatore, viene controllato se il giocatore può salire di livello... non penso sia necessario
                             }
 
                             lock (player.LockCostruzione)
