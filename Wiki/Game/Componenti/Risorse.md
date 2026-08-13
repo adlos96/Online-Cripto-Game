@@ -84,7 +84,7 @@ Generati esclusivamente dai **Feudi**, terreni virtuali di diverse rarità che, 
 
 - **Ottenibili:** Feudi
 - **Valore di conversione:** Scambiabili per Diamanti Blu
-- **Consiglio:** *Accumulane il più possibile: sono l'unica rendita che nessun nemico potrà mai sottrarti.*
+- **Consiglio:** *Accumulane il più possibile: sono l'unica rendita che nessun nemico potrà mai sottrarti. Sono prelevabili.*
 
 ---
 
