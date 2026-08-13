@@ -24,11 +24,9 @@ Tra un ordine di costruzione e l'altro dovrai bilanciare economia e forza milita
 | :--- | :--- | :--- |
 | [👋 Introduzione](Wiki/Game/Introduzione.md) | [💎 Risorse](Wiki/Game/Componenti/Risorse.md) | [🏹 Difesa](Wiki/Game/Battaglie/Difesa.md) |
 | [👑 Premium](Wiki/Game/Componenti/Premium.md) | [🏘️ Edifici](Wiki/Game/Componenti/Edifici.md) | [⚔️ PVE](Wiki/Game/Battaglie/PVE.md) |
-| [⭐ Esperienza](Wiki/Game/Componenti/Esperienza.md) | [🏰 Città](Wiki/Game/Componenti/Città.md) | [🛡️ PVP](Wiki/Game/Battaglie/PVP.md) |
-| | [📅 Quest](Wiki/Game/Componenti/Quest.md) | |
-| | [🧪 Ricerca](Wiki/Game/Componenti/Ricerca.md) | |
-| | [💡 Tecnologia](Wiki/Game/Componenti/Tecnologia.md) | |
-| | [🎖️ Esercito](Wiki/Game/Componenti/Esercito.md) | |
+| [⭐ Esperienza](Wiki/Game/Componenti/Esperienza.md) | [🏰 Città](Wiki/Game/Componenti/Citta.md) | [🛡️ PVP](Wiki/Game/Battaglie/PVP.md) |
+| [🧪 Ricerca](Wiki/Game/Componenti/Ricerca.md) | [📅 Quest](Wiki/Game/Componenti/Quest.md) | |
+| [💡 Tecnologia](Wiki/Game/Componenti/Tecnologia.md) | [🎖️ Esercito](Wiki/Game/Componenti/Esercito.md) | |
 
 
 ---
