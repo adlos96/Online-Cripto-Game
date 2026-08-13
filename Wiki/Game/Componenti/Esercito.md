@@ -11,10 +11,10 @@ Le truppe vengono reclutate presso le **Caserme**. Ogni tipologia di unità (Gue
 Le Caserme non possono essere potenziate singolarmente, ma **costruirne più esemplari aumenta il limite massimo di unità** che puoi ospitare per quella tipologia. Ogni Caserma aggiuntiva incrementa la capacità totale delle truppe di quella classe che puoi mantenere.
 
 Per reclutare una truppa devi:
-- Disporre delle **risorse** necessarie (cibo, legno, ferro, oro).
+- Disporre delle **risorse** necessarie (cibo, legno, pietra, ferro, oro).
 - Avere **popolazione** disponibile, poiché ogni soldato richiede un'abitazione.
 - Avere **capacità disponibile** nella Caserma corrispondente.
-- Attendere il **tempo di addestramento**, che può essere accelerato utilizzando Diamanti.
+- Attendere il **tempo di addestramento**, che può essere accelerato utilizzando Diamanti blu.
 
 Una volta addestrate, le unità entrano a far parte del tuo esercito permanente e sono immediatamente disponibili per essere schierate.
 
@@ -29,7 +29,7 @@ Lo stesso principio si applica sia al reclutamento di truppe che alla costruzion
 
 ## Tipi di Unità e Statistiche
 
-L'esercito di Warrior & Wealth è composto da quattro classi di truppe, ciascuna con punti di forza specifici. Ogni unità è disponibile in diversi **livelli** (da I a V), che ne determinano le statistiche base.
+L'esercito di Warrior & Wealth è composto da quattro classi di truppe, ciascuna con punti di forza specifici. Ogni unità è disponibile in diversi **livelli** (da **I** a **V**), che ne determinano le statistiche base.
 
 Le statistiche principali di ogni unità sono:
 
@@ -38,11 +38,11 @@ Le statistiche principali di ogni unità sono:
 - **Difesa**: la capacità di assorbire e ridurre il danno subito.
 - **Zaino (Capacità di Carico)**: determina quante risorse l'unità può trasportare durante un saccheggio.
 
-### Tabella Statistiche Unità (Valori Indicativi)
+### Tabella Statistiche Unità
 
 I valori riportati sono **indicativi** e possono variare. Per i valori aggiornati e precisi, consulta le sezioni dedicate direttamente in game.
 
-| Unità | Livello | Salute | Attacco | Difesa | Trasporto |
+| Unità | Livello | Salute | Attacco | Difesa | Zaino |
 |-------|---------|--------|---------|--------|-------|
 | Guerriero | I | 6 | 4 | 5 | 100 |
 | Lanciere | I | 7 | 3 | 7 | 150 |
@@ -67,7 +67,7 @@ I valori riportati sono **indicativi** e possono variare. Per i valori aggiornat
 
 ### Ricerca delle Statistiche
 
-Il **livello** dell'unità (I, II, III, IV, V) rappresenta il suo grado di evoluzione e funge da **requisito** per ricercare i potenziamenti delle altre statistiche. Attraverso la **Ricerca Tecnologica** puoi migliorare:
+Il **livello** dell'unità (**I, II, III, IV, V**) rappresenta il suo grado di evoluzione e funge da **requisito** per ricercare i potenziamenti delle altre statistiche. Attraverso la **Ricerca Tecnologica** puoi migliorare:
 
 - **Livello**: sblocca i tier successivi dell'unità.
 - **Salute**: aumenta i punti vita dell'unità.
@@ -90,7 +90,7 @@ La **popolazione** è un altro vincolo: ogni soldato occupa un'abitazione. Per a
 La disposizione delle truppe è cruciale, sia in attacco che in difesa.
 
 ### In Difesa
-La tua Città è strutturata in strati successivi (Ingresso, Mura, Cancello, Torri, Centro, Castello e Attacco Diretto). Spetta a te decidere come organizzare la guarnigione: puoi distribuire le unità nei vari presidi, nei limiti della capacità massima consentita. Una buona strategia prevede di piazzare la fanteria pesante nelle posizioni più esposte e le unità a distanza nelle retrovie, dove possono colpire il nemico senza essere facilmente raggiunte.
+La tua Città è strutturata in strati successivi (Ingresso, Mura, Cancello, Torri, Centro, Castello e Attacco Diretto). Spetta a te decidere come organizzare la guarnigione: puoi distribuire le unità nei vari presidi, nei limiti della capacità massima consentita.
 
 Le sinergie tra le strutture possono fornire bonus tattici: ad esempio, se Mura e Cancello sono ben presidiati, la guarnigione dell'Ingresso riceve un bonus ad Attacco e Difesa.
 
@@ -106,6 +106,8 @@ Al termine della battaglia, riceverai un **report dettagliato** con il bilancio 
 ---
 
 ## Vedi Anche
+
+[⬅️ Torna al Menu Principale](https://github.com/adlos96/Warrior-and-Wealth/blob/main/README.md) | [🏰 Vai alla Guida Difesa](https://github.com/adlos96/Warrior-and-Wealth/blob/main/Wiki/Game/Battaglie/Difesa.md) | [🐺 Vai alla Guida Ricerca](https://github.com/adlos96/Warrior-and-Wealth/blob/main/Wiki/Game/Componenti/Ricerca.md) | [🏢 Vai alla Guida Edifici](https://github.com/adlos96/Warrior-and-Wealth/blob/main/Wiki/Game/Componenti/Edifici.md)
 
 - [Guida alla Città](https://github.com/adlos96/Warrior-and-Wealth/blob/main/Wiki/Game/Componenti/Citt%C3%A0.md) – per la struttura della tua Cittadella e la gestione dei presidi.
 - [Difesa](https://github.com/adlos96/Warrior-and-Wealth/blob/main/Wiki/Game/Battaglie/Difesa.md) – per i dettagli sulle meccaniche di difesa e assedio.
