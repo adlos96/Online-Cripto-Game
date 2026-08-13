@@ -27,6 +27,7 @@ Tra un ordine di costruzione e l'altro dovrai bilanciare economia e forza milita
 | [⭐ Esperienza](Wiki/Game/Componenti/Esperienza.md) | [🏘️ Città](Wiki/Game/Componenti/Città.md) | [🛡️ PVP](Wiki/Game/Battaglie/PVP.md) |
 | | [📅 Quest Mensile](Wiki/Game/Componenti/Quest_Mensili.md) | |
 | | [🧪 Ricerca](Wiki/Game/Componenti/Ricerca_A.md) | |
+| | [🎖️ Esercito](Wiki/Game/Componenti/Esercito_A.md) | |
 
 
 ---
