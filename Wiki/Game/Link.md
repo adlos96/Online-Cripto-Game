@@ -4,6 +4,8 @@
 
 - https://github.com/adlos96/Warrior-and-Wealth/blob/main/Wiki/Game/Componenti/Citt%C3%A0.md
 - https://github.com/adlos96/Warrior-and-Wealth/blob/main/Wiki/Game/Componenti/Edifici.md
+- https://github.com/adlos96/Warrior-and-Wealth/blob/main/Wiki/Game/Componenti/Esperienza.md
+- https://github.com/adlos96/Warrior-and-Wealth/blob/main/Wiki/Game/Componenti/Premium.md
 - https://github.com/adlos96/Warrior-and-Wealth/blob/main/Wiki/Game/Componenti/Quest_Mensili.md
 - https://github.com/adlos96/Warrior-and-Wealth/blob/main/Wiki/Game/Componenti/Risorse.md
 

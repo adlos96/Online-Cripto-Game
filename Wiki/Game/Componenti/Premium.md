@@ -16,12 +16,14 @@ Uno dei principali vantaggi condivisi da tutti e tre i componenti è un accesso 
 
 Il **VIP** è il componente premium base di Warriors & Wealth. Non è complesso nella sua funzione, ma pone le fondamenta per una progressione più fluida, garantendo:
 
-- **Quest Mensili:** accesso alla sezione premium delle ricompense mensili.
 - **Slot di costruzione extra:** una coda di costruzione aggiuntiva, per una maggiore capacità civile e militare. 
 - **Bonus permanenti:** un insieme di potenziamenti attivi per tutta la durata del pacchetto, ad esempio:
   - Bonus Costruzione +5%
   - Bonus Ricerca +5%
   - Salute Strutture +5%
+
+> **📌 Nota:** questo pacchetto non conferisce diamanti, ed è generalmente preferito da chi vuole dare un "boost" alla propria esperienza di gioco, per raggiungere gli obiettivi prefissati in minor tempo.
+
 
 ---
 
@@ -31,10 +33,10 @@ Il **VIP** è il componente premium base di Warriors & Wealth. Non è complesso 
 
 Il secondo componente premium, il **Gamepass Silver**, offre vantaggi più marcati al villaggio e in combattimento rispetto al VIP, tra cui:
 
+- **Quest Mensili:** accesso alla sezione premium delle ricompense mensili.
 - **Slot di reclutamento extra:** una coda di addestramento aggiuntiva, per una maggiore capacità offensiva o difensiva.
 - **Bonus permanenti:** analogamente al VIP, un pacchetto di potenziamenti attivi finché il Gamepass rimane attivo.
 
-> **📌 Nota:** questo pacchetto non conferisce diamanti, ed è generalmente preferito da chi vuole dare un "boost" alla propria esperienza di gioco, per raggiungere gli obiettivi prefissati in minor tempo.
 
 ---
 
