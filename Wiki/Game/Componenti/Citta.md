@@ -52,4 +52,4 @@ L'ultimo strato non possiede Salute o Difesa proprie: la sua tenuta dipende dall
 
 ---
 
-[⬅️ Torna al Menu Principale](https://github.com/adlos96/Warrior-and-Wealth/blob/main/README.md) | [🛡️ Vai alla Guida Difesa](https://github.com/adlos96/Warrior-and-Wealth/blob/main/Wiki/Game/Battaglie/Difesa.md) | [🐺 Vai alla Guida PVP](https://github.com/adlos96/Warrior-and-Wealth/blob/main/Wiki/Game/Battaglie/PVP.md) | [🏢 Vai alla Guida Edifici](https://github.com/adlos96/Warrior-and-Wealth/blob/main/Wiki/Game/Componenti/Edifici.md)
+[⬅️ Torna al Menu Principale](https://github.com/adlos96/Warrior-and-Wealth/blob/main/README.md) | [📅 Vai alla Guida Quest](https://github.com/adlos96/Warrior-and-Wealth/blob/main/Wiki/Game/Battaglie/Quest.md)

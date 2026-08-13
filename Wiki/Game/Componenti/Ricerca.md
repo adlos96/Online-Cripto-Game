@@ -127,6 +127,4 @@ Queste ricerche migliorano le caratteristiche della tua città, rendendola un ba
 
 ---
 
-## Vedi Anche
-
-[⬅️ Torna al Menu Principale](https://github.com/adlos96/Warrior-and-Wealth/blob/main/README.md) | [🏛️ Vai alla Guida Edifici](https://github.com/adlos96/Warrior-and-Wealth/blob/main/Wiki/Game/Componenti/Edifici.md) | [🐺 Vai alla Guida PVP](https://github.com/adlos96/Warrior-and-Wealth/blob/main/Wiki/Game/Battaglie/PVP.md) | [⚔️ Vai alla Guida PVE](https://github.com/adlos96/Warrior-and-Wealth/blob/main/Wiki/Game/Battaglie/PVE.md) | [⭐ Vai alla Guida Esperienza](https://github.com/adlos96/Warrior-and-Wealth/blob/main/Wiki/Game/Componenti/Esperienza.md)
+[⬅️ Torna al Menu Principale](https://github.com/adlos96/Warrior-and-Wealth/blob/main/README.md) | [🧪 Vai alla Guida Ricerca](https://github.com/adlos96/Warrior-and-Wealth/blob/main/Wiki/Game/Componenti/Ricerca.md)

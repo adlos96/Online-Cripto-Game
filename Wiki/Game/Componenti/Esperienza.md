@@ -34,4 +34,4 @@ Il livello del giocatore agisce come **requisito** per molti sistemi del gioco: 
 
 ---
 
-[⬅️ Torna al Menu Principale](https://github.com/adlos96/Warrior-and-Wealth/blob/main/README.md) | [⚔️ Vai alla Guida PVE](https://github.com/adlos96/Warrior-and-Wealth/blob/main/Wiki/Game/Battaglie/PVE.md) | [🐺 Vai alla Guida PVP](https://github.com/adlos96/Warrior-and-Wealth/blob/main/Wiki/Game/Battaglie/PVP.md) | [🛡️ Vai alla Guida Difesa](https://github.com/adlos96/Warrior-and-Wealth/blob/main/Wiki/Game/Battaglie/Difesa.md)
+[⬅️ Torna al Menu Principale](https://github.com/adlos96/Warrior-and-Wealth/blob/main/README.md) | [💎 Vai alla Guida Risorse](https://github.com/adlos96/Warrior-and-Wealth/blob/main/Wiki/Game/Battaglie/Risorse.md)

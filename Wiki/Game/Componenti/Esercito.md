@@ -132,9 +132,4 @@ Al termine della battaglia, riceverai un **report dettagliato** con il bilancio 
 
 ## Vedi Anche
 
-[⬅️ Torna al Menu Principale](https://github.com/adlos96/Warrior-and-Wealth/blob/main/README.md) | [🏰 Vai alla Guida Difesa](https://github.com/adlos96/Warrior-and-Wealth/blob/main/Wiki/Game/Battaglie/Difesa.md) | [🐺 Vai alla Guida Ricerca](https://github.com/adlos96/Warrior-and-Wealth/blob/main/Wiki/Game/Componenti/Ricerca.md) | [🏢 Vai alla Guida Edifici](https://github.com/adlos96/Warrior-and-Wealth/blob/main/Wiki/Game/Componenti/Edifici.md)
-
-- [Guida alla Città](https://github.com/adlos96/Warrior-and-Wealth/blob/main/Wiki/Game/Componenti/Citt%C3%A0.md) – per la struttura della tua Cittadella e la gestione dei presidi.
-- [Difesa](https://github.com/adlos96/Warrior-and-Wealth/blob/main/Wiki/Game/Battaglie/Difesa.md) – per i dettagli sulle meccaniche di difesa e assedio.
-- [Ricerca](https://github.com/adlos96/Warrior-and-Wealth/blob/main/Wiki/Game/Componenti/Ricerca.md) – per gli upgrade tecnologici che potenziano le tue truppe.
-- [Edifici](https://github.com/adlos96/Warrior-and-Wealth/blob/main/Wiki/Game/Componenti/Edifici.md) – per la costruzione e il potenziamento delle Caserme e dei Workshop.
+[⬅️ Torna al Menu Principale](https://github.com/adlos96/Warrior-and-Wealth/blob/main/README.md) | [🎖️ Vai alla Guida Esercito](https://github.com/adlos96/Warrior-and-Wealth/blob/main/Wiki/Game/Battaglie/Esercito.md)

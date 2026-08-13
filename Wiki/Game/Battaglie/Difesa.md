@@ -103,4 +103,4 @@ In caso di vittoria dell'attaccante nell'**Attacco Diretto**, le difese della Ci
 
 ---
 
-[⬅️ Torna al Menu Principale](https://github.com/adlos96/Warrior-and-Wealth/blob/main/README.md) | [🏰 Vai alla Guida Città](https://github.com/adlos96/Warrior-and-Wealth/blob/main/Wiki/Game/Componenti/Citt%C3%A0.md) | [🐺 Vai alla Guida PVP](https://github.com/adlos96/Warrior-and-Wealth/blob/main/Wiki/Game/Battaglie/PVP.md) | [⚔️ Vai alla Guida PVE](https://github.com/adlos96/Warrior-and-Wealth/blob/main/Wiki/Game/Battaglie/PVE.md)
+[⬅️ Torna al Menu Principale](https://github.com/adlos96/Warrior-and-Wealth/blob/main/README.md) | [🏹 Vai alla Guida PVE](https://github.com/adlos96/Warrior-and-Wealth/blob/main/Wiki/Game/Componenti/PVE.md)

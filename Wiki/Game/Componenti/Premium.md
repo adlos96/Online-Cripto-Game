@@ -75,4 +75,4 @@ Non tutte le risorse del gioco sono spendibili nello shop. Le uniche valute acce
 
 ---
 
-[⬅️ Torna al Menu Principale](https://github.com/adlos96/Warrior-and-Wealth/blob/main/README.md) | [💎 Vai alla Guida alle Risorse](https://github.com/adlos96/Warrior-and-Wealth/blob/main/Wiki/Game/Componenti/Risorse.md)
+[⬅️ Torna al Menu Principale](https://github.com/adlos96/Warrior-and-Wealth/blob/main/README.md) | [⭐ Vai alla Guida all'Esperienza](https://github.com/adlos96/Warrior-and-Wealth/blob/main/Wiki/Game/Componenti/Esperienza.md)
