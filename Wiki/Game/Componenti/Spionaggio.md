@@ -78,28 +78,15 @@ dove `Errore` è un valore casuale compreso tra `ErroreMin` ed `ErroreMax`.
 
 La forza determina quali informazioni riesci a strappare al nemico: più è alta, più il rapporto si arricchisce di dettagli.
 
-| Livello | Forza Richiesta | Cosa Rivela                                                                                             |
-| :-----: | :--------------: | --------------------------------------------------------------------------------------------------------- |
-| **0**   | ≤ 0              | ❌ **Missione fallita** — nessuna informazione.                                                            |
-| **1**   | 1 – 2            | **Risorse** civili (Cibo, Legno, Pietra, Ferro, Oro, Popolazione) e militari (Spade, Lance, Archi, Scudi, Armature, Frecce). |
-| **2**   | 3 – 4             | **Truppe** — numero di unità schierate in ogni struttura difensiva della [Città](https://github.com/adlos96/Warrior-and-Wealth/blob/main/Wiki/Game/Componenti/Citt%C3%A0.md) (Ingresso, Mura, Cancello, Torri, Centro, Castello). |
-| **3**   | 5 – 6             | **Città e Difese** — Salute, Difesa e Guarnigione di Mura, Cancello, Torri e Castello.                    |
-| **4**   | 7 – 9             | **Edifici** — numero di edifici civili (Fattorie, Segherie, Cave, Miniere, Abitazioni) e militari (Workshop, Caserme). |
-| **5**   | 10 – 12           | **Ricerche** — livello di tutte le ricerche civili e militari del nemico.                                 |
-| **6**   | 13+               | **Bonus e Statistiche** — tutti i bonus attivi e le statistiche complete delle unità per ogni tier.        |
-
-### Dettaglio per Livello
-
-[#dettaglio-per-livello](#dettaglio-per-livello)
-
-| Livello | Descrizione |
-| :---: | :--- |
-| **1** | Quantità esatte di risorse civili (Cibo, Legno, Pietra, Ferro, Oro, Popolazione) e militari (Spade, Lance, Archi, Scudi, Armature, Frecce). |
-| **2** | Per ogni struttura difensiva (Ingresso, Mura, Cancello, Torri, Centro, Castello): numero di Guerrieri, Lancieri, Arcieri e Catapulte, per ciascun tier da I a V. Questo dato viene caricato solo a partire dal livello 2 di spionaggio. |
-| **3** | Per Mura, Cancello, Torri e Castello: Salute (attuale e massima), Difesa (attuale e massima), Guarnigione (attuale e massima) e livello delle relative ricerche. Include anche il numero totale di truppe presenti nel villaggio. |
-| **4** | Numero di edifici civili (Fattorie, Segherie, Cave, Miniere di Ferro, Miniere d'Oro, Abitazioni) e militari (Workshop, Caserme). Queste informazioni restano soggette al sistema di stima per range. |
-| **5** | Livello di tutte le ricerche civili (Produzione, Costruzione, Addestramento, Popolazione, Trasporto, Riparazione, Spionaggio, Contro-Spionaggio) e militari (Salute, Attacco, Difesa e Livello per ciascuna unità). |
-| **6** | Tutti i bonus attivi su unità, strutture e produzione, più le statistiche complete di ogni unità per ogni tier (I–V). |
+| Livello | Forza Richiesta | Cosa Rivela | Descrizione |
+| :---: | :--------: | :----------- | --------------------------------------- |
+| **0**   | ≤ 0              | ❌ **Missione fallita** | nessuna informazione.                                                            |
+| **1**   | 1 – 2            | **Risorse** | civili e militari . |
+| **2**   | 3 – 4             | **Truppe** | numero di unità schierate in ogni struttura difensiva della [Città](https://github.com/adlos96/Warrior-and-Wealth/blob/main/Wiki/Game/Componenti/Citt%C3%A0.md) (Ingresso, Mura, Cancello, Torri, Centro, Castello). |
+| **3**   | 5 – 6             | **Città e Difese** | Salute, Difesa e Guarnigione di Mura, Cancello, Torri e Castello.                    |
+| **4**   | 7 – 9             | **Edifici** | numero di edifici civili (Fattorie, Segherie, Cave, Miniere, Abitazioni) e militari (Workshop, Caserme). |
+| **5**   | 10 – 12           | **Ricerche** | livello di tutte le ricerche civili e militari del nemico.                                 |
+| **6**   | 13+               | **Bonus e Statistiche** | tutti i bonus attivi e le statistiche complete delle unità per ogni tier.        |
 
 ---
 
