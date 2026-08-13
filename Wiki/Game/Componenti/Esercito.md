@@ -42,28 +42,53 @@ Le statistiche principali di ogni unità sono:
 
 I valori riportati sono **indicativi** e possono variare. Per i valori aggiornati e precisi, consulta le sezioni dedicate direttamente in game.
 
-| Unità | Livello | Salute | Attacco | Difesa | Zaino |
-|-------|---------|--------|---------|--------|-------|
-| Guerriero | I | 6 | 4 | 5 | 100 |
-| Lanciere | I | 7 | 3 | 7 | 150 |
-| Arciere | I | 5 | 8 | 3 | 200 |
-| Catapulta | I | 8 | 11 | 6 | 250 |
-| Guerriero | II | 8 | 6 | 6 | 150 |
-| Lanciere | II | 9 | 4 | 9 | 200 |
-| Arciere | II | 7 | 11 | 4 | 250 |
-| Catapulta | II | 10 | 14 | 7 | 300 |
-| Guerriero | III | 10 | 8 | 7 | 200 |
-| Lanciere | III | 11 | 5 | 11 | 250 |
-| Arciere | III | 9 | 14 | 5 | 300 |
-| Catapulta | III | 12 | 17 | 8 | 350 |
-| Guerriero | IV | 12 | 10 | 8 | 250 |
-| Lanciere | IV | 13 | 6 | 13 | 300 |
-| Arciere | IV | 11 | 17 | 6 | 350 |
-| Catapulta | IV | 14 | 20 | 9 | 400 |
-| Guerriero | V | 14 | 12 | 9 | 300 |
-| Lanciere | V | 15 | 7 | 15 | 350 |
-| Arciere | V | 13 | 20 | 7 | 400 |
-| Catapulta | V | 16 | 23 | 10 | 450 |
+---
+
+### Guerriero
+
+| Livello | Salute | Attacco | Difesa | Zaino | 📈 Incremento |
+|---------|--------|---------|--------|-------|---------------|
+| I       | 6      | 4       | 5      | 100   | –             |
+| II      | 8      | 6       | 6      | 150   | +2 / +2 / +1 / +50 |
+| III     | 10     | 8       | 7      | 200   | +2 / +2 / +1 / +50 |
+| IV      | 12     | 10      | 8      | 250   | +2 / +2 / +1 / +50 |
+| V       | 14     | 12      | 9      | 300   | +2 / +2 / +1 / +50 |
+
+---
+
+### Lanciere
+
+| Livello | Salute | Attacco | Difesa | Zaino | 📈 Incremento |
+|---------|--------|---------|--------|-------|---------------|
+| I       | 7      | 3       | **7**  | 150   | –             |
+| II      | 9      | 4       | **9**  | 200   | +2 / +1 / +2 / +50 |
+| III     | 11     | 5       | **11** | 250   | +2 / +1 / +2 / +50 |
+| IV      | 13     | 6       | **13** | 300   | +2 / +1 / +2 / +50 |
+| V       | 15     | 7       | **15** | 350   | +2 / +1 / +2 / +50 |
+
+---
+
+### Arciere
+
+| Livello | Salute | Attacco | Difesa | Zaino | 📈 Incremento |
+|---------|--------|---------|--------|-------|---------------|
+| I       | 5      | **8**   | 3      | 200   | –             |
+| II      | 7      | **11**  | 4      | 250   | +2 / +3 / +1 / +50 |
+| III     | 9      | **14**  | 5      | 300   | +2 / +3 / +1 / +50 |
+| IV      | 11     | **17**  | 6      | 350   | +2 / +3 / +1 / +50 |
+| V       | 13     | **20**  | 7      | 400   | +2 / +3 / +1 / +50 |
+
+---
+
+### Catapulta
+
+| Livello | Salute | Attacco | Difesa | Zaino | 📈 Incremento |
+|---------|--------|---------|--------|-------|---------------|
+| I       | **8**  | **11**  | 6      | **250** | –             |
+| II      | **10** | **14**  | 7      | **300** | +2 / +3 / +1 / +50 |
+| III     | **12** | **17**  | 8      | **350** | +2 / +3 / +1 / +50 |
+| IV      | **14** | **20**  | 9      | **400** | +2 / +3 / +1 / +50 |
+| V       | **16** | **23**  | 10     | **450** | +2 / +3 / +1 / +50 |
 
 ### Ricerca delle Statistiche
 
