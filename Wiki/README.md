@@ -1,23 +1,23 @@
 # Warrior & Wealth
-
+ 
 [#warrior--wealth](#warrior--wealth)
-
+ 
 Benvenuto, futuro sovrano.
-
+ 
 Un villaggio ti attende: poche capanne, campi non ancora coltivati e mura che devono ancora essere alzate. Sta a te trasformarlo in un impero capace di resistere agli assalti barbari e alle ambizioni degli altri giocatori.
-
+ 
 > Questa è la guida ufficiale per iniziare a giocare.
-
+ 
 ## Di cosa si tratta?
-
+ 
 [#di-cosa-si-tratta](#di-cosa-si-tratta)
-
+ 
 **Warrior & Wealth** è un gioco strategico multiplayer ambientato in un'epoca medievale, dove ogni giocatore costruisce, amministra e difende il proprio villaggio in una competizione costante per risorse, territorio e prestigio.
-
+ 
 Tra un ordine di costruzione e l'altro dovrai bilanciare economia e forza militare: potenzia gli edifici civili per sostenere la crescita, addestra il tuo esercito nelle caserme, e scegli quando colpire — che sia una spedizione contro un Villaggio Barbaro o un attacco diretto contro le mura di un altro giocatore. Ogni decisione, dalla ricerca alla difesa, ti avvicina (o allontana) dal diventare il prossimo grande sovrano del regno.
-
+ 
 ### 🗺️ Navigazione Rapida
-
+ 
 [#️-navigazione-rapida](#️-navigazione-rapida)
 
 | Preludio | Gioco | Battaglie |
