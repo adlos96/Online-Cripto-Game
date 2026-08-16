@@ -1,5 +1,4 @@
-﻿
-using Strategico_V2;
+﻿using Strategico_V2;
 
 namespace Warrior_and_Wealth
 {
@@ -85,11 +84,12 @@ namespace Warrior_and_Wealth
                 $"{Tipo}|" +
                 $"{Quest}");
         }
-        public static void AutoLogin(string accessToken, string refreshToken)
+        public static void AutoLogin(string accessToken, string refreshToken, string lang)
         {
-            ClientConnection.TestClient.Send($"AutoLogin|{Variabili_Client.access_Token}|" +
+            ClientConnection.TestClient.Send($"AutoLogin|" +
                 $"{accessToken}|" +
-                $"{refreshToken}");
+                $"{refreshToken}|" +
+                $"{lang}");
         }
         public static void Login(string Email, string Username, string Pssw, string Lingua)
         {

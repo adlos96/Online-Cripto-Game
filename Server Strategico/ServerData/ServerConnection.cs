@@ -46,8 +46,8 @@ namespace Server_Strategico.Server
                 msgArgs = msgArgsRicevuti;
                 user = msgArgsRicevuti[2];
                 password = msgArgsRicevuti[3];
-                email = msgArgsRicevuti[4];
-                lang = msgArgsRicevuti[5];
+                lang = msgArgsRicevuti[4];
+                email = msgArgsRicevuti[5];
             }
             else
             {
@@ -112,7 +112,7 @@ namespace Server_Strategico.Server
                         player = Server.servers_.GetPlayer(user, password);
                         if (player == null)
                         {
-                            Console.WriteLine("[AutoLogin] Player risulta null");
+                            Console.WriteLine("[NewPlayer] Player risulta null");
                             return;
                         }
                         // Pulisce eventuali refresh token residui di sessioni precedenti
@@ -146,7 +146,7 @@ namespace Server_Strategico.Server
                     {
                         if (player == null)
                         {
-                            Console.WriteLine("[AutoLogin] Player risulta null");
+                            Console.WriteLine("[Login] Player risulta null");
                             return;
                         }
                         // Pulisce eventuali refresh token residui di sessioni precedenti
@@ -180,61 +180,86 @@ namespace Server_Strategico.Server
                         Server.Send(clientGuid, $"Login|false|Username o password non corrispondono. User: [{msgArgs[1]}] psw: [{msgArgs[2]}]");
                     break;
                 case "AutoLogin":
-                    if (await Login(user, password, email, clientGuid)) //Comando, Username, Password, Lingua
+                    string accessToken_A = msgArgs[2];
+                    string refreshToken_A = msgArgs[3];
+
+                    if (!TokenManager.ValidateAccessToken(accessToken_A, out string username, out bool isExpired))
                     {
-                        if (player == null)
+                        if (isExpired)
                         {
-                            Console.WriteLine("[AutoLogin] Player risulta null");
-                            return;
+                            Server.Send(clientGuid, "TOKEN_SCADUTO"); //Invio per triggherare il refresh del token da parte del client
+                            Console.WriteLine("[ServerConnection] >> Access Token - TOKEN_SCADUTO");
                         }
-                        // Genero i token qui, subito dopo l'auth con username/password
-                        string accessToken = TokenManager.GenerateAccessToken(player.Email, player.Username, TimeSpan.FromHours(8));
-                        string refreshToken = TokenManager.GenerateRefreshToken(player.Email, player.Username, TimeSpan.FromDays(10));
-                        Server.Send(clientGuid, $"Login|true|{accessToken}|{refreshToken}");
-
-                        Server.Client_Connessi_Map.TryRemove(clientGuid, out _);
-                        Server.Client_Connessi_Map.TryAdd(clientGuid, player.Username);
-
-                        if (player.Stato_Giocatore == false) player.Stato_Giocatore = true; //Riattiva il giocatore se non entra da molto
-                        if (player.Last_Login != DateTime.Now.Date) //Accesso giornaliero - Incremento e controllo accessi consecutivi per GamePass
+                        else
                         {
-                            var daysDiff = (DateTime.Now.Date - player.Last_Login.Date).Days;
-                            if (daysDiff == 1 && player.GamePass_Avanzato)
-                            {
-                                player.GamePass_Accessi_Consecutivi += 1;
-                                player.Last_Login = DateTime.Now.Date;
-                                Console.WriteLine("Gamepass: Giorno incrementato");
-                            }
-                            else if (daysDiff > 1)
-                            {
-                                Console.WriteLine("Gamepass: Giorni resettati");
-                                player.GamePass_Accessi_Consecutivi = 0;
-                                player.Last_Login = DateTime.Now.Date;
-                                player.GamePass_Premi = new bool[Variabili_Server.gamePass_DailyReward.Count()]; //Reset premi giornalieri
-                            }
-                            if (!player.GamePass_Avanzato && player.GamePass_Accessi_Consecutivi != 0)
-                            {
-                                player.GamePass_Accessi_Consecutivi = 0;
-                                Console.WriteLine("Gamepass: Gamepass scaduto, reset giorni");
-                            }
-                        } //GamePass Gold
-                        if (Variabili_Server.lingue_Supportate.Contains(msgArgs[3])) player.Lingua = msgArgs[3]; //Imposta la lingua preferita del giocatore
-                        else player.Lingua = "ITA"; //Default Italiano
-                        Console.WriteLine($"[Server] Lingua selezionata: {msgArgs[3]}");
-
-                        Descrizioni.DescUpdate(player);
-                        QuestManager.QuestUpdate(player);
-                        QuestManager.QuestRewardUpdate(player);
-                        AggiornaVillaggiClient(player);
-                        Server.servers_.AggiornaListaPVP();
-                        Tutorial(player);
-                        player.SetupCaserme();
-                        GamePass_Premi_Send(player);
-                        Update_Data_OneTime(clientGuid, player);
-                        player.Snapshot.Reset();
+                            Server.Send(clientGuid, "TOKEN_NON_VALIDO"); //Non serve a nulla... il client lo vede ma non c'è il codice
+                            Console.WriteLine("[ServerConnection] >> Access Token - TOKEN_NON_VALIDO");
+                        }
                     }
-                    else
-                        Server.Send(clientGuid, $"Login|false|Username o password non corrispondono. User: [{msgArgs[1]}] psw: [{msgArgs[2]}]");
+                    if (!TokenManager.ValidateRefreshToken(refreshToken_A, out username, out isExpired))
+                    {
+                        if (isExpired)
+                        {
+                            Server.Send(clientGuid, "TOKEN_SCADUTO"); //Invio per triggherare il refresh del token da parte del client
+                            Console.WriteLine("[ServerConnection] >> Access Token - TOKEN_SCADUTO");
+                        }
+                        else
+                        {
+                            Server.Send(clientGuid, "TOKEN_NON_VALIDO"); //Non serve a nulla... il client lo vede ma non c'è il codice
+                            Console.WriteLine("[ServerConnection] >> Access Token - TOKEN_NON_VALIDO");
+                        }
+                    }
+
+                    player = Server.servers_.GetPlayer(username);
+                    if (player == null)
+                    {
+                        Console.WriteLine("[AutoLogin] Player risulta null");
+                        return;
+                    }
+                    // Genero i token qui, subito dopo l'auth con username/password
+                    accessToken_A = TokenManager.GenerateAccessToken(player.Email, player.Username, TimeSpan.FromHours(8));
+                    Server.Send(clientGuid, $"Login|true|{accessToken_A}|{refreshToken_A}");
+
+                    Server.Client_Connessi_Map.TryRemove(clientGuid, out _);
+                    Server.Client_Connessi_Map.TryAdd(clientGuid, player.Username);
+
+                    if (player.Stato_Giocatore == false) player.Stato_Giocatore = true; //Riattiva il giocatore se non entra da molto
+                    if (player.Last_Login != DateTime.Now.Date) //Accesso giornaliero - Incremento e controllo accessi consecutivi per GamePass
+                    {
+                        var daysDiff = (DateTime.Now.Date - player.Last_Login.Date).Days;
+                        if (daysDiff == 1 && player.GamePass_Avanzato)
+                        {
+                            player.GamePass_Accessi_Consecutivi += 1;
+                            player.Last_Login = DateTime.Now.Date;
+                            Console.WriteLine("Gamepass: Giorno incrementato");
+                        }
+                        else if (daysDiff > 1)
+                        {
+                            Console.WriteLine("Gamepass: Giorni resettati");
+                            player.GamePass_Accessi_Consecutivi = 0;
+                            player.Last_Login = DateTime.Now.Date;
+                            player.GamePass_Premi = new bool[Variabili_Server.gamePass_DailyReward.Count()]; //Reset premi giornalieri
+                        }
+                        if (!player.GamePass_Avanzato && player.GamePass_Accessi_Consecutivi != 0)
+                        {
+                            player.GamePass_Accessi_Consecutivi = 0;
+                            Console.WriteLine("Gamepass: Gamepass scaduto, reset giorni");
+                        }
+                    }
+                    Accesso_Giornaliero(player);//GamePass Gold
+                    Lingua(player, msgArgs[4]);
+
+                    Descrizioni.DescUpdate(player);
+                    QuestManager.QuestUpdate(player);
+                    QuestManager.QuestRewardUpdate(player);
+                    AggiornaVillaggiClient(player);
+                    Server.servers_.AggiornaListaPVP();
+                    Tutorial(player);
+                    player.SetupCaserme();
+                    GamePass_Premi_Send(player);
+                    Update_Data_OneTime(clientGuid, player);
+                    player.Snapshot.Reset();
+
                     break;
                 case "Password change":
                     Console.WriteLine($"[Server] Richiesta cambio password per l'utente: {msgArgs[1]}");

@@ -17,7 +17,7 @@ namespace Warrior_and_Wealth
             InitializeComponent();
         }
 
-        private void Gioco_Load(object sender, EventArgs e)
+        private async void Gioco_Load(object sender, EventArgs e)
         {
             GameAudio.PlayMenuMusic("Login");
             MusicManager.SetVolume(0.3f);
@@ -84,42 +84,66 @@ namespace Warrior_and_Wealth
             txt_Stato_Server.BackColor = Color.FromArgb(229, 208, 181);
             txt_Stato_Server.ForeColor = Color.Black;
             txt_Stato_Server.Font = new Font("Cinzel Decorative", 8, FontStyle.Regular);
-            TentativoConnessione();
+            await TentativoConnessione();
             CaricamentoDati();
         }
         async void CaricamentoDati()
         {
-            if (AutoLoginManager.TryCarica(out bool autoLogin, out string accessToken, out string refreshToken))
-                if (autoLogin && !string.IsNullOrEmpty(accessToken) && !string.IsNullOrEmpty(refreshToken))
+            if (!AutoLoginManager.TryCarica(out AutoLoginManager.DatiAutoLogin dati))
+                return; // nessun file salvato, resta nel form di login manuale
+
+            if (!dati.AutoLogin || string.IsNullOrEmpty(dati.AccessToken) || string.IsNullOrEmpty(dati.RefreshToken))
+                return;
+
+            if (dati.AutoLogin == true)
+                checkBox_Auto_Login.Checked = true;
+            else checkBox_Auto_Login.Checked = false;
+
+            Variabili_Client.access_Token = dati.AccessToken;
+            Variabili_Client.refresh_Token = dati.RefreshToken;
+            txt_Log.Text = "Tentativo di auto-login...";
+            await Sleep(2);
+            ComandiInvio.AutoLogin(dati.AccessToken, dati.RefreshToken, dati.Lingua);
+
+            if (!ClientConnection.client_Connesso)
+            {
+                txt_Log.Text = "Auto-login fallito. Effettua il login manualmente.";
+                Btn_Login.Enabled = true;
+                Btn_New_Game.Enabled = true;
+                return;
+            }
+
+            txt_Log.Text = "Ricezione dati...";
+            await Loop_Login(4);
+
+            // Salva SOLO se il login è effettivamente riuscito, non solo se access_Token non è vuoto
+            if (Variabili_Client.Utente.User_Login == true)
+            {
+                if (checkBox_Auto_Login.Checked == true)
                 {
-                    Variabili_Client.access_Token = accessToken;
-                    Variabili_Client.refresh_Token = refreshToken;
-                    txt_Log.Text = "Tentativo di auto-login...";
-                    await Sleep(2);
-                    if (ClientConnection.client_Connesso)
-                    {
-                        ComandiInvio.AutoLogin(accessToken, refreshToken);
-                        txt_Log.Text = "Ricezione dati...";
-                        await Loop_Login(4);
-                        if (checkBox_Auto_Login.Checked == true) //Salvataggio dati accesso per auto login
-                        {
-                            if (Variabili_Client.access_Token == "") return;
-                            AutoLoginManager.Salva(true, Variabili_Client.access_Token, Variabili_Client.refresh_Token);
-                        }
-                        txt_Log.Text = "Salvataggio dati ricevuti...";
-                        await Loop_Login(1);
-                        if (Variabili_Client.Utente.User_Login == true)
-                        {
-                            this.DialogResult = DialogResult.OK; // Se il login riesce                        
-                            return;
-                        }
-                    }
-                    txt_Log.Text = "Auto-login fallito. Effettua il login manualmente.";
-                    Btn_Login.Enabled = true;
-                    Btn_New_Game.Enabled = true;
+                    txt_Log.Text = "Salvataggio dati ricevuti...";
+                    await Loop_Login(1);
+
+                    dati.AccessToken = Variabili_Client.access_Token;
+                    dati.RefreshToken = Variabili_Client.refresh_Token;
+                    // Se il server invia anche le nuove scadenze, aggiornale qui, es:
+                    // dati.AccessTokenExpiry = Variabili_Client.access_Token_Expiry;
+                    // dati.RefreshTokenExpiry = Variabili_Client.refresh_Token_Expiry;
+
+                    AutoLoginManager.Salva(dati);
                 }
+
+                this.DialogResult = DialogResult.OK;
+                return;
+            }
+
+            // Login fallito: il refresh token salvato non è più valido, elimino per evitare retry infiniti
+            //AutoLoginManager.Elimina();
+            txt_Log.Text = "Auto-login fallito. Effettua il login manualmente.";
+            Btn_Login.Enabled = true;
+            Btn_New_Game.Enabled = true;
         }
-        async void TentativoConnessione()
+        async Task TentativoConnessione()
         {
             //Controlla se siamo in locale... 
             if (txt_Ip.Text != "IP: AUTO") ClientConnection.TestClient._ServerIp = txt_Ip.Text;
@@ -133,16 +157,18 @@ namespace Warrior_and_Wealth
             while (Variabili_Client.Utente.User_Login == false)
             {
                 if (tentativi >= 3) return;
-                txt_Log.Text = $"Tentativo connessione automatica... [{tentativi}/{2}]";
+                txt_Log.Text = $"Connessione automatica... Tentativo: [{tentativi}/{2}]";
                 await ClientConnection.TestClient.InitializeClient(); // Connessione server
-                await Sleep(2);
+                await Sleep(1);
                 if (ClientConnection.client_Connesso) break;
                 tentativi++;
             }
             //Check versione necessaria client
             txt_Log.Text = $"Controllo aggiornamenti disponibili...";
+            await Sleep(1);
             if (!await VersioneDisponibile()) return;
-            txt_Log.Text = $"Versione client corretta.\nNessun nuovo aggiornamento diponibile";
+            txt_Log.Text = $"Versione client corretta.\r\nStai utilizzando l'ultima versione disponibile.";
+            await Sleep(1);
         }
 
         private void txt_Username_Login_MouseClick(object sender, MouseEventArgs e)
@@ -198,19 +224,29 @@ namespace Warrior_and_Wealth
             await Loop_Login(4);
             await Sleep(2);
 
-            //Salvataggio dati utente se l'auto login è abilitato
-            //Salvare lo stato della checkbox e le chiavi d'accesso ricevute dal server in un file di configurazione sicuro o nel registro di sistema.
-            if (checkBox_Auto_Login.Checked == true) //Salvataggio dati accesso per auto login
-            {
-                if (Variabili_Client.access_Token == "") return;
-                AutoLoginManager.Salva(true, Variabili_Client.access_Token, Variabili_Client.refresh_Token);
-            }
-
             if (Variabili_Client.Utente.User_Login == true)
             {
                 Variabili_Client.Utente.Email = txt_Email.Text;
                 Variabili_Client.Utente.Username = txt_Username_Login.Text;
                 Variabili_Client.Utente.Password = txt_Password_Login.Text;
+
+                // Salvataggio dati utente se l'auto login è abilitato
+                //Salvare lo stato della checkbox e le chiavi d'accesso ricevute dal server in un file di configurazione sicuro o nel registro di sistema.
+                if (checkBox_Auto_Login.Checked == true) //Salvataggio dati accesso per auto login
+                {
+                    if (Variabili_Client.access_Token == "") return;
+                    AutoLoginManager.Salva(new AutoLoginManager.DatiAutoLogin
+                    {
+                        AutoLogin = true,
+                        Email = txt_Email.Text,
+                        Username = txt_Username_Login.Text,
+                        AccessToken = Variabili_Client.access_Token,
+                        RefreshToken = Variabili_Client.refresh_Token,
+                        Lingua = lingua_Selezionata,
+                        ServerId = ClientConnection.TestClient._ServerIp
+                    });
+                }
+                Variabili_Client.Utente.Password = "";
                 this.DialogResult = DialogResult.OK; // Se il login riesce
             }
             else
@@ -250,17 +286,29 @@ namespace Warrior_and_Wealth
             ComandiInvio.NewGame(txt_Username_Login.Text, txt_Password_Login.Text, lingua_Selezionata, txt_Email.Text);
             await Sleep(2);
 
-            if (checkBox_Auto_Login.Checked == true) //Salvataggio dati accesso per auto login
-            {
-                if (Variabili_Client.access_Token == "") return;
-                AutoLoginManager.Salva(true, Variabili_Client.access_Token, Variabili_Client.refresh_Token);
-            }
-
             if (Variabili_Client.Utente.User_Login == true)
             {
                 Variabili_Client.Utente.Email = txt_Email.Text;
                 Variabili_Client.Utente.Username = txt_Username_Login.Text;
                 Variabili_Client.Utente.Password = txt_Password_Login.Text;
+
+                // Salvataggio dati utente se l'auto login è abilitato
+                //Salvare lo stato della checkbox e le chiavi d'accesso ricevute dal server in un file di configurazione sicuro o nel registro di sistema.
+                if (checkBox_Auto_Login.Checked == true) //Salvataggio dati accesso per auto login
+                {
+                    if (Variabili_Client.access_Token == "") return;
+                    AutoLoginManager.Salva(new AutoLoginManager.DatiAutoLogin
+                    {
+                        AutoLogin = true,
+                        Email = txt_Email.Text,
+                        Username = txt_Username_Login.Text,
+                        AccessToken = Variabili_Client.access_Token,
+                        RefreshToken = Variabili_Client.refresh_Token,
+                        Lingua = lingua_Selezionata,
+                        ServerId = ClientConnection.TestClient._ServerIp
+                    });
+                }
+                Variabili_Client.Utente.Password = "";
                 this.DialogResult = DialogResult.OK; // Se il login riesce
             }
             else
@@ -426,7 +474,6 @@ namespace Warrior_and_Wealth
         private void Login_FormClosing(object sender, FormClosingEventArgs e)
         {
             Variabili_Client.lingua_Selezionata = lingua_Selezionata;
-            ClientConnection.reConnected = false;
             MusicManager.Stop();
         }
 

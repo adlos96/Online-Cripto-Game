@@ -5,50 +5,42 @@ using System.Text.Json;
 public static class AutoLoginManager
 {
     private static readonly string _filePath = Path.Combine(
-        Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+        Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
         "WarriorAndWealth", "autologin.dat");
 
-    private class DatiAutoLogin
+    public class DatiAutoLogin  // ora public, non più private, serve accedervi da fuori
     {
         public bool AutoLogin { get; set; }
-        public string accessToken { get; set; }
-        public string refreshToken { get; set; }
+        public string Email { get; set; }
+        public string Username { get; set; }
+        public string AccessToken { get; set; }
+        public string RefreshToken { get; set; }
+        public string Lingua { get; set; }
+        public string ServerId { get; set; }
     }
 
-    public static void Salva(bool AutoLogin, string accessToken, string refreshToken)
+    public static void Salva(DatiAutoLogin dati)
     {
         Directory.CreateDirectory(Path.GetDirectoryName(_filePath)!);
-
-        var dati = new DatiAutoLogin { AutoLogin = AutoLogin, accessToken = accessToken, refreshToken = refreshToken };
         byte[] plainBytes = JsonSerializer.SerializeToUtf8Bytes(dati);
-
         byte[] encryptedBytes = ProtectedData.Protect(plainBytes, null, DataProtectionScope.CurrentUser);
         File.WriteAllBytes(_filePath, encryptedBytes);
     }
 
-    public static bool TryCarica(out bool AutoLogin, out string accessToken, out string refreshToken)
+    public static bool TryCarica(out DatiAutoLogin dati)
     {
-        accessToken = null;
-        refreshToken = null;
-        AutoLogin = false;
-
+        dati = null;
         if (!File.Exists(_filePath)) return false;
 
         try
         {
             byte[] encryptedBytes = File.ReadAllBytes(_filePath);
             byte[] plainBytes = ProtectedData.Unprotect(encryptedBytes, null, DataProtectionScope.CurrentUser);
-            var dati = JsonSerializer.Deserialize<DatiAutoLogin>(plainBytes);
-
-            AutoLogin = dati.AutoLogin;
-            accessToken = dati.accessToken;
-            refreshToken = dati.refreshToken;
-            return true;
+            dati = JsonSerializer.Deserialize<DatiAutoLogin>(plainBytes);
+            return dati != null;
         }
         catch
         {
-            // File corrotto o cifrato da un altro utente/macchina: lo elimino e forzo login manuale
-            Elimina();
             return false;
         }
     }

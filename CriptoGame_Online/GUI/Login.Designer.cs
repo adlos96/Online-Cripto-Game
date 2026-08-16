@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            checkBox_Auto_Login = new CheckBox();
             lbl_Password_Login = new Warrior_and_Wealth.Strumenti.TransparentLabel();
             lbl_Username_Login = new Warrior_and_Wealth.Strumenti.TransparentLabel();
             lbl_Email = new Warrior_and_Wealth.Strumenti.TransparentLabel();
@@ -52,7 +53,6 @@
             banner_2 = new Panel();
             banner_1 = new Panel();
             btn_Aggiorna = new Button();
-            checkBox_Auto_Login = new CheckBox();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -82,6 +82,16 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(268, 422);
             panel1.TabIndex = 1;
+            // 
+            // checkBox_Auto_Login
+            // 
+            checkBox_Auto_Login.AutoSize = true;
+            checkBox_Auto_Login.Location = new Point(209, 141);
+            checkBox_Auto_Login.Name = "checkBox_Auto_Login";
+            checkBox_Auto_Login.Size = new Size(56, 34);
+            checkBox_Auto_Login.TabIndex = 28;
+            checkBox_Auto_Login.Text = "Auto\r\nLogin";
+            checkBox_Auto_Login.UseVisualStyleBackColor = true;
             // 
             // lbl_Password_Login
             // 
@@ -337,16 +347,6 @@
             btn_Aggiorna.UseVisualStyleBackColor = true;
             btn_Aggiorna.Visible = false;
             btn_Aggiorna.Click += btn_Aggiorna_Click;
-            // 
-            // checkBox_Auto_Login
-            // 
-            checkBox_Auto_Login.AutoSize = true;
-            checkBox_Auto_Login.Location = new Point(209, 141);
-            checkBox_Auto_Login.Name = "checkBox_Auto_Login";
-            checkBox_Auto_Login.Size = new Size(56, 34);
-            checkBox_Auto_Login.TabIndex = 28;
-            checkBox_Auto_Login.Text = "Auto\r\nLogin";
-            checkBox_Auto_Login.UseVisualStyleBackColor = true;
             // 
             // Login
             // 

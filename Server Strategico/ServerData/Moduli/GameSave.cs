@@ -12,10 +12,17 @@ namespace Server_Strategico.ServerData.Moduli
     {
         static bool Saved = false;
         public static string SavePath = Path.Combine(
-            Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), 
+            Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), 
             "Server Strategico",
             "Saves_Test"
         );
+
+        private class RefreshTokenRecord
+        {
+            public string Email { get; set; }
+            public string Username { get; set; }
+            public DateTimeOffset Expiry { get; set; }
+        }
 
         public static void Initialize()
         {
@@ -836,6 +843,8 @@ namespace Server_Strategico.ServerData.Moduli
                     await JsonSerializer.SerializeAsync(fs, ServerData, new JsonSerializerOptions { WriteIndented = true });
                 }
 
+                await TokenManager.SaveRefreshTokens();
+
                 Console.WriteLine($"[GameSave] Salvati i dati del server");
             }
             catch (Exception ex)
@@ -900,6 +909,8 @@ namespace Server_Strategico.ServerData.Moduli
                 Variabili_Server.truppe_III = serverData.truppe_III;
                 Variabili_Server.truppe_IV = serverData.truppe_IV;
                 Variabili_Server.truppe_V = serverData.truppe_V;
+
+                await TokenManager.LoadRefreshTokens();
 
                 Console.WriteLine($"[LoadData] Caricati i dati del server");
             }

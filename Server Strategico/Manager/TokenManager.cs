@@ -1,14 +1,21 @@
-﻿using System.Text;
+﻿using Server_Strategico.ServerData.Moduli;
+using System.Text;
+using System.Text.Json;
 
 namespace Server_Strategico.Manager
 {
     public static class TokenManager
     {
         private static readonly byte[] SecretKey = LoadSecretKey();
+        private static readonly System.Collections.Concurrent.ConcurrentDictionary<string, (string Email, string Username, DateTimeOffset Expiry)> RefreshStore = new();
+        private static readonly string RefreshStorePath = Path.Combine(GameSave.SavePath, "token.json");
 
-        // refreshToken -> (username, scadenza). In RAM ora; volendo persistibile su file/DB.
-        private static readonly System.Collections.Concurrent.ConcurrentDictionary<string, (string Email, string Username, DateTimeOffset Expiry)> RefreshStore
-            = new();
+        private class RefreshTokenRecord
+        {
+            public string Email { get; set; }
+            public string Username { get; set; }
+            public DateTimeOffset Expiry { get; set; }
+        }
 
         private static byte[] LoadSecretKey()
         {
@@ -81,15 +88,23 @@ namespace Server_Strategico.Manager
             return token;
         }
 
-        public static bool TryUseRefreshToken(string refreshToken, out string username)
+        public static bool ValidateRefreshToken(string refreshToken, out string username, out bool isExpired)
         {
             username = null;
-            if (!RefreshStore.TryGetValue(refreshToken, out var entry)) return false;
+            isExpired = false;
+
+            if (string.IsNullOrWhiteSpace(refreshToken)) return false;
+
+            if (!RefreshStore.TryGetValue(refreshToken, out var entry))
+                return false; // token non trovato: mai esistito, già usato/ruotato, o revocato
+
             if (DateTimeOffset.UtcNow > entry.Expiry)
             {
-                RefreshStore.TryRemove(refreshToken, out _);
+                isExpired = true;
+                RefreshStore.TryRemove(refreshToken, out _); // pulizia, non serve più
                 return false;
             }
+
             username = entry.Username;
             return true;
         }
@@ -102,6 +117,72 @@ namespace Server_Strategico.Manager
             foreach (var kv in RefreshStore)
                 if (kv.Value.Email == email)
                     RefreshStore.TryRemove(kv.Key, out _);
+        }
+
+        public static async Task SaveRefreshTokens()
+        {
+            try
+            {
+                var toSave = RefreshStore.ToDictionary(
+                    kv => kv.Key,
+                    kv => new RefreshTokenRecord
+                    {
+                        Email = kv.Value.Email,
+                        Username = kv.Value.Username,
+                        Expiry = kv.Value.Expiry
+                    });
+
+                // Scrittura atomica: prima su file temporaneo, poi replace
+                string tempPath = RefreshStorePath + ".tmp";
+
+                await using (var fs = new FileStream(tempPath, FileMode.Create, FileAccess.Write, FileShare.None, 65536, true))
+                {
+                    await JsonSerializer.SerializeAsync(fs, toSave, new JsonSerializerOptions { WriteIndented = true });
+                }
+
+                File.Move(tempPath, RefreshStorePath, overwrite: true);
+
+                Console.WriteLine($"[TokenStore] Salvati {toSave.Count} refresh token");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[TokenStore] Errore durante il salvataggio: {ex.Message}");
+            }
+        }
+        public static async Task LoadRefreshTokens()
+        {
+            try
+            {
+                if (!File.Exists(RefreshStorePath))
+                {
+                    Console.WriteLine("[TokenStore] Nessun file refresh token trovato, parto vuoto");
+                    return;
+                }
+
+                await using var fs = new FileStream(RefreshStorePath, FileMode.Open, FileAccess.Read, FileShare.Read, 65536, true);
+                var loaded = await JsonSerializer.DeserializeAsync<Dictionary<string, RefreshTokenRecord>>(fs);
+
+                if (loaded == null) return;
+
+                int scartati = 0;
+                foreach (var kv in loaded)
+                {
+                    // Scarta token già scaduti durante il downtime del server
+                    if (DateTimeOffset.UtcNow > kv.Value.Expiry)
+                    {
+                        scartati++;
+                        continue;
+                    }
+
+                    RefreshStore[kv.Key] = (kv.Value.Email, kv.Value.Username, kv.Value.Expiry);
+                }
+
+                Console.WriteLine($"[TokenStore] Caricati {RefreshStore.Count} refresh token ({scartati} scaduti scartati)");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[TokenStore] Errore durante il caricamento: {ex.Message}");
+            }
         }
     }
 }
