@@ -4,6 +4,8 @@
 
 [#introduzione](#introduzione)
 
+> ⚠️ Solamente dopo il raggiungimento del livello **10** sarà possibile accedere al PVP.
+
 Sconfiggere villaggi barbari è un buon allenamento, ma la vera gloria in **Warriors & Wealth** si conquista sfidando altri sovrani. Le battaglie **PvP** condividono con il PvE le stesse meccaniche fondamentali di combattimento — fase a distanza e corpo a corpo — ma qui l'avversario non è una guarnigione prevedibile: è un altro giocatore, con il proprio esercito, le proprie scelte strategiche e, soprattutto, il proprio [sistema difensivo a più livelli](https://github.com/adlos96/Warrior-and-Wealth/blob/main/Wiki/Game/Battaglie/Difesa.md) da smontare uno strato alla volta.
 
 Non esiste un livello di difficoltà prestabilito come nel PvE: ogni assedio è unico e dipende interamente da quanto solidamente il difensore ha costruito e presidiato il proprio villaggio. Proprio per questo il PvP è il vero banco di prova per un generale: qui la ricompensa più ambita non sono solo le risorse, ma i preziosissimi **Diamanti Blu e Viola**, ottenibili tramite saccheggio solo colpendo altri giocatori.
