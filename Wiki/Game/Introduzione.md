@@ -54,6 +54,4 @@ L'esito dello scontro dipende dalla composizione dell'esercito, dai parametri di
 
 ### **Pianifica la tua strategia, conquista i Feudi e fonda un impero di valore.**
 
-[#pianifica-la-tua-strategia-conquista-i-feudi-e-fonda-un-impero-di-valore](#pianifica-la-tua-strategia-conquista-i-feudi-e-fonda-un-impero-di-valore)
-
 [⬅️ Torna al Menu Principale](https://github.com/adlos96/Warrior-and-Wealth/blob/main/README.md) | [🏛️ Vai alla Guida Premium](https://github.com/adlos96/Warrior-and-Wealth/blob/main/Wiki/Game/Componenti/Premium.md)
